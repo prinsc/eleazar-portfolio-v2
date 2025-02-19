@@ -1,0 +1,122 @@
+:root {
+    --primary-color-shamrock-50: #ebfef5;
+    --primary-color-shamrock-100: #cefde4;
+    --primary-color-shamrock-200: #a1f9cf;
+    --primary-color-shamrock-300: #65f0b7;
+    --primary-color-shamrock-400: #21de97;
+    --primary-color-shamrock-500: #03c683;
+    --primary-color-shamrock-600: #00a16b;
+    --primary-color-shamrock-700: #00815a;
+    --primary-color-shamrock-800: #006648;
+    --primary-color-shamrock-900: #01533d;
+    --primary-color-shamrock-950: #002f23;
+
+    --color-primary: var(--primary-color-shamrock-600);
+
+    --color-gray: rgb(150, 150, 150);
+    --color-gray-dark: rgb(75, 75, 75);
+    --color-gray-95: rgba(64, 64, 64, .95);
+    --color-gray-85: rgba(64, 64, 64, .85);
+    --color-gray-75: rgba(64, 64, 64, .75);
+    --color-gray-65: rgba(64, 64, 64, .65);
+    --color-gray-50: rgba(64, 64, 64, .5);
+    --color-gray-35: rgba(64, 64, 64, .35);
+    --color-gray-25: rgba(64, 64, 64, .25);
+    --color-gray-15: rgba(64, 64, 64, .15);
+    --color-gray-10: rgba(64, 64, 64, .10);
+    --color-gray-05: rgba(64, 64, 64, .05);
+
+    --color-blue: rgb(101, 200, 255);
+    --color-blue-light: rgb(123, 209, 255);
+    --color-blue-dark: rgb(58, 141, 255);
+    --color-blue-75: rgba(101, 200, 255, 0.75);
+    --color-blue-50: rgba(101, 200, 255, 0.5);
+    --color-blue-25: rgba(101, 200, 255, 0.25);
+    --color-blue-05: rgba(101, 200, 255, 0.05);
+
+    --color-red: rgb(255, 87, 87);
+    --color-red-light: rgb(255, 125, 125);
+    --color-red-dark: #bd3f3f;
+    --color-red-75: rgba(255, 87, 87, 0.75);
+    --color-red-50: rgba(255, 87, 87, 0.5);
+    --color-red-25: rgba(255, 87, 87, 0.25);
+    --color-red-05: rgba(255, 87, 87, 0.05);
+
+    --color-gold: #ffe204;
+    --color-yellow: rgb(255, 209, 27);
+    --color-yellow-dark: rgb(205, 142, 16);
+    --color-yellow-75: rgba(255, 209, 27, 0.75);
+    --color-yellow-50: rgba(255, 209, 27, 0.5);
+    --color-yellow-25: rgba(255, 209, 27, 0.25);
+    --color-yellow-05: rgba(255, 209, 27, 0.05);
+
+    --color-purple: #6f42c1;
+    --color-purple-light: #9b6bdf;
+    --color-purple-dark: #631caa;
+    --color-purple-75: rgba(111, 66, 193, 0.75);
+    --color-purple-50: rgba(111, 66, 193, 0.5);
+    --color-purple-25: rgba(111, 66, 193, 0.25);
+    --color-purple-05: rgba(111, 66, 193, 0.05);
+
+    --color-green: rgb(111, 210, 72);
+    --color-green-dark: rgb(74, 157, 47);
+    --color-green-light: rgb(111, 210, 72);
+    --color-green-75: rgba(111, 210, 72, 0.75);
+    --color-green-50: rgba(111, 210, 72, 0.5);
+    --color-green-25: rgba(111, 210, 72, 0.25);
+    --color-green-05: rgba(111, 210, 72, 0.05);
+
+    --color-black-fix: rgb(14, 14, 14);
+    --color-white-fix: rgb(235, 235, 235);
+
+    --color-white: #fff;
+    --color-black: #000;
+}
+
+.color-red {
+    color: var(--color-red) !important;
+}
+
+.color-red-dark {
+    color: var(--color-red-dark) !important;
+}
+
+.color-blue {
+    color: var(--color-blue) !important;
+}
+
+.color-blue-light {
+    color: var(--color-blue-light) !important;
+}
+
+.color-blue-dark {
+    color: var(--color-blue-dark) !important;
+}
+
+.color-green {
+    color: var(--color-green) !important;
+}
+
+.color-green-dark {
+    color: var(--color-green-dark) !important;
+}
+
+.color-green-light {
+    color: var(--color-green-light) !important;
+}
+
+.color-yellow {
+    color: var(--color-yellow) !important;
+}
+
+.color-gold {
+    color: var(--color-yellow) !important;
+}
+
+.color-purple {
+    color: var(--color-purple) !important;
+}
+
+.color-purple-light {
+    color: var(--color-purple-light) !important;
+}

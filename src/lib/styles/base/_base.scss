@@ -1,0 +1,235 @@
+@use "../themes/_colors" as *;
+@use "../themes/_mixins" as *;
+
+:root {
+    interpolate-size: allow-keywords;
+    font-family: "Inter",
+        sans-serif,
+        Arial,
+        'Segoe UI',
+        Roboto,
+        Oxygen,
+        Ubuntu,
+        Cantarell,
+        'Open Sans',
+        'Helvetica Neue';
+    font-optical-sizing: auto;
+    font-weight: normal;
+    font-style: normal;
+    font-variation-settings: "slnt" 0;
+    --border-radius-xsmall: 5px;
+    --border-radius-small: 10px;
+    --border-radius-medium: 20px;
+    --border-radius-large: 30px;
+}
+
+html {
+    height: -webkit-fill-available;
+}
+
+.grain {
+    position: relative;
+
+    &:before {
+        content: "";
+        background-color: transparent;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 600'%3E%3Cfilter id='a'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23a)'/%3E%3C/svg%3E");
+        background-repeat: repeat;
+        background-size: 182px;
+        opacity: 0.2;
+        top: 0;
+        left: 0;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+    }
+}
+
+body {
+    min-height: 100dvh;
+    // background-image: radial-gradient(rgba(0, 0, 0, 0.05) 0.5px, var(--color-white) 0.5px);
+    background-color: var(--color-white);
+    background-size: 10px 10px;
+    position: relative;
+    // @extend .grain;
+}
+
+::selection {
+    background-color: var(--primary-color-shamrock-300);
+    color: var(--color-black);
+
+}
+
+::-moz-selection {
+    background-color: var(--primary-color-shamrock-300);
+    color: var(--color-black);
+
+}
+
+address {
+    font-style: normal;
+}
+
+/* Avoid Chrome to see Safari hack */
+@supports (-webkit-touch-callout: none) {
+    body {
+        /* The hack for Safari */
+        min-height: -webkit-fill-available;
+    }
+}
+
+* {
+    outline: none;
+    outline-color: transparent;
+
+    &:not(svg, path) {
+        color: var(--color-black);
+    }
+
+    // outline: solid 1px yellowgreen;
+    // background-color: rgba(255, 0, 0, 0.1);
+    &:focus-visible {
+        outline: solid 2px var(--color-blue);
+        border-radius: var(--border-radius-xsmall);
+        outline-offset: 6px;
+        transition: outline-offset 0.2s;
+    }
+}
+
+
+
+strong,
+b {
+    font-weight: bold;
+    color: var(--primary-color-shamrock-700);
+}
+
+.divider {
+    height: 1px;
+    box-shadow: 2px 2px 7px var(--color-gray-05);
+    width: 100%;
+    position: relative;
+    border-bottom: solid 1px var(--color-gray-15);
+
+    &.w2 {
+        width: 50%;
+        margin: 0 auto;
+    }
+
+    span {
+        position: absolute;
+        top: -8px;
+        display: block;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: var(--color-white);
+        padding: 0 10px;
+        font-size: var(--typo-comment);
+        color: var(--color-gray-50);
+        text-align: center;
+    }
+}
+
+ul {
+    list-style-type: '› ';
+    padding-left: 5px;
+}
+
+sup {
+    font-size: .65em;
+}
+
+button {
+    all: unset;
+}
+
+a {
+    text-decoration: none;
+
+    // Styles par défaut
+    &:not(.no-effect) {
+
+        &:hover {
+            cursor: pointer;
+
+            &::after {
+                height: 100%;
+                bottom: 0px;
+                background-color: var(--primary-color-shamrock-200);
+            }
+        }
+    }
+
+    &.no-effect {
+        cursor: pointer;
+        color: inherit;
+        text-decoration: none;
+
+        &::after {
+            all: unset;
+        }
+    }
+
+    &.underline {
+        text-decoration: underline;
+        text-underline-offset: 0px;
+        text-underline-position: under;
+    }
+
+    span.external-link {
+        width: 1rem !important;
+    }
+}
+
+
+p {
+    line-height: 1.5em;
+    margin: .25rem 0;
+}
+
+form {
+    width: 100%;
+}
+
+pre {
+    background-color: var(--color-gray-05);
+    padding: 1rem;
+    border-radius: var(--border-radius-small);
+    overflow-x: auto;
+    font-size: 10px;
+    line-height: 1.5em;
+    font-family: monospace;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    margin: 1rem 0;
+    width: 100%;
+    text-align: left;
+    font-weight: normal;
+    color: inherit;
+}
+
+section {
+    // width: 100%;
+    // display: inline-grid;
+    // justify-items: start;
+    width: 100%;
+}
+
+.full {
+    width: 100%;
+}
+
+ol,
+ul {
+    padding-left: 15px;
+
+    li {
+        line-height: 1.6rem;
+        margin: 2px 0;
+    }
+}
+
+.hidden {
+    display: none !important;
+}

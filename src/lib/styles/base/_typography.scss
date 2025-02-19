@@ -1,0 +1,161 @@
+@use "../themes/_mixins" as *;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+// :root {
+//     --typo-size-h1: 36px;
+//     --typo-size-h2: 29px;
+//     --typo-size-h3: 24px;
+//     --typo-size-h4: 20px;
+//     --typo-size-h5: 16px;
+//     --typo-size-h6: 13px;
+// }
+
+// default size
+:root {
+    /* Titre principal */
+    --typo-size-h0: 34px;
+    /* Titre de section */
+    --typo-size-h1: 26px;
+    /* Sous-titre */
+    --typo-size-h2: 22px;
+    /* Titre de paragraphe */
+    --typo-size-h3: 18px;
+    /* Titre secondaire */
+    --typo-size-h4: 16px;
+    /* Texte normal */
+    --typo-size-h5: 14px;
+    /* Texte de note ou d'info */
+    --typo-size-h6: 14px;
+    --typo-base: 12px;
+    --typo-comment: 12px;
+}
+
+// @include breakpoint("small") {
+//     :root {
+//         --typo-size-h0: 48px;
+//         --typo-size-h1: 34px;
+//         --typo-size-h2: 28px;
+//         --typo-size-h3: 24px;
+//         --typo-size-h4: 20px;
+//         --typo-size-h5: 18px;
+//         --typo-size-h6: 15px;
+//         --typo-base: 14px;
+//         --typo-comment: 13px;
+//     }
+// }
+
+// @include breakpoint("medium") {
+//     :root {
+//         --typo-size-h0: 54px;
+//         --typo-size-h1: 38px;
+//         --typo-size-h2: 30px;
+//         --typo-size-h3: 26px;
+//         --typo-size-h4: 22px;
+//         --typo-size-h5: 18px;
+//         --typo-size-h6: 16px;
+//         --typo-base: 14px;
+//         --typo-comment: 13px;
+//     }
+// }
+
+// @include breakpoint("large") {
+//     :root {
+//         --typo-size-h0: 60px;
+//         --typo-size-h1: 40px;
+//         --typo-size-h2: 32px;
+//         --typo-size-h3: 28px;
+//         --typo-size-h4: 24px;
+//         --typo-size-h5: 20px;
+//         --typo-size-h6: 18px;
+//         --typo-base: 14px;
+//         --typo-comment: 13px;
+//     }
+// }
+
+* {
+    font-size: var(--typo-base);
+    font-weight: 400;
+    font-family: 'Inter', sans-serif;
+
+    @include breakpoint("small") {
+        // font-size: var(--typo-base);
+        font-weight: inherit;
+    }
+}
+
+.typo-size-h0 {
+    font-size: var(--typo-size-h0);
+}
+
+.typo-size-h1 {
+    font-size: var(--typo-size-h1);
+}
+
+.typo-size-h2 {
+    font-size: var(--typo-size-h2);
+}
+
+.typo-size-h3 {
+    font-size: var(--typo-size-h3);
+}
+
+.typo-size-h4 {
+    font-size: var(--typo-size-h4);
+}
+
+.typo-size-h5 {
+    font-size: var(--typo-size-h5);
+}
+
+.typo-size-h6 {
+    font-size: var(--typo-size-h6);
+}
+
+h1 {
+    @extend .typo-size-h1;
+    line-height: 1.2;
+    font-weight: 500;
+    margin-block-start: calc(var(--typo-size-h1) / 5);
+    margin-block-end: calc(var(--typo-size-h1) / 5);
+}
+
+h2 {
+    @extend .typo-size-h2;
+    line-height: 1.2;
+    font-weight: 500;
+    margin-block-start: calc(var(--typo-size-h2) / 5);
+    margin-block-end: calc(var(--typo-size-h2) / 5);
+}
+
+h3 {
+    @extend .typo-size-h3;
+    line-height: 1.2;
+    font-weight: normal;
+    margin-block-start: calc(var(--typo-size-h3) / 5);
+    margin-block-end: calc(var(--typo-size-h3) / 5);
+}
+
+h4 {
+    @extend .typo-size-h4;
+    line-height: 1.2;
+    font-weight: normal;
+    margin-block-start: calc(var(--typo-size-h4) / 5);
+    margin-block-end: calc(var(--typo-size-h4) / 5);
+}
+
+h5 {
+    @extend .typo-size-h5;
+    line-height: 1.2;
+    font-weight: normal;
+    margin-block-start: calc(var(--typo-size-h5) / 5);
+    margin-block-end: calc(var(--typo-size-h5) / 5);
+}
+
+h6 {
+    @extend .typo-size-h6;
+    line-height: 1.2;
+    font-weight: normal;
+    margin-block-start: calc(var(--typo-size-h6) / 5);
+    margin-block-end: calc(var(--typo-size-h6) / 5);
+}

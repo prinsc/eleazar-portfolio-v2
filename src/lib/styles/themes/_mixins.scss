@@ -1,0 +1,65 @@
+@use '../utils/_responsive' as *;
+
+@mixin backdropFilter() {
+    background-color: var(--color-white);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    box-shadow: none;
+    outline: solid 1px var(--color-gray-15);
+
+    @include breakpoint("xlarge") {
+        outline: none;
+        background-color: var(--color-white-75);
+        -webkit-backdrop-filter: blur(12px);
+        backdrop-filter: blur(10px);
+        box-shadow: 3px 3px 15px 0 var(--color-gray-15);
+    }
+}
+
+@mixin clampText($line-count) {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: $line-count;
+    -webkit-box-orient: vertical;
+}
+
+@mixin breakpoint($point) {
+    @if $point ==xsmall {
+        & {
+            @media (min-width: $screen-size-xsmall) {
+                @content;
+            }
+        }
+
+    }
+
+    @if $point ==small {
+        @media (min-width: $screen-size-small) {
+            @content;
+        }
+    }
+
+    @else if $point ==medium {
+        @media (min-width: $screen-size-medium) {
+            @content;
+        }
+    }
+
+    @else if $point ==large {
+        @media (min-width: $screen-size-large) {
+            @content;
+        }
+    }
+
+    @else if $point ==xlarge {
+        @media (min-width: $screen-size-xlarge) {
+            @content;
+        }
+    }
+
+    @else if $point ==xxlarge {
+        @media (min-width: $screen-size-xxlarge) {
+            @content;
+        }
+    }
+}
