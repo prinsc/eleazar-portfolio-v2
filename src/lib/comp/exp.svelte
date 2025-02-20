@@ -9,7 +9,7 @@
 	<div class="header">
 		<div class="left-side">
 			<h3>{data.title[$settings.lang]}</h3>
-			<h4>{data.date[$settings.lang]} [<span>{data.quantity[$settings.lang]}</span>]</h4>
+			<h4>{data.date[$settings.lang]} <span>{data.quantity[$settings.lang]}</span></h4>
 		</div>
 		<div class="right-side">
 			<a

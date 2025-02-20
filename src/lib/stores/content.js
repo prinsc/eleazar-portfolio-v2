@@ -158,7 +158,7 @@ location: {
             location: {
                 name: 'Institut Saint-François de Sales',
 				url: 'https://www.saint-francois.be/',
-                logo: '/assets/img/sfds.jpg',
+                logo: '/assets/img/sfds.webp',
                 where: {
                     fr: 'Ath',
                     en: 'Ath',
@@ -258,7 +258,7 @@ location: {
             },
             location: {
                 name: 'Vitl Electro',
-                logo: '/assets/img/vitl.svg'
+                logo: '/assets/img/vitl.webp'
             },
             description: {
                 fr: "<p>L'activité de mon père a nécessité la création d’un site web pour promouvoir ses services. J’ai pris en charge sa mise en ligne, sa promotion ainsi que sa maintenance. </p><p>Le site présentait ses prestations et offrait aux clients un formulaire de contact dédié. Il comprenait aussi un espace de gestion avec un back-office permettant d’administrer factures, devis et documents via un CRUD.</p>",
