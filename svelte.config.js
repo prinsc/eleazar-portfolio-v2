@@ -1,9 +1,10 @@
 import adapter from "@sveltejs/adapter-netlify";
-import { vitePreprocess } from "@sveltejs/vite-plugin-svelte";
+// import { vitePreprocess } from "@sveltejs/vite-plugin-svelte";
+import sveltePreprocess from 'svelte-preprocess';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
-  preprocess: vitePreprocess({
+  preprocess: sveltePreprocess({
     scss: {
       renderSync: true,
       includePaths: ["./src"],

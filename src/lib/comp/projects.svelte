@@ -12,7 +12,9 @@
 	import formatText from '$lib/utils/formatText';
 	import { TinySlider } from 'svelte-tiny-slider';
 	import { fly } from 'svelte/transition';
+	import { settings } from '$lib/stores/settings.js';
 	import tippy from 'svelte-tippy';
+	import TechnoElement from './techno/techno_element.svelte';
 	export let data = null;
 </script>
 
@@ -20,10 +22,10 @@
 	<TinySlider transitionDuration="500">
 		{#snippet children({ sliderWidth })}
 			{#each data as projet}
-				<div class="item" style="width: {sliderWidth / 3}px">
+				<div class="item" style="--width: 100px;">
 					<a
 						href={projet.link ? projet.link : ''}
-						class="grain"
+						class="grain no-effect"
 						target={projet.link ? '_blank' : ''}
 						onclick={() => (projet.link ? '' : window.open(projet.image))}
 					>
@@ -45,28 +47,12 @@
 								{/if}
 							</span>
 							<h5>{projet.name}</h5>
-							<p>{projet.description}</p>
+							{#key $settings.lang}
+								<p>{projet.description[$settings.lang]}</p>
+							{/key}
 							<div class="technos">
 								{#each projet.technos as techno}
-									<span
-										class="techno"
-										use:tippy={{
-											content: `${formatText(techno)}`,
-											placement: 'bottom',
-											theme: 'kltk',
-											arrow: false,
-											animation: 'perspective-subtle'
-										}}
-									>
-										<span class="icon">
-											<img
-												src="/assets/icons/{techno}.svg"
-												alt={techno}
-												width="100%"
-												height="100%"
-											/>
-										</span>
-									</span>
+									<TechnoElement {techno} />
 								{/each}
 							</div>
 						</div>
@@ -88,7 +74,7 @@
 				</button>
 			{/if}
 
-			{#if currentIndex < data.length - 3}
+			{#if currentIndex < data.length - 2.5}
 				<button
 					class="next grain"
 					onclick={() => setIndex(currentIndex + 1)}
@@ -104,17 +90,28 @@
 </div>
 
 <style lang="scss">
-	// @import '~chocolat/dist/css/chocolat.css';
-
+	@use 'lib/styles/themes/_mixins' as *;
 	.slider {
 		position: relative;
 		> button {
 			position: absolute;
-			top: calc(50% - 17.5px);
+			top: -35px;
 			border-radius: 50%;
 			overflow: hidden;
 			border: solid 1px rgba(0, 0, 0, 0.1);
 			cursor: pointer;
+			transition: transform 0.1s;
+			@include breakpoint('large') {
+				position: absolute;
+				top: calc(50% - 17.5px);
+				border-radius: 50%;
+				overflow: hidden;
+				border: solid 1px rgba(0, 0, 0, 0.1);
+				cursor: pointer;
+			}
+			&:active {
+				transform: scale(0.9);
+			}
 			.icon {
 				display: inline-flex;
 				width: 35px;
@@ -123,15 +120,26 @@
 				justify-content: center;
 			}
 			&.back {
-				left: -50px;
+				right: 50px;
+				@include breakpoint('large') {
+					right: initial;
+					left: -50px;
+				}
 			}
 			&.next {
-				right: -50px;
+				right: 0;
+				@include breakpoint('large') {
+					right: -50px;
+				}
 			}
 		}
 		.item {
 			border-radius: 5px;
 			padding: 1rem;
+			width: calc(var(--width) * 3);
+			@include breakpoint('medium') {
+				width: calc(var(--width) * 2.5);
+			}
 			&:nth-child(1) {
 				padding-left: 0;
 			}
@@ -159,9 +167,14 @@
 				}
 				.image {
 					width: 100%;
-					height: 100px;
+					height: 200px;
 					position: relative;
-
+					@include breakpoint('small') {
+						height: 150px;
+					}
+					@include breakpoint('medium') {
+						height: 100px;
+					}
 					&::before {
 						content: '';
 						position: absolute;
@@ -198,19 +211,6 @@
 							margin-top 0.5s,
 							height 0.5s,
 							opacity 0.5s;
-						.techno {
-							display: inline-flex;
-							align-items: center;
-							justify-content: center;
-							.icon {
-								width: 1rem;
-								height: 1.5rem;
-								img {
-									width: 100%;
-									height: 1rem;
-								}
-							}
-						}
 					}
 				}
 			}

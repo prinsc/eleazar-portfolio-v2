@@ -1,17 +1,15 @@
 <script>
 	import { MapPin } from 'lucide-svelte';
-	import tippy from 'svelte-tippy';
-	import formatText from '$lib/utils/formatText';
-	import 'tippy.js/animations/perspective-subtle.css';
-
+	import { settings } from '$lib/stores/settings.js';
+	import TechnoElement from '$lib/comp/techno/techno_element.svelte';
 	export let data = null;
 </script>
 
 <div class="element grain">
 	<div class="header">
 		<div class="left-side">
-			<h3>{data.title}</h3>
-			<h4>{data.date} <span>{data.quantity}</span></h4>
+			<h3>{data.title[$settings.lang]}</h3>
+			<h4>{data.date[$settings.lang]} (<span>{data.quantity[$settings.lang]}</span>)</h4>
 		</div>
 		<div class="right-side">
 			<div class="company">
@@ -33,39 +31,24 @@
 					<span class="icon">
 						<MapPin />
 					</span>
-					{data.location.where}
+					{data.location.where[$settings.lang]}
 				</span>
 			{/if}
 		</div>
 	</div>
 	<div class="description">
-		{@html data.description}
+		{@html data.description[$settings.lang]}
 	</div>
 	<div class="technos">
 		{#each data.technos as techno}
-			<span
-				class="techno"
-				use:tippy={{
-					content: `${formatText(techno)}`,
-					placement: 'bottom',
-					theme: 'kltk',
-					arrow: false,
-					animation: 'perspective-subtle'
-				}}
-			>
-				<span class="icon">
-					<img src="/assets/icons/{techno}.svg" alt={techno} width="100%" height="100%" />
-				</span>
-			</span>
+			<TechnoElement {techno} />
 		{/each}
 	</div>
 </div>
 
 <style lang="scss">
-	:global(.tippy-box[data-theme='kltk']) {
-		background-color: var(--color-white);
-		box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.1);
-	}
+	@use 'lib/styles/themes/_mixins' as *;
+
 	.element {
 		// border-bottom: solid 1px rgba(0, 0, 0, 0.1);
 		margin: 1rem 0;
@@ -82,6 +65,7 @@
 		.header {
 			display: flex;
 			justify-content: space-between;
+			gap: 1rem;
 			h4 {
 				font-weight: 300;
 				font-size: 12px;
@@ -95,7 +79,7 @@
 					font-weight: 600;
 					text-transform: lowercase;
 					color: var(--color-primary);
-					margin-left: 1rem;
+					margin: 0 0.25rem;
 				}
 			}
 			.right-side {
@@ -111,25 +95,31 @@
 					span {
 						display: inline-flex;
 						font-weight: 500;
+						text-align: right;
 						&.logo {
 							img {
 								border-radius: 5px;
 								max-width: 18px;
 							}
+							display: none;
 							padding: 0.25rem;
+							@include breakpoint('small') {
+								display: inline-flex;
+							}
 						}
 					}
 				}
 				.where {
 					display: flex;
 					gap: 0.15rem;
+					color: var(--color-gray);
 					.icon {
 						width: 10px;
 						display: inline-flex;
 					}
 					font-size: 12px;
 					font-weight: 500;
-					color: var(--color-gray-dark);
+					color: var(--color-gray);
 				}
 			}
 		}
@@ -143,29 +133,6 @@
 			display: flex;
 			flex-wrap: wrap;
 			gap: 0.5rem;
-			.techno {
-				padding: 0.25rem;
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				filter: grayscale(1) opacity(0.75);
-				transition:
-					filter 0.1s,
-					transform 0.1s;
-				user-select: none;
-				.icon {
-					width: 15px;
-					aspect-ratio: 1/1;
-					display: inline-flex;
-					img {
-						height: 100%;
-					}
-				}
-				&:hover {
-					filter: grayscale(0) opacity(1);
-					transform: translateY(-1px);
-				}
-			}
 		}
 	}
 </style>

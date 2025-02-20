@@ -14,7 +14,6 @@
     --color-primary: var(--primary-color-shamrock-600);
 
     --color-gray: rgb(150, 150, 150);
-    --color-gray-dark: rgb(75, 75, 75);
     --color-gray-95: rgba(64, 64, 64, .95);
     --color-gray-85: rgba(64, 64, 64, .85);
     --color-gray-75: rgba(64, 64, 64, .75);
@@ -69,8 +68,15 @@
     --color-black-fix: rgb(14, 14, 14);
     --color-white-fix: rgb(235, 235, 235);
 
-    --color-white: #fff;
-    --color-black: #000;
+    --color-white: #FAF9F6;
+    --color-black: #0C0C0C;
+    --invert: 0;
+}
+
+[data-theme="dark"] {
+    --invert: 1;
+    --color-white: #0C0C0C;
+    --color-black: #FAF9F6;
 }
 
 .color-red {

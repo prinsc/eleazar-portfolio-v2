@@ -82,6 +82,8 @@ address {
 * {
     outline: none;
     outline-color: transparent;
+    color: var(--color-black);
+    transition: color 0.2s, background-color 0.2s;
 
     &:not(svg, path) {
         color: var(--color-black);
@@ -145,10 +147,31 @@ button {
 }
 
 a {
-    text-decoration: none;
 
     // Styles par défaut
     &:not(.no-effect) {
+        text-decoration: none;
+        position: relative;
+        padding: 0 2px;
+        display: inline-flex;
+        column-gap: 3px;
+        font-size: inherit;
+        text-decoration: none;
+        color: inherit;
+        align-items: center;
+
+        &::after {
+            transition: height .2s, bottom .2s;
+            content: "";
+            z-index: -1;
+            position: absolute;
+            width: 100%;
+            height: 25%;
+            mix-blend-mode: darken;
+            bottom: 15%;
+            left: 0;
+            background-color: var(--primary-color-shamrock-200);
+        }
 
         &:hover {
             cursor: pointer;

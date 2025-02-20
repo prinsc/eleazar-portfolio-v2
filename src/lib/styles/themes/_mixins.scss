@@ -25,10 +25,8 @@
 
 @mixin breakpoint($point) {
     @if $point ==xsmall {
-        & {
-            @media (min-width: $screen-size-xsmall) {
-                @content;
-            }
+        @media (min-width: $screen-size-xsmall) {
+            @content;
         }
 
     }
