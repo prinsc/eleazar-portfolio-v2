@@ -121,7 +121,13 @@
 
 	<section class="me">
 		<div class="left-side">
-			<img src="/assets/img/photo.png" alt="Photo de profil" width="100%" height="100%" />
+			<!-- svelte-ignore a11y_img_redundant_alt -->
+			<img
+				src="/assets/img/photo.webp"
+				alt={$content.site.profilePicture[$settings.lang]}
+				width="100%"
+				height="100%"
+			/>
 		</div>
 		<div class="right-side">
 			<h2>{$content.me.h2[$settings.lang]}</h2>

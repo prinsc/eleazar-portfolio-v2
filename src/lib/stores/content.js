@@ -89,6 +89,11 @@ location: {
 			fr: 'Image de',
 			en: 'Image from',
 			ru: 'Изображение от'
+		},
+		profilePicture: {
+			fr: 'Photo de profil',
+			en: 'Profile picture',
+			ru: 'Фото профиля'
 		}
 	},
     school: [
@@ -106,7 +111,7 @@ location: {
             },
             location: {
                 name: 'HEH',
-                logo: '/assets/img/heh.png',
+                logo: '/assets/img/heh.webp',
 				url: 'https://www.heh.be',
                 where: {
                     fr: 'Mons',
@@ -188,7 +193,7 @@ location: {
             location: {
                 name: 'Webstanz',
 				url: 'https://webstanz.be',
-                logo: '/assets/img/wz.png',
+                logo: '/assets/img/wz.webp',
                 where: {
                     fr: 'Mons',
                     en: 'Mons',
@@ -220,7 +225,7 @@ location: {
             },
             location: {
                 name: 'Webstanz',
-                logo: '/assets/img/wz.png',
+                logo: '/assets/img/wz.webp',
 				url: 'https://webstanz.be',
                 where: {
                     fr: 'Mons',
