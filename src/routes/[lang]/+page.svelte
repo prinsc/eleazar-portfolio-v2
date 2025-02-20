@@ -35,7 +35,7 @@
 	<meta charset="UTF-8" />
 	<meta name="author" content="Eléazar Klyuvitkin" />
 	<meta name="description" content={$content.site.description[$settings.lang]} />
-	<link rel="canonical" href="https://kltk.be" />
+	<link rel="canonical" href="https://kltk.be/{$settings.lang}" />
 	<meta name="robots" content="index, follow" />
 	<meta name="theme-color" content={isDarkTheme ? '#000' : '#ffffff'} />
 
@@ -259,8 +259,8 @@
 			font-weight: 500;
 			.pulse {
 				display: inline-flex;
-				width: 6px;
-				height: 6px;
+				min-width: 6px;
+				min-height: 6px;
 				border-radius: 50%;
 				background-color: rgba(33, 222, 151, 0.8);
 				animation: pulseEffect 1.5s infinite ease-in-out;
