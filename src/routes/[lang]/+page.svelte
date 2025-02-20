@@ -142,7 +142,8 @@
 
 				{@html $content.me.description[$settings.lang]}
 			</p>
-			<address>{$content.me.location[$settings.lang]}</address>
+			<!-- svelte-ignore a11y_no_noninteractive_tabindex -->
+			<address tabindex="0">{$content.me.location[$settings.lang]}</address>
 		</div>
 	</section>
 
