@@ -22,9 +22,9 @@ location: {
 	ru: 'Майнво 7812, Бельгия'
 },
         disponibility: {
-            fr: 'disponible',
-            en: 'available',
-            ru: 'доступен'
+            fr: 'ouvert aux opportunités',
+			en: 'open to opportunities',
+			ru: 'открыт для возможностей'
         },
     },
 	site: {	

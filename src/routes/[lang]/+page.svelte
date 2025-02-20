@@ -1,5 +1,5 @@
 <script>
-	import { ChevronDown, Sun, Moon } from 'lucide-svelte';
+	import { ChevronDown, Sun, Moon, ExternalLink } from 'lucide-svelte';
 	import Experience from '$lib/comp/exp.svelte';
 	import Projets from '$lib/comp/projects.svelte';
 	import formatText from '$lib/utils/formatText';
@@ -73,10 +73,16 @@
 		</div>
 
 		<div class="element">
-			<p>
+			<a href="https://cal.com/eleazar-kltk-bbheg9" class="no-effect" target="_blank">
 				<span class="pulse"></span>
-				<span>{$content.me.disponibility[$settings.lang]}</span>
-			</p>
+				<span>
+					{$content.me.disponibility[$settings.lang]}
+					<span class="icon">
+						[ical
+						<ExternalLink />]
+					</span>
+				</span>
+			</a>
 		</div>
 	</header>
 
@@ -239,7 +245,7 @@
 			padding: 0 2rem;
 			gap: 1rem;
 		}
-		p {
+		a {
 			display: flex;
 			align-items: center;
 			gap: 0.8rem;
@@ -249,9 +255,14 @@
 				width: 6px;
 				height: 6px;
 				border-radius: 50%;
-				background-color: rgba(50, 225, 50, 0.8);
+				background-color: rgba(33, 222, 151, 0.8);
 				animation: pulseEffect 1.5s infinite ease-in-out;
-				box-shadow: 0 0 0 0 rgba(0, 255, 0, 0.5); /* Ajout d'une ombre pour un effet "halo" */
+				box-shadow: 0 0 0 0 rgba(33, 222, 151, 0.5); /* Ajout d'une ombre pour un effet "halo" */
+			}
+			.icon {
+				width: 8px;
+				display: inline-flex;
+				opacity: 0.75;
 			}
 			@keyframes pulseEffect {
 				0% {
@@ -308,6 +319,7 @@
 				border-radius: 50%;
 				min-width: 125px;
 				width: 125px;
+				box-shadow: 5px 5px 10px var(--color-gray-15);
 			}
 		}
 		.right-side {
