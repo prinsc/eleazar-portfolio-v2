@@ -309,6 +309,9 @@
 			span {
 				position: absolute;
 			}
+			&.lang-switcher {
+				font-weight: 600;
+			}
 		}
 	}
 

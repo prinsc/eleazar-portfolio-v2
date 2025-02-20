@@ -12,7 +12,7 @@ export const content = writable({
 			ru:'23 года, все зубы на месте'
 		},
 		description: {
-    fr: `Je suis spécialisé en développement web, design, UI et UX, avec une expertise en Svelte et Supabase pour créer des plateformes interactives optimisées. Mon projet le plus abouti, <a href="https://blinkr.be" target="_blank">Blinkr</a>, reflète pleinement mes compétences en optimisation, ergonomie et gestion des données.`,
+    fr: `Je suis spécialisé en développement web, design, UI et UX, avec une expertise en Svelte et Supabase qui m'ont permis de créer des plateformes interactives et optimisées. Mon projet le plus abouti, <a href="https://blinkr.be" target="_blank">Blinkr</a>, reflète pleinement mes compétences en optimisation, ergonomie et gestion des données.`,
     en: `I specialize in web development, design, UI and UX, with expertise in Svelte and Supabase for creating optimized interactive platforms. My most accomplished project, <a href="https://blinkr.be" target="_blank">Blinkr</a>, fully reflects my skills in optimization, ergonomics, and data management.`,
     ru: `Я специализируюсь на веб-разработке, дизайне, UI и UX, с опытом работы в Svelte и Supabase для создания оптимизированных интерактивных платформ. Мой наиболее успешный проект, <a href="https://blinkr.be" target="_blank">Blinkr</a>, полностью отражает мои навыки в оптимизации, эргономике и управлении данными.`
 },
