@@ -112,7 +112,8 @@ b {
     box-shadow: 2px 2px 7px var(--color-gray-05);
     width: 100%;
     position: relative;
-    border-bottom: solid 1px var(--color-gray-50);
+    border-bottom: solid 1px var(--color-gray-25);
+    margin: 2rem 0;
 
     &.w2 {
         width: 50%;

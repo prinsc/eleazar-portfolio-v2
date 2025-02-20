@@ -271,7 +271,7 @@ location: {
                 en: "Platform dedicated to discovering and sharing local events.",
                 ru: "Платформа, посвященная открытию и обмену местными событиями."
             },
-            image: '/assets/projects/blinkr_spoil.png',
+            image: '/assets/projects/blinkr_spoil.webp',
             link: 'https://blinkr.be',
             technos: ['svelte-4', 'sass', 'js', 'typescript', 'figma', 'postgresql', 'supabase']
         },
@@ -282,7 +282,7 @@ location: {
                 en: 'Web version replica of The Settlers of Catan',
                 ru: 'Веб-версия реплики «Колонизаторов Катана»'
             },
-            image: '/assets/projects/catane_spoil.png',
+            image: '/assets/projects/catane_spoil.webp',
             // link: 'https://blinkr.be',
             technos: ['svelte-4', 'sass', 'js', 'socket-io']
         },
@@ -293,7 +293,7 @@ location: {
                 en: 'Remastered Skyjo, web version, available on GitHub',
                 ru: 'Переработанный Skyjo, веб-версия, доступен на GitHub'
             },
-            image: '/assets/projects/moongo_spoil.png',
+            image: '/assets/projects/moongo_spoil.webp',
             link: 'https://github.com/prinsc/skyjo',
             technos: ['jquery', 'sass', 'js', 'socket-io']
         },
@@ -304,7 +304,7 @@ location: {
 				en: 'First portfolio, in a creative style',
 				ru: 'Первое портфолио, в креативном стиле'
             },
-            image: '/assets/projects/portfolio.png',
+            image: '/assets/projects/portfolio_spoil.webp',
             link: 'https://eleazar-portfolio-v1.netlify.app/',
             technos: ['sass', 'js']
         },
@@ -315,7 +315,7 @@ location: {
 				en: 'Current portfolio, developed in Svelte 5',
 				ru: 'Текущее портфолио, разработанное в Svelte 5'
             },
-            image: '/assets/projects/portfolio2.png',
+            image: '/assets/projects/portfolio2_spoil.webp',
             link: 'https://github.com/prinsc/eleazar-portfolio-v2',
             technos: ['sass', 'svelte-5']
         },
@@ -326,7 +326,7 @@ location: {
 				en: "Web development exam at HEH",
 				ru: "Экзамен по веб-разработке в HEH"
             },
-            image: '/assets/projects/mustang.png',
+            image: '/assets/projects/mustang_spoil.webp',
             link: 'https://mustang-template.netlify.app/',
             technos: ['html', 'css', 'sass']
         },
@@ -337,7 +337,7 @@ location: {
                 en: "Website aimed at promoting the services of a passionate electrician",
                 ru: "Сайт, предназначенный для продвижения услуг страстного электрика"
             },
-            image: '/assets/projects/vitl.png',
+            image: '/assets/projects/vitl_spoil.webp',
             // link: 'https://blinkr.be',
             technos: ['php', 'sass', 'js', 'css', 'html', 'adobe-xd']
         }
