@@ -112,7 +112,7 @@ b {
     box-shadow: 2px 2px 7px var(--color-gray-05);
     width: 100%;
     position: relative;
-    border-bottom: solid 1px var(--color-gray-15);
+    border-bottom: solid 1px var(--color-gray-50);
 
     &.w2 {
         width: 50%;
@@ -147,6 +147,9 @@ button {
 }
 
 a {
+    &[href="#"] {
+        cursor: default;
+    }
 
     // Styles par défaut
     &:not(.no-effect) {
@@ -167,7 +170,7 @@ a {
             position: absolute;
             width: 100%;
             height: 25%;
-            mix-blend-mode: darken;
+            mix-blend-mode: var(--mix-blend-mode);
             bottom: 15%;
             left: 0;
             background-color: var(--primary-color-shamrock-200);

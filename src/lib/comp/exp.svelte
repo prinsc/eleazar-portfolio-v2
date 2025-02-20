@@ -9,10 +9,14 @@
 	<div class="header">
 		<div class="left-side">
 			<h3>{data.title[$settings.lang]}</h3>
-			<h4>{data.date[$settings.lang]} (<span>{data.quantity[$settings.lang]}</span>)</h4>
+			<h4>{data.date[$settings.lang]} [<span>{data.quantity[$settings.lang]}</span>]</h4>
 		</div>
 		<div class="right-side">
-			<div class="company">
+			<a
+				class="company no-effect"
+				href={data.location.url || '#!'}
+				target={data.location.url ? '_blank' : undefined}
+			>
 				{#if data.location.logo}
 					<span class="logo">
 						<img
@@ -23,9 +27,8 @@
 						/>
 					</span>
 				{/if}
-
 				<span class="name">{data.location.name}</span>
-			</div>
+			</a>
 			{#if data.location.where}
 				<span class="where">
 					<span class="icon">
@@ -80,6 +83,7 @@
 					text-transform: lowercase;
 					color: var(--color-primary);
 					margin: 0 0.25rem;
+					white-space: nowrap;
 				}
 			}
 			.right-side {

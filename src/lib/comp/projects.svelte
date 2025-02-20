@@ -25,10 +25,10 @@
 			{#each data as projet}
 				<div class="item" style="--width: 100px;">
 					<a
-						href={projet.link ? projet.link : ''}
+						href={projet.link || '#!'}
 						class="grain no-effect"
-						target={projet.link ? '_blank' : ''}
-						onclick={() => (projet.link ? '' : window.open(projet.image))}
+						target={projet.link ? '_blank' : undefined}
+						data-umami-event="click-{projet.name.toLowerCase().replace(/ /g, '-')}"
 					>
 						<div class="image">
 							<!-- svelte-ignore a11y_img_redundant_alt -->
@@ -40,7 +40,16 @@
 							/>
 						</div>
 						<div class="container">
-							<span class="icon">
+							<span
+								class="icon"
+								use:tippy={{
+									content: `${projet.link || $content.site.soon[$settings.lang]}`,
+									placement: 'left',
+									theme: 'kltk',
+									arrow: false,
+									animation: 'perspective-subtle'
+								}}
+							>
 								{#if !projet.link}
 									<Fullscreen />
 								{:else}

@@ -2,7 +2,7 @@ import { writable } from 'svelte/store';
 export const content = writable({
     me: {
         h1: {
-            fr: 'Portfolio de Eléazar Klyuvitkin',
+            fr: 'Portfolio • Eléazar Klyuvitkin',
             en: "Eléazar Klyuvitkin's Portfolio",
             ru: 'Портфолио Eléazar Klyuvitkin'
         },
@@ -28,6 +28,11 @@ location: {
         },
     },
 	site: {	
+		soon: {
+			fr: 'Bientôt disponible',
+			en: 'Coming soon',
+			ru: 'Скоро будет доступно'
+		},
 		arialabel: {
 			themeSwitch: {
 				fr: 'Changer de thème',
@@ -51,7 +56,7 @@ location: {
 			},
 		},
 		description: {
-		    fr: `Je suis spécialisé en développement web, design, UI et UX, avec une expertise en Svelte et Supabase pour créer des plateformes interactives optimisées.`,
+		    fr: `Je suis spécialisé en développement web, design, UI et UX, avec une expertise en Svelte et Supabase pour créer des plateformes interactives et optimisées.`,
 		    en: `I specialize in web development, design, UI and UX, with expertise in Svelte and Supabase for creating optimized interactive platforms.`,
 		    ru: `Я специализируюсь на веб-разработке, дизайне, UI и UX, с опытом работы в Svelte и Supabase для создания оптимизированных интерактивных платформ.`
 		},
@@ -102,6 +107,7 @@ location: {
             location: {
                 name: 'HEH',
                 logo: '/assets/img/heh.png',
+				url: 'https://www.heh.be',
                 where: {
                     fr: 'Mons',
                     en: 'Mons',
@@ -109,9 +115,9 @@ location: {
                 }
             },
             description: {
-                fr: '<p>La formation en Techniques graphiques m’a permis de développer mes compétences en design graphique, en communication visuelle et en création de contenu multimédia. J’ai appris à maîtriser les logiciels de la suite Adobe, à concevoir des interfaces utilisateur et à réaliser des projets graphiques de qualité.</p><p>Aperçu de mes travaux : <a href="https://www.behance.net/prinss" target="_blank">Behance</a>, <a href="https://www.youtube.com/watch?v=a6xDLFfNXPE" target="_blank">Showreel</a></p>',
-                en: '<p>The Graphic Techniques program allowed me to develop my skills in graphic design, visual communication, and multimedia content creation. I learned to master Adobe software, design user interfaces, and create high-quality graphic projects.</p><p>Overview of my work: <a href="https://www.behance.net/prinss" target="_blank">Behance</a>, <a href="https://www.youtube.com/watch?v=a6xDLFfNXPE" target="_blank">Showreel</a></p>',
-                ru: '<p>Обучение в области графических технологий позволило мне развить навыки в графическом дизайне, визуальной коммуникации и создании мультимедийного контента. Я освоил программы Adobe, научился проектировать пользовательские интерфейсы и создавать качественные графические проекты.</p><p>Обзор моих работ: <a href="https://www.behance.net/prinss" target="_blank">Behance</a>, <a href="https://www.youtube.com/watch?v=a6xDLFfNXPE" target="_blank">Showreel</a></p>'
+                fr: '<p>La formation en Techniques graphiques m’a permis de développer mes compétences en 2d & 3d, en communication visuelle et en création de contenu multimédia. J’ai appris à maîtriser les logiciels de la suite Adobe, à concevoir des interfaces utilisateur et à réaliser des projets graphiques de qualité.</p><p>Aperçu de mes travaux : <a href="https://www.behance.net/prinss" target="_blank" data-umami-event="click-behance">Behance</a>, <a href="https://www.youtube.com/watch?v=a6xDLFfNXPE" target="_blank" data-umami-event="click-showreel">Showreel</a></p>',
+                en: '<p>The Graphic Techniques program allowed me to develop my skills in 2d & 3d, visual communication, and multimedia content creation. I learned to master Adobe software, design user interfaces, and create high-quality graphic projects.</p><p>Overview of my work: <a href="https://www.behance.net/prinss" target="_blank" data-umami-event="click-behance">Behance</a>, <a href="https://www.youtube.com/watch?v=a6xDLFfNXPE" target="_blank" data-umami-event="click-showreel">Showreel</a></p>',
+                ru: '<p>Обучение в области графических технологий позволило мне развить навыки в 2d & 3d, визуальной коммуникации и создании мультимедийного контента. Я освоил программы Adobe, научился проектировать пользовательские интерфейсы и создавать качественные графические проекты.</p><p>Обзор моих работ: <a href="https://www.behance.net/prinss" target="_blank" data-umami-event="click-behance">Behance</a>, <a href="https://www.youtube.com/watch?v=a6xDLFfNXPE" target="_blank" data-umami-event="click-showreel">Showreel</a></p>'
             },
             technos: [
                 'maya',
@@ -146,6 +152,7 @@ location: {
             },
             location: {
                 name: 'Institut Saint-François de Sales',
+				url: 'https://www.saint-francois.be/',
                 logo: '/assets/img/sfds.jpg',
                 where: {
                     fr: 'Ath',
@@ -164,9 +171,9 @@ location: {
     exp: [
         {
             title: {
-                fr: 'Développeur Front-end - Job étudiant',
-                en: 'Front-end Developer - Student Job',
-                ru: 'Фронтенд-разработчик — Студенческая работа'
+                fr: 'Développeur Front-end • Job étudiant',
+                en: 'Front-end Developer • Student Job',
+                ru: 'Фронтенд-разработчик • Студенческая работа'
             },
             date: {
 				fr: 'juill. 2024 - août 2024',
@@ -180,6 +187,7 @@ location: {
             },
             location: {
                 name: 'Webstanz',
+				url: 'https://webstanz.be',
                 logo: '/assets/img/wz.png',
                 where: {
                     fr: 'Mons',
@@ -196,9 +204,9 @@ location: {
         },
         {
             title: {
-                fr: 'Développeur Front-end - Stage',
-                en: 'Front-end Developer - Internship',
-                ru: 'Фронтенд-разработчик — Стажировка'
+                fr: 'Développeur Front-end • Stage',
+                en: 'Front-end Developer • Internship',
+                ru: 'Фронтенд-разработчик • Стажировка'
             },
             date: {
 				fr:'févr. 2024 - mai 2024',
@@ -213,6 +221,7 @@ location: {
             location: {
                 name: 'Webstanz',
                 logo: '/assets/img/wz.png',
+				url: 'https://webstanz.be',
                 where: {
                     fr: 'Mons',
                     en: 'Mons',
@@ -230,7 +239,7 @@ location: {
             title: {
                 fr: 'Associé webmaster',
                 en: 'Webmaster Associate',
-                ru: 'Соучредитель — Вебмастер'
+                ru: 'Соучредитель • Вебмастер'
             },
             date: {
 				fr:'2020 - 2025',
@@ -339,7 +348,6 @@ location: {
 			name: 'Email',
 			link: 'mailto:eleazar@kltk.be',
 			icon: 'at'
-
 		},
         {
             name: 'LinkedIn',

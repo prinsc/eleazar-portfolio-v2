@@ -71,12 +71,16 @@
     --color-white: #FAF9F6;
     --color-black: #0C0C0C;
     --invert: 0;
+    --mix-blend-mode: darken;
 }
 
 [data-theme="dark"] {
     --invert: 1;
+    --mix-blend-mode: lighten;
     --color-white: #0C0C0C;
     --color-black: #FAF9F6;
+    --primary-color-shamrock-200: var(--primary-color-shamrock-800);
+    --primary-color-shamrock-300: var(--primary-color-shamrock-700);
 }
 
 .color-red {
