@@ -45,7 +45,7 @@
 			}
 		}
 		&:hover {
-			filter: grayscale(0) opacity(1) invert(var(--invert));
+			filter: grayscale(0) opacity(1);
 			transform: translateY(-1px);
 		}
 	}

@@ -28,11 +28,33 @@ location: {
         },
     },
 	site: {	
+		arialabel: {
+			themeSwitch: {
+				fr: 'Changer de thème',
+				en: 'Switch theme',
+				ru: 'Сменить тему'
+			},
+			langSwitch: {
+				fr: 'Changer de langue',
+				en: 'Switch language',
+				ru: 'Сменить язык'
+			},
+			next: {
+				fr: 'Suivant',
+				en: 'Next',
+				ru: 'Далее'
+			},
+			previous: {
+				fr: 'Précédent',
+				en: 'Previous',
+				ru: 'Назад'
+			},
+		},
 		description: {
-    fr: `Je suis spécialisé en développement web, design, UI et UX, avec une expertise en Svelte et Supabase pour créer des plateformes interactives optimisées.`,
-    en: `I specialize in web development, design, UI and UX, with expertise in Svelte and Supabase for creating optimized interactive platforms.`,
-    ru: `Я специализируюсь на веб-разработке, дизайне, UI и UX, с опытом работы в Svelte и Supabase для создания оптимизированных интерактивных платформ.`
-},
+		    fr: `Je suis spécialisé en développement web, design, UI et UX, avec une expertise en Svelte et Supabase pour créer des plateformes interactives optimisées.`,
+		    en: `I specialize in web development, design, UI and UX, with expertise in Svelte and Supabase for creating optimized interactive platforms.`,
+		    ru: `Я специализируюсь на веб-разработке, дизайне, UI и UX, с опытом работы в Svelte и Supabase для создания оптимизированных интерактивных платформ.`
+		},
 		course: {
 			fr: 'Parcours',
 			en: 'Course',
@@ -58,6 +80,11 @@ location: {
 			en: 'Socials',
 			ru: 'Социальные сети'
 		},
+		imageFrom: {
+			fr: 'Image de',
+			en: 'Image from',
+			ru: 'Изображение от'
+		}
 	},
     school: [
         {
@@ -264,13 +291,35 @@ location: {
         {
             name: 'Portfolio',
             description: {
-                fr: 'Premier portfolio',
-                en: 'First portfolio',
-                ru: 'Первый портфолио'
+                fr: 'Premier portfolio, dans un style créatif',
+				en: 'First portfolio, in a creative style',
+				ru: 'Первое портфолио, в креативном стиле'
             },
             image: '/assets/projects/portfolio.png',
             link: 'https://eleazar-portfolio-v1.netlify.app/',
             technos: ['sass', 'js']
+        },
+		{
+            name: '🖐️',
+            description: {
+                fr: 'Portfolio actuel, développé en Svelte 5',
+				en: 'Current portfolio, developed in Svelte 5',
+				ru: 'Текущее портфолио, разработанное в Svelte 5'
+            },
+            image: '/assets/projects/portfolio2.png',
+            link: 'https://github.com/prinsc/eleazar-portfolio-v2',
+            technos: ['sass', 'svelte-5']
+        },
+		{
+            name: 'Mustang Template',
+            description: {
+                fr: "Examen de développement web à la HEH",
+				en: "Web development exam at HEH",
+				ru: "Экзамен по веб-разработке в HEH"
+            },
+            image: '/assets/projects/mustang.png',
+            link: 'https://mustang-template.netlify.app/',
+            technos: ['html', 'css', 'sass']
         },
         {
             name: 'Vitl Electro',
@@ -279,7 +328,7 @@ location: {
                 en: "Website aimed at promoting the services of a passionate electrician",
                 ru: "Сайт, предназначенный для продвижения услуг страстного электрика"
             },
-            image: '/assets/img/vitl.png',
+            image: '/assets/projects/vitl.png',
             // link: 'https://blinkr.be',
             technos: ['php', 'sass', 'js', 'css', 'html', 'adobe-xd']
         }

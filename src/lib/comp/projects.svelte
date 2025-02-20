@@ -15,6 +15,7 @@
 	import { settings } from '$lib/stores/settings.js';
 	import tippy from 'svelte-tippy';
 	import TechnoElement from './techno/techno_element.svelte';
+	import { content } from '$lib/stores/content.js';
 	export let data = null;
 </script>
 
@@ -33,7 +34,7 @@
 							<!-- svelte-ignore a11y_img_redundant_alt -->
 							<img
 								src={projet.image}
-								alt="Image issue de {projet.name}"
+								alt="{$content.site.imageFrom[$settings.lang]} {projet.name}"
 								width="100%"
 								height="100%"
 							/>
@@ -46,7 +47,7 @@
 									<ArrowUpRight />
 								{/if}
 							</span>
-							<h5>{projet.name}</h5>
+							<h3>{projet.name}</h3>
 							{#key $settings.lang}
 								<p>{projet.description[$settings.lang]}</p>
 							{/key}
@@ -65,6 +66,7 @@
 			{#if currentIndex > 0}
 				<button
 					class="back grain"
+					aria-label={$content.site.arialabel.previous[$settings.lang]}
 					onclick={() => setIndex(currentIndex - 1)}
 					transition:fly={{ x: 25 }}
 				>
@@ -77,6 +79,7 @@
 			{#if currentIndex < data.length - 2.5}
 				<button
 					class="next grain"
+					aria-label={$content.site.arialabel.next[$settings.lang]}
 					onclick={() => setIndex(currentIndex + 1)}
 					transition:fly={{ x: -25 }}
 				>
@@ -153,7 +156,8 @@
 				overflow: hidden;
 				display: flex;
 				flex-direction: column;
-				h5 {
+				h3 {
+					font-size: 1.25rem;
 					font-weight: 600;
 				}
 				&:hover {

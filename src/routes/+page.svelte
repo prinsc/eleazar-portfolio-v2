@@ -78,7 +78,11 @@
 	</header>
 
 	<section class="actions">
-		<button onclick={toggleTheme} class="theme-switcher">
+		<button
+			onclick={toggleTheme}
+			class="theme-switcher"
+			aria-label={$content.site.arialabel.themeSwitch[$settings.lang]}
+		>
 			{#if isDarkTheme}
 				<span class="icon" transition:fly={{ y: isDarkTheme ? 20 : -20 }}>
 					<Sun />
@@ -89,7 +93,11 @@
 				</span>
 			{/if}
 		</button>
-		<button onclick={switchLang} class="lang-switcher">
+		<button
+			onclick={switchLang}
+			class="lang-switcher"
+			aria-label={$content.site.arialabel.langSwitch[$settings.lang]}
+		>
 			{#if isLangSwitched}
 				<span transition:fly={{ y: isLangSwitched ? 20 : -20 }}>
 					{$settings.lang.toUpperCase()}
@@ -393,7 +401,7 @@
 				justify-content: center;
 				width: 2rem;
 				height: 2rem;
-				filter: grayscale(1);
+				filter: grayscale(1) invert(var(--invert));
 				transition: filter 0.1s;
 				img {
 					height: 100%;
