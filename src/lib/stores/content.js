@@ -4,12 +4,12 @@ export const content = writable({
         h1: {
             fr: 'Portfolio • Eléazar Klyuvitkin',
             en: "Eléazar Klyuvitkin's Portfolio",
-            ru: 'Портфолио Eléazar Klyuvitkin'
+            ru: 'Портфолио Елизар Клювиткин'
         },
 		h2: {
 			fr:'23 ans, toutes ses dents',
 			en:'23 years old, all his teeth',
-			ru:'23 года, все зубы на месте'
+			ru:'23 года, Дорогу Молодым'
 		},
 		description: {
     fr: `Je suis spécialisé en développement web, design, UI et UX, avec une expertise en Svelte et Supabase qui m'ont permis de créer des plateformes interactives et optimisées. Mon projet le plus abouti, <a href="https://blinkr.be" target="_blank">Blinkr</a>, reflète pleinement mes compétences en optimisation, ergonomie et gestion des données.`,
@@ -22,7 +22,7 @@ location: {
 	ru: 'Майнво 7812, Бельгия'
 },
         disponibility: {
-            fr: 'ouvert aux opportunités',
+            fr: 'disponible',
 			en: 'open to opportunities',
 			ru: 'открыт для возможностей'
         },
@@ -107,7 +107,7 @@ location: {
             quantity: {
                 fr: '3 ans et demi',
                 en: '3 and a half years',
-                ru: '3 с половиной года'
+                ru: '3.5 года'
             },
             location: {
                 name: 'HEH',

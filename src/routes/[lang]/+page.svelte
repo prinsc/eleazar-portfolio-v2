@@ -3,27 +3,80 @@
 	import Experience from '$lib/comp/exp.svelte';
 	import Projets from '$lib/comp/projects.svelte';
 	import formatText from '$lib/utils/formatText';
+	import innerHtml from '$lib/utils/innerHtml';
 	import { fly, fade } from 'svelte/transition';
 	import { goto } from '$app/navigation';
-
 	import { settings } from '$lib/stores/settings.js';
 	import { content } from '$lib/stores/content.js';
+	import { onMount } from 'svelte';
 
 	let focused = $state(false);
 	let isDarkTheme = $state($settings.theme === 'dark');
 	let isLangSwitched = $state(false);
+	let isReady = $state(false);
 
-	function toggleTheme() {
-		isDarkTheme = !isDarkTheme;
-		document.documentElement.setAttribute('data-theme', isDarkTheme ? 'dark' : 'light');
-	}
-
+	// Fonction pour changer de langue
 	function switchLang() {
 		isLangSwitched = !isLangSwitched;
 		const currentIndex = $settings.langList.indexOf($settings.lang);
 		const nextIndex = (currentIndex + 1) % $settings.langList.length;
 		$settings.lang = $settings.langList[nextIndex];
 		goto(`/${$settings.lang}/`);
+	}
+
+	// Fonction pour détecter le thème système initial
+	function detectSystemTheme() {
+		return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+	}
+
+	// Fonction pour appliquer le thème
+	function applyTheme(theme) {
+		document.documentElement.setAttribute('data-theme', theme);
+		isDarkTheme = theme === 'dark';
+		settings.update((currentSettings) => ({
+			...currentSettings,
+			theme: theme
+		}));
+	}
+	// Mise à jour initiale du thème lors du montage
+	onMount(async () => {
+		isReady = false;
+		// Récupère le thème préféré par l'utilisateur depuis localStorage
+		const savedTheme = localStorage.getItem('user-theme');
+		if (savedTheme) {
+			applyTheme(savedTheme); // Applique le thème sauvegardé
+		} else {
+			// Sinon, applique le thème système
+			const systemTheme = detectSystemTheme();
+			applyTheme(systemTheme);
+		}
+
+		// Ajoute un écouteur pour détecter les changements futurs du thème système
+		const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+		const handleThemeChange = () => {
+			// Applique le thème système uniquement si l'utilisateur n'a pas choisi manuellement un thème
+			if (!localStorage.getItem('user-theme')) {
+				const newTheme = mediaQuery.matches ? 'dark' : 'light';
+				applyTheme(newTheme);
+			}
+		};
+
+		mediaQuery.addEventListener('change', handleThemeChange);
+		await new Promise((resolve) => setTimeout(resolve, 100)); // Simule un temps de chargement
+		isReady = true;
+		// Nettoie l'écouteur lors du démontage du composant
+		return () => mediaQuery.removeEventListener('change', handleThemeChange);
+	});
+
+	// Fonction pour basculer le thème manuellement
+	function toggleTheme() {
+		const currentTheme = $settings.theme;
+		const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+		isDarkTheme = !isDarkTheme;
+
+		// Applique le nouveau thème et met à jour localStorage
+		applyTheme(newTheme);
+		localStorage.setItem('user-theme', newTheme); // Enregistre le choix de l'utilisateur
 	}
 </script>
 
@@ -58,167 +111,174 @@
 	<link rel="icon" href="/favicon.ico" type="image/x-icon" />
 	<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 </svelte:head>
-<main>
-	<header>
-		<div class="element">
-			<h1>{$content.me.h1[$settings.lang]}</h1>
-			<h2>
-				<a
-					href="mailto:{$settings.email.address}?subject={$settings.email.subject[
-						$settings.lang
-					]}&body={$settings.email.body[$settings.lang]}"
-					class="no-effect">eleazar@kltk.be</a
-				>
-			</h2>
-		</div>
 
-		<div class="element">
-			<a href="https://cal.com/eleazar-kltk-bbheg9" class="no-effect" target="_blank">
-				<span class="pulse"></span>
-				<span>
-					{$content.me.disponibility[$settings.lang]}
-					<span class="icon">
-						[ical
-						<ExternalLink />]
+{#if !isReady}
+	<div class="loading">
+		<div class="spinner"></div>
+	</div>
+{:else}
+	<main>
+		<header>
+			<div class="element">
+				<h1>{$content.me.h1[$settings.lang]}</h1>
+				<h2>
+					<a
+						href="mailto:{$settings.email.address}?subject={$settings.email.subject[
+							$settings.lang
+						]}&body={$settings.email.body[$settings.lang]}"
+						class="no-effect">eleazar@kltk.be</a
+					>
+				</h2>
+			</div>
+
+			<div class="element">
+				<a href="https://cal.com/eleazar-kltk-bbheg9" class="no-effect" target="_blank">
+					<span class="pulse"></span>
+					<span>
+						{$content.me.disponibility[$settings.lang]}
 					</span>
-				</span>
-			</a>
-		</div>
-	</header>
+					<span class="cal">
+						[cal
+						<span class="icon">
+							<ExternalLink />
+						</span>]
+					</span>
+				</a>
+			</div>
+		</header>
 
-	<section class="actions">
-		<button
-			onclick={toggleTheme}
-			class="theme-switcher"
-			aria-label={$content.site.arialabel.themeSwitch[$settings.lang]}
-		>
-			{#if isDarkTheme}
-				<span class="icon" transition:fly={{ y: isDarkTheme ? 20 : -20 }}>
-					<Sun />
-				</span>
-			{:else}
-				<span class="icon" transition:fly={{ y: isDarkTheme ? -20 : 20 }}>
-					<Moon />
-				</span>
-			{/if}
-		</button>
-		<button
-			onclick={switchLang}
-			class="lang-switcher"
-			aria-label={$content.site.arialabel.langSwitch[$settings.lang]}
-		>
-			{#if isLangSwitched}
-				<span transition:fly={{ y: isLangSwitched ? 20 : -20 }}>
-					{$settings.lang.toUpperCase()}
-				</span>
-			{:else}
-				<span transition:fly={{ y: isLangSwitched ? -20 : 20 }}>
-					{$settings.lang.toUpperCase()}
-				</span>
-			{/if}
-		</button>
-	</section>
+		<section class="actions">
+			<button
+				onclick={toggleTheme}
+				class="theme-switcher"
+				aria-label={$content.site.arialabel.themeSwitch[$settings.lang]}
+			>
+				{#if isDarkTheme}
+					<span class="icon" transition:fly={{ y: isDarkTheme ? 20 : -20 }}>
+						<Sun />
+					</span>
+				{:else}
+					<span class="icon" transition:fly={{ y: isDarkTheme ? -20 : 20 }}>
+						<Moon />
+					</span>
+				{/if}
+			</button>
+			<button
+				onclick={switchLang}
+				class="lang-switcher"
+				aria-label={$content.site.arialabel.langSwitch[$settings.lang]}
+			>
+				{#if isLangSwitched}
+					<span transition:fly={{ y: isLangSwitched ? 20 : -20 }}>
+						{$settings.lang.toUpperCase()}
+					</span>
+				{:else}
+					<span transition:fly={{ y: isLangSwitched ? -20 : 20 }}>
+						{$settings.lang.toUpperCase()}
+					</span>
+				{/if}
+			</button>
+		</section>
 
-	<section class="me">
-		<div class="left-side">
-			<!-- svelte-ignore a11y_img_redundant_alt -->
-			<img
-				src="/assets/img/photo.webp"
-				alt={$content.site.profilePicture[$settings.lang]}
-				width="100%"
-				height="100%"
-			/>
-		</div>
-		<div class="right-side">
-			<h2>{$content.me.h2[$settings.lang]}</h2>
-			<p>
-				<!-- Autodidacte, je baigne dans le développement web depuis près de 9 ans. J’ai commencé avec la
+		<section class="me">
+			<div class="left-side">
+				<!-- svelte-ignore a11y_img_redundant_alt -->
+				<img
+					src="/assets/img/photo.webp"
+					alt={$content.site.profilePicture[$settings.lang]}
+					width="100%"
+					height="100%"
+				/>
+			</div>
+			<div class="right-side">
+				<h2>{$content.me.h2[$settings.lang]}</h2>
+				<p use:innerHtml={$content.me.description[$settings.lang]}>
+					<!-- Autodidacte, je baigne dans le développement web depuis près de 9 ans. J’ai commencé avec la
 				création de serveurs Minecraft, appris le Java en développant des plugins, puis enchaîné
 				avec des sites web, des boutiques en ligne et des outils pour aider mon père dans son
 				activité. Passionné par les défis techniques, j’ai aussi développé des jeux en ligne comme
 				Catane et Skyjo. Toujours en avance sur mon apprentissage, j’ai renforcé mon expérience
 				professionnelle lors de mon stage et job étudiant chez Webstanz. Je cherche à évoluer dans
 				une équipe dynamique où les projets s’enchaînent et ne se ressemblent pas. -->
+				</p>
+				<!-- svelte-ignore a11y_no_noninteractive_tabindex -->
+				<address tabindex="0">{$content.me.location[$settings.lang]}</address>
+			</div>
+		</section>
 
-				{@html $content.me.description[$settings.lang]}
-			</p>
-			<!-- svelte-ignore a11y_no_noninteractive_tabindex -->
-			<address tabindex="0">{$content.me.location[$settings.lang]}</address>
-		</div>
-	</section>
+		<section class="works" class:focused>
+			<h2>{$content.site.course[$settings.lang]}</h2>
 
-	<section class="works" class:focused>
-		<h2>{$content.site.course[$settings.lang]}</h2>
-
-		{#each $content.school as school}
-			<Experience data={school} />
-		{/each}
-
-		<button
-			onclick={() => {
-				focused = !focused;
-			}}
-		>
-			<span class="icon">
-				<ChevronDown strokeWidth={3} />
-			</span>
-			<h2>{$content.site.experience[$settings.lang]}</h2>
-		</button>
-
-		<div class="sub-element-container">
-			{#each $content.exp as exp}
-				<Experience data={exp} />
+			{#each $content.school as school}
+				<Experience data={school} />
 			{/each}
-		</div>
-	</section>
 
-	<section class="projects">
-		<h2>{$content.site.projects[$settings.lang]} ({$content.projets.length})</h2>
-		<Projets data={$content.projets} />
-	</section>
+			<button
+				onclick={() => {
+					focused = !focused;
+				}}
+			>
+				<span class="icon">
+					<ChevronDown strokeWidth={3} />
+				</span>
+				<h2>{$content.site.experience[$settings.lang]}</h2>
+			</button>
 
-	<section class="technos">
-		<h2>{$content.site.technologies[$settings.lang]}</h2>
-		<div class="cards">
-			{#each $content.technos as techno}
-				<div class="card grain">
-					<div class="icon">
-						<img src="/assets/icons/{techno}.svg" alt={techno} width="100%" height="100%" />
+			<div class="sub-element-container">
+				{#each $content.exp as exp}
+					<Experience data={exp} />
+				{/each}
+			</div>
+		</section>
+
+		<section class="projects">
+			<h2>{$content.site.projects[$settings.lang]} ({$content.projets.length})</h2>
+			<Projets data={$content.projets} />
+		</section>
+
+		<section class="technos">
+			<h2>{$content.site.technologies[$settings.lang]}</h2>
+			<div class="cards">
+				{#each $content.technos as techno}
+					<div class="card grain">
+						<div class="icon">
+							<img src="/assets/icons/{techno}.svg" alt={techno} width="100%" height="100%" />
+						</div>
+						<span> {formatText(techno)} </span>
 					</div>
-					<span> {formatText(techno)} </span>
-				</div>
-			{/each}
-		</div>
-	</section>
+				{/each}
+			</div>
+		</section>
 
-	<div class="divider"></div>
+		<div class="divider"></div>
 
-	<section class="socials">
-		<h2>{$content.site.socials[$settings.lang]}</h2>
-		<div class="container">
-			{#each $content.socials as social}
-				<a
-					class="no-effect"
-					href={social.name === 'Email'
-						? `mailto:${$settings.email.address}?subject=${encodeURIComponent($settings.email.subject[$settings.lang])}&body=${encodeURIComponent($settings.email.body[$settings.lang])}`
-						: social.link}
-					target="_blank"
-					rel="noopener noreferrer"
-					data-umami-event="click-{social.icon}"
-				>
-					<span class="icon">
-						<img
-							src={`/assets/icons/${social.icon}.svg`}
-							alt={social.name}
-							width="100%"
-							height="100%"
-						/>
-					</span>
-				</a>
-			{/each}
-		</div>
-	</section>
-</main>
+		<section class="socials">
+			<h2>{$content.site.socials[$settings.lang]}</h2>
+			<div class="container">
+				{#each $content.socials as social}
+					<a
+						class="no-effect"
+						href={social.name === 'Email'
+							? `mailto:${$settings.email.address}?subject=${encodeURIComponent($settings.email.subject[$settings.lang])}&body=${encodeURIComponent($settings.email.body[$settings.lang])}`
+							: social.link}
+						target="_blank"
+						rel="noopener noreferrer"
+						data-umami-event="click-{social.icon}"
+					>
+						<span class="icon">
+							<img
+								src={`/assets/icons/${social.icon}.svg`}
+								alt={social.name}
+								width="100%"
+								height="100%"
+							/>
+						</span>
+					</a>
+				{/each}
+			</div>
+		</section>
+	</main>
+{/if}
 
 <style lang="scss">
 	@use 'lib/styles/themes/_mixins' as *;
@@ -266,10 +326,16 @@
 				animation: pulseEffect 1.5s infinite ease-in-out;
 				box-shadow: 0 0 0 0 rgba(33, 222, 151, 0.5); /* Ajout d'une ombre pour un effet "halo" */
 			}
-			.icon {
-				width: 8px;
-				display: inline-flex;
-				opacity: 0.75;
+			.cal {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				.icon {
+					margin-left: 0.25rem;
+					width: 12px;
+					display: inline-flex;
+					opacity: 0.75;
+				}
 			}
 			@keyframes pulseEffect {
 				0% {
@@ -290,10 +356,6 @@
 			}
 		}
 	}
-
-	section.projects {
-	}
-
 	section.actions {
 		height: 25px;
 		position: relative;

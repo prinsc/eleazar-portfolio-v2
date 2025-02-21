@@ -2,6 +2,7 @@
 	import { MapPin } from 'lucide-svelte';
 	import { settings } from '$lib/stores/settings.js';
 	import TechnoElement from '$lib/comp/techno/techno_element.svelte';
+	import innerHtml from '$lib/utils/innerHtml';
 	export let data = null;
 </script>
 
@@ -39,9 +40,7 @@
 			{/if}
 		</div>
 	</div>
-	<div class="description">
-		{@html data.description[$settings.lang]}
-	</div>
+	<div class="description" use:innerHtml={data.description[$settings.lang]}></div>
 	<div class="technos">
 		{#each data.technos as techno}
 			<TechnoElement {techno} />

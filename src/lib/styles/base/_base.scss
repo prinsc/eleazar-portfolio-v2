@@ -49,10 +49,9 @@ html {
 body {
     min-height: 100dvh;
     // background-image: radial-gradient(rgba(0, 0, 0, 0.05) 0.5px, var(--color-white) 0.5px);
-    background-color: var(--color-white);
-    background-size: 10px 10px;
+    background-color: var(--color-white) !important;
+    // background-size: 10px 10px;
     position: relative;
-    // @extend .grain;
 }
 
 ::selection {
