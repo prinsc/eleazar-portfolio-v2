@@ -40,7 +40,11 @@
 			{/if}
 		</div>
 	</div>
-	<div class="description" use:innerHtml={data.description[$settings.lang]}></div>
+	{#key $settings.lang}
+		<div class="description">
+			{@html data.description[$settings.lang]}
+		</div>
+	{/key}
 	<div class="technos">
 		{#each data.technos as techno}
 			<TechnoElement {techno} />

@@ -24,7 +24,6 @@
 		goto(`/${$settings.lang}/`);
 	}
 
-	// Fonction pour détecter le thème système initial
 	function detectSystemTheme() {
 		return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 	}
@@ -38,6 +37,7 @@
 			theme: theme
 		}));
 	}
+
 	// Mise à jour initiale du thème lors du montage
 	onMount(async () => {
 		isReady = false;
@@ -62,7 +62,7 @@
 		};
 
 		mediaQuery.addEventListener('change', handleThemeChange);
-		await new Promise((resolve) => setTimeout(resolve, 100)); // Simule un temps de chargement
+		await new Promise((resolve) => setTimeout(resolve, 100));
 		isReady = true;
 		// Nettoie l'écouteur lors du démontage du composant
 		return () => mediaQuery.removeEventListener('change', handleThemeChange);
@@ -76,7 +76,7 @@
 
 		// Applique le nouveau thème et met à jour localStorage
 		applyTheme(newTheme);
-		localStorage.setItem('user-theme', newTheme); // Enregistre le choix de l'utilisateur
+		localStorage.setItem('user-theme', newTheme);
 	}
 </script>
 
@@ -192,15 +192,18 @@
 			</div>
 			<div class="right-side">
 				<h2>{$content.me.h2[$settings.lang]}</h2>
-				<p use:innerHtml={$content.me.description[$settings.lang]}>
-					<!-- Autodidacte, je baigne dans le développement web depuis près de 9 ans. J’ai commencé avec la
+				{#key $settings.lang}
+					<p>
+						{@html $content.me.description[$settings.lang]}
+					</p>
+				{/key}
+				<!-- Autodidacte, je baigne dans le développement web depuis près de 9 ans. J’ai commencé avec la
 				création de serveurs Minecraft, appris le Java en développant des plugins, puis enchaîné
 				avec des sites web, des boutiques en ligne et des outils pour aider mon père dans son
 				activité. Passionné par les défis techniques, j’ai aussi développé des jeux en ligne comme
 				Catane et Skyjo. Toujours en avance sur mon apprentissage, j’ai renforcé mon expérience
 				professionnelle lors de mon stage et job étudiant chez Webstanz. Je cherche à évoluer dans
 				une équipe dynamique où les projets s’enchaînent et ne se ressemblent pas. -->
-				</p>
 				<!-- svelte-ignore a11y_no_noninteractive_tabindex -->
 				<address tabindex="0">{$content.me.location[$settings.lang]}</address>
 			</div>
