@@ -85,7 +85,6 @@
 					font-weight: 600;
 					text-transform: lowercase;
 					color: var(--color-primary);
-					margin: 0 0.25rem;
 					white-space: nowrap;
 				}
 			}
