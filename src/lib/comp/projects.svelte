@@ -60,11 +60,13 @@
 							{#key $settings.lang}
 								<p>{projet.description[$settings.lang]}</p>
 							{/key}
+
 							<div class="technos">
 								{#each projet.technos as techno}
 									<TechnoElement {techno} />
 								{/each}
 							</div>
+							<time>{projet.date}</time>
 						</div>
 					</a>
 				</div>
@@ -146,9 +148,9 @@
 			}
 		}
 		.item {
-			border-radius: 5px;
 			padding: 1rem;
 			width: calc(var(--width) * 3);
+			@include borderRadius('xsmall');
 			@include breakpoint('medium') {
 				width: calc(var(--width) * 2.5);
 			}
@@ -161,14 +163,10 @@
 			}
 			a {
 				box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.05);
-				border-radius: 5px;
 				overflow: hidden;
 				display: flex;
 				flex-direction: column;
-				h3 {
-					font-size: 1.25rem;
-					font-weight: 600;
-				}
+				@include borderRadius('xsmall');
 				&:hover {
 					.container .technos {
 						height: auto;
@@ -177,6 +175,18 @@
 							margin-top: 0.5rem;
 						}
 					}
+				}
+				h3 {
+					font-size: 1.25rem;
+					font-weight: 600;
+				}
+				time {
+					font-size: 0.8rem;
+					width: 100%;
+					display: inline-flex;
+					justify-content: flex-end;
+					opacity: 0.5;
+					margin-top: 0.5rem;
 				}
 				.image {
 					width: 100%;

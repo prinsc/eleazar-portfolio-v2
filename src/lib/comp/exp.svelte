@@ -6,7 +6,7 @@
 	export let data = null;
 </script>
 
-<div class="element grain">
+<div class="grain kl-container">
 	<div class="header">
 		<div class="left-side">
 			<h3>{data.title[$settings.lang]}</h3>
@@ -55,12 +55,8 @@
 <style lang="scss">
 	@use 'lib/styles/themes/_mixins' as *;
 
-	.element {
+	.kl-container {
 		// border-bottom: solid 1px rgba(0, 0, 0, 0.1);
-		margin: 1rem 0;
-		padding: 2rem;
-		border-radius: 10px;
-		overflow: hidden;
 		&:last-child {
 			border-bottom: none;
 		}
@@ -104,8 +100,8 @@
 						text-align: right;
 						&.logo {
 							img {
-								border-radius: 5px;
 								max-width: 18px;
+								@include borderRadius('xsmall');
 							}
 							display: none;
 							padding: 0.25rem;

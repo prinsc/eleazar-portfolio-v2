@@ -276,12 +276,14 @@ location: {
                 en: "Platform dedicated to discovering and sharing local events.",
                 ru: "Платформа, посвященная открытию и обмену местными событиями."
             },
+            date:"2024-2025",
             image: '/assets/projects/blinkr_spoil.webp',
             link: 'https://blinkr.be',
             technos: ['svelte-4', 'sass', 'js', 'typescript', 'figma', 'postgresql', 'supabase']
         },
         {
             name: 'Conquistador',
+            date:"2023",
             description: {
                 fr: 'Réplique des Colons de Catane version web',
                 en: 'Web version replica of The Settlers of Catan',
@@ -293,6 +295,7 @@ location: {
         },
         {
             name: 'Moongo',
+            date:"2022-2023",
             description: {
                 fr: 'Skyjo remasterisé, version web, disponible sur github',
                 en: 'Remastered Skyjo, web version, available on GitHub',
@@ -304,6 +307,7 @@ location: {
         },
         {
             name: 'Portfolio',
+            date:"2023",
             description: {
                 fr: 'Premier portfolio, dans un style créatif',
 				en: 'First portfolio, in a creative style',
@@ -315,6 +319,7 @@ location: {
         },
 		{
             name: '🖐️',
+            date:"2025",
             description: {
                 fr: 'Portfolio actuel, développé en Svelte 5',
 				en: 'Current portfolio, developed in Svelte 5',
@@ -326,6 +331,7 @@ location: {
         },
 		{
             name: 'Mustang Template',
+            date:"2021",
             description: {
                 fr: "Examen de développement web à la HEH",
 				en: "Web development exam at HEH",
@@ -337,13 +343,13 @@ location: {
         },
         {
             name: 'Vitl Electro',
+            date:"2020-2025",
             description: {
                 fr: "Site destiné à promouvoir les services d'un électricien passionné",
                 en: "Website aimed at promoting the services of a passionate electrician",
                 ru: "Сайт, предназначенный для продвижения услуг страстного электрика"
             },
             image: '/assets/projects/vitl_spoil.webp',
-            // link: 'https://blinkr.be',
             technos: ['php', 'sass', 'js', 'css', 'html', 'adobe-xd']
         }
     ],

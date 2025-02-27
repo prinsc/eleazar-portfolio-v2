@@ -1,5 +1,5 @@
 <script>
-	import { ChevronDown, Sun, Moon, ExternalLink } from 'lucide-svelte';
+	import { ChevronDown, Sun, Moon, ExternalLink, Download, MapPin } from 'lucide-svelte';
 	import Experience from '$lib/comp/exp.svelte';
 	import Projets from '$lib/comp/projects.svelte';
 	import formatText from '$lib/utils/formatText';
@@ -205,7 +205,12 @@
 				professionnelle lors de mon stage et job étudiant chez Webstanz. Je cherche à évoluer dans
 				une équipe dynamique où les projets s’enchaînent et ne se ressemblent pas. -->
 				<!-- svelte-ignore a11y_no_noninteractive_tabindex -->
-				<address tabindex="0">{$content.me.location[$settings.lang]}</address>
+				<address tabindex="0">
+					<div class="icon">
+						<MapPin />
+					</div>
+					{$content.me.location[$settings.lang]}
+				</address>
 			</div>
 		</section>
 
@@ -237,6 +242,20 @@
 		<section class="projects">
 			<h2>{$content.site.projects[$settings.lang]} ({$content.projets.length})</h2>
 			<Projets data={$content.projets} />
+		</section>
+		<section class="resume">
+			<a
+				class="no-effect grain kl-container"
+				href="/assets/cv_2025_Klyuvitkin_Eleazar.pdf"
+				target="_blank"
+				rel="noopener noreferrer"
+			>
+				<h2>Curriculum Vitae <span>.pdf</span><br /><span>93.4ko</span></h2>
+
+				<div class="icon grain">
+					<Download />
+				</div>
+			</a>
 		</section>
 
 		<section class="technos">
@@ -405,6 +424,44 @@
 			address {
 				margin-top: 1rem;
 				font-weight: 600;
+				display: flex;
+				align-items: center;
+				gap: 0.5rem;
+				.icon {
+					width: 12px;
+					display: inline-flex;
+				}
+			}
+		}
+	}
+
+	section.resume {
+		&:hover {
+			.icon {
+				transform: scale(0.9);
+			}
+		}
+		a {
+			padding: 1rem;
+			padding-left: 2rem;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			flex-direction: row;
+			h2 {
+				font-weight: 600;
+				span {
+					font-weight: 400;
+					text-transform: lowercase;
+					font-size: 0.8em;
+					opacity: 0.75;
+				}
+			}
+			.icon {
+				padding: 1rem;
+				overflow: hidden;
+				transition: transform 0.2s;
+				@include borderRadius('small');
 			}
 		}
 	}
@@ -476,10 +533,9 @@
 			align-items: center;
 			gap: 1rem;
 			padding: 1.5rem;
-			border-radius: 5px;
 			overflow: hidden;
 			box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.05);
-
+			@include borderRadius('xsmall');
 			&:hover {
 				.icon {
 					filter: grayscale(0);

@@ -17,14 +17,17 @@
     font-weight: normal;
     font-style: normal;
     font-variation-settings: "slnt" 0;
-    --border-radius-xsmall: 5px;
-    --border-radius-small: 10px;
-    --border-radius-medium: 20px;
-    --border-radius-large: 30px;
 }
 
 html {
     height: -webkit-fill-available;
+}
+
+.kl-container {
+    margin: 1rem 0;
+    padding: 2rem;
+    overflow: hidden;
+    @include borderRadius('small')
 }
 
 .grain {
@@ -78,14 +81,12 @@ address {
     }
 }
 
-* {
+:global(*) {
     outline: none;
     outline-color: transparent;
-    color: var(--color-black);
-    transition: color 0.2s, background-color 0.2s;
 
-    &:not(svg, path) {
-        color: var(--color-black);
+    &:not(svg, path, .icon) {
+        transition: color 0.2s, background-color 0.2s;
     }
 
     // outline: solid 1px yellowgreen;
@@ -98,7 +99,10 @@ address {
     }
 }
 
-
+body {
+    color: var(--color-black);
+    transition: color 0.2s, background-color 0.2s;
+}
 
 strong,
 b {
