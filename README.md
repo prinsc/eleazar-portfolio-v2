@@ -1,3 +1,5 @@
+![Eléazar Klyuvitkin's Portfolio screenshot](https://kltk.be/assets/img/banner.png)
+
 # Eléazar Klyuvitkin's Portfolio
 
 This project is a personal portfolio that I make available to inspire and help other developers. You are free to duplicate this portfolio for your own projects, but I kindly ask you to include the mention **"Inspired by Eléazar"**. This helps respect the ethics of sharing and mutual inspiration.
