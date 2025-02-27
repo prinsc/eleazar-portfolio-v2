@@ -243,6 +243,7 @@
 			<h2>{$content.site.projects[$settings.lang]} ({$content.projets.length})</h2>
 			<Projets data={$content.projets} />
 		</section>
+
 		<section class="resume">
 			<a
 				class="no-effect grain kl-container"
@@ -250,7 +251,11 @@
 				target="_blank"
 				rel="noopener noreferrer"
 			>
-				<h2>Curriculum Vitae <span>.pdf</span><br /><span>93.4ko</span></h2>
+				<h2>
+					{$content.site.resume[$settings.lang]}<span>.pdf</span>
+					<span>({$content.site.resume.resumeOnlyFr[$settings.lang]})</span><br /><span>93.4ko</span
+					>
+				</h2>
 
 				<div class="icon grain">
 					<Download />
@@ -304,16 +309,12 @@
 
 <style lang="scss">
 	@use 'lib/styles/themes/_mixins' as *;
+	@use 'lib/styles/utils/_animations' as *;
+
 	main {
 		max-width: 800px;
 		padding: 2rem;
 		margin: 0 auto;
-	}
-	h2 {
-		font-weight: 400;
-		font-size: 12px;
-		text-transform: uppercase;
-		margin: 0.8rem 0;
 	}
 	section,
 	header {
@@ -321,10 +322,15 @@
 	}
 	header {
 		display: flex;
-		justify-content: space-between;
-		align-items: center;
 		padding: 0;
 		gap: 2rem;
+		flex-direction: column-reverse;
+		.element {
+			width: 100%;
+			@include breakpoint('small') {
+				width: auto;
+			}
+		}
 		h2 {
 			text-transform: lowercase;
 			font-weight: 400;
@@ -332,7 +338,10 @@
 		}
 		@include breakpoint('small') {
 			padding: 0 2rem;
-			gap: 1rem;
+			flex-direction: row;
+			gap: 4rem;
+			justify-content: space-between;
+			align-items: center;
 		}
 		a {
 			display: flex;
@@ -346,7 +355,7 @@
 				border-radius: 50%;
 				background-color: rgba(33, 222, 151, 0.8);
 				animation: pulseEffect 1.5s infinite ease-in-out;
-				box-shadow: 0 0 0 0 rgba(33, 222, 151, 0.5); /* Ajout d'une ombre pour un effet "halo" */
+				box-shadow: 0 0 0 0 rgba(33, 222, 151, 0.5);
 			}
 			.cal {
 				display: flex;
@@ -357,23 +366,6 @@
 					width: 12px;
 					display: inline-flex;
 					opacity: 0.75;
-				}
-			}
-			@keyframes pulseEffect {
-				0% {
-					transform: scale(1);
-					opacity: 1;
-					box-shadow: 0 0 0 0 rgba(0, 255, 0, 0.5);
-				}
-				50% {
-					transform: scale(1.2);
-					opacity: 0.7;
-					box-shadow: 0 0 15px 5px rgba(0, 255, 0, 0.3); /* Élargissement de l'ombre */
-				}
-				100% {
-					transform: scale(1);
-					opacity: 1;
-					box-shadow: 0 0 0 0 rgba(0, 255, 0, 0.5);
 				}
 			}
 		}
@@ -453,8 +445,12 @@
 				span {
 					font-weight: 400;
 					text-transform: lowercase;
-					font-size: 0.8em;
+					font-size: 0.9em;
 					opacity: 0.75;
+					&:nth-last-child(1) {
+						margin-top: 0.5rem;
+						display: block;
+					}
 				}
 			}
 			.icon {

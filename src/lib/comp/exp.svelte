@@ -128,7 +128,6 @@
 		.description {
 			:global(p) {
 				margin: 0.75rem 0;
-				line-height: 1.4em;
 			}
 		}
 		.technos {

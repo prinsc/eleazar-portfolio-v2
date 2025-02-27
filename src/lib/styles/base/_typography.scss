@@ -2,48 +2,33 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
 
-// :root {
-//     --typo-size-h1: 36px;
-//     --typo-size-h2: 29px;
-//     --typo-size-h3: 24px;
-//     --typo-size-h4: 20px;
-//     --typo-size-h5: 16px;
-//     --typo-size-h6: 13px;
-// }
 
-// default size
+// minimal size
 :root {
-    /* Titre principal */
-    --typo-size-h0: 34px;
-    /* Titre de section */
-    --typo-size-h1: 26px;
-    /* Sous-titre */
-    --typo-size-h2: 22px;
-    /* Titre de paragraphe */
+    --typo-size-h0: 28px;
+    --typo-size-h1: 22px;
+    --typo-size-h2: 20px;
     --typo-size-h3: 18px;
-    /* Titre secondaire */
     --typo-size-h4: 16px;
-    /* Texte normal */
     --typo-size-h5: 14px;
-    /* Texte de note ou d'info */
     --typo-size-h6: 14px;
     --typo-base: 12px;
     --typo-comment: 12px;
 }
 
-// @include breakpoint("small") {
-//     :root {
-//         --typo-size-h0: 48px;
-//         --typo-size-h1: 34px;
-//         --typo-size-h2: 28px;
-//         --typo-size-h3: 24px;
-//         --typo-size-h4: 20px;
-//         --typo-size-h5: 18px;
-//         --typo-size-h6: 15px;
-//         --typo-base: 14px;
-//         --typo-comment: 13px;
-//     }
-// }
+@include breakpoint("small") {
+    :root {
+        --typo-size-h0: 34px;
+        --typo-size-h1: 26px;
+        --typo-size-h2: 22px;
+        --typo-size-h3: 18px;
+        --typo-size-h4: 16px;
+        --typo-size-h5: 14px;
+        --typo-size-h6: 14px;
+        --typo-base: 12px;
+        --typo-comment: 12px;
+    }
+}
 
 // @include breakpoint("medium") {
 //     :root {
@@ -122,11 +107,14 @@ h1 {
 }
 
 h2 {
-    @extend .typo-size-h2;
+    // @extend .typo-size-h2;
+    font-size: 12px;
     line-height: 1.2;
-    font-weight: 500;
+    font-weight: 400;
     margin-block-start: calc(var(--typo-size-h2) / 5);
     margin-block-end: calc(var(--typo-size-h2) / 5);
+    text-transform: uppercase;
+    margin: 0.8rem 0;
 }
 
 h3 {
