@@ -15,7 +15,6 @@
 	let isLangSwitched = $state(false);
 	let isReady = $state(false);
 
-	// Fonction pour changer de langue
 	function switchLang() {
 		isLangSwitched = !isLangSwitched;
 		const currentIndex = $settings.langList.indexOf($settings.lang);
@@ -28,7 +27,6 @@
 		return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 	}
 
-	// Fonction pour appliquer le thème
 	function applyTheme(theme) {
 		document.documentElement.setAttribute('data-theme', theme);
 		isDarkTheme = theme === 'dark';
@@ -38,23 +36,18 @@
 		}));
 	}
 
-	// Mise à jour initiale du thème lors du montage
 	onMount(async () => {
 		isReady = false;
-		// Récupère le thème préféré par l'utilisateur depuis localStorage
 		const savedTheme = localStorage.getItem('user-theme');
 		if (savedTheme) {
-			applyTheme(savedTheme); // Applique le thème sauvegardé
+			applyTheme(savedTheme);
 		} else {
-			// Sinon, applique le thème système
 			const systemTheme = detectSystemTheme();
 			applyTheme(systemTheme);
 		}
 
-		// Ajoute un écouteur pour détecter les changements futurs du thème système
 		const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
 		const handleThemeChange = () => {
-			// Applique le thème système uniquement si l'utilisateur n'a pas choisi manuellement un thème
 			if (!localStorage.getItem('user-theme')) {
 				const newTheme = mediaQuery.matches ? 'dark' : 'light';
 				applyTheme(newTheme);
@@ -64,17 +57,14 @@
 		mediaQuery.addEventListener('change', handleThemeChange);
 		await new Promise((resolve) => setTimeout(resolve, 100));
 		isReady = true;
-		// Nettoie l'écouteur lors du démontage du composant
 		return () => mediaQuery.removeEventListener('change', handleThemeChange);
 	});
 
-	// Fonction pour basculer le thème manuellement
 	function toggleTheme() {
 		const currentTheme = $settings.theme;
 		const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
 		isDarkTheme = !isDarkTheme;
 
-		// Applique le nouveau thème et met à jour localStorage
 		applyTheme(newTheme);
 		localStorage.setItem('user-theme', newTheme);
 	}
@@ -371,13 +361,12 @@
 		}
 	}
 	section.actions {
-		height: 25px;
 		position: relative;
 		display: flex;
 		justify-content: flex-end;
+		min-height: 44px;
 
 		button {
-			min-height: 44px;
 			min-width: 44px;
 			display: flex;
 			align-items: center;
@@ -565,7 +554,10 @@
 		flex-wrap: wrap;
 		gap: 1rem;
 		justify-content: space-between;
-
+		h2 {
+			display: inline-flex;
+			align-items: center;
+		}
 		.container {
 			display: flex;
 			a {

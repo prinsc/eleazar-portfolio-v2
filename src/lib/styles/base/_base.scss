@@ -51,10 +51,12 @@ html {
 
 body {
     min-height: 100dvh;
-    // background-image: radial-gradient(rgba(0, 0, 0, 0.05) 0.5px, var(--color-white) 0.5px);
+    // background-image: radial-gradient(rgba(0, 0, 0, 0.1) 0.5px, var(--color-white) 0.5px);
+    background-size: 10px 10px;
     background-color: var(--color-white) !important;
-    // background-size: 10px 10px;
     position: relative;
+    color: var(--color-black);
+    transition: color 0.2s, background-color 0.2s;
 }
 
 ::selection {
@@ -73,21 +75,21 @@ address {
     font-style: normal;
 }
 
-/* Avoid Chrome to see Safari hack */
 @supports (-webkit-touch-callout: none) {
     body {
-        /* The hack for Safari */
         min-height: -webkit-fill-available;
     }
+}
+
+svg,
+path,
+.icon {
+    transition: none;
 }
 
 :global(*) {
     outline: none;
     outline-color: transparent;
-
-    &:not(svg, path, .icon) {
-        transition: color 0.2s, background-color 0.2s;
-    }
 
     // outline: solid 1px yellowgreen;
     // background-color: rgba(255, 0, 0, 0.1);
@@ -97,11 +99,6 @@ address {
         outline-offset: 6px;
         transition: outline-offset 0.2s;
     }
-}
-
-body {
-    color: var(--color-black);
-    transition: color 0.2s, background-color 0.2s;
 }
 
 strong,
@@ -155,7 +152,6 @@ a {
         cursor: default;
     }
 
-    // Styles par défaut
     &:not(.no-effect) {
         text-decoration: none;
         position: relative;
@@ -225,7 +221,6 @@ form {
 pre {
     background-color: var(--color-gray-05);
     padding: 1rem;
-    border-radius: var(--border-radius-small);
     overflow-x: auto;
     font-size: 10px;
     line-height: 1.5em;
@@ -237,12 +232,10 @@ pre {
     text-align: left;
     font-weight: normal;
     color: inherit;
+    @include borderRadius('small');
 }
 
 section {
-    // width: 100%;
-    // display: inline-grid;
-    // justify-items: start;
     width: 100%;
 }
 

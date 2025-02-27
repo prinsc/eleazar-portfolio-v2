@@ -16,6 +16,15 @@ const config = {
     // See https://svelte.dev/docs/kit/adapters for more information about adapters.
     adapter: adapter(),
   },
+  onwarn: (warning, handler) => {
+        const { code, frame } = warning;
+        // console.log(code); // <= uncomment to check other warnings
+        if (code === "css_unused_selector")
+            return;
+        if (code === "a11y_invalid_attribute")
+            return;
+        handler(warning);
+    }
 };
 
 export default config;
