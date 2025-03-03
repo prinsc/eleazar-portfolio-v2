@@ -24,6 +24,7 @@
 <style lang="scss">
 	:global(.tippy-box[data-theme='kltk']) {
 		background-color: var(--color-white);
+		color: var(--color-black) !important;
 		box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.1);
 	}
 	.techno {

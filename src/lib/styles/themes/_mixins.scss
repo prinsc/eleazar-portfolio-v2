@@ -40,7 +40,6 @@
     @if $radius ==large {
         @extend .border-radius-large; // 30
     }
-
 }
 
 @mixin breakpoint($point) {

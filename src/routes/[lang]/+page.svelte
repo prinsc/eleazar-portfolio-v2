@@ -210,7 +210,7 @@
 			{#each $content.school as school}
 				<Experience data={school} />
 			{/each}
-
+			<!-- 
 			<button
 				onclick={() => {
 					focused = !focused;
@@ -226,12 +226,31 @@
 				{#each $content.exp as exp}
 					<Experience data={exp} />
 				{/each}
-			</div>
+			</div> -->
 		</section>
 
 		<section class="projects">
 			<h2>{$content.site.projects[$settings.lang]} ({$content.projets.length})</h2>
 			<Projets data={$content.projets} />
+		</section>
+
+		<section class="works exp" class:focused>
+			<button
+				onclick={() => {
+					focused = !focused;
+				}}
+			>
+				<span class="icon">
+					<ChevronDown strokeWidth={3} />
+				</span>
+				<h2>{$content.site.experience[$settings.lang]} ({$content.exp.length})</h2>
+			</button>
+
+			<div class="sub-element-container">
+				{#each $content.exp as exp}
+					<Experience data={exp} />
+				{/each}
+			</div>
 		</section>
 
 		<section class="resume">
@@ -308,7 +327,7 @@
 	}
 	section,
 	header {
-		margin: 1rem 0;
+		margin: 2rem 0;
 	}
 	header {
 		display: flex;
@@ -365,6 +384,7 @@
 		display: flex;
 		justify-content: flex-end;
 		min-height: 44px;
+		margin: 0 !important;
 
 		button {
 			min-width: 44px;
@@ -386,6 +406,7 @@
 		align-items: center;
 		flex-direction: column;
 		gap: 2rem;
+		margin: 0 !important;
 		@include breakpoint('small') {
 			flex-direction: row;
 		}
@@ -437,7 +458,7 @@
 					font-size: 0.9em;
 					opacity: 0.75;
 					&:nth-last-child(1) {
-						margin-top: 0.5rem;
+						margin-top: 0.25rem;
 						display: block;
 					}
 				}
@@ -452,7 +473,10 @@
 	}
 
 	section.works {
-		margin-top: 3rem;
+		// margin-top: 3rem;
+		&.exp {
+			margin: -1rem 0 !important;
+		}
 		&.focused {
 			> button {
 				.icon {
