@@ -1,20 +1,26 @@
+// +layout.js OU +layout.server.js
+
 import { settings } from '$lib/stores/settings.js';
-import { browser } from '$app/environment';
+import { get } from 'svelte/store';
 import { redirect } from '@sveltejs/kit';
 
 export const load = async ({ url }) => {
-    if (browser) {
-        const lang = url.pathname.split('/')[1]; // Récupère la langue depuis l'URL
+    const { langList } = get(settings);
+    const lang = url.pathname.split('/')[1];
 
-        // Vérifie si la langue est dans la liste des langues disponibles
-        settings.update($settings => {
-            if ($settings.langList.includes(lang)) {
-                $settings.lang = lang;
-            } else {
-                // Redirige vers la langue par défaut si la langue n'est pas valide
-                throw redirect(307, '/fr');
-            }
-            return $settings;
-        });
+    // Redirige vers la langue par défaut si absent ou inconnu
+    if (!lang || !langList.includes(lang)) {
+        throw redirect(301, `/${langList[0]}`); // Par exemple, 'fr'
     }
+
+    // Met à jour la langue côté client (c'est inutile côté serveur, plus bas !)
+    settings.update($settings => {
+        $settings.lang = lang;
+        return $settings;
+    });
+
+    // Donne optionnellement la langue au layout Svelte
+    return {
+        lang
+    };
 };

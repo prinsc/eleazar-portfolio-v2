@@ -74,7 +74,7 @@
 <!-- 23 ans, la génération du Ctrl + Z -->
 
 <svelte:head>
-	<title>{$content.me.h1[$settings.lang]}</title>
+	<title>{$content.me.h1[$settings.lang] || $content.me.h1['en']}</title>
 	<meta charset="UTF-8" />
 	<meta name="author" content="Eléazar Klyuvitkin" />
 	<meta name="description" content={$content.site.description[$settings.lang]} />
@@ -84,14 +84,14 @@
 
 	<meta property="og:title" content={$content.me.h1[$settings.lang]} />
 	<meta property="og:description" content={$content.site.description[$settings.lang]} />
-	<meta property="og:image" content="https://votre-site.com/assets/images/thumbnail.jpg" />
-	<meta property="og:url" content="https://votre-site.com" />
+	<meta property="og:image" content="https://kltk.be/assets/img/banner_meta.png" />
+	<meta property="og:url" content="https://kltk.be" />
 	<meta property="og:type" content="website" />
 
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:title" content={$content.me.h1[$settings.lang]} />
 	<meta name="twitter:description" content={$content.site.description[$settings.lang]} />
-	<meta name="twitter:image" content="https://votre-site.com/assets/images/thumbnail.jpg" />
+	<meta name="twitter:image" content="https://kltk.be/assets/img/banner_meta.png" />
 
 	<meta
 		name="keywords"
@@ -256,7 +256,7 @@
 		<section class="resume">
 			<a
 				class="no-effect grain kl-container"
-				href="/assets/cv_2025_Klyuvitkin_Eleazar.pdf"
+				href="/assets/Klyuvitkin_Eleazar.pdf"
 				target="_blank"
 				rel="noopener noreferrer"
 			>

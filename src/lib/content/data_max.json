@@ -1,0 +1,322 @@
+{
+  "me": {
+    "h1": {
+      "fr": "Portfolio • Maximilien Pichon",
+      "en": "Maximilien Pichon's Portfolio",
+      "es": "Portafolio de Maximilien Pichon"
+    },
+    "h2": {
+      "fr": "Spécialiste Marketing & Communication",
+      "en": "Marketing & Communication Specialist",
+      "es": "Especialista en Marketing y Comunicación"
+    },
+    "description": {
+      "fr": "Passionné par le marketing et la communication, je conçois et mets en œuvre des stratégies innovantes pour renforcer l'image de marque et optimiser la relation client. Doté d'un esprit analytique et créatif, j'excelle dans l'utilisation des outils digitaux, la gestion de campagnes et l'analyse des performances. Dynamique et rigoureux, je m’adapte aux tendances du marché et excelle en travail d'équipe pour atteindre les objectifs stratégiques d'une entreprise.",
+      "en": "Marketing enthusiast, I design and implement innovative strategies to strengthen brand image and optimize customer relationships. Analytical and creative, I excel in digital tools, campaign management, and performance analysis. Dynamic and rigorous, I adapt to market trends and excel in team collaboration to achieve strategic business goals.",
+      "es": "Apasionado del marketing y la comunicación, diseño e implemento estrategias innovadoras para fortalecer la imagen de marca y optimizar la relación con el cliente. Con un enfoque analítico y creativo, me destaco en el uso de herramientas digitales, la gestión de campañas y el análisis de rendimiento. Dinámico y riguroso, me adapto a las tendencias del mercado y excelo en el trabajo en equipo para alcanzar los objetivos estratégicos de una empresa."
+    },
+    "location": {
+      "fr": "Belgique",
+      "en": "Belgium",
+      "es": "Bélgica"
+    },
+    "disponibility": {
+      "fr": "disponible",
+      "en": "open to opportunities",
+      "es": "abierto a oportunidades"
+    }
+  },
+  "site": {
+    "soon": {
+      "fr": "Bientôt disponible",
+      "en": "Coming soon",
+      "ru": "Скоро будет доступно"
+    },
+    "arialabel": {
+      "themeSwitch": {
+        "fr": "Changer de thème",
+        "en": "Switch theme",
+        "ru": "Сменить тему"
+      },
+      "langSwitch": {
+        "fr": "Changer de langue",
+        "en": "Switch language",
+        "ru": "Сменить язык"
+      },
+      "next": {
+        "fr": "Suivant",
+        "en": "Next",
+        "ru": "Далее"
+      },
+      "previous": {
+        "fr": "Précédent",
+        "en": "Previous",
+        "ru": "Назад"
+      }
+    },
+    "description": {
+      "fr": "Je suis spécialisé en développement web, design, UI et UX, avec une expertise en Svelte et Supabase pour créer des plateformes interactives et optimisées.",
+      "en": "I specialize in web development, design, UI and UX, with expertise in Svelte and Supabase for creating optimized interactive platforms.",
+      "ru": "Я специализируюсь на веб-разработке, дизайне, UI и UX, с опытом работы в Svelte и Supabase для создания оптимизированных интерактивных платформ."
+    },
+    "course": {
+      "fr": "Parcours",
+      "en": "Course",
+      "ru": "Курс"
+    },
+    "experience": {
+      "fr": "Mes expériences professionnelles",
+      "en": "My professional experiences",
+      "ru": "Мои профессиональные опыты"
+    },
+    "projects": {
+      "fr": "Projets",
+      "en": "Projects",
+      "ru": "Проекты"
+    },
+    "technologies": {
+      "fr": "Technologies",
+      "en": "Technologies",
+      "ru": "Технологии"
+    },
+    "socials": {
+      "fr": "Réseaux sociaux",
+      "en": "Socials",
+      "ru": "Социальные сети"
+    },
+    "imageFrom": {
+      "fr": "Image de",
+      "en": "Image from",
+      "ru": "Изображение от"
+    },
+    "profilePicture": {
+      "fr": "Photo de profil",
+      "en": "Profile picture",
+      "ru": "Фото профиля"
+    },
+    "resume": {
+      "resumeOnlyFr": {
+        "fr": "en français uniquement",
+        "en": "in French only",
+        "ru": "только на французско)"
+      },
+      "fr": "Curriculum vitae",
+      "en": "Resume",
+      "ru": "Pезюме"
+    }
+  },
+  "school": [
+    {
+      "title": {
+        "fr": "Bachelier en Marketing et Communication",
+        "en": "Bachelor in Marketing & Communication",
+        "es": "Licenciatura en Marketing y Comunicación"
+      },
+      "date": "2019-2022",
+      "quantity": {
+        "fr": "3 ans",
+        "en": "3 years",
+        "es": "3 años"
+      },
+      "location": {
+        "name": "Condorcet",
+        "where": {
+          "fr": "Mons, Belgique",
+          "en": "Mons, Belgium",
+          "es": "Mons, Bélgica"
+        }
+      }
+    }
+  ],
+  "exp": [
+    {
+      "title": {
+        "fr": "Marketing Support (remplacement Marketing Manager)",
+        "en": "Marketing Support (marketing manager replacement)",
+        "es": "Soporte de Marketing (sustitución de un responsable de marketing)"
+      },
+      "date": {
+        "fr": "Novembre 2023 – Août 2024",
+        "en": "November 2023 – August 2024",
+        "es": "Noviembre 2023 – Agosto 2024"
+      },
+      "quantity": {
+        "fr": "10 mois",
+        "en": "10 months",
+        "es": "10 meses"
+      },
+      "location": {
+        "name": "Lutosa (McCain Group)",
+        "where": {
+          "fr": "Leuze, Belgique",
+          "en": "Leuze, Belgium",
+          "es": "Leuze, Bélgica"
+        }
+      },
+      "description": {
+        "fr": "Gestion de campagnes, coordination d'équipe, analyse de marché, création de contenu, gestion budgétaire, analyse des données, engagement client, reporting, gestion de marque et encadrement des stagiaires. Optimisation web (SEO/UX), veille sectorielle et logistique.",
+        "en": "Campaign management, team coordination, market analysis, content creation, budgeting, data analysis, customer engagement, reporting, brand management, and trainee supervision. Web optimization (SEO/UX), industry monitoring, and logistics.",
+        "es": "Gestión de campañas, coordinación de equipos, análisis de mercado, creación de contenido, presupuesto, análisis de datos, engagement del cliente, informes, gestión de marca y supervisión de becarios. Optimización web (SEO/UX), seguimiento sectorial y logística."
+      },
+      "technos": [
+        "SEO",
+        "Google Analytics",
+        "HubSpot",
+        "Mailchimp",
+        "CRM",
+        "Google Ads"
+      ]
+    }
+  ],
+  "projets": [
+    {
+      "name": "Blinkr",
+      "description": {
+        "fr": "Plateforme dédié à la découverte et au partage d'événements locaux.",
+        "en": "Platform dedicated to discovering and sharing local events.",
+        "ru": "Платформа, посвященная открытию и обмену местными событиями."
+      },
+      "date": "2024-2025",
+      "image": "/assets/projects/blinkr_spoil.webp",
+      "link": "https://blinkr.be",
+      "technos": [
+        "svelte-4",
+        "sass",
+        "js",
+        "typescript",
+        "figma",
+        "postgresql",
+        "supabase"
+      ]
+    },
+    {
+      "name": "Conquistador",
+      "date": "2023",
+      "description": {
+        "fr": "Réplique des Colons de Catane version web",
+        "en": "Web version replica of The Settlers of Catan",
+        "ru": "Веб-версия реплики «Колонизаторов Катана»"
+      },
+      "image": "/assets/projects/catane_spoil.webp",
+      "technos": [
+        "svelte-4",
+        "sass",
+        "js",
+        "socket-io"
+      ]
+    },
+    {
+      "name": "Moongo",
+      "date": "2022-2023",
+      "description": {
+        "fr": "Skyjo remasterisé, version web, disponible sur github",
+        "en": "Remastered Skyjo, web version, available on GitHub",
+        "ru": "Переработанный Skyjo, веб-версия, доступен на GitHub"
+      },
+      "image": "/assets/projects/moongo_spoil.webp",
+      "link": "https://github.com/prinsc/skyjo",
+      "technos": [
+        "jquery",
+        "sass",
+        "js",
+        "socket-io"
+      ]
+    },
+    {
+      "name": "Portfolio",
+      "date": "2023",
+      "description": {
+        "fr": "Premier portfolio, dans un style créatif",
+        "en": "First portfolio, in a creative style",
+        "ru": "Первое портфолио, в креативном стиле"
+      },
+      "image": "/assets/projects/portfolio_spoil.webp",
+      "link": "https://eleazar-portfolio-v1.netlify.app/",
+      "technos": [
+        "sass",
+        "js"
+      ]
+    },
+    {
+      "name": "🖐️",
+      "date": "2025",
+      "description": {
+        "fr": "Portfolio actuel, développé en Svelte 5",
+        "en": "Current portfolio, developed in Svelte 5",
+        "ru": "Текущее портфолио, разработанное в Svelte 5"
+      },
+      "image": "/assets/projects/portfolio2_spoil.webp",
+      "link": "https://github.com/prinsc/eleazar-portfolio-v2",
+      "technos": [
+        "sass",
+        "svelte-5"
+      ]
+    },
+    {
+      "name": "Mustang Template",
+      "date": "2021",
+      "description": {
+        "fr": "Examen de développement web à la HEH",
+        "en": "Web development exam at HEH",
+        "ru": "Экзамен по веб-разработке в HEH"
+      },
+      "image": "/assets/projects/mustang_spoil.webp",
+      "link": "https://mustang-template.netlify.app/",
+      "technos": [
+        "html",
+        "css",
+        "sass"
+      ]
+    },
+    {
+      "name": "Vitl Electro",
+      "date": "2020-2025",
+      "description": {
+        "fr": "Site destiné à promouvoir les services d'un électricien passionné",
+        "en": "Website aimed at promoting the services of a passionate electrician",
+        "ru": "Сайт, предназначенный для продвижения услуг страстного электрика"
+      },
+      "image": "/assets/projects/vitl_spoil.webp",
+      "technos": [
+        "php",
+        "sass",
+        "js",
+        "css",
+        "html",
+        "adobe-xd"
+      ]
+    }
+  ],
+  "technos": [
+    "SEO",
+    "Google Analytics",
+    "Google Ads",
+    "HubSpot",
+    "Mailchimp",
+    "CRM",
+    "Meta Business Suite",
+    "Hootsuite",
+    "WordPress",
+    "SEO/UX Optimization",
+    "Analytics",
+    "Project Management"
+  ],
+  "socials": [
+    {
+      "name": "Email",
+      "link": "mailto:maximilienpichonpro@gmail.com",
+      "icon": "at"
+    },
+    {
+      "name": "Téléphone",
+      "link": "tel:+32490402186",
+      "icon": "phone"
+    }
+  ],
+  "languages": {
+    "fr": "Français (Natif)",
+    "en": "Anglais (C1)",
+    "es": "Espagnol (B1)",
+    "nl": "Néerlandais (B1)"
+  }
+}
