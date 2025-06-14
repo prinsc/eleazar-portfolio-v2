@@ -93,6 +93,9 @@
 	<meta name="twitter:description" content={$content.site.description[$settings.lang]} />
 	<meta name="twitter:image" content="https://kltk.be/assets/img/banner_meta.png" />
 
+	<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
 	<meta
 		name="keywords"
 		content="développeur front-end, designer ui/ux, svelte, supabase, portfolio, développement web, création de sites interactifs"
@@ -100,6 +103,18 @@
 
 	<link rel="icon" href="/favicon.ico" type="image/x-icon" />
 	<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+	<link
+		rel="preload"
+		as="style"
+		href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
+	/>
+	<noscript>
+		<link
+			rel="stylesheet"
+			href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
+		/>
+	</noscript>
 </svelte:head>
 
 {#if !isReady}
