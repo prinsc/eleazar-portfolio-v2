@@ -27,6 +27,7 @@
 					<a
 						href={projet.link || '#!'}
 						class="grain no-effect"
+						dofollow
 						target={projet.link ? '_blank' : undefined}
 						data-umami-event="click-{projet.name.toLowerCase().replace(/ /g, '-')}"
 					>

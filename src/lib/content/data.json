@@ -314,7 +314,7 @@
       },
       "date": "2024-2025",
       "image": "/assets/projects/blinkr_spoil.webp",
-      "link": "https://blinkr.be",
+      "link": "https://blinkr.events",
       "technos": [
         "svelte-4",
         "sass",
