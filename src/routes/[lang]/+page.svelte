@@ -10,7 +10,7 @@
 	import { content } from '$lib/stores/content.js';
 	import { onMount } from 'svelte';
 
-	let focused = $state(false);
+	let focused = $state(true);
 	let isDarkTheme = $state($settings.theme === 'dark');
 	let isLangSwitched = $state(false);
 	let isReady = $state(false);
@@ -22,6 +22,19 @@
 		$settings.lang = $settings.langList[nextIndex];
 		goto(`/${$settings.lang}/`);
 	}
+
+	const getAge = function () {
+		const birthDate = new Date($content.me.birthday); // Replace with your actual birth date
+		const today = new Date();
+		let age = today.getFullYear() - birthDate.getFullYear();
+		const monthDiff = today.getMonth() - birthDate.getMonth();
+
+		if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+			age--;
+		}
+
+		return age;
+	};
 
 	function detectSystemTheme() {
 		return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
@@ -196,7 +209,7 @@
 				/>
 			</div>
 			<div class="right-side">
-				<h2>{$content.me.h2[$settings.lang]}</h2>
+				<h2>{getAge()} {$content.me.h2[$settings.lang]}</h2>
 				{#key $settings.lang}
 					<p>
 						{@html $content.me.description[$settings.lang]}

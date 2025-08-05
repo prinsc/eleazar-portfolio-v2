@@ -6,9 +6,9 @@
       "ru": "Портфолио Елизар Клювиткин"
     },
     "h2": {
-      "fr": "23 ans, toutes ses dents",
-      "en": "23 years old, all his teeth",
-      "ru": "23 года, Дорогу Молодым"
+      "fr": " ans, toutes ses dents",
+      "en": " years old, all his teeth",
+      "ru": " года, Дорогу Молодым"
     },
     "description": {
       "fr": "Développeur web spécialisé en design, UI et UX, avec une expertise pointue en Svelte et Supabase. Découvrez mes plateformes interactives et optimisées, dont Blinkr, mon projet phare illustrant parfaitement mes compétences en optimisation, ergonomie et gestion de données.",
@@ -24,7 +24,8 @@
       "fr": "disponible",
       "en": "open to opportunities",
       "ru": "открыт для возможностей"
-    }
+    },
+    "birthday": "2001-06-18"
   },
   "site": {
     "soon": {
