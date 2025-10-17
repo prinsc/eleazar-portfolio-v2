@@ -23,6 +23,7 @@
 		"vite": "^6.0.0"
 	},
 	"dependencies": {
+		"@prinsc/svelte-neuro-shader": "^2.0.1",
 		"chocolat": "^1.1.3",
 		"gsap": "^3.12.7",
 		"lucide-svelte": "^0.475.0",
