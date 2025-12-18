@@ -1,29 +1,51 @@
 <script>
-	import {
-		ArrowUpRight,
-		ChevronDown,
-		ChevronLeft,
-		ChevronRight,
-		MapPin,
-		Fullscreen,
-		Sun
-	} from 'lucide-svelte';
-	import Experience from '$lib/comp/exp.svelte';
-	import formatText from '$lib/utils/formatText';
-	import { TinySlider } from 'svelte-tiny-slider';
+	import { ArrowUpRight, ChevronLeft, ChevronRight, Fullscreen } from 'lucide-svelte';
+	import emblaCarouselSvelte from 'embla-carousel-svelte';
 	import { fly } from 'svelte/transition';
 	import { settings } from '$lib/stores/settings.js';
 	import tippy from 'svelte-tippy';
 	import TechnoElement from './techno/techno_element.svelte';
 	import { content } from '$lib/stores/content.js';
+
 	export let data = null;
+
+	let emblaApi;
+	let canScrollPrev = $state(false);
+	let canScrollNext = $state(true);
+
+	function onInit(event) {
+		emblaApi = event.detail;
+		updateButtons();
+		emblaApi.on('select', updateButtons);
+		emblaApi.on('reInit', updateButtons);
+	}
+
+	function updateButtons() {
+		if (!emblaApi) return;
+		canScrollPrev = emblaApi.canScrollPrev();
+		canScrollNext = emblaApi.canScrollNext();
+	}
+
+	function scrollPrev() {
+		if (emblaApi) emblaApi.scrollPrev();
+	}
+
+	function scrollNext() {
+		if (emblaApi) emblaApi.scrollNext();
+	}
+
+	const emblaOptions = {
+		align: 'start',
+		containScroll: 'trimSnaps',
+		dragFree: true
+	};
 </script>
 
 <div class="slider">
-	<TinySlider transitionDuration="500">
-		{#snippet children({ sliderWidth })}
+	<div class="embla" use:emblaCarouselSvelte={{ options: emblaOptions }} onemblaInit={onInit}>
+		<div class="embla__container">
 			{#each data as projet}
-				<div class="item" style="--width: 100px;">
+				<div class="item">
 					<a
 						href={projet.link || '#!'}
 						class="grain no-effect"
@@ -72,36 +94,34 @@
 					</a>
 				</div>
 			{/each}
-		{/snippet}
+		</div>
+	</div>
 
-		{#snippet controls({ setIndex, currentIndex })}
-			{#if currentIndex > 0}
-				<button
-					class="back grain"
-					aria-label={$content.site.arialabel.previous[$settings.lang]}
-					onclick={() => setIndex(currentIndex - 1)}
-					transition:fly={{ x: 25 }}
-				>
-					<span class="icon">
-						<ChevronLeft />
-					</span>
-				</button>
-			{/if}
+	{#if canScrollPrev}
+		<button
+			class="back grain"
+			aria-label={$content.site.arialabel.previous[$settings.lang]}
+			onclick={scrollPrev}
+			transition:fly={{ x: 25 }}
+		>
+			<span class="icon">
+				<ChevronLeft />
+			</span>
+		</button>
+	{/if}
 
-			{#if currentIndex < data.length - 2.5}
-				<button
-					class="next grain"
-					aria-label={$content.site.arialabel.next[$settings.lang]}
-					onclick={() => setIndex(currentIndex + 1)}
-					transition:fly={{ x: -25 }}
-				>
-					<span class="icon">
-						<ChevronRight />
-					</span>
-				</button>
-			{/if}
-		{/snippet}
-	</TinySlider>
+	{#if canScrollNext}
+		<button
+			class="next grain"
+			aria-label={$content.site.arialabel.next[$settings.lang]}
+			onclick={scrollNext}
+			transition:fly={{ x: -25 }}
+		>
+			<span class="icon">
+				<ChevronRight />
+			</span>
+		</button>
+	{/if}
 </div>
 
 <style lang="scss">
@@ -148,19 +168,28 @@
 				}
 			}
 		}
+		.embla {
+			overflow: hidden;
+		}
+		.embla__container {
+			display: flex;
+		}
 		.item {
 			padding: 1rem;
-			width: calc(var(--width) * 3);
+			flex: 0 0 calc(100% / 3);
+			min-width: 0;
 			@include borderRadius('xsmall');
 			@include breakpoint('medium') {
-				width: calc(var(--width) * 2.5);
+				flex: 0 0 40%;
+			}
+			@include breakpoint('small') {
+				flex: 0 0 80%;
 			}
 			&:nth-child(1) {
 				padding-left: 0;
 			}
-			&:nth-child(3) {
+			&:last-child {
 				padding-right: 0;
-				margin-right: 1rem;
 			}
 			a {
 				box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.05);
