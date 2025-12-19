@@ -4,7 +4,7 @@
 	import { Home, ArrowLeft, AlertCircle } from 'lucide-svelte';
 	import { settings } from '$lib/stores/settings.js';
 	import { onMount } from 'svelte';
-	import Footer from '$lib/comp/Footer.svelte';
+	import Footer from '$lib/comp/footer.svelte';
 
 	let isReady = $state(false);
 
