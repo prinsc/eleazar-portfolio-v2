@@ -57,6 +57,7 @@
 	<MetaTags
 		title="{service.name[$settings.lang]} à Ath - Hainaut"
 		description={service.description[$settings.lang]}
+		imageUrl={service.image}
 	/>
 {/if}
 {#if isReady && service}
@@ -253,6 +254,7 @@
 					border-radius: 12px;
 					width: 48px;
 					height: 48px;
+					aspect-ratio: 1/1;
 					align-items: center;
 					justify-content: center;
 

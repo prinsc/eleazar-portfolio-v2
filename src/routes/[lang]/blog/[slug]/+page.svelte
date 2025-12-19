@@ -120,7 +120,7 @@
 		title={article.title[$settings.lang]}
 		description={article.metaDescription[$settings.lang]}
 		keywords={article.tags?.join(', ')}
-		image={article.image}
+		imageUrl={article.image}
 	/>
 {/if}
 
