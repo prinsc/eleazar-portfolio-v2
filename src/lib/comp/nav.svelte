@@ -83,6 +83,8 @@
 			<a class="no-effect" href={`/${$settings.lang}/services`}
 				>{$content.site.myServices[$settings.lang]}</a
 			>
+			<span> • </span>
+			<a class="no-effect" href={`/${$settings.lang}/blog`}>blog</a>
 		</div>
 
 		<div class="nav-actions">

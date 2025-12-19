@@ -4,7 +4,8 @@
 	import TechnoElement from './techno/techno_element.svelte';
 	import { settings } from '$lib/stores/settings.js';
 	import { content } from '$lib/stores/content.js';
-
+	import Portal from 'svelte-portal';
+	import { fly } from 'svelte/transition';
 	let {
 		title,
 		description,
@@ -23,14 +24,44 @@
 
 	const isButton = elementType === 'button';
 	const isLink = elementType === 'a';
+	const isDiv = elementType === 'div';
+
+	let showLightbox = $state(false);
+
+	function openLightbox() {
+		showLightbox = true;
+	}
+
+	function closeLightbox() {
+		showLightbox = false;
+	}
 </script>
 
+{#if showLightbox && image}
+	<Portal target="body">
+		<button
+			transition:fly={{ y: 20, duration: 200 }}
+			class="lightbox"
+			aria-label="Fermer l'image en plein écran"
+			onclick={closeLightbox}
+			onkeydown={(e) => e.key === 'Escape' && closeLightbox()}
+		>
+			<img src={image} alt={title} />
+		</button>
+	</Portal>
+{/if}
 {#if isLink}
 	<a
 		href={link || '#!'}
 		class="card grain no-effect"
 		target={link ? '_blank' : undefined}
 		data-umami-event={dataUmamiEvent}
+		onclick={!link
+			? (e) => {
+					e.preventDefault();
+					openLightbox();
+				}
+			: undefined}
 	>
 		<div class="image">
 			{#if image}
@@ -40,22 +71,24 @@
 			{/if}
 		</div>
 		<div class="container">
-			<span
-				class="icon"
-				use:tippy={{
-					content: tooltipContent || (link ? link : $content.site.soon[$settings.lang]),
-					placement: 'left',
-					theme: 'kltk',
-					arrow: false,
-					animation: 'perspective-subtle'
-				}}
-			>
-				{#if !link}
-					<Fullscreen />
-				{:else}
+			{#if link}
+				<span
+					class="icon"
+					use:tippy={{
+						content: tooltipContent || link,
+						placement: 'left',
+						theme: 'kltk',
+						arrow: false,
+						animation: 'perspective-subtle'
+					}}
+				>
 					<ArrowUpRight />
-				{/if}
-			</span>
+				</span>
+			{:else}
+				<span class="icon">
+					<Fullscreen />
+				</span>
+			{/if}
 			<h3>{title}</h3>
 			{#key $settings.lang}
 				<p class:tagline={!!tagline}>{tagline || description}</p>
@@ -95,7 +128,6 @@
 			{#key $settings.lang}
 				<p class:tagline={!!tagline}>{tagline || description}</p>
 			{/key}
-
 			{#if pricing}
 				<div class="pricing">
 					<span class="price">{pricing}</span>
@@ -113,6 +145,57 @@
 			{/if}
 		</div>
 	</button>
+{:else if isDiv}
+	<div
+		class="card grain no-effect"
+		role="button"
+		tabindex="0"
+		onclick={openLightbox}
+		onkeydown={(e) => e.key === 'Enter' && openLightbox()}
+		data-umami-event={dataUmamiEvent}
+	>
+		<div class="image">
+			{#if image}
+				<img src={image} alt={title} width="100%" height="100%" />
+			{:else}
+				<div class="placeholder"></div>
+			{/if}
+		</div>
+		<div class="container">
+			<span
+				class="icon"
+				use:tippy={{
+					content: tooltipContent || 'Voir en grand',
+					placement: 'left',
+					theme: 'kltk',
+					arrow: false,
+					animation: 'perspective-subtle'
+				}}
+			>
+				<Fullscreen />
+			</span>
+			<h3>{title}</h3>
+			{#key $settings.lang}
+				<p class:tagline={!!tagline}>{tagline || description}</p>
+			{/key}
+
+			{#if pricing}
+				<div class="pricing">
+					<span class="price">{pricing}</span>
+				</div>
+			{/if}
+
+			<div class="technos" class:show-on-hover={showTechnosOnHover}>
+				{#each technos as techno}
+					<TechnoElement {techno} />
+				{/each}
+			</div>
+
+			{#if date}
+				<time>{date}</time>
+			{/if}
+		</div>
+	</div>
 {/if}
 
 <style lang="scss">
@@ -237,6 +320,27 @@
 						opacity 0.5s;
 				}
 			}
+		}
+	}
+
+	.lightbox {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100dvw;
+		height: 100dvh;
+		z-index: 9999;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		cursor: pointer;
+		background: rgba(255, 255, 255, 0.8);
+
+		img {
+			max-width: 100dvw;
+			max-height: 90dvh;
+			object-fit: contain;
+			border-radius: 8px;
 		}
 	}
 </style>

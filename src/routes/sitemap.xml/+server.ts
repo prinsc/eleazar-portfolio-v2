@@ -1,4 +1,5 @@
 import servicesData from '$lib/content/data_services.json';
+import blogData from '$lib/content/data_blog.json';
 import type { RequestHandler } from '@sveltejs/kit';
 
 const site = 'https://kltk.be';
@@ -22,6 +23,18 @@ export const GET: RequestHandler = async () => {
         ...languages.flatMap(lang =>
             servicesData.services.map(service => ({
                 path: `/${lang}/services/${service.id}`,
+                priority: '0.8',
+                changefreq: 'monthly'
+            }))
+        ),
+        ...languages.map(lang => ({
+            path: `/${lang}/blog`,
+            priority: '0.9',
+            changefreq: 'weekly'
+        })),
+        ...languages.flatMap(lang =>
+            blogData.articles.map(article => ({
+                path: `/${lang}/blog/${article.slug}`,
                 priority: '0.8',
                 changefreq: 'monthly'
             }))
