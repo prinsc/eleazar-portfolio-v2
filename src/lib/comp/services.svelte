@@ -3,6 +3,7 @@
 	import emblaCarouselSvelte from 'embla-carousel-svelte';
 	import { fly } from 'svelte/transition';
 	import { settings } from '$lib/stores/settings.js';
+	import { goto } from '$app/navigation';
 	import Card from './Card.svelte';
 	import { content } from '$lib/stores/content.js';
 
@@ -33,6 +34,10 @@
 		if (emblaApi) emblaApi.scrollNext();
 	}
 
+	function navigateToService(serviceId) {
+		goto(`/${$settings.lang}/services/${serviceId}`);
+	}
+
 	const emblaOptions = {
 		align: 'start',
 		containScroll: 'trimSnaps',
@@ -43,18 +48,18 @@
 <div class="slider">
 	<div class="embla" use:emblaCarouselSvelte={{ options: emblaOptions }} onemblaInit={onInit}>
 		<div class="embla__container">
-			{#each data as projet}
+			{#each data as service}
 				<div class="item">
 					<Card
-						title={projet.name}
-						description={projet.description[$settings.lang]}
-						image={projet.image}
-						technos={projet.technos}
-						link={projet.link}
-						date={projet.date}
-						dataUmamiEvent="click-{projet.name.toLowerCase().replace(/ /g, '-')}"
-						tooltipContent={projet.link || $content.site.soon[$settings.lang]}
-						elementType="a"
+						title={service.name[$settings.lang]}
+						tagline={service.tagline[$settings.lang]}
+						description={service.tagline[$settings.lang]}
+						image={service.image}
+						technos={service.technos}
+						pricing={service.pricing[$settings.lang]}
+						onclick={() => navigateToService(service.id)}
+						dataUmamiEvent="click-service-{service.id}"
+						elementType="button"
 					/>
 				</div>
 			{/each}

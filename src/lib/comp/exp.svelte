@@ -10,7 +10,11 @@
 	<div class="header">
 		<div class="left-side">
 			<h3>{data.title[$settings.lang]}</h3>
-			<h4>{data.date[$settings.lang]} <span>{data.quantity[$settings.lang]}</span></h4>
+			{#if data.quantity}
+				<h4>{data.date[$settings.lang]} <span>{data.quantity[$settings.lang]}</span></h4>
+			{:else}
+				<h4>{data.date[$settings.lang]}</h4>
+			{/if}
 		</div>
 		<div class="right-side">
 			<a

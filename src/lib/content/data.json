@@ -56,9 +56,9 @@
       }
     },
     "description": {
-      "fr": "Je suis spécialisé en développement web, design, UI et UX, avec une expertise en Svelte et Supabase pour créer des plateformes interactives et optimisées.",
-      "en": "I specialize in web development, design, UI and UX, with expertise in Svelte and Supabase for creating optimized interactive platforms.",
-      "ru": "Я специализируюсь на веб-разработке, дизайне, UI и UX, с опытом работы в Svelte и Supabase для создания оптимизированных интерактивных платформ."
+      "fr": "Développeur web freelance et prestataire de services techniques basé à Ath (Hainaut). Spécialisé en développement web, design UI/UX, e-commerce Shopify, dépannage informatique, électricité et électroménager. Services disponibles à Ath, Tournai, Leuze-en-Hainaut, Lessines et tout le Hainaut occidental.",
+      "en": "Freelance web developer and technical service provider based in Ath (Hainaut). Specialized in web development, UI/UX design, Shopify e-commerce, IT support, electrical and appliance services. Available in Ath, Tournai, Leuze-en-Hainaut, Lessines and western Hainaut.",
+      "ru": "Веб-разработчик-фрилансер и поставщик технических услуг в Ате (Эно). Специализируюсь на веб-разработке, UI/UX дизайне, электронной коммерции Shopify, IT-поддержке, электрических и бытовых услугах. Доступен в Ате, Турне, Лёз-ан-Эно, Лессине и западной части Эно."
     },
     "course": {
       "fr": "Parcours",
@@ -84,6 +84,76 @@
       "fr": "Réseaux sociaux",
       "en": "Socials",
       "ru": "Социальные сети"
+    },
+    "myServices": {
+      "fr": "mes services",
+      "en": "my services",
+      "ru": "мои услуги"
+    },
+    "realizedProjects": {
+      "fr": "projets réalisés",
+      "en": "completed projects",
+      "ru": "завершенные проекты"
+    },
+    "realizedProject": {
+      "fr": "projet réalisé",
+      "en": "completed project",
+      "ru": "завершенный проект"
+    },
+    "back": {
+      "fr": "Retour",
+      "en": "Back",
+      "ru": "Назад"
+    },
+    "description": {
+      "fr": "Description",
+      "en": "Description",
+      "ru": "Описание"
+    },
+    "interventionZone": {
+      "fr": "Zone d'intervention",
+      "en": "Service area",
+      "ru": "Зона обслуживания"
+    },
+    "pricing": {
+      "fr": "Tarif",
+      "en": "Price",
+      "ru": "Цена"
+    },
+    "duration": {
+      "fr": "Durée",
+      "en": "Duration",
+      "ru": "Продолжительность"
+    },
+    "whatsIncluded": {
+      "fr": "Ce qui est inclus",
+      "en": "What's included",
+      "ru": "Что включено"
+    },
+    "technologiesUsed": {
+      "fr": "Technologies utilisées",
+      "en": "Technologies used",
+      "ru": "Используемые технологии"
+    },
+    "interestedInService": {
+      "fr": "Intéressé par ce service ?",
+      "en": "Interested in this service?",
+      "ru": "Интересует эта услуга?"
+    },
+    "letsDiscuss": {
+      "fr": "Discutons de votre projet",
+      "en": "Let's discuss your project",
+      "ru": "Давайте обсудим ваш проект"
+    },
+    "contactMe": {
+      "fr": "Me contacter",
+      "en": "Contact me",
+      "ru": "Связаться со мной"
+    },
+    "inquirySubject": {
+      "fr": "Demande de renseignements",
+      "en": "Inquiry",
+      "ru": "Запрос"
     },
     "imageFrom": {
       "fr": "Image de",
@@ -194,6 +264,41 @@
     }
   ],
   "exp": [
+    {
+      "title": {
+        "fr": "Developpeur & Designer UI/UX • Mission",
+        "en": "Developer & UI/UX Designer • Mission",
+        "ru": "Разработчик и дизайнер UI/UX • Миссия"
+      },
+      "date": {
+        "fr": "dec. 2025 - maintenant",
+        "en": "Dec. 2025 - Present",
+        "ru": "дек. 2025 - настоящее время"
+      },
+      "location": {
+        "name": "Fidelis Agency",
+        "url": "https://www.fidelisagency.be/",
+        "logo": "/assets/img/fidelis.webp",
+        "where": {
+          "fr": "Remote",
+          "en": "Remote",
+          "ru": "Удаленно"
+        }
+      },
+      "description": {
+        "fr": "<p>En tant que Developpeur & Designer UI/UX chez Fidelis Agency, je suis responsable de la conception et du développement de solutions web moderne pour les clients de Fidelis Agency.</p>",
+        "en": "<p>As a Developer & UI/UX Designer at Fidelis Agency, I am responsible for designing and developing modern web solutions for Fidelis Agency's clients.</p>",
+        "ru": "<p>В качестве разработчика и дизайнера UI/UX в Fidelis Agency я отвечаю за проектирование и разработку современных веб-решений для клиентов Fidelis Agency.</p>"
+      },
+      "technos": [
+        "svelte-5",
+        "sass",
+        "js",
+        "github",
+        "figma",
+        "shopify"
+      ]
+    },
     {
       "title": {
         "fr": "Développeur Front-end • Job étudiant",
@@ -324,6 +429,41 @@
         "figma",
         "postgresql",
         "supabase"
+      ]
+    },
+    {
+      "name": "Renaissance Coach",
+      "description": {
+        "fr": "Site vitrine pour un coach de vie spécialisé en développement personnel.",
+        "en": "Showcase site for a life coach specializing in personal development.",
+        "ru": "Витринный сайт для лайф-коуча, специализирующегося на личностном развитии."
+      },
+      "date": "2025",
+      "image": "/assets/projects/renaissance_spoil.webp",
+      "link": "https://renaissance-coach.be/",
+      "technos": [
+        "svelte-5",
+        "sass",
+        "js",
+        "figma"
+      ]
+    },
+    {
+      "name": "Noumis Jewelry",
+      "description": {
+        "fr": "Site e-commerce pour une marque de bijoux artisanaux.",
+        "en": "E-commerce site for a handmade jewelry brand.",
+        "ru": "Интернет-магазин для бренда ручных украшений."
+      },
+      "date": "2025",
+      "image": "/assets/projects/noumis_spoil.webp",
+      "link": "https://noumis-jewelry.com",
+      "technos": [
+        "svelte-5",
+        "sass",
+        "js",
+        "figma",
+        "shopify"
       ]
     },
     {

@@ -1,6 +1,7 @@
 <script>
 	import '../lib/styles/main.scss';
 	import NeuroShader from '@prinsc/svelte-neuro-shader';
+	import Nav from '$lib/comp/nav.svelte';
 	import { browser } from '$app/environment';
 	import { settings } from '$lib/stores/settings.js';
 
@@ -30,6 +31,8 @@
 		/>
 	</div>
 {/if}
+
+<Nav />
 
 {@render children()}
 

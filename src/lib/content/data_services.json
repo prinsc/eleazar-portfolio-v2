@@ -1,0 +1,633 @@
+{
+  "services": [
+    {
+      "id": "sites-web-sur-mesure",
+      "icon": "code-2",
+      "name": {
+        "fr": "Création de sites web sur mesure",
+        "en": "Custom Website Creation",
+        "ru": "Создание индивидуальных веб-сайтов"
+      },
+      "tagline": {
+        "fr": "Création complète de votre présence en ligne",
+        "en": "Complete creation of your online presence",
+        "ru": "Полное создание вашего онлайн-присутствия"
+      },
+      "description": {
+        "fr": "Développeur web freelance basé à Mainvault (Ath) spécialisé dans la création de sites internet modernes et performants pour les entreprises du Hainaut. Je gère l'intégralité du processus : de la conception initiale au design graphique, jusqu'au développement et à la mise en production. Sites vitrines pour artisans et PME, landing pages optimisées SEO pour commerces locaux, ou plateformes web complexes pour associations - je transforme vos idées en solutions digitales efficaces adaptées au marché belge.",
+        "en": "Freelance web developer based in Mainvault (Ath) specialized in creating modern and performant websites for Hainaut businesses. I handle the entire process: from initial design to graphic design, through development and production deployment. Showcase sites for craftsmen and SMEs, SEO-optimized landing pages for local shops, or complex web platforms for associations - I transform your ideas into effective digital solutions adapted to the Belgian market.",
+        "ru": "Веб-разработчик-фрилансер из Майнво (Ат), специализирующийся на создании современных и производительных сайтов для бизнеса Эно. Я управляю всем процессом: от первоначальной концепции до графического дизайна, разработки и развертывания. Сайты-визитки для ремесленников и МСП, целевые страницы с SEO-оптимизацией для местных магазинов или сложные веб-платформы для ассоциаций - я превращаю ваши идеи в эффективные цифровые решения, адаптированные к бельгийскому рынку."
+      },
+      "longDescription": {
+        "fr": "Vous êtes artisan, commerçant ou entrepreneur dans la région d'Ath, Tournai, Leuze-en-Hainaut ou ailleurs dans le Hainaut occidental ? Vous avez besoin d'un site web professionnel pour développer votre activité en ligne ?\n\nJe suis développeur web freelance installé à Mainvault, et je vous propose mes services de création de sites internet sur mesure. Que vous souhaitiez un site vitrine élégant pour présenter vos services, une landing page percutante pour promouvoir une offre spéciale, ou une plateforme web plus complexe avec gestion de contenu, je m'occupe de tout de A à Z.\n\nMon approche est simple : je prends le temps de comprendre votre activité, vos objectifs et votre clientèle locale. Ensuite, je conçois un site qui vous ressemble, rapide, moderne et optimisé pour le référencement local (Google My Business, recherches géolocalisées). Tous mes sites sont responsive, c'est-à-dire parfaitement adaptés aux smartphones, tablettes et ordinateurs.\n\nJe travaille avec des technologies modernes comme SvelteKit, JavaScript ES6+ et TypeScript, qui garantissent des sites ultra-rapides et sécurisés. Pour l'hébergement, je privilégie des solutions professionnelles (Vercel, Netlify, OVH) avec un excellent rapport qualité-prix.\n\nPossibilité de rendez-vous à domicile ou dans vos locaux dans toute la région d'Ath et du Hainaut occidental.",
+        "en": "Are you a craftsman, merchant or entrepreneur in the Ath, Tournai, Leuze-en-Hainaut region or elsewhere in western Hainaut? Do you need a professional website to develop your online business?\n\nI am a freelance web developer based in Mainvault, and I offer my custom website creation services. Whether you want an elegant showcase site to present your services, a punchy landing page to promote a special offer, or a more complex web platform with content management, I take care of everything from A to Z.\n\nMy approach is simple: I take the time to understand your business, your goals and your local clientele. Then, I design a site that looks like you, fast, modern and optimized for local SEO (Google My Business, geolocated searches). All my sites are responsive, meaning perfectly adapted to smartphones, tablets and computers.\n\nI work with modern technologies like SvelteKit, JavaScript ES6+ and TypeScript, which guarantee ultra-fast and secure sites. For hosting, I favor professional solutions (Vercel, Netlify, OVH) with an excellent quality-price ratio.\n\nPossibility of appointments at home or in your premises throughout the Ath region and western Hainaut.",
+        "ru": "Вы ремесленник, торговец или предприниматель в регионе Ат, Турне, Лёз-ан-Эно или где-либо еще в западной части Эно? Вам нужен профессиональный веб-сайт для развития вашего онлайн-бизнеса?\n\nЯ веб-разработчик-фрилансер из Майнво, и я предлагаю свои услуги по созданию индивидуальных веб-сайтов. Хотите ли вы элегантный сайт-витрину для представления ваших услуг, яркую целевую страницу для продвижения специального предложения или более сложную веб-платформу с управлением контентом, я позабочусь обо всем от А до Я.\n\nМой подход прост: я уделяю время пониманию вашего бизнеса, ваших целей и вашей местной клиентуры. Затем я разрабатываю сайт, который вам подходит, быстрый, современный и оптимизированный для локального SEO (Google My Business, геолокационный поиск). Все мои сайты адаптивные, то есть идеально подходят для смартфонов, планшетов и компьютеров.\n\nЯ работаю с современными технологиями, такими как SvelteKit, JavaScript ES6+ и TypeScript, которые гарантируют сверхбыстрые и безопасные сайты. Для хостинга я предпочитаю профессиональные решения (Vercel, Netlify, OVH) с отличным соотношением цены и качества.\n\nВозможность встреч на дому или в ваших помещениях по всему региону Ат и западной части Эно."
+      },
+      "zone": {
+        "fr": "Hainaut occidental",
+        "en": "Western Hainaut",
+        "ru": "Западное Эно"
+      },
+      "features": [
+        {
+          "fr": "Workflow complet : conception → design → développement → déploiement",
+          "en": "Complete workflow: design → graphic design → development → deployment",
+          "ru": "Полный рабочий процесс: концепция → дизайн → разработка → развертывание"
+        },
+        {
+          "fr": "Design responsive adapté à tous les écrans (mobile, tablette, desktop)",
+          "en": "Responsive design adapted to all screens (mobile, tablet, desktop)",
+          "ru": "Адаптивный дизайн для всех экранов (мобильные, планшеты, десктоп)"
+        },
+        {
+          "fr": "Optimisation SEO technique et structurelle pour un meilleur référencement",
+          "en": "Technical and structural SEO optimization for better ranking",
+          "ru": "Техническая и структурная SEO-оптимизация для лучшего ранжирования"
+        },
+        {
+          "fr": "Intégration front-end et back-end avec JavaScript moderne (ES6+)",
+          "en": "Front-end and back-end integration with modern JavaScript (ES6+)",
+          "ru": "Интеграция фронтенда и бэкенда с современным JavaScript (ES6+)"
+        },
+        {
+          "fr": "Déploiement professionnel sur Vercel, Netlify ou OVH",
+          "en": "Professional deployment on Vercel, Netlify or OVH",
+          "ru": "Профессиональное развертывание на Vercel, Netlify или OVH"
+        },
+        {
+          "fr": "Performances optimales et temps de chargement rapide",
+          "en": "Optimal performance and fast loading times",
+          "ru": "Оптимальная производительность и быстрая загрузка"
+        }
+      ],
+      "pricing": {
+        "fr": "À partir de 500€",
+        "en": "Starting from €500",
+        "ru": "От 500€"
+      },
+      "duration": {
+        "fr": "2-4 semaines",
+        "en": "2-4 weeks",
+        "ru": "2-4 недели"
+      },
+      "technos": [
+        "svelte-5",
+        "typescript",
+        "sass",
+        "supabase"
+      ],
+      "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80",
+      "realizedProjects": [
+        "Blinkr",
+        "Renaissance Coach",
+        "Noumis Jewelry",
+        "Mustang Template"
+      ]
+    },
+    {
+      "id": "design-graphique-identite-visuelle",
+      "icon": "palette",
+      "name": {
+        "fr": "Design Graphique & Identité",
+        "en": "Graphic Design & Branding",
+        "ru": "Графический дизайн и брендинг"
+      },
+      "tagline": {
+        "fr": "Votre image de marque professionnelle",
+        "en": "Your professional brand identity",
+        "ru": "Ваша профессиональная идентичность бренда"
+      },
+      "description": {
+        "fr": "Designer graphique freelance basé à Ath spécialisé dans la création d'identités visuelles complètes pour entreprises et indépendants du Hainaut. Du logo aux supports de communication, je conçois des visuels cohérents qui reflètent votre activité. Chartes graphiques professionnelles, cartes de visite élégantes, designs UI modernes - chaque élément est pensé pour renforcer votre image de marque auprès de votre clientèle locale.",
+        "en": "Freelance graphic designer based in Ath specialized in creating complete visual identities for Hainaut businesses and freelancers. From logo to communication materials, I design coherent visuals that reflect your activity. Professional graphic charters, elegant business cards, modern UI designs - every element is designed to strengthen your brand image with your local clientele.",
+        "ru": "Графический дизайнер-фрилансер из Ата, специализирующийся на создании полных визуальных идентичностей для бизнеса и фрилансеров Эно. От логотипа до коммуникационных материалов я создаю согласованные визуальные решения, отражающие вашу деятельность. Профессиональные графические стандарты, элегантные визитки, современный UI-дизайн - каждый элемент разработан для укрепления имиджа вашего бренда у местной клиентуры."
+      },
+      "longDescription": {
+        "fr": "Votre entreprise mérite une identité visuelle qui marque les esprits. Que vous soyez artisan, commerçant ou professionnel libéral dans la région d'Ath et du Hainaut, je vous accompagne dans la création de votre image de marque.\n\nJe commence toujours par une analyse approfondie de votre activité, de vos valeurs et de votre public cible. Ensuite, je crée un logo unique et mémorable qui représente fidèlement votre entreprise. Ce logo est décliné dans une charte graphique complète : palette de couleurs, typographies, règles d'utilisation.\n\nJe peux également concevoir vos supports de communication : cartes de visite professionnelles, flyers, affiches, enseignes, véhicules… Tous les fichiers sont livrés dans les formats adaptés à l'impression (CMJN, haute résolution) et au web (RGB, formats optimisés).\n\nPour les entrepreneurs qui souhaitent créer une présence en ligne forte, je propose aussi du design d'interfaces (UI) modernes et ergonomiques, avec maquettes sur Figma ou Adobe XD.\n\nRendez-vous possibles dans tout le Hainaut occidental (Ath, Tournai, Leuze-en-Hainaut, Lessines, etc.).",
+        "en": "Your business deserves a visual identity that leaves a mark. Whether you are a craftsman, merchant or professional in the Ath and Hainaut region, I support you in creating your brand image.\n\nI always start with an in-depth analysis of your business, your values and your target audience. Then, I create a unique and memorable logo that faithfully represents your business. This logo is available in a complete graphic charter: color palette, typography, usage rules.\n\nI can also design your communication materials: professional business cards, flyers, posters, signs, vehicles... All files are delivered in formats suitable for printing (CMYK, high resolution) and for the web (RGB, optimized formats).\n\nFor entrepreneurs who want to create a strong online presence, I also offer modern and ergonomic interface (UI) design, with interactive mockups on Figma or Adobe XD.\n\nAppointments possible throughout western Hainaut (Ath, Tournai, Leuze-en-Hainaut, Lessines, etc.).",
+        "ru": "Ваш бизнес заслуживает визуальной идентичности, которая оставляет след. Будь вы ремесленник, торговец или профессионал в регионе Ат и Эно, я поддерживаю вас в создании имиджа вашего бренда.\n\nЯ всегда начинаю с углубленного анализа вашего бизнеса, ваших ценностей и вашей целевой аудитории. Затем я создаю уникальный и запоминающийся логотип, который верно представляет ваш бизнес. Этот логотип представлен в полной графической хартии: цветовая палитра, типографика, правила использования.\n\nЯ также могу разработать ваши коммуникационные материалы: профессиональные визитки, листовки, плакаты, вывески, транспорт... Все файлы предоставляются в форматах, подходящих для печати (CMYK, высокое разрешение) и для веба (RGB, оптимизированные форматы).\n\nДля предпринимателей, которые хотят создать сильное онлайн-присутствие, я также предлагаю современный и эргономичный дизайн интерфейсов (UI) с интерактивными макетами в Figma или Adobe XD.\n\nВстречи возможны по всей западной части Эно (Ат, Турне, Лёз-ан-Эно, Лессин и т.д.)."
+      },
+      "zone": {
+        "fr": "Hainaut occidental et en remote",
+        "en": "Western Hainaut and remote",
+        "ru": "Западное Эно и удаленно"
+      },
+      "features": [
+        {
+          "fr": "Création de logos professionnels et mémorables",
+          "en": "Creation of professional and memorable logos",
+          "ru": "Создание профессиональных и запоминающихся логотипов"
+        },
+        {
+          "fr": "Chartes graphiques complètes (couleurs, typographies, règles d'usage)",
+          "en": "Complete graphic charters (colors, typography, usage rules)",
+          "ru": "Полные графические стандарты (цвета, типографика, правила использования)"
+        },
+        {
+          "fr": "Design de cartes de visite élégantes et impactantes",
+          "en": "Design of elegant and impactful business cards",
+          "ru": "Дизайн элегантных и эффектных визиток"
+        },
+        {
+          "fr": "Interfaces utilisateur (UI) modernes et ergonomiques",
+          "en": "Modern and ergonomic user interfaces (UI)",
+          "ru": "Современные и эргономичные пользовательские интерфейсы (UI)"
+        },
+        {
+          "fr": "Maquettes sur Figma ou Adobe XD",
+          "en": "Mockups on Figma or Adobe XD",
+          "ru": "Макеты в Figma или Adobe XD"
+        },
+        {
+          "fr": "Fichiers sources fournis pour impression et web",
+          "en": "Source files provided for print and web",
+          "ru": "Исходные файлы для печати и веб"
+        }
+      ],
+      "pricing": {
+        "fr": "Sur devis",
+        "en": "On quotation",
+        "ru": "По запросу"
+      },
+      "duration": {
+        "fr": "A déterminer",
+        "en": "To be determined",
+        "ru": "Будет определено"
+      },
+      "technos": [
+        "figma",
+        "adobe-xd",
+        "adobe-illustrator",
+        "adobe-photoshop"
+      ],
+      "image": "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&q=80",
+      "realizedProjects": [
+        {
+          "name": "Tout sur Behance",
+          "description": {
+            "fr": "Portfolio complet de mes réalisations en design graphique et identité visuelle.",
+            "en": "Complete portfolio of my graphic design and branding work.",
+            "ru": "Полное портфолио моих работ по графическому дизайну и брендингу."
+          },
+          "image": "/assets/img/design.webp",
+          "link": "https://www.behance.net/prinss"
+        }
+      ]
+    },
+    {
+      "id": "boutique-en-ligne-shopify",
+      "icon": "layout-grid",
+      "name": {
+        "fr": "Boutique en Ligne Shopify",
+        "en": "Shopify Online Store",
+        "ru": "Интернет-магазин Shopify"
+      },
+      "tagline": {
+        "fr": "E-commerce clé en main pour vendre en ligne",
+        "en": "Turnkey e-commerce to sell online",
+        "ru": "Готовая электронная коммерция для онлайн-продаж"
+      },
+      "description": {
+        "fr": "Développeur Shopify freelance expert dans la création de boutiques en ligne performantes. Que vous lanciez votre premier e-commerce ou souhaitiez migrer vers Shopify, je vous accompagne dans la mise en place complète de votre boutique : installation, personnalisation du design, configuration des paiements et livraisons, optimisation SEO. Solutions e-commerce professionnelles adaptées aux artisans, créateurs et PME belges.",
+        "en": "Freelance Shopify developer expert in creating high-performance online stores. Whether you're launching your first e-commerce or want to migrate to Shopify, I support you in the complete setup of your store: installation, design customization, payment and shipping configuration, SEO optimization. Professional e-commerce solutions adapted to Belgian craftsmen, creators and SMEs.",
+        "ru": "Shopify-разработчик-фрилансер, эксперт в создании высокопроизводительных интернет-магазинов. Запускаете ли вы свою первую электронную коммерцию или хотите перейти на Shopify, я поддерживаю вас в полной настройке вашего магазина: установка, настройка дизайна, конфигурация платежей и доставки, SEO-оптимизация. Профессиональные решения электронной коммерции для бельгийских ремесленников, креаторов и малого и среднего бизнеса."
+      },
+      "features": [
+        {
+          "fr": "Installation et configuration complète de Shopify",
+          "en": "Complete Shopify installation and configuration",
+          "ru": "Полная установка и настройка Shopify"
+        },
+        {
+          "fr": "Personnalisation du thème selon votre identité visuelle",
+          "en": "Theme customization according to your visual identity",
+          "ru": "Настройка темы в соответствии с вашей визуальной идентичностью"
+        },
+        {
+          "fr": "Configuration des moyens de paiement (Bancontact, cartes, etc.)",
+          "en": "Payment methods configuration (Bancontact, cards, etc.)",
+          "ru": "Настройка способов оплаты (Bancontact, карты и т.д.)"
+        },
+        {
+          "fr": "Paramétrage des options de livraison pour la Belgique et l'international",
+          "en": "Shipping options setup for Belgium and international",
+          "ru": "Настройка вариантов доставки для Бельгии и международных отправлений"
+        },
+        {
+          "fr": "Optimisation SEO pour le référencement des produits",
+          "en": "SEO optimization for product ranking",
+          "ru": "SEO-оптимизация для ранжирования товаров"
+        },
+        {
+          "fr": "Formation à la gestion quotidienne de votre boutique",
+          "en": "Training on daily management of your store",
+          "ru": "Обучение повседневному управлению магазином"
+        }
+      ],
+      "pricing": {
+        "fr": "À partir de 1800€",
+        "en": "Starting from €1800",
+        "ru": "От 1800€"
+      },
+      "duration": {
+        "fr": "3-5 semaines",
+        "en": "3-5 weeks",
+        "ru": "3-5 недель"
+      },
+      "technos": [
+        "shopify",
+        "js",
+        "css",
+        "html"
+      ],
+      "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80"
+    },
+    {
+      "id": "formation-developpement-web",
+      "icon": "graduation-cap",
+      "name": {
+        "fr": "Formation Développement Web",
+        "en": "Web Development Training",
+        "ru": "Обучение веб-разработке"
+      },
+      "tagline": {
+        "fr": "Apprenez à coder avec un développeur expérimenté",
+        "en": "Learn to code with an experienced developer",
+        "ru": "Научитесь программировать с опытным разработчиком"
+      },
+      "description": {
+        "fr": "Formateur freelance en développement web proposant des cours particuliers adaptés à votre niveau. Débutant souhaitant apprendre les bases ou développeur cherchant à se perfectionner en JavaScript moderne, je vous accompagne dans votre apprentissage. Cours pratiques sur HTML/CSS/SCSS, JavaScript ES6+, PHP, SvelteKit, Supabase, déploiement (Vercel, Netlify, OVH). Pédagogie personnalisée et projets concrets pour progresser rapidement.",
+        "en": "Freelance web development trainer offering private lessons adapted to your level. Beginner wanting to learn the basics or developer looking to improve in modern JavaScript, I support you in your learning. Practical courses on HTML/CSS/SCSS, JavaScript ES6+, PHP, SvelteKit, Supabase, deployment (Vercel, Netlify, OVH). Personalized pedagogy and concrete projects to progress quickly.",
+        "ru": "Фрилансер-преподаватель веб-разработки, предлагающий частные уроки, адаптированные к вашему уровню. Новичок, желающий изучить основы, или разработчик, стремящийся усовершенствовать свои знания современного JavaScript, я поддержу вас в обучении. Практические курсы по HTML/CSS/SCSS, JavaScript ES6+, PHP, SvelteKit, Supabase, развертыванию (Vercel, Netlify, OVH). Персонализированная педагогика и конкретные проекты для быстрого прогресса."
+      },
+      "features": [
+        {
+          "fr": "Cours de programmation C (niveau débutant)",
+          "en": "C programming courses (beginner level)",
+          "ru": "Курсы программирования на C (начальный уровень)"
+        },
+        {
+          "fr": "JavaScript moderne ES6+ (niveau intermédiaire)",
+          "en": "Modern JavaScript ES6+ (intermediate level)",
+          "ru": "Современный JavaScript ES6+ (средний уровень)"
+        },
+        {
+          "fr": "HTML, CSS et SCSS (niveau intermédiaire)",
+          "en": "HTML, CSS and SCSS (intermediate level)",
+          "ru": "HTML, CSS и SCSS (средний уровень)"
+        },
+        {
+          "fr": "SvelteKit et frameworks modernes (niveau intermédiaire)",
+          "en": "SvelteKit and modern frameworks (intermediate level)",
+          "ru": "SvelteKit и современные фреймворки (средний уровень)"
+        },
+        {
+          "fr": "Supabase et gestion de bases de données (niveau intermédiaire)",
+          "en": "Supabase and database management (intermediate level)",
+          "ru": "Supabase и управление базами данных (средний уровень)"
+        },
+        {
+          "fr": "Déploiement et hébergement web (Vercel, Netlify, OVH)",
+          "en": "Deployment and web hosting (Vercel, Netlify, OVH)",
+          "ru": "Развертывание и веб-хостинг (Vercel, Netlify, OVH)"
+        }
+      ],
+      "pricing": {
+        "fr": "20€/heure",
+        "en": "€20/hour",
+        "ru": "20€/час"
+      },
+      "duration": {
+        "fr": "À la carte",
+        "en": "On demand",
+        "ru": "По запросу"
+      },
+      "technos": [
+        "js",
+        "svelte-5",
+        "html",
+        "css",
+        "php",
+        "c"
+      ],
+      "image": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&q=80"
+    },
+    {
+      "id": "assistance-technique-informatique",
+      "icon": "monitor",
+      "name": {
+        "fr": "Assistance Technique Informatique",
+        "en": "IT Technical Support",
+        "ru": "ИТ техническая поддержка"
+      },
+      "tagline": {
+        "fr": "Dépannage PC, réparation et installation à domicile",
+        "en": "PC troubleshooting, repair and home installation",
+        "ru": "Устранение неполадок ПК, ремонт и установка на дому"
+      },
+      "description": {
+        "fr": "Technicien informatique freelance proposant assistance et dépannage à domicile dans la région d'Ath. Réparation et montage de PC fixes, réparation de laptops (écran, RAM, SSD), installation de Windows et logiciels, conseils pour l'achat de matériel, installation de périphériques. Je propose également des installations électriques simples (luminaires, caméras de surveillance) et des conseils sur le matériel électroménager. Intervention rapide pour les particuliers et petites entreprises.",
+        "en": "Freelance IT technician offering assistance and troubleshooting at home in the Ath region. Repair and assembly of desktop PCs, laptop repair (screen, RAM, SSD), Windows and software installation, hardware purchase advice, peripheral installation. I also offer simple electrical installations (lights, surveillance cameras) and advice on household appliances. Quick response for individuals and small businesses.",
+        "ru": "ИТ-техник-фрилансер, предлагающий помощь и устранение неполадок на дому в регионе Ат. Ремонт и сборка настольных ПК, ремонт ноутбуков (экран, RAM, SSD), установка Windows и программного обеспечения, консультации по покупке оборудования, установка периферийных устройств. Я также предлагаю простые электрические установки (освещение, камеры наблюдения) и консультации по бытовой технике. Быстрое реагирование для частных лиц и малого бизнеса."
+      },
+      "features": [
+        {
+          "fr": "Montage et réparation de PC fixes (diagnostic, remplacement composants)",
+          "en": "Desktop PC assembly and repair (diagnosis, component replacement)",
+          "ru": "Сборка и ремонт настольных ПК (диагностика, замена компонентов)"
+        },
+        {
+          "fr": "Réparation de laptops (écran, RAM, SSD, batterie)",
+          "en": "Laptop repair (screen, RAM, SSD, battery)",
+          "ru": "Ремонт ноутбуков (экран, RAM, SSD, батарея)"
+        },
+        {
+          "fr": "Installation de Windows, Office et logiciels essentiels",
+          "en": "Installation of Windows, Office and essential software",
+          "ru": "Установка Windows, Office и необходимого программного обеспечения"
+        },
+        {
+          "fr": "Conseils personnalisés pour l'achat de matériel informatique",
+          "en": "Personalized advice for computer hardware purchase",
+          "ru": "Персонализированные консультации по покупке компьютерного оборудования"
+        },
+        {
+          "fr": "Installation de périphériques (imprimante, souris, clavier, écran)",
+          "en": "Peripheral installation (printer, mouse, keyboard, screen)",
+          "ru": "Установка периферийных устройств (принтер, мышь, клавиатура, экран)"
+        },
+        {
+          "fr": "Installation électrique simple (lampes, caméras de surveillance)",
+          "en": "Simple electrical installation (lamps, surveillance cameras)",
+          "ru": "Простая электрическая установка (лампы, камеры наблюдения)"
+        }
+      ],
+      "pricing": {
+        "fr": "30€/heure",
+        "en": "€30/hour",
+        "ru": "30€/час"
+      },
+      "duration": {
+        "fr": "Intervention rapide",
+        "en": "Quick response",
+        "ru": "Быстрое реагирование"
+      },
+      "technos": [],
+      "image": "https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=800&q=80",
+      "travelFee": {
+        "fr": "Les frais de déplacement sont facturés 20€ supplémentaires.",
+        "en": "Travel expenses are charged at an additional €20.",
+        "ru": "Расходы на проезд составляют дополнительно 20€."
+      }
+    },
+    {
+      "id": "installation-reparation-electromenager",
+      "icon": "washing-machine",
+      "name": {
+        "fr": "Installation & Réparation Électroménager",
+        "en": "Appliance Installation & Repair",
+        "ru": "Установка и ремонт бытовой техники"
+      },
+      "tagline": {
+        "fr": "Installation et dépannage de gros électroménager à domicile",
+        "en": "Home appliance installation and repair",
+        "ru": "Установка и ремонт крупной бытовой техники на дому"
+      },
+      "description": {
+        "fr": "Technicien électroménager freelance spécialisé dans l'installation et la réparation de gros électroménager dans la région d'Ath et du Hainaut occidental. Machine à laver, lave-linge, lave-vaisselle, sèche-linge, réfrigérateur, congélateur, four, cuisinière - j'interviens rapidement à domicile pour installer, réparer ou diagnostiquer les pannes de vos appareils. Service professionnel pour particuliers et petites entreprises avec garantie sur les interventions.",
+        "en": "Freelance appliance technician specialized in installation and repair of major appliances in the Ath and western Hainaut region. Washing machine, dishwasher, dryer, refrigerator, freezer, oven, stove - I intervene quickly at home to install, repair or diagnose failures of your appliances. Professional service for individuals and small businesses with warranty on interventions.",
+        "ru": "Техник по бытовой технике-фрилансер, специализирующийся на установке и ремонте крупной бытовой техники в регионе Ат и западной части Эно. Стиральная машина, посудомоечная машина, сушилка, холодильник, морозильник, духовка, плита - я быстро выезжаю на дом для установки, ремонта или диагностики неисправностей ваших приборов. Профессиональный сервис для частных лиц и малого бизнеса с гарантией на работы."
+      },
+      "longDescription": {
+        "fr": "Votre machine à laver est en panne ? Vous venez d'acheter un nouveau lave-vaisselle et avez besoin d'une installation professionnelle ? Je suis technicien spécialisé en électroménager et j'interviens rapidement à votre domicile dans toute la région d'Ath, Tournai, Leuze-en-Hainaut et le Hainaut occidental.\n\nJe prends en charge tous types de gros électroménager : machines à laver le linge, lave-vaisselle, sèche-linge, réfrigérateurs, congélateurs, fours encastrables, cuisinières, hottes aspirantes. Que ce soit pour une installation neuve, un dépannage urgent ou un entretien préventif, je diagnostique rapidement la panne et vous propose une solution adaptée.\n\nMon intervention comprend : diagnostic précis de la panne, remplacement de pièces défectueuses (pompe, résistance, thermostat, joints, etc.), installation complète avec raccordement eau et électricité, mise en service et vérification du bon fonctionnement, conseils d'utilisation et d'entretien.\n\nJe travaille sur toutes les marques courantes : Bosch, Siemens, Miele, Samsung, LG, Whirlpool, Electrolux, Beko, etc. Intervention rapide, devis transparent et garantie sur les réparations effectuées.\n\nDisponible pour les particuliers et les petites entreprises (restaurants, hôtels, commerces) dans tout le Hainaut occidental.",
+        "en": "Is your washing machine broken? Did you just buy a new dishwasher and need professional installation? I am a specialized appliance technician and I intervene quickly at your home throughout the Ath, Tournai, Leuze-en-Hainaut and western Hainaut region.\n\nI handle all types of major appliances: washing machines, dishwashers, dryers, refrigerators, freezers, built-in ovens, stoves, range hoods. Whether for a new installation, urgent repair or preventive maintenance, I quickly diagnose the failure and offer you an appropriate solution.\n\nMy intervention includes: precise diagnosis of the failure, replacement of defective parts (pump, heating element, thermostat, seals, etc.), complete installation with water and electricity connection, commissioning and verification of proper operation, usage and maintenance advice.\n\nI work on all common brands: Bosch, Siemens, Miele, Samsung, LG, Whirlpool, Electrolux, Beko, etc. Quick response, transparent quote and warranty on repairs performed.\n\nAvailable for individuals and small businesses (restaurants, hotels, shops) throughout western Hainaut.",
+        "ru": "Ваша стиральная машина сломалась? Вы только что купили новую посудомоечную машину и нуждаетесь в профессиональной установке? Я специализированный техник по бытовой технике и быстро выезжаю к вам на дом по всему региону Ат, Турне, Лёз-ан-Эно и западной части Эно.\n\nЯ работаю со всеми типами крупной бытовой техники: стиральные машины, посудомоечные машины, сушилки, холодильники, морозильники, встраиваемые духовки, плиты, вытяжки. Будь то новая установка, срочный ремонт или профилактическое обслуживание, я быстро диагностирую неисправность и предложу вам подходящее решение.\n\nМое вмешательство включает: точную диагностику неисправности, замену дефектных деталей (насос, нагревательный элемент, термостат, уплотнители и т.д.), полную установку с подключением воды и электричества, ввод в эксплуатацию и проверку правильной работы, советы по использованию и обслуживанию.\n\nЯ работаю со всеми распространенными брендами: Bosch, Siemens, Miele, Samsung, LG, Whirlpool, Electrolux, Beko и т.д. Быстрое реагирование, прозрачная смета и гарантия на выполненный ремонт.\n\nДоступен для частных лиц и малого бизнеса (рестораны, отели, магазины) по всей западной части Эно."
+      },
+      "zone": {
+        "fr": "Hainaut occidental",
+        "en": "Western Hainaut",
+        "ru": "Западное Эно"
+      },
+      "features": [
+        {
+          "fr": "Installation complète de tous types de gros électroménager",
+          "en": "Complete installation of all types of major appliances",
+          "ru": "Полная установка всех типов крупной бытовой техники"
+        },
+        {
+          "fr": "Réparation machine à laver, lave-linge et sèche-linge",
+          "en": "Washing machine, washer and dryer repair",
+          "ru": "Ремонт стиральных машин, стирально-сушильных машин и сушилок"
+        },
+        {
+          "fr": "Dépannage lave-vaisselle et réfrigérateur/congélateur",
+          "en": "Dishwasher and refrigerator/freezer troubleshooting",
+          "ru": "Устранение неполадок посудомоечных машин и холодильников/морозильников"
+        },
+        {
+          "fr": "Diagnostic précis des pannes et remplacement de pièces",
+          "en": "Precise fault diagnosis and parts replacement",
+          "ru": "Точная диагностика неисправностей и замена деталей"
+        },
+        {
+          "fr": "Raccordement eau et électricité, mise en service",
+          "en": "Water and electricity connection, commissioning",
+          "ru": "Подключение воды и электричества, ввод в эксплуатацию"
+        },
+        {
+          "fr": "Toutes marques : Bosch, Miele, Samsung, LG, Whirlpool, etc.",
+          "en": "All brands: Bosch, Miele, Samsung, LG, Whirlpool, etc.",
+          "ru": "Все бренды: Bosch, Miele, Samsung, LG, Whirlpool и т.д."
+        }
+      ],
+      "pricing": {
+        "fr": "À partir de 50€",
+        "en": "Starting from €50",
+        "ru": "От 50€"
+      },
+      "duration": {
+        "fr": "Intervention rapide",
+        "en": "Quick response",
+        "ru": "Быстрое реагирование"
+      },
+      "technos": [],
+      "image": "https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?w=800&q=80",
+      "travelFee": {
+        "fr": "Les frais de déplacement sont facturés 20€ supplémentaires.",
+        "en": "Travel expenses are charged at an additional €20.",
+        "ru": "Расходы на проезд составляют дополнительно 20€."
+      }
+    },
+    {
+      "id": "services-electricite-installation",
+      "icon": "zap",
+      "name": {
+        "fr": "Dépannage & Électricité",
+        "en": "Electrical Troubleshooting & Services",
+        "ru": "Электрические услуги и ремонт"
+      },
+      "tagline": {
+        "fr": "Dépannage électrique et schémas unifilaires RGIE",
+        "en": "Electrical troubleshooting and RGIE single-line diagrams",
+        "ru": "Устранение неполадок и схемы RGIE"
+      },
+      "description": {
+        "fr": "Services d'électricité pour particuliers dans la région d'Ath et du Hainaut occidental. Dépannage électrique rapide, ajout de prises et interrupteurs, installation de luminaires, réalisation de schémas unifilaires RGIE. Interventions ponctuelles pour petits travaux électriques, mise aux normes et raccordements. Devis transparent basé sur vos besoins réels.",
+        "en": "Electrical services for individuals in the Ath and western Hainaut region. Quick electrical troubleshooting, addition of outlets and switches, light fixture installation, RGIE single-line diagrams. One-time interventions for small electrical jobs, compliance and connections. Transparent quote based on your actual needs.",
+        "ru": "Электрические услуги для частных лиц в регионе Ат и западной части Эно. Быстрое устранение электрических неполадок, добавление розеток и выключателей, установка светильников, однолинейные схемы RGIE. Разовые работы для мелких электрических задач, соответствие и подключения. Прозрачная смета на основе ваших реальных потребностей."
+      },
+      "longDescription": {
+        "fr": "Vous avez besoin d'un dépannage électrique rapide ? D'ajouter quelques prises ou interrupteurs ? De faire réaliser un schéma unifilaire pour votre installation ? J'interviens dans toute la région d'Ath, Tournai, Leuze-en-Hainaut et le Hainaut occidental pour vos petits travaux électriques.\n\nJe prends en charge vos besoins électriques ponctuels : dépannage électrique et diagnostic de pannes, ajout de prises de courant et interrupteurs, installation de luminaires (plafonniers, spots, appliques), raccordement d'appareils électriques, réalisation de schémas unifilaires conformes RGIE pour raccordement ou mise en conformité, remplacement de composants défectueux (prises, interrupteurs, disjoncteurs).\n\nMon approche est simple : je commence par comprendre votre besoin lors d'une première discussion ou visite. Ensuite, j'établis un devis transparent adapté à votre demande. Le schéma unifilaire, document indispensable pour la conformité RGIE et les raccordements au réseau électrique, est réalisé selon les normes belges en vigueur.\n\nIntervention rapide pour les particuliers, avec une tarification claire basée sur le temps d'intervention réel. Disponible dans tout le Hainaut occidental.",
+        "en": "Do you need quick electrical troubleshooting? To add a few outlets or switches? To have a single-line diagram made for your installation? I work throughout the Ath, Tournai, Leuze-en-Hainaut and western Hainaut region for your small electrical jobs.\n\nI handle your one-time electrical needs: electrical troubleshooting and fault diagnosis, addition of power outlets and switches, installation of light fixtures (ceiling lights, spotlights, wall lights), connection of electrical appliances, creation of RGIE-compliant single-line diagrams for connection or compliance, replacement of defective components (outlets, switches, circuit breakers).\n\nMy approach is simple: I start by understanding your need during an initial discussion or visit. Then, I establish a transparent quote adapted to your request. The single-line diagram, an essential document for RGIE compliance and electrical grid connections, is produced according to current Belgian standards.\n\nQuick response for individuals, with clear pricing based on actual intervention time. Available throughout western Hainaut.",
+        "ru": "Вам нужно быстрое устранение электрических неполадок? Добавить несколько розеток или выключателей? Сделать однолинейную схему для вашей установки? Я работаю по всему региону Ат, Турне, Лёз-ан-Эно и западной части Эно для ваших небольших электрических работ.\n\nЯ занимаюсь вашими разовыми электрическими потребностями: устранение электрических неполадок и диагностика, добавление розеток и выключателей, установка светильников (потолочные светильники, прожекторы, настенные светильники), подключение электроприборов, создание однолинейных схем в соответствии с RGIE для подключения или соответствия, замена неисправных компонентов (розетки, выключатели, автоматические выключатели).\n\nМой подход прост: я начинаю с понимания ваших потребностей во время первоначального обсуждения или визита. Затем я составляю прозрачное предложение, адаптированное к вашему запросу. Однолинейная схема, необходимый документ для соответствия RGIE и подключения к электросети, выполняется в соответствии с действующими бельгийскими стандартами.\n\nБыстрое реагирование для частных лиц с четким ценообразованием на основе фактического времени вмешательства. Доступно по всей западной части Эно."
+      },
+      "zone": {
+        "fr": "Hainaut occidental",
+        "en": "Western Hainaut",
+        "ru": "Западное Эно"
+      },
+      "features": [
+        {
+          "fr": "Dépannage électrique et diagnostic de pannes",
+          "en": "Electrical troubleshooting and fault diagnosis",
+          "ru": "Устранение неполадок в электросети и диагностика"
+        },
+        {
+          "fr": "Ajout de prises de courant et interrupteurs",
+          "en": "Addition of power outlets and switches",
+          "ru": "Добавление розеток и выключателей"
+        },
+        {
+          "fr": "Installation de luminaires (plafonniers, spots, appliques)",
+          "en": "Installation of light fixtures (ceiling, spotlights, wall lights)",
+          "ru": "Установка светильников (потолочные, прожекторы, настенные)"
+        },
+        {
+          "fr": "Réalisation de schémas unifilaires conformes RGIE",
+          "en": "Creation of RGIE-compliant single-line diagrams",
+          "ru": "Создание однолинейных схем в соответствии с RGIE"
+        },
+        {
+          "fr": "Raccordement d'appareils électriques",
+          "en": "Connection of electrical appliances",
+          "ru": "Подключение электроприборов"
+        },
+        {
+          "fr": "Remplacement de composants défectueux",
+          "en": "Replacement of defective components",
+          "ru": "Замена неисправных компонентов"
+        },
+        {
+          "fr": "Interventions ponctuelles pour petits travaux",
+          "en": "One-time interventions for small jobs",
+          "ru": "Разовые работы для мелких задач"
+        }
+      ],
+      "pricing": {
+        "fr": "Sur devis (20€/h)",
+        "en": "On quotation (€20/h)",
+        "ru": "По запросу (20€/ч)"
+      },
+      "duration": {
+        "fr": "Intervention rapide",
+        "en": "Quick response",
+        "ru": "Быстрое реагирование"
+      },
+      "technos": [],
+      "image": "https://images.unsplash.com/photo-1758101755915-462eddc23f57?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "travelFee": {
+        "fr": "Les frais de déplacement sont facturés 20€ supplémentaires.",
+        "en": "Travel expenses are charged at an additional €20.",
+        "ru": "Расходы на проезд составляют дополнительно 20€."
+      }
+    },
+    {
+      "id": "installation-cameras-surveillance",
+      "icon": "monitor",
+      "name": {
+        "fr": "Installation de Caméras de Surveillance",
+        "en": "Security Camera Installation",
+        "ru": "Установка камер видеонаблюдения"
+      },
+      "tagline": {
+        "fr": "Sécurisez votre domicile ou commerce avec un système de vidéosurveillance",
+        "en": "Secure your home or business with a video surveillance system",
+        "ru": "Обезопасьте свой дом или бизнес системой видеонаблюдения"
+      },
+      "description": {
+        "fr": "Professionnel de l'installation de caméras de surveillance dans la région d'Ath et du Hainaut occidental. Je vous accompagne dans le choix et la mise en place d'un système de vidéosurveillance adapté à vos besoins : caméras IP connectées avec accès à distance via smartphone, ou systèmes filaires classiques DVR/NVR. Installation intérieure et extérieure avec vision nocturne, détection de mouvement intelligente et enregistrement continu ou sur événement. Solutions complètes clé en main ou installation uniquement selon vos préférences.",
+        "en": "Professional security camera installation in the Ath and western Hainaut region. I support you in choosing and setting up a video surveillance system adapted to your needs: connected IP cameras with remote access via smartphone, or classic wired DVR/NVR systems. Indoor and outdoor installation with night vision, intelligent motion detection and continuous or event recording. Complete turnkey solutions or installation only according to your preferences.",
+        "ru": "Профессиональная установка камер видеонаблюдения в регионе Ат и западной части Эно. Я поддержу вас в выборе и настройке системы видеонаблюдения, адаптированной к вашим потребностям: подключенные IP-камеры с удаленным доступом через смартфон или классические проводные системы DVR/NVR. Внутренняя и наружная установка с ночным видением, интеллектуальным обнаружением движения и непрерывной или событийной записью. Полные решения под ключ или только установка по вашему желанию."
+      },
+      "longDescription": {
+        "fr": "Vous souhaitez sécuriser votre habitation, votre commerce ou vos locaux professionnels dans la région d'Ath ? Je vous propose mes services d'installation de caméras de surveillance sur mesure, adaptées à vos besoins et votre budget.\n\nJe commence toujours par une visite gratuite pour évaluer vos besoins : nombre de caméras nécessaires, zones à couvrir (entrée, jardin, parking, intérieur), type d'installation souhaitée. Ensuite, je vous propose une solution complète avec un devis transparent.\n\nJe travaille avec deux types de systèmes : les caméras IP modernes connectées en WiFi ou Ethernet, accessibles à distance via votre smartphone (application dédiée pour visualisation en direct et historique), et les systèmes de vidéosurveillance filaires classiques avec enregistreur DVR/NVR pour ceux qui préfèrent une solution plus traditionnelle.\n\nToutes mes installations incluent : positionnement optimal des caméras pour une couverture maximale, installation et fixation professionnelle (intérieur et extérieur), raccordement électrique sécurisé, configuration complète du système (réseau, enregistrement, alertes), formation à l'utilisation et à la consultation des enregistrements, test complet du système avant validation.\n\nLes caméras proposées disposent de fonctionnalités modernes : vision nocturne infrarouge pour surveillance 24h/24, détection de mouvement intelligente avec alertes sur smartphone, accès à distance sécurisé depuis n'importe où, enregistrement continu ou uniquement sur détection de mouvement, stockage local (carte SD, disque dur) ou cloud selon vos préférences, résistance aux intempéries pour installation extérieure (IP66/IP67).\n\nJe propose deux formules : installation complète avec fourniture du matériel (je sélectionne les meilleures caméras selon votre budget), ou installation uniquement si vous avez déjà acheté votre matériel. Dans tous les cas, je vous conseille sur le choix des caméras et je garantis une installation professionnelle.\n\nIntervention dans tout le Hainaut occidental : Ath, Tournai, Leuze-en-Hainaut, Lessines, Frasnes-lez-Anvaing, etc. Service disponible pour particuliers, commerces, artisans et petites entreprises.",
+        "en": "Do you want to secure your home, shop or professional premises in the Ath region? I offer my custom security camera installation services, adapted to your needs and budget.\n\nI always start with a free visit to assess your needs: number of cameras needed, areas to cover (entrance, garden, parking, interior), type of installation desired. Then, I offer you a complete solution with a transparent quote.\n\nI work with two types of systems: modern IP cameras connected via WiFi or Ethernet, remotely accessible via your smartphone (dedicated app for live viewing and history), and classic wired video surveillance systems with DVR/NVR recorder for those who prefer a more traditional solution.\n\nAll my installations include: optimal camera positioning for maximum coverage, professional installation and mounting (indoor and outdoor), secure electrical connection, complete system configuration (network, recording, alerts), training on use and viewing recordings, complete system test before validation.\n\nThe cameras offered have modern features: infrared night vision for 24/7 surveillance, intelligent motion detection with smartphone alerts, secure remote access from anywhere, continuous recording or motion detection only, local storage (SD card, hard drive) or cloud according to your preferences, weather resistance for outdoor installation (IP66/IP67).\n\nI offer two packages: complete installation with equipment supply (I select the best cameras according to your budget), or installation only if you have already purchased your equipment. In all cases, I advise you on the choice of cameras and I guarantee a professional installation.\n\nIntervention throughout western Hainaut: Ath, Tournai, Leuze-en-Hainaut, Lessines, Frasnes-lez-Anvaing, etc. Service available for individuals, shops, craftsmen and small businesses.",
+        "ru": "Вы хотите обезопасить свой дом, магазин или профессиональные помещения в регионе Ат? Я предлагаю свои услуги по установке камер видеонаблюдения на заказ, адаптированные к вашим потребностям и бюджету.\n\nЯ всегда начинаю с бесплатного визита для оценки ваших потребностей: количество необходимых камер, зоны для покрытия (вход, сад, парковка, интерьер), тип желаемой установки. Затем я предлагаю вам полное решение с прозрачной сметой.\n\nЯ работаю с двумя типами систем: современные IP-камеры, подключенные через WiFi или Ethernet, с удаленным доступом через смартфон (специальное приложение для просмотра в реальном времени и истории), и классические проводные системы видеонаблюдения с рекордером DVR/NVR для тех, кто предпочитает более традиционное решение.\n\nВсе мои установки включают: оптимальное позиционирование камер для максимального покрытия, профессиональную установку и монтаж (внутри и снаружи), безопасное электрическое подключение, полную настройку системы (сеть, запись, оповещения), обучение использованию и просмотру записей, полное тестирование системы перед валидацией.\n\nПредлагаемые камеры имеют современные функции: инфракрасное ночное видение для круглосуточного наблюдения, интеллектуальное обнаружение движения с оповещениями на смартфон, безопасный удаленный доступ из любого места, непрерывная запись или только при обнаружении движения, локальное хранение (SD-карта, жесткий диск) или облако по вашему выбору, устойчивость к погодным условиям для наружной установки (IP66/IP67).\n\nЯ предлагаю два пакета: полная установка с поставкой оборудования (я выбираю лучшие камеры в соответствии с вашим бюджетом) или только установка, если вы уже купили оборудование. В любом случае я консультирую вас по выбору камер и гарантирую профессиональную установку.\n\nРабота по всей западной части Эно: Ат, Турне, Лёз-ан-Эно, Лессин, Фран-ле-Анвен и т.д. Услуга доступна для частных лиц, магазинов, ремесленников и малого бизнеса."
+      },
+      "zone": {
+        "fr": "Hainaut occidental",
+        "en": "Western Hainaut",
+        "ru": "Западное Эно"
+      },
+      "features": [
+        {
+          "fr": "Visite gratuite et conseil personnalisé sur le système adapté",
+          "en": "Free visit and personalized advice on the suitable system",
+          "ru": "Бесплатный визит и персональная консультация по подходящей системе"
+        },
+        {
+          "fr": "Installation de caméras IP WiFi/Ethernet avec accès smartphone",
+          "en": "Installation of WiFi/Ethernet IP cameras with smartphone access",
+          "ru": "Установка WiFi/Ethernet IP-камер с доступом со смартфона"
+        },
+        {
+          "fr": "Systèmes filaires classiques DVR/NVR disponibles",
+          "en": "Classic wired DVR/NVR systems available",
+          "ru": "Доступны классические проводные системы DVR/NVR"
+        },
+        {
+          "fr": "Vision nocturne infrarouge pour surveillance 24h/24",
+          "en": "Infrared night vision for 24/7 surveillance",
+          "ru": "Инфракрасное ночное видение для круглосуточного наблюдения"
+        },
+        {
+          "fr": "Détection de mouvement intelligente avec alertes",
+          "en": "Intelligent motion detection with alerts",
+          "ru": "Интеллектуальное обнаружение движения с оповещениями"
+        },
+        {
+          "fr": "Enregistrement local (SD, disque dur) ou cloud",
+          "en": "Local recording (SD, hard drive) or cloud",
+          "ru": "Локальная запись (SD, жесткий диск) или облако"
+        },
+        {
+          "fr": "Configuration complète et formation à l'utilisation",
+          "en": "Complete configuration and usage training",
+          "ru": "Полная настройка и обучение использованию"
+        },
+        {
+          "fr": "Installation intérieure et extérieure (caméras résistantes IP66/IP67)",
+          "en": "Indoor and outdoor installation (IP66/IP67 resistant cameras)",
+          "ru": "Внутренняя и наружная установка (камеры с защитой IP66/IP67)"
+        }
+      ],
+      "pricing": {
+        "fr": "Sur devis",
+        "en": "On quotation",
+        "ru": "По запросу"
+      },
+      "duration": {
+        "fr": "1-3 jours",
+        "en": "1-3 days",
+        "ru": "1-3 дня"
+      },
+      "technos": [],
+      "image": "https://images.unsplash.com/photo-1557597774-9d273605dfa9?w=800&q=80",
+      "travelFee": {
+        "fr": "Visite gratuite pour devis. Frais de déplacement de 20€ pour l'installation.",
+        "en": "Free visit for quote. Travel expenses of €20 for installation.",
+        "ru": "Бесплатный визит для сметы. Расходы на проезд 20€ для установки."
+      }
+    }
+  ]
+}

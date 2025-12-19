@@ -1,0 +1,342 @@
+{
+  "title": {
+    "fr": "Mentions légales",
+    "en": "Legal Notice",
+    "ru": "Юридическая информация"
+  },
+  "metaDescription": {
+    "fr": "Mentions légales du site web de Eléazar Klyuvitkin, développeur web freelance basé à Mainvault, Belgique.",
+    "en": "Legal notice for the website of Eléazar Klyuvitkin, freelance web developer based in Mainvault, Belgium.",
+    "ru": "Юридическая информация о веб-сайте Елизар Клювиткин, фрилансер-разработчика из Майнво, Бельгия."
+  },
+  "sections": {
+    "legalInfo": {
+      "title": {
+        "fr": "1. Informations légales",
+        "en": "1. Legal Information",
+        "ru": "1. Юридическая информация"
+      },
+      "name": {
+        "fr": "Nom :",
+        "en": "Name:",
+        "ru": "Имя:"
+      },
+      "legalForm": {
+        "fr": "Forme juridique :",
+        "en": "Legal form:",
+        "ru": "Правовая форма:"
+      },
+      "legalFormValue": {
+        "fr": "Personne physique exerçant une activité professionnelle indépendante",
+        "en": "Individual exercising an independent professional activity",
+        "ru": "Физическое лицо, осуществляющее независимую профессиональную деятельность"
+      },
+      "businessNumber": {
+        "fr": "Numéro d'entreprise :",
+        "en": "Business number:",
+        "ru": "Номер предприятия:"
+      },
+      "address": {
+        "fr": "Adresse :",
+        "en": "Address:",
+        "ru": "Адрес:"
+      },
+      "email": {
+        "fr": "Email :",
+        "en": "Email:",
+        "ru": "Email:"
+      },
+      "website": {
+        "fr": "Site web :",
+        "en": "Website:",
+        "ru": "Веб-сайт:"
+      }
+    },
+    "vat": {
+      "title": {
+        "fr": "2. TVA",
+        "en": "2. VAT",
+        "ru": "2. НДС"
+      },
+      "content": {
+        "fr": "TVA non applicable en vertu de l'article 56bis du Code TVA (régime de franchise).",
+        "en": "VAT not applicable under Article 56bis of the VAT Code (franchise scheme).",
+        "ru": "НДС не применяется в соответствии со статьей 56bis Налогового кодекса (режим франшизы)."
+      }
+    },
+    "hosting": {
+      "title": {
+        "fr": "3. Hébergement",
+        "en": "3. Hosting",
+        "ru": "3. Хостинг"
+      },
+      "host": {
+        "fr": "Hébergeur :",
+        "en": "Host:",
+        "ru": "Хостинг-провайдер:"
+      },
+      "hostAddress": {
+        "fr": "Adresse :",
+        "en": "Address:",
+        "ru": "Адрес:"
+      },
+      "hostWebsite": {
+        "fr": "Site web :",
+        "en": "Website:",
+        "ru": "Веб-сайт:"
+      }
+    },
+    "intellectualProperty": {
+      "title": {
+        "fr": "4. Propriété intellectuelle",
+        "en": "4. Intellectual Property",
+        "ru": "4. Интеллектуальная собственность"
+      },
+      "content1": {
+        "fr": "L'ensemble du contenu de ce site (textes, images, graphismes, logo, icônes, etc.) est la propriété exclusive d'Eléazar Klyuvitkin, sauf mention contraire.",
+        "en": "All content on this site (texts, images, graphics, logo, icons, etc.) is the exclusive property of Eléazar Klyuvitkin, unless otherwise stated.",
+        "ru": "Весь контент на этом сайте (тексты, изображения, графика, логотип, иконки и т.д.) является исключительной собственностью Елизар Клювиткин, если не указано иное."
+      },
+      "content2": {
+        "fr": "Toute reproduction, distribution, modification, adaptation, retransmission ou publication de ces différents éléments est strictement interdite sans l'accord écrit d'Eléazar Klyuvitkin.",
+        "en": "Any reproduction, distribution, modification, adaptation, retransmission or publication of these various elements is strictly prohibited without the written consent of Eléazar Klyuvitkin.",
+        "ru": "Любое воспроизведение, распространение, модификация, адаптация, ретрансляция или публикация этих различных элементов строго запрещены без письменного согласия Елизар Клювиткин."
+      }
+    },
+    "dataProtection": {
+      "title": {
+        "fr": "5. Protection des données personnelles",
+        "en": "5. Personal Data Protection",
+        "ru": "5. Защита персональных данных"
+      },
+      "controller": {
+        "title": {
+          "fr": "5.1 Responsable du traitement",
+          "en": "5.1 Data Controller",
+          "ru": "5.1 Контролер данных"
+        },
+        "content": {
+          "fr": "Le responsable du traitement des données personnelles est Eléazar Klyuvitkin, contactable à l'adresse :",
+          "en": "The data controller is Eléazar Klyuvitkin, contactable at:",
+          "ru": "Контролер данных - Елизар Клювиткин, контакт:"
+        }
+      },
+      "dataCollected": {
+        "title": {
+          "fr": "5.2 Données collectées",
+          "en": "5.2 Data Collected",
+          "ru": "5.2 Собираемые данные"
+        },
+        "content": {
+          "fr": "Ce site web collecte uniquement des données de navigation anonymisées via l'outil d'analyse Umami Analytics.",
+          "en": "This website only collects anonymized browsing data via the Umami Analytics tool.",
+          "ru": "Этот веб-сайт собирает только анонимизированные данные о просмотрах через инструмент Umami Analytics."
+        }
+      },
+      "purpose": {
+        "title": {
+          "fr": "5.3 Finalité du traitement",
+          "en": "5.3 Purpose of Processing",
+          "ru": "5.3 Цель обработки"
+        },
+        "intro": {
+          "fr": "Les données collectées servent exclusivement à :",
+          "en": "The data collected is used exclusively to:",
+          "ru": "Собранные данные используются исключительно для:"
+        },
+        "items": {
+          "analyze": {
+            "fr": "Analyser la fréquentation du site",
+            "en": "Analyze site traffic",
+            "ru": "Анализа посещаемости сайта"
+          },
+          "improve": {
+            "fr": "Améliorer l'expérience utilisateur",
+            "en": "Improve user experience",
+            "ru": "Улучшения пользовательского опыта"
+          },
+          "identify": {
+            "fr": "Identifier les pages les plus consultées",
+            "en": "Identify the most viewed pages",
+            "ru": "Определения наиболее просматриваемых страниц"
+          }
+        }
+      },
+      "umami": {
+        "title": {
+          "fr": "5.4 Umami Analytics",
+          "en": "5.4 Umami Analytics",
+          "ru": "5.4 Umami Analytics"
+        },
+        "intro": {
+          "fr": "Umami est un outil d'analyse web open-source, respectueux de la vie privée et conforme au RGPD. Contrairement à Google Analytics :",
+          "en": "Umami is an open-source, privacy-friendly web analytics tool that is GDPR compliant. Unlike Google Analytics:",
+          "ru": "Umami - это открытый инструмент веб-аналитики, соблюдающий конфиденциальность и соответствующий GDPR. В отличие от Google Analytics:"
+        },
+        "items": {
+          "noPersonalData": {
+            "fr": "Aucune donnée personnelle identifiable n'est collectée",
+            "en": "No personally identifiable data is collected",
+            "ru": "Не собираются персонально идентифицируемые данные"
+          },
+          "noCookies": {
+            "fr": "Aucun cookie n'est utilisé",
+            "en": "No cookies are used",
+            "ru": "Не используются куки"
+          },
+          "noThirdParty": {
+            "fr": "Aucune donnée n'est partagée avec des tiers",
+            "en": "No data is shared with third parties",
+            "ru": "Данные не передаются третьим лицам"
+          },
+          "anonymizedIP": {
+            "fr": "Les adresses IP sont anonymisées",
+            "en": "IP addresses are anonymized",
+            "ru": "IP-адреса анонимизируются"
+          },
+          "europeHosted": {
+            "fr": "Les données sont hébergées en Europe",
+            "en": "Data is hosted in Europe",
+            "ru": "Данные хранятся в Европе"
+          }
+        },
+        "moreInfo": {
+          "fr": "Pour plus d'informations sur Umami :",
+          "en": "For more information about Umami:",
+          "ru": "Для получения дополнительной информации об Umami:"
+        }
+      },
+      "rights": {
+        "title": {
+          "fr": "5.5 Vos droits",
+          "en": "5.5 Your Rights",
+          "ru": "5.5 Ваши права"
+        },
+        "intro": {
+          "fr": "Conformément au Règlement Général sur la Protection des Données (RGPD), vous disposez des droits suivants :",
+          "en": "In accordance with the General Data Protection Regulation (GDPR), you have the following rights:",
+          "ru": "В соответствии с Общим регламентом о защите данных (GDPR), вы имеете следующие права:"
+        },
+        "items": {
+          "access": {
+            "fr": "Droit d'accès à vos données personnelles",
+            "en": "Right of access to your personal data",
+            "ru": "Право доступа к вашим персональным данным"
+          },
+          "rectification": {
+            "fr": "Droit de rectification de vos données",
+            "en": "Right to rectify your data",
+            "ru": "Право на исправление ваших данных"
+          },
+          "erasure": {
+            "fr": "Droit à l'effacement de vos données",
+            "en": "Right to erasure of your data",
+            "ru": "Право на удаление ваших данных"
+          },
+          "restriction": {
+            "fr": "Droit à la limitation du traitement",
+            "en": "Right to restriction of processing",
+            "ru": "Право на ограничение обработки"
+          },
+          "objection": {
+            "fr": "Droit d'opposition au traitement",
+            "en": "Right to object to processing",
+            "ru": "Право на возражение против обработки"
+          },
+          "portability": {
+            "fr": "Droit à la portabilité des données",
+            "en": "Right to data portability",
+            "ru": "Право на перенос данных"
+          }
+        },
+        "exercise": {
+          "fr": "Pour exercer ces droits, vous pouvez me contacter à l'adresse :",
+          "en": "To exercise these rights, you can contact me at:",
+          "ru": "Для осуществления этих прав вы можете связаться со мной по адресу:"
+        }
+      },
+      "contactForm": {
+        "title": {
+          "fr": "5.6 Formulaire de contact",
+          "en": "5.6 Contact Form",
+          "ru": "5.6 Контактная форма"
+        },
+        "content": {
+          "fr": "Si vous utilisez le lien de contact par email sur ce site, les informations que vous fournissez (nom, email, message) sont transmises uniquement par votre client de messagerie et ne sont pas stockées sur le site web.",
+          "en": "If you use the email contact link on this site, the information you provide (name, email, message) is transmitted only through your email client and is not stored on the website.",
+          "ru": "Если вы используете ссылку для связи по электронной почте на этом сайте, предоставляемая вами информация (имя, электронная почта, сообщение) передается только через ваш почтовый клиент и не хранится на веб-сайте."
+        }
+      }
+    },
+    "cookies": {
+      "title": {
+        "fr": "6. Cookies",
+        "en": "6. Cookies",
+        "ru": "6. Куки"
+      },
+      "content": {
+        "fr": "Ce site n'utilise aucun cookie. Umami Analytics fonctionne sans cookies et respecte votre vie privée.",
+        "en": "This site uses no cookies. Umami Analytics works without cookies and respects your privacy.",
+        "ru": "Этот сайт не использует куки. Umami Analytics работает без куки и уважает вашу конфиденциальность."
+      }
+    },
+    "liability": {
+      "title": {
+        "fr": "7. Limitation de responsabilité",
+        "en": "7. Limitation of Liability",
+        "ru": "7. Ограничение ответственности"
+      },
+      "content1": {
+        "fr": "Eléazar Klyuvitkin ne saurait être tenu responsable des dommages directs ou indirects qui pourraient résulter de l'accès au site ou de l'utilisation de celui-ci, y compris l'inaccessibilité, les pertes de données, détériorations, destructions ou virus qui pourraient affecter l'équipement informatique de l'utilisateur.",
+        "en": "Eléazar Klyuvitkin cannot be held responsible for direct or indirect damages that may result from accessing the site or using it, including inaccessibility, data loss, deterioration, destruction or viruses that could affect the user's computer equipment.",
+        "ru": "Елизар Клювиткин не несет ответственности за прямые или косвенные убытки, которые могут возникнуть в результате доступа к сайту или его использования, включая недоступность, потерю данных, ухудшение, разрушение или вирусы, которые могут повлиять на компьютерное оборудование пользователя."
+      },
+      "content2": {
+        "fr": "Les informations fournies sur ce site le sont à titre purement informatif. Eléazar Klyuvitkin s'efforce d'assurer l'exactitude et la mise à jour des informations, mais ne peut garantir l'exactitude, la précision ou l'exhaustivité des informations mises à disposition sur ce site.",
+        "en": "The information provided on this site is for informational purposes only. Eléazar Klyuvitkin strives to ensure the accuracy and updating of information, but cannot guarantee the accuracy, precision or completeness of the information made available on this site.",
+        "ru": "Информация, представленная на этом сайте, предназначена только для информационных целей. Елизар Клювиткин стремится обеспечить точность и обновление информации, но не может гарантировать точность, полноту или актуальность информации, доступной на этом сайте."
+      }
+    },
+    "externalLinks": {
+      "title": {
+        "fr": "8. Liens externes",
+        "en": "8. External Links",
+        "ru": "8. Внешние ссылки"
+      },
+      "content": {
+        "fr": "Ce site peut contenir des liens vers d'autres sites web. Eléazar Klyuvitkin n'exerce aucun contrôle sur ces sites et décline toute responsabilité quant à leur contenu ou à leurs pratiques en matière de confidentialité.",
+        "en": "This site may contain links to other websites. Eléazar Klyuvitkin has no control over these sites and disclaims any responsibility for their content or privacy practices.",
+        "ru": "Этот сайт может содержать ссылки на другие веб-сайты. Елизар Клювиткин не контролирует эти сайты и отказывается от какой-либо ответственности за их содержание или практику конфиденциальности."
+      }
+    },
+    "applicableLaw": {
+      "title": {
+        "fr": "9. Droit applicable",
+        "en": "9. Applicable Law",
+        "ru": "9. Применимое право"
+      },
+      "content": {
+        "fr": "Les présentes mentions légales sont régies par le droit belge. Tout litige relatif à l'utilisation de ce site web sera soumis à la compétence exclusive des tribunaux belges.",
+        "en": "These legal notices are governed by Belgian law. Any dispute relating to the use of this website will be subject to the exclusive jurisdiction of Belgian courts.",
+        "ru": "Эти юридические уведомления регулируются бельгийским законодательством. Любой спор, связанный с использованием этого веб-сайта, подлежит исключительной юрисдикции бельгийских судов."
+      }
+    },
+    "modifications": {
+      "title": {
+        "fr": "10. Modification des mentions légales",
+        "en": "10. Modification of Legal Notice",
+        "ru": "10. Изменение юридической информации"
+      },
+      "content": {
+        "fr": "Eléazar Klyuvitkin se réserve le droit de modifier les présentes mentions légales à tout moment. Il est conseillé de consulter régulièrement cette page pour prendre connaissance des éventuelles modifications.",
+        "en": "Eléazar Klyuvitkin reserves the right to modify these legal notices at any time. It is recommended to regularly consult this page to become aware of any changes.",
+        "ru": "Елизар Клювиткин оставляет за собой право изменять эти юридические уведомления в любое время. Рекомендуется регулярно посещать эту страницу, чтобы быть в курсе любых изменений."
+      }
+    },
+    "lastUpdate": {
+      "fr": "Dernière mise à jour : 19 décembre 2025",
+      "en": "Last update: December 19, 2025",
+      "ru": "Последнее обновление: 19 декабря 2025 года"
+    }
+  }
+}

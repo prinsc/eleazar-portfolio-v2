@@ -1,7 +1,10 @@
 <script>
-	import { ChevronDown, Sun, Moon, ExternalLink, Download, MapPin } from 'lucide-svelte';
+	import { ChevronDown, ExternalLink, Download, MapPin } from 'lucide-svelte';
 	import Experience from '$lib/comp/exp.svelte';
 	import Projets from '$lib/comp/projects.svelte';
+	import Services from '$lib/comp/services.svelte';
+	import MetaTags from '$lib/comp/metaTags.svelte';
+	import LocalBusinessSchema from '$lib/comp/LocalBusinessSchema.svelte';
 	import formatText from '$lib/utils/formatText';
 	import innerHtml from '$lib/utils/innerHtml';
 	import { fly, fade } from 'svelte/transition';
@@ -9,19 +12,10 @@
 	import { settings } from '$lib/stores/settings.js';
 	import { content } from '$lib/stores/content.js';
 	import { onMount } from 'svelte';
+	import PageContent from '$lib/comp/PageContent.svelte';
 
 	let focused = $state(true);
-	let isDarkTheme = $state($settings.theme === 'dark');
-	let isLangSwitched = $state(false);
 	let isReady = $state(false);
-
-	function switchLang() {
-		isLangSwitched = !isLangSwitched;
-		const currentIndex = $settings.langList.indexOf($settings.lang);
-		const nextIndex = (currentIndex + 1) % $settings.langList.length;
-		$settings.lang = $settings.langList[nextIndex];
-		goto(`/${$settings.lang}/`);
-	}
 
 	const getAge = function () {
 		const birthDate = new Date($content.me.birthday); // Replace with your actual birth date
@@ -36,86 +30,26 @@
 		return age;
 	};
 
-	function detectSystemTheme() {
-		return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-	}
-
-	function applyTheme(theme) {
-		document.documentElement.setAttribute('data-theme', theme);
-		isDarkTheme = theme === 'dark';
-		settings.update((currentSettings) => ({
-			...currentSettings,
-			theme: theme
-		}));
-	}
-
 	onMount(async () => {
 		isReady = false;
-		const savedTheme = localStorage.getItem('user-theme');
-		if (savedTheme) {
-			applyTheme(savedTheme);
-		} else {
-			const systemTheme = detectSystemTheme();
-			applyTheme(systemTheme);
-		}
-
-		const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-		const handleThemeChange = () => {
-			if (!localStorage.getItem('user-theme')) {
-				const newTheme = mediaQuery.matches ? 'dark' : 'light';
-				applyTheme(newTheme);
-			}
-		};
-
-		mediaQuery.addEventListener('change', handleThemeChange);
 		await new Promise((resolve) => setTimeout(resolve, 100));
 		isReady = true;
-		return () => mediaQuery.removeEventListener('change', handleThemeChange);
 	});
-
-	function toggleTheme() {
-		const currentTheme = $settings.theme;
-		const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-		isDarkTheme = !isDarkTheme;
-
-		applyTheme(newTheme);
-		localStorage.setItem('user-theme', newTheme);
-	}
 </script>
 
 <!-- Né pour coder, programmé pour réussir -->
 <!-- 23 ans, la génération du Ctrl + Z -->
 
+<MetaTags
+	title={$content.me.h1[$settings.lang] || $content.me.h1['en']}
+	description={$content.site.description[$settings.lang]}
+/>
+
+<LocalBusinessSchema />
+
 <svelte:head>
-	<title>{$content.me.h1[$settings.lang] || $content.me.h1['en']}</title>
-	<meta charset="UTF-8" />
-	<meta name="author" content="Eléazar Klyuvitkin" />
-	<meta name="description" content={$content.site.description[$settings.lang]} />
-	<link rel="canonical" href="https://kltk.be/{$settings.lang}" />
-	<meta name="robots" content="index, follow" />
-	<meta name="theme-color" content={isDarkTheme ? '#000' : '#ffffff'} />
-
-	<meta property="og:title" content={$content.me.h1[$settings.lang]} />
-	<meta property="og:description" content={$content.site.description[$settings.lang]} />
-	<meta property="og:image" content="https://kltk.be/assets/img/banner_meta.png" />
-	<meta property="og:url" content="https://kltk.be" />
-	<meta property="og:type" content="website" />
-
-	<meta name="twitter:card" content="summary_large_image" />
-	<meta name="twitter:title" content={$content.me.h1[$settings.lang]} />
-	<meta name="twitter:description" content={$content.site.description[$settings.lang]} />
-	<meta name="twitter:image" content="https://kltk.be/assets/img/banner_meta.png" />
-
 	<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
-	<meta
-		name="keywords"
-		content="développeur front-end, designer ui/ux, svelte, supabase, portfolio, développement web, création de sites interactifs"
-	/>
-
-	<link rel="icon" href="/favicon.ico" type="image/x-icon" />
-	<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
 	<link
 		rel="preload"
@@ -135,7 +69,7 @@
 		<div class="spinner"></div>
 	</div>
 {:else}
-	<main>
+	<PageContent>
 		<header>
 			<div class="element">
 				<h1>{$content.me.h1[$settings.lang]}</h1>
@@ -164,39 +98,6 @@
 				</a>
 			</div>
 		</header>
-
-		<section class="actions">
-			<button
-				onclick={toggleTheme}
-				class="theme-switcher"
-				aria-label={$content.site.arialabel.themeSwitch[$settings.lang]}
-			>
-				{#if isDarkTheme}
-					<span class="icon" transition:fly={{ y: isDarkTheme ? 20 : -20 }}>
-						<Sun />
-					</span>
-				{:else}
-					<span class="icon" transition:fly={{ y: isDarkTheme ? -20 : 20 }}>
-						<Moon />
-					</span>
-				{/if}
-			</button>
-			<button
-				onclick={switchLang}
-				class="lang-switcher"
-				aria-label={$content.site.arialabel.langSwitch[$settings.lang]}
-			>
-				{#if isLangSwitched}
-					<span transition:fly={{ y: isLangSwitched ? 20 : -20 }}>
-						{$settings.lang.toUpperCase()}
-					</span>
-				{:else}
-					<span transition:fly={{ y: isLangSwitched ? -20 : 20 }}>
-						{$settings.lang.toUpperCase()}
-					</span>
-				{/if}
-			</button>
-		</section>
 
 		<section class="me">
 			<div class="left-side">
@@ -257,11 +158,20 @@
 			</div> -->
 		</section>
 
-		<section class="projects">
-			<h2>{$content.site.projects[$settings.lang]} ({$content.projets.length})</h2>
-			<Projets data={$content.projets} />
+		<section class="services">
+			<h2>
+				{#if $settings.lang === 'fr'}
+					Services ({$content.services?.length || 0})
+				{:else if $settings.lang === 'en'}
+					Services ({$content.services?.length || 0})
+				{:else}
+					Услуги ({$content.services?.length || 0})
+				{/if}
+			</h2>
+			{#if $content.services}
+				<Services data={$content.services} />
+			{/if}
 		</section>
-
 		<section class="works exp" class:focused>
 			<button
 				onclick={() => {
@@ -279,6 +189,11 @@
 					<Experience data={exp} />
 				{/each}
 			</div>
+		</section>
+
+		<section class="projects">
+			<h2>{$content.site.projects[$settings.lang]} ({$content.projets.length})</h2>
+			<Projets data={$content.projets} />
 		</section>
 
 		<section class="resume">
@@ -341,18 +256,12 @@
 				{/each}
 			</div>
 		</section>
-	</main>
+	</PageContent>
 {/if}
 
 <style lang="scss">
 	@use 'lib/styles/themes/_mixins' as *;
 	@use 'lib/styles/utils/_animations' as *;
-
-	main {
-		max-width: 800px;
-		padding: 2rem;
-		margin: 0 auto;
-	}
 	section,
 	header {
 		margin: 2rem 0;
@@ -404,27 +313,6 @@
 					display: inline-flex;
 					opacity: 0.75;
 				}
-			}
-		}
-	}
-	section.actions {
-		position: relative;
-		display: flex;
-		justify-content: flex-end;
-		min-height: 44px;
-		margin: 0 !important;
-
-		button {
-			min-width: 44px;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			cursor: pointer;
-			span {
-				position: absolute;
-			}
-			&.lang-switcher {
-				font-weight: 600;
 			}
 		}
 	}

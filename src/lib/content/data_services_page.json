@@ -1,0 +1,146 @@
+{
+  "title": {
+    "fr": "Mes Services - Développeur Web & Technicien à Mainvault",
+    "en": "My Services - Web Developer & Technician in Mainvault",
+    "ru": "Мои услуги - Веб-разработчик и техник в Майнво"
+  },
+  "metaDescription": {
+    "fr": "Développeur web freelance à Mainvault (Ath) proposant création de sites web, design graphique, boutiques Shopify, formation développement web, dépannage informatique et électroménager. Services professionnels dans le Hainaut occidental.",
+    "en": "Freelance web developer in Mainvault (Ath) offering website creation, graphic design, Shopify stores, web development training, IT troubleshooting and appliance repair. Professional services in Western Hainaut.",
+    "ru": "Веб-разработчик-фрилансер в Майнво (Ат), предлагающий создание веб-сайтов, графический дизайн, магазины Shopify, обучение веб-разработке, устранение неполадок ИТ и ремонт бытовой техники. Профессиональные услуги в западной части Эно."
+  },
+  "heading": {
+    "fr": "Mes Services",
+    "en": "My Services",
+    "ru": "Мои услуги"
+  },
+  "intro": {
+    "title": {
+      "fr": "Développeur web & Technicien polyvalent à Mainvault",
+      "en": "Web Developer & Versatile Technician in Mainvault",
+      "ru": "Веб-разработчик и универсальный техник в Майнво"
+    },
+    "description": {
+      "fr": "Basé à Mainvault dans la région d'Ath, je propose mes services de développement web, design graphique et assistance technique pour les particuliers et entreprises du Hainaut occidental. Que vous ayez besoin d'un site web professionnel, d'un dépannage informatique ou d'une réparation d'électroménager, je suis à votre disposition pour des interventions rapides et de qualité.",
+      "en": "Based in Mainvault in the Ath region, I offer my web development, graphic design and technical assistance services for individuals and businesses in Western Hainaut. Whether you need a professional website, IT troubleshooting or appliance repair, I am at your disposal for fast and quality interventions.",
+      "ru": "Базируясь в Майнво в регионе Ат, я предлагаю свои услуги веб-разработки, графического дизайна и технической помощи для частных лиц и предприятий в западной части Эно. Нужен ли вам профессиональный веб-сайт, устранение неполадок ИТ или ремонт бытовой техники, я к вашим услугам для быстрых и качественных работ."
+    }
+  },
+  "categories": {
+    "digital": {
+      "title": {
+        "fr": "Services Digitaux",
+        "en": "Digital Services",
+        "ru": "Цифровые услуги"
+      },
+      "description": {
+        "fr": "Création de sites web, design graphique, boutiques en ligne et formation pour développer votre présence digitale.",
+        "en": "Website creation, graphic design, online stores and training to develop your digital presence.",
+        "ru": "Создание веб-сайтов, графический дизайн, интернет-магазины и обучение для развития вашего цифрового присутствия."
+      }
+    },
+    "technical": {
+      "title": {
+        "fr": "Services Techniques",
+        "en": "Technical Services",
+        "ru": "Технические услуги"
+      },
+      "description": {
+        "fr": "Dépannage informatique, réparation d'électroménager et installations électriques pour votre domicile.",
+        "en": "IT troubleshooting, appliance repair and electrical installations for your home.",
+        "ru": "Устранение неполадок ИТ, ремонт бытовой техники и электрические установки для вашего дома."
+      }
+    }
+  },
+  "servicesCount": {
+    "fr": "services disponibles",
+    "en": "available services",
+    "ru": "доступных услуг"
+  },
+  "location": {
+    "title": {
+      "fr": "Zone d'intervention",
+      "en": "Service Area",
+      "ru": "Зона обслуживания"
+    },
+    "description": {
+      "fr": "J'interviens principalement dans le Hainaut occidental : Ath, Tournai, Leuze-en-Hainaut, Lessines, Frasnes-lez-Anvaing et communes environnantes. Certains services digitaux sont également disponibles à distance.",
+      "en": "I mainly operate in Western Hainaut: Ath, Tournai, Leuze-en-Hainaut, Lessines, Frasnes-lez-Anvaing and surrounding municipalities. Some digital services are also available remotely.",
+      "ru": "Я в основном работаю в западной части Эно: Ат, Турне, Лёз-ан-Эно, Лессин, Фран-ле-Анвен и окружающие муниципалитеты. Некоторые цифровые услуги также доступны удаленно."
+    }
+  },
+  "whyChooseMe": {
+    "title": {
+      "fr": "Pourquoi me choisir ?",
+      "en": "Why choose me?",
+      "ru": "Почему выбрать меня?"
+    },
+    "reasons": [
+      {
+        "title": {
+          "fr": "Expertise multiple",
+          "en": "Multiple expertise",
+          "ru": "Множественный опыт"
+        },
+        "description": {
+          "fr": "Compétences en développement web, design et services techniques pour répondre à tous vos besoins",
+          "en": "Skills in web development, design and technical services to meet all your needs",
+          "ru": "Навыки веб-разработки, дизайна и технических услуг для удовлетворения всех ваших потребностей"
+        }
+      },
+      {
+        "title": {
+          "fr": "Proximité locale",
+          "en": "Local proximity",
+          "ru": "Местная близость"
+        },
+        "description": {
+          "fr": "Basé à Mainvault, interventions rapides dans tout le Hainaut occidental",
+          "en": "Based in Mainvault, quick interventions throughout Western Hainaut",
+          "ru": "Базируясь в Майнво, быстрые работы по всей западной части Эно"
+        }
+      },
+      {
+        "title": {
+          "fr": "Tarifs transparents",
+          "en": "Transparent pricing",
+          "ru": "Прозрачное ценообразование"
+        },
+        "description": {
+          "fr": "Devis clairs et prix compétitifs pour tous les services proposés",
+          "en": "Clear quotes and competitive prices for all services offered",
+          "ru": "Четкие сметы и конкурентные цены на все предлагаемые услуги"
+        }
+      },
+      {
+        "title": {
+          "fr": "Accompagnement personnalisé",
+          "en": "Personalized support",
+          "ru": "Персонализированная поддержка"
+        },
+        "description": {
+          "fr": "Écoute attentive de vos besoins et solutions adaptées à votre situation",
+          "en": "Attentive listening to your needs and solutions adapted to your situation",
+          "ru": "Внимательное выслушивание ваших потребностей и решения, адаптированные к вашей ситуации"
+        }
+      }
+    ]
+  },
+  "cta": {
+    "title": {
+      "fr": "Besoin d'un service ?",
+      "en": "Need a service?",
+      "ru": "Нужна услуга?"
+    },
+    "description": {
+      "fr": "Contactez-moi pour discuter de votre projet ou obtenir un devis gratuit",
+      "en": "Contact me to discuss your project or get a free quote",
+      "ru": "Свяжитесь со мной, чтобы обсудить ваш проект или получить бесплатную смету"
+    },
+    "button": {
+      "fr": "Me contacter",
+      "en": "Contact me",
+      "ru": "Связаться со мной"
+    }
+  }
+}
