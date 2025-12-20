@@ -1713,6 +1713,421 @@
           }
         }
       ]
+    },
+    {
+      "id": "ordinateur-lent-solutions-ath",
+      "slug": "ordinateur-lent-solutions-ath",
+      "title": {
+        "fr": "Ordinateur lent : les solutions pour le booster (Ath et région)"
+      },
+      "metaDescription": {
+        "fr": "Votre PC rame, met du temps à démarrer ou plante régulièrement ? Découvrez les causes d'un ordinateur lent et les solutions pour lui redonner vie. Dépannage et upgrade à Ath."
+      },
+      "excerpt": {
+        "fr": "Un ordinateur lent, c'est une perte de temps au quotidien. Découvrez pourquoi votre PC rame et comment le rendre rapide comme au premier jour grâce à des upgrades simples."
+      },
+      "image": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=1200&q=80",
+      "imageAlt": {
+        "fr": "Technicien réparant un ordinateur portable"
+      },
+      "author": "Eleazar Klyuvitkin",
+      "publishDate": "2025-01-20",
+      "updateDate": "2025-01-20",
+      "readingTime": 6,
+      "category": {
+        "fr": "Informatique"
+      },
+      "tags": [
+        "ordinateur lent",
+        "dépannage PC",
+        "upgrade SSD",
+        "ajout RAM",
+        "réparation ordinateur Ath",
+        "PC qui rame"
+      ],
+      "relatedServices": [
+        "depannage-support-technique"
+      ],
+      "content": {
+        "fr": [
+          {
+            "type": "paragraph",
+            "text": "Votre <strong>ordinateur met une éternité à démarrer</strong> ? Les programmes se lancent au ralenti, les pages web mettent du temps à s'afficher, et vous avez parfois envie de jeter votre PC par la fenêtre ? Vous n'êtes pas seul. Un ordinateur lent est l'une des frustrations les plus courantes, que ce soit pour le travail ou à la maison."
+          },
+          {
+            "type": "paragraph",
+            "text": "La bonne nouvelle ? <strong>Dans la plupart des cas, il est possible de redonner une seconde vie à votre ordinateur</strong> sans avoir à en racheter un neuf. En tant que technicien informatique dans la région d'Ath, je vous explique les causes principales d'un PC lent et les solutions concrètes pour le booster."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "text": "Pourquoi votre ordinateur est-il devenu lent ?"
+          },
+          {
+            "type": "paragraph",
+            "text": "Un ordinateur ne ralentit pas sans raison. Voici les <strong>causes les plus fréquentes</strong> que je rencontre chez mes clients dans le Hainaut :"
+          },
+          {
+            "type": "heading",
+            "level": 3,
+            "text": "1. Un disque dur HDD vieillissant"
+          },
+          {
+            "type": "paragraph",
+            "text": "C'est LA cause numéro 1 des PC lents. Si votre ordinateur a plus de 3-4 ans et possède encore un <strong>disque dur mécanique (HDD)</strong>, c'est très probablement le coupable. Ces disques s'usent avec le temps, deviennent de plus en plus lents, et finissent par rendre l'ordinateur quasi inutilisable."
+          },
+          {
+            "type": "paragraph",
+            "text": "<strong>La solution ?</strong> Remplacer le HDD par un <strong>SSD (Solid State Drive)</strong>. C'est l'upgrade qui fait la plus grande différence : votre PC démarre en 15-20 secondes au lieu de 2-3 minutes, les programmes se lancent instantanément, et tout devient fluide."
+          },
+          {
+            "type": "heading",
+            "level": 3,
+            "text": "2. Pas assez de mémoire RAM"
+          },
+          {
+            "type": "paragraph",
+            "text": "La RAM, c'est la mémoire vive de votre ordinateur. Elle permet de faire tourner plusieurs programmes en même temps. Si vous avez <strong>4 Go de RAM ou moins</strong>, votre PC va ramer dès que vous ouvrez quelques onglets de navigateur ou plusieurs applications."
+          },
+          {
+            "type": "paragraph",
+            "text": "En 2025, <strong>8 Go de RAM est le minimum</strong> pour un usage confortable. Pour du multitâche intensif ou des logiciels gourmands, 16 Go est recommandé. L'ajout de RAM est une opération simple et peu coûteuse qui peut transformer l'expérience utilisateur."
+          },
+          {
+            "type": "heading",
+            "level": 3,
+            "text": "3. Surchauffe et poussière"
+          },
+          {
+            "type": "paragraph",
+            "text": "Avec le temps, la <strong>poussière s'accumule</strong> dans votre ordinateur, bloque les ventilateurs et empêche le refroidissement. Résultat : le processeur surchauffe et <strong>réduit automatiquement ses performances</strong> pour éviter de griller (c'est ce qu'on appelle le thermal throttling)."
+          },
+          {
+            "type": "paragraph",
+            "text": "Un bon nettoyage interne et le <strong>remplacement de la pâte thermique</strong> peuvent faire des miracles, surtout sur les PC portables qui ont tendance à accumuler plus de chaleur."
+          },
+          {
+            "type": "heading",
+            "level": 3,
+            "text": "4. Trop de programmes au démarrage"
+          },
+          {
+            "type": "paragraph",
+            "text": "À chaque installation de logiciel, de nouveaux programmes se lancent automatiquement au démarrage de Windows. Au fil du temps, votre PC doit charger des dizaines de programmes en arrière-plan, ce qui <strong>ralentit considérablement le démarrage</strong> et consomme des ressources inutilement."
+          },
+          {
+            "type": "heading",
+            "level": 3,
+            "text": "5. Virus et logiciels malveillants"
+          },
+          {
+            "type": "paragraph",
+            "text": "Des <strong>malwares, adwares ou virus</strong> peuvent tourner en arrière-plan et consommer les ressources de votre ordinateur sans que vous le sachiez. Ils peuvent aussi afficher des publicités, ralentir votre navigation, et compromettre vos données personnelles."
+          },
+          {
+            "type": "heading",
+            "level": 3,
+            "text": "6. Windows corrompu ou surchargé"
+          },
+          {
+            "type": "paragraph",
+            "text": "Après des années d'utilisation, Windows accumule des fichiers temporaires, des erreurs de registre, et des restes de programmes désinstallés. Une <strong>réinstallation propre de Windows</strong> peut parfois être la meilleure solution pour repartir sur une base saine."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "text": "Les upgrades qui changent tout"
+          },
+          {
+            "type": "paragraph",
+            "text": "Voici les <strong>améliorations les plus efficaces</strong> pour booster un ordinateur lent, classées par impact :"
+          },
+          {
+            "type": "heading",
+            "level": 3,
+            "text": "🥇 Passage au SSD : l'upgrade miracle"
+          },
+          {
+            "type": "paragraph",
+            "text": "Si vous ne devez faire qu'une seule amélioration, c'est celle-ci. Le <strong>remplacement du disque dur HDD par un SSD</strong> est l'upgrade qui offre le meilleur rapport qualité/prix. La différence est spectaculaire :"
+          },
+          {
+            "type": "list",
+            "items": [
+              "Démarrage de Windows en <strong>15-20 secondes</strong> au lieu de 2-3 minutes",
+              "Programmes qui se lancent <strong>quasi instantanément</strong>",
+              "Transferts de fichiers <strong>5 à 10 fois plus rapides</strong>",
+              "Ordinateur beaucoup plus <strong>réactif et agréable</strong> à utiliser"
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "Je transfère toutes vos données, programmes et paramètres vers le nouveau SSD. Vous retrouvez votre PC exactement comme avant, mais en <strong>beaucoup plus rapide</strong>."
+          },
+          {
+            "type": "heading",
+            "level": 3,
+            "text": "🥈 Ajout de RAM"
+          },
+          {
+            "type": "paragraph",
+            "text": "Si votre ordinateur a moins de 8 Go de RAM, l'ajout de mémoire vive va lui permettre de <strong>gérer plus de tâches simultanément</strong> sans ralentir. C'est particulièrement utile si vous :"
+          },
+          {
+            "type": "list",
+            "items": [
+              "Ouvrez beaucoup d'onglets de navigateur",
+              "Utilisez plusieurs programmes en même temps",
+              "Travaillez avec des fichiers volumineux (photos, vidéos, tableurs)",
+              "Jouez à des jeux vidéo"
+            ]
+          },
+          {
+            "type": "heading",
+            "level": 3,
+            "text": "🥉 Nettoyage interne et pâte thermique"
+          },
+          {
+            "type": "paragraph",
+            "text": "Un <strong>nettoyage complet de l'intérieur</strong> de votre ordinateur (dépoussiérage, remplacement de la pâte thermique) permet de retrouver des températures normales et donc des <strong>performances optimales</strong>. C'est indispensable si votre PC a plus de 2-3 ans et n'a jamais été nettoyé."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "text": "PC portable ou PC fixe : je répare les deux"
+          },
+          {
+            "type": "paragraph",
+            "text": "Que vous ayez un <strong>ordinateur portable</strong> ou un <strong>PC de bureau</strong>, je peux effectuer les upgrades et réparations nécessaires :"
+          },
+          {
+            "type": "heading",
+            "level": 3,
+            "text": "Pour les PC portables"
+          },
+          {
+            "type": "list",
+            "items": [
+              "Remplacement du disque dur par un SSD",
+              "Ajout ou remplacement de RAM",
+              "Remplacement de batterie usée",
+              "Remplacement d'écran cassé",
+              "Remplacement de clavier défectueux",
+              "Nettoyage interne et pâte thermique",
+              "Réparation du connecteur de charge"
+            ]
+          },
+          {
+            "type": "heading",
+            "level": 3,
+            "text": "Pour les PC fixes"
+          },
+          {
+            "type": "list",
+            "items": [
+              "Remplacement du disque dur par un SSD",
+              "Ajout de RAM",
+              "Upgrade de carte graphique",
+              "Remplacement d'alimentation",
+              "Ajout de ventilateurs",
+              "Nettoyage complet"
+            ]
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "text": "Réparer ou remplacer son ordinateur ?"
+          },
+          {
+            "type": "paragraph",
+            "text": "C'est la question que beaucoup de clients me posent. Voici mes recommandations honnêtes :"
+          },
+          {
+            "type": "paragraph",
+            "text": "<strong>Privilégiez la réparation/upgrade si :</strong>"
+          },
+          {
+            "type": "list",
+            "items": [
+              "Votre ordinateur a moins de 6-7 ans",
+              "Le processeur est encore correct (Intel Core i3/i5/i7 ou AMD Ryzen)",
+              "Le problème principal est la lenteur (et non des pannes matérielles multiples)",
+              "L'upgrade SSD + RAM coûte moins de 150-200€"
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "<strong>Envisagez le remplacement si :</strong>"
+          },
+          {
+            "type": "list",
+            "items": [
+              "Votre ordinateur a plus de 8-10 ans",
+              "Le processeur est très ancien (Intel Celeron, Pentium, ou Core 2 Duo)",
+              "Plusieurs composants sont défaillants (écran, clavier, carte mère)",
+              "Les besoins ont évolué (jeux, montage vidéo, etc.)"
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "Lors de mon diagnostic, je vous donnerai un <strong>avis honnête</strong> sur ce qui vaut la peine d'être fait. Mon but n'est pas de vous vendre une réparation inutile, mais de vous proposer la <strong>meilleure solution selon votre budget</strong>."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "text": "Ce que vous pouvez essayer vous-même"
+          },
+          {
+            "type": "paragraph",
+            "text": "Avant de faire appel à un technicien, voici quelques <strong>gestes simples</strong> qui peuvent améliorer les performances :"
+          },
+          {
+            "type": "list",
+            "items": [
+              "<strong>Désactivez les programmes au démarrage</strong> : Ctrl+Shift+Échap → Démarrage → Désactivez les programmes inutiles",
+              "<strong>Supprimez les programmes inutilisés</strong> : Paramètres → Applications → Désinstallez ce dont vous n'avez plus besoin",
+              "<strong>Videz les fichiers temporaires</strong> : Tapez \"Nettoyage de disque\" dans la barre de recherche Windows",
+              "<strong>Redémarrez régulièrement</strong> : Un redémarrage hebdomadaire aide à libérer la mémoire",
+              "<strong>Lancez un scan antivirus</strong> : Windows Defender ou Malwarebytes (gratuit)"
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "Si ces manipulations n'améliorent pas significativement les performances, c'est probablement qu'un <strong>upgrade matériel est nécessaire</strong>."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "text": "Mon service de dépannage PC à Ath"
+          },
+          {
+            "type": "paragraph",
+            "text": "Voici ce que je propose pour <strong>redonner vie à votre ordinateur</strong> :"
+          },
+          {
+            "type": "list",
+            "items": [
+              "<strong>Diagnostic complet</strong> : j'identifie les causes de la lenteur et les solutions adaptées",
+              "<strong>Devis transparent</strong> : vous savez exactement ce que coûtera l'intervention",
+              "<strong>Upgrade SSD</strong> : remplacement du disque dur avec transfert de toutes vos données",
+              "<strong>Ajout de RAM</strong> : installation de mémoire supplémentaire compatible",
+              "<strong>Nettoyage complet</strong> : dépoussiérage et remplacement de pâte thermique",
+              "<strong>Réinstallation Windows</strong> : remise à zéro propre si nécessaire",
+              "<strong>Suppression des virus</strong> : nettoyage des malwares et logiciels indésirables"
+            ]
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "text": "Tarifs dépannage et upgrade PC"
+          },
+          {
+            "type": "paragraph",
+            "text": "Mes tarifs sont <strong>transparents et compétitifs</strong> :"
+          },
+          {
+            "type": "list",
+            "items": [
+              "<strong>Diagnostic</strong> : gratuit",
+              "<strong>Main d'œuvre</strong> : tarif horaire selon la complexité",
+              "<strong>Pièces</strong> (SSD, RAM, etc.) : facturées au prix d'achat + faible marge",
+              "<strong>Déplacement</strong> : 20€ pour le Hainaut occidental (gratuit Ath centre et villages proches)"
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "À titre indicatif, un <strong>upgrade SSD + clonage de données</strong> revient généralement entre 100€ et 150€ (pièce incluse), selon la capacité choisie."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "text": "Zone d'intervention"
+          },
+          {
+            "type": "paragraph",
+            "text": "J'interviens dans toute la région du <strong>Hainaut occidental</strong> :"
+          },
+          {
+            "type": "paragraph",
+            "text": "<strong>Ath</strong> (centre-ville et villages : Ligne, Irchonwelz, Ghislenghien, Gibecq, Lanquesaint, Meslin-l'Évêque, Maffle, Rebaix, Mainvault, Moulbaix, etc.), <strong>Tournai</strong>, <strong>Leuze-en-Hainaut</strong>, <strong>Lessines</strong>, <strong>Frasnes-lez-Anvaing</strong>, <strong>Ellezelles</strong>, <strong>Flobecq</strong>, <strong>Brugelette</strong>, <strong>Chièvres</strong>, <strong>Beloeil</strong>, <strong>Péruwelz</strong>, <strong>Enghien</strong>."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "text": "Comment prendre rendez-vous ?"
+          },
+          {
+            "type": "paragraph",
+            "text": "C'est simple ! Contactez-moi pour un <strong>diagnostic gratuit</strong> de votre ordinateur :"
+          },
+          {
+            "type": "list",
+            "items": [
+              "📞 <strong>Par téléphone</strong> : <a href=\"tel:+32485700737\">+32 485 700 737</a>",
+              "✉️ <strong>Par email</strong> : <a href=\"mailto:eleazar@kltk.be\">eleazar@kltk.be</a>"
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "Je vous recontacte rapidement pour convenir d'un rendez-vous. L'intervention peut se faire <strong>à domicile</strong> ou vous pouvez déposer votre PC chez moi à Mainvault."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "text": "Conclusion"
+          },
+          {
+            "type": "paragraph",
+            "text": "Un <strong>ordinateur lent n'est pas une fatalité</strong>. Dans la grande majorité des cas, quelques upgrades bien ciblés suffisent à lui redonner une seconde vie pour plusieurs années. Avant de dépenser 500€ ou plus dans un nouveau PC, pensez à l'option upgrade : c'est souvent <strong>plus économique et plus écologique</strong>."
+          },
+          {
+            "type": "paragraph",
+            "text": "👉 <strong>Contactez-moi dès maintenant au <a href=\"tel:+32485700737\">+32 485 700 737</a> pour un diagnostic gratuit de votre ordinateur !</strong>"
+          }
+        ]
+      },
+      "faq": [
+        {
+          "question": {
+            "fr": "Combien coûte un upgrade SSD pour mon ordinateur ?"
+          },
+          "answer": {
+            "fr": "Un upgrade SSD avec clonage de vos données coûte généralement entre 100€ et 150€, pièce incluse. Le prix varie selon la capacité du SSD choisi (250 Go, 500 Go, 1 To). Le diagnostic est gratuit."
+          }
+        },
+        {
+          "question": {
+            "fr": "Vais-je perdre mes données lors de l'upgrade ?"
+          },
+          "answer": {
+            "fr": "Non, je clone l'intégralité de votre disque dur vers le nouveau SSD. Vous retrouvez votre ordinateur exactement comme avant : mêmes fichiers, mêmes programmes, mêmes paramètres, mais en beaucoup plus rapide."
+          }
+        },
+        {
+          "question": {
+            "fr": "Combien de temps prend l'intervention ?"
+          },
+          "answer": {
+            "fr": "Un upgrade SSD prend généralement 1 à 2 heures selon la quantité de données à transférer. Pour les interventions plus complexes, je peux garder l'ordinateur une journée et vous le rendre le lendemain."
+          }
+        },
+        {
+          "question": {
+            "fr": "Mon ordinateur est très vieux, ça vaut encore le coup ?"
+          },
+          "answer": {
+            "fr": "Ça dépend ! Si votre PC a plus de 8-10 ans avec un processeur très ancien, l'upgrade n'est peut-être pas rentable. Lors du diagnostic gratuit, je vous donne un avis honnête sur ce qui vaut la peine d'être fait."
+          }
+        },
+        {
+          "question": {
+            "fr": "Réparez-vous aussi les Mac ?"
+          },
+          "answer": {
+            "fr": "Je me concentre principalement sur les PC Windows. Pour les Mac, certaines interventions sont possibles (ajout RAM, remplacement SSD sur anciens modèles), mais les Mac récents sont difficilement évolutifs. Contactez-moi pour en discuter."
+          }
+        }
+      ]
     }
   ]
 }
