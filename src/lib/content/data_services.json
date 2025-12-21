@@ -82,7 +82,46 @@
         "Renaissance Coach",
         "Noumis Jewelry",
         "Mustang Template"
-      ]
+      ],
+      "contentBlocks": {
+        "fr": [
+          {
+            "type": "paragraph",
+            "text": "Vous êtes artisan, commerçant ou entrepreneur dans la région d'Ath, Tournai, Leuze-en-Hainaut ou ailleurs dans le Hainaut occidental ? Vous avez besoin d'un site web professionnel pour développer votre activité en ligne ?"
+          },
+          {
+            "type": "paragraph",
+            "text": "Je suis développeur web freelance installé à Mainvault, et je vous propose mes services de création de sites internet sur mesure. Que vous souhaitiez un site vitrine élégant pour présenter vos services, une landing page percutante pour promouvoir une offre spéciale, ou une plateforme web plus complexe avec gestion de contenu, je m'occupe de tout de A à Z."
+          },
+          {
+            "type": "cta",
+            "title": {
+              "fr": "Besoin d'un site web professionnel ?"
+            },
+            "description": {
+              "fr": "Discutons de votre projet et créons ensemble le site web qui fera grandir votre activité dans le Hainaut."
+            },
+            "buttonText": {
+              "fr": "Demander un devis gratuit"
+            },
+            "subject": {
+              "fr": "Demande de devis - Création de site web"
+            }
+          },
+          {
+            "type": "paragraph",
+            "text": "Mon approche est simple : je prends le temps de comprendre votre activité, vos objectifs et votre clientèle locale. Ensuite, je conçois un site qui vous ressemble, rapide, moderne et optimisé pour le référencement local (Google My Business, recherches géolocalisées). Tous mes sites sont responsive, c'est-à-dire parfaitement adaptés aux smartphones, tablettes et ordinateurs."
+          },
+          {
+            "type": "paragraph",
+            "text": "Je travaille avec des technologies modernes comme SvelteKit, JavaScript ES6+ et TypeScript, qui garantissent des sites ultra-rapides et sécurisés. Pour l'hébergement, je privilégie des solutions professionnelles (Vercel, Netlify, OVH) avec un excellent rapport qualité-prix."
+          },
+          {
+            "type": "paragraph",
+            "text": "Possibilité de rendez-vous à domicile ou dans vos locaux dans toute la région d'Ath et du Hainaut occidental."
+          }
+        ]
+      }
     },
     {
       "id": "design-graphique-identite-visuelle",
@@ -172,7 +211,46 @@
           "image": "/assets/img/design.webp",
           "link": "https://www.behance.net/prinss"
         }
-      ]
+      ],
+      "contentBlocks": {
+        "fr": [
+          {
+            "type": "paragraph",
+            "text": "Votre entreprise mérite une identité visuelle qui marque les esprits. Que vous soyez artisan, commerçant ou professionnel libéral dans la région d'Ath et du Hainaut, je vous accompagne dans la création de votre image de marque."
+          },
+          {
+            "type": "paragraph",
+            "text": "Je commence toujours par une analyse approfondie de votre activité, de vos valeurs et de votre public cible. Ensuite, je crée un logo unique et mémorable qui représente fidèlement votre entreprise. Ce logo est décliné dans une charte graphique complète : palette de couleurs, typographies, règles d'utilisation."
+          },
+          {
+            "type": "cta",
+            "title": {
+              "fr": "Prêt à créer votre identité visuelle ?"
+            },
+            "description": {
+              "fr": "Discutons ensemble de votre projet et concevons une image de marque qui reflète vos valeurs et marque les esprits."
+            },
+            "buttonText": {
+              "fr": "Demander un devis design"
+            },
+            "subject": {
+              "fr": "Demande de devis - Design graphique & Identité visuelle"
+            }
+          },
+          {
+            "type": "paragraph",
+            "text": "Je peux également concevoir vos supports de communication : cartes de visite professionnelles, flyers, affiches, enseignes, véhicules… Tous les fichiers sont livrés dans les formats adaptés à l'impression (CMJN, haute résolution) et au web (RGB, formats optimisés)."
+          },
+          {
+            "type": "paragraph",
+            "text": "Pour les entrepreneurs qui souhaitent créer une présence en ligne forte, je propose aussi du design d'interfaces (UI) modernes et ergonomiques, avec maquettes sur Figma ou Adobe XD."
+          },
+          {
+            "type": "paragraph",
+            "text": "Rendez-vous possibles dans tout le Hainaut occidental (Ath, Tournai, Leuze-en-Hainaut, Lessines, etc.)."
+          }
+        ]
+      }
     },
     {
       "id": "boutique-en-ligne-shopify",
@@ -240,7 +318,42 @@
         "css",
         "html"
       ],
-      "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80"
+      "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
+      "contentBlocks": {
+        "fr": [
+          {
+            "type": "paragraph",
+            "text": "Vous souhaitez vous lancer dans la vente en ligne mais ne savez pas par où commencer ? Shopify est la solution idéale pour créer rapidement une boutique e-commerce professionnelle sans connaissances techniques."
+          },
+          {
+            "type": "paragraph",
+            "text": "En tant que développeur Shopify expert, je vous accompagne dans toutes les étapes de création de votre boutique en ligne : de l'installation initiale à la personnalisation complète du design selon votre identité visuelle, en passant par la configuration des moyens de paiement (Bancontact, cartes bancaires) et des options de livraison adaptées au marché belge et international."
+          },
+          {
+            "type": "cta",
+            "title": {
+              "fr": "Lancez votre boutique en ligne dès maintenant"
+            },
+            "description": {
+              "fr": "Transformez votre activité avec une boutique Shopify professionnelle. Commencez à vendre en ligne rapidement et efficacement."
+            },
+            "buttonText": {
+              "fr": "Discuter de mon projet e-commerce"
+            },
+            "subject": {
+              "fr": "Demande de devis - Boutique Shopify"
+            }
+          },
+          {
+            "type": "paragraph",
+            "text": "Chaque boutique est optimisée pour le référencement naturel (SEO) afin que vos produits soient facilement trouvés sur Google. Je vous forme également à la gestion quotidienne de votre boutique : ajout de produits, gestion des commandes, suivi des stocks, analyse des ventes."
+          },
+          {
+            "type": "paragraph",
+            "text": "Que vous soyez artisan, créateur ou PME belge, je crée une solution e-commerce sur mesure qui correspond à vos besoins et votre budget. Démarrez votre activité en ligne dans les meilleures conditions."
+          }
+        ]
+      }
     },
     {
       "id": "formation-developpement-web",
@@ -310,7 +423,42 @@
         "php",
         "c"
       ],
-      "image": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&q=80"
+      "image": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&q=80",
+      "contentBlocks": {
+        "fr": [
+          {
+            "type": "paragraph",
+            "text": "Vous souhaitez apprendre le développement web ou perfectionner vos compétences en programmation ? Je propose des cours particuliers adaptés à tous les niveaux, du débutant complet au développeur intermédiaire cherchant à se spécialiser."
+          },
+          {
+            "type": "paragraph",
+            "text": "Ma pédagogie est basée sur la pratique : chaque concept théorique est immédiatement mis en application à travers des exercices concrets et des projets réels. Que vous souhaitiez apprendre les bases du HTML/CSS/JavaScript, découvrir les frameworks modernes comme SvelteKit, ou maîtriser les bases de données avec Supabase, je vous accompagne étape par étape."
+          },
+          {
+            "type": "cta",
+            "title": {
+              "fr": "Démarrez votre apprentissage aujourd'hui"
+            },
+            "description": {
+              "fr": "Apprenez à créer vos propres sites web et applications avec un formateur expérimenté. Cours personnalisés et projets pratiques."
+            },
+            "buttonText": {
+              "fr": "Réserver un cours d'essai"
+            },
+            "subject": {
+              "fr": "Demande de cours - Formation développement web"
+            }
+          },
+          {
+            "type": "paragraph",
+            "text": "Je couvre également des sujets plus avancés comme le déploiement professionnel sur Vercel, Netlify ou OVH, l'optimisation des performances, et les bonnes pratiques de développement. Pour les étudiants en informatique, je propose aussi des cours de programmation C niveau débutant."
+          },
+          {
+            "type": "paragraph",
+            "text": "Les cours peuvent avoir lieu en présentiel dans la région d'Ath et du Hainaut, ou en ligne via visioconférence. Formule flexible à l'heure pour s'adapter à votre emploi du temps et votre rythme d'apprentissage."
+          }
+        ]
+      }
     },
     {
       "id": "assistance-technique-informatique",
@@ -378,6 +526,41 @@
         "fr": "Les frais de déplacement sont facturés 20€ supplémentaires.",
         "en": "Travel expenses are charged at an additional €20.",
         "ru": "Расходы на проезд составляют дополнительно 20€."
+      },
+      "contentBlocks": {
+        "fr": [
+          {
+            "type": "paragraph",
+            "text": "Votre ordinateur est lent, ne démarre plus ou affiche des messages d'erreur ? Vous avez besoin d'installer de nouveaux logiciels ou de remplacer des composants défectueux ? J'interviens rapidement à votre domicile dans toute la région d'Ath pour tous vos besoins en dépannage informatique."
+          },
+          {
+            "type": "paragraph",
+            "text": "Je prends en charge aussi bien les PC fixes que les ordinateurs portables : diagnostic précis des pannes, remplacement de composants (écran de laptop, RAM, disque dur/SSD, batterie), installation de Windows et des logiciels essentiels, configuration de périphériques (imprimante, écran, clavier, souris)."
+          },
+          {
+            "type": "cta",
+            "title": {
+              "fr": "Besoin d'une intervention rapide ?"
+            },
+            "description": {
+              "fr": "Ordinateur en panne ou lent ? Je diagnostique et répare votre matériel informatique à domicile dans toute la région d'Ath."
+            },
+            "buttonText": {
+              "fr": "Demander une intervention"
+            },
+            "subject": {
+              "fr": "Demande d'intervention - Dépannage informatique"
+            }
+          },
+          {
+            "type": "paragraph",
+            "text": "Je vous conseille également pour l'achat de nouveau matériel informatique adapté à vos besoins et votre budget. Vous évitez ainsi les achats inadaptés et optimisez votre investissement."
+          },
+          {
+            "type": "paragraph",
+            "text": "En complément, je propose des installations électriques simples (luminaires, caméras de surveillance) et des conseils sur le matériel électroménager. Service rapide, transparent et adapté aux particuliers et petites entreprises du Hainaut occidental."
+          }
+        ]
       }
     },
     {
@@ -456,6 +639,45 @@
         "fr": "Les frais de déplacement sont facturés 20€ supplémentaires.",
         "en": "Travel expenses are charged at an additional €20.",
         "ru": "Расходы на проезд составляют дополнительно 20€."
+      },
+      "contentBlocks": {
+        "fr": [
+          {
+            "type": "paragraph",
+            "text": "Votre machine à laver est en panne ? Vous venez d'acheter un nouveau lave-vaisselle et avez besoin d'une installation professionnelle ? Je suis technicien spécialisé en électroménager et j'interviens rapidement à votre domicile dans toute la région d'Ath, Tournai, Leuze-en-Hainaut et le Hainaut occidental."
+          },
+          {
+            "type": "paragraph",
+            "text": "Je prends en charge tous types de gros électroménager : machines à laver le linge, lave-vaisselle, sèche-linge, réfrigérateurs, congélateurs, fours encastrables, cuisinières, hottes aspirantes. Que ce soit pour une installation neuve, un dépannage urgent ou un entretien préventif, je diagnostique rapidement la panne et vous propose une solution adaptée."
+          },
+          {
+            "type": "paragraph",
+            "text": "Mon intervention comprend : diagnostic précis de la panne, remplacement de pièces défectueuses (pompe, résistance, thermostat, joints, etc.), installation complète avec raccordement eau et électricité, mise en service et vérification du bon fonctionnement, conseils d'utilisation et d'entretien."
+          },
+          {
+            "type": "cta",
+            "title": {
+              "fr": "Votre électroménager nécessite une intervention ?"
+            },
+            "description": {
+              "fr": "Installation, réparation ou dépannage de tous vos appareils électroménagers. Intervention rapide dans tout le Hainaut occidental."
+            },
+            "buttonText": {
+              "fr": "Demander un dépannage"
+            },
+            "subject": {
+              "fr": "Demande d'intervention - Réparation électroménager"
+            }
+          },
+          {
+            "type": "paragraph",
+            "text": "Je travaille sur toutes les marques courantes : Bosch, Siemens, Miele, Samsung, LG, Whirlpool, Electrolux, Beko, etc. Intervention rapide, devis transparent et garantie sur les réparations effectuées."
+          },
+          {
+            "type": "paragraph",
+            "text": "Disponible pour les particuliers et les petites entreprises (restaurants, hôtels, commerces) dans tout le Hainaut occidental."
+          }
+        ]
       }
     },
     {
@@ -539,6 +761,41 @@
         "fr": "Les frais de déplacement sont facturés 20€ supplémentaires.",
         "en": "Travel expenses are charged at an additional €20.",
         "ru": "Расходы на проезд составляют дополнительно 20€."
+      },
+      "contentBlocks": {
+        "fr": [
+          {
+            "type": "paragraph",
+            "text": "Vous avez besoin d'un dépannage électrique rapide ? D'ajouter quelques prises ou interrupteurs ? De faire réaliser un schéma unifilaire et un plan de position pour le contrôle Vinçotte ? J'interviens dans toute la région d'Ath, Tournai, Leuze-en-Hainaut et le Hainaut occidental pour vos petits travaux électriques."
+          },
+          {
+            "type": "paragraph",
+            "text": "Je prends en charge vos besoins électriques ponctuels : dépannage électrique et diagnostic de pannes, ajout de prises de courant et interrupteurs, installation de luminaires (plafonniers, spots, appliques), raccordement d'appareils électriques, réalisation de schémas unifilaires et plans de position conformes RGIE (généralement requis pour le contrôle Vinçotte lors de raccordements ou mises en conformité), remplacement de composants défectueux (prises, interrupteurs, disjoncteurs)."
+          },
+          {
+            "type": "cta",
+            "title": {
+              "fr": "Besoin d'une intervention électrique ?"
+            },
+            "description": {
+              "fr": "Dépannage, installation ou mise en conformité électrique. Je réalise également vos schémas unifilaires pour Vinçotte."
+            },
+            "buttonText": {
+              "fr": "Demander un devis électricité"
+            },
+            "subject": {
+              "fr": "Demande de devis - Services électricité"
+            }
+          },
+          {
+            "type": "paragraph",
+            "text": "Mon approche est simple : je commence par comprendre votre besoin lors d'une première discussion ou visite. Ensuite, j'établis un devis transparent adapté à votre demande. Le schéma unifilaire (représentation simplifiée de votre installation électrique) et le plan de position (emplacement des composants électriques sur le plan du bâtiment) sont des documents indispensables pour la conformité RGIE et sont généralement exigés par Vinçotte lors des contrôles de conformité et des raccordements au réseau électrique. Ces documents sont réalisés selon les normes belges en vigueur."
+          },
+          {
+            "type": "paragraph",
+            "text": "Intervention rapide pour les particuliers, avec une tarification claire basée sur le temps d'intervention réel. Disponible dans tout le Hainaut occidental."
+          }
+        ]
       }
     },
     {
@@ -627,6 +884,53 @@
         "fr": "Visite gratuite pour devis. Frais de déplacement de 20€ pour l'installation.",
         "en": "Free visit for quote. Travel expenses of €20 for installation.",
         "ru": "Бесплатный визит для сметы. Расходы на проезд 20€ для установки."
+      },
+      "contentBlocks": {
+        "fr": [
+          {
+            "type": "paragraph",
+            "text": "Vous souhaitez sécuriser votre habitation, votre commerce ou vos locaux professionnels dans la région d'Ath ? Je vous propose mes services d'installation de caméras de surveillance sur mesure, adaptées à vos besoins et votre budget."
+          },
+          {
+            "type": "paragraph",
+            "text": "Je commence toujours par une visite gratuite pour évaluer vos besoins : nombre de caméras nécessaires, zones à couvrir (entrée, jardin, parking, intérieur), type d'installation souhaitée. Ensuite, je vous propose une solution complète avec un devis transparent."
+          },
+          {
+            "type": "paragraph",
+            "text": "Je travaille avec deux types de systèmes : les caméras IP modernes connectées en WiFi ou Ethernet, accessibles à distance via votre smartphone (application dédiée pour visualisation en direct et historique), et les systèmes de vidéosurveillance filaires classiques avec enregistreur DVR/NVR pour ceux qui préfèrent une solution plus traditionnelle."
+          },
+          {
+            "type": "cta",
+            "title": {
+              "fr": "Sécurisez votre propriété dès aujourd'hui"
+            },
+            "description": {
+              "fr": "Installation professionnelle de caméras de surveillance avec accès à distance. Visite gratuite et devis personnalisé."
+            },
+            "buttonText": {
+              "fr": "Demander une visite gratuite"
+            },
+            "subject": {
+              "fr": "Demande de visite - Installation caméras de surveillance"
+            }
+          },
+          {
+            "type": "paragraph",
+            "text": "Toutes mes installations incluent : positionnement optimal des caméras pour une couverture maximale, installation et fixation professionnelle (intérieur et extérieur), raccordement électrique sécurisé, configuration complète du système (réseau, enregistrement, alertes), formation à l'utilisation et à la consultation des enregistrements, test complet du système avant validation."
+          },
+          {
+            "type": "paragraph",
+            "text": "Les caméras proposées disposent de fonctionnalités modernes : vision nocturne infrarouge pour surveillance 24h/24, détection de mouvement intelligente avec alertes sur smartphone, accès à distance sécurisé depuis n'importe où, enregistrement continu ou uniquement sur détection de mouvement, stockage local (carte SD, disque dur) ou cloud selon vos préférences, résistance aux intempéries pour installation extérieure (IP66/IP67)."
+          },
+          {
+            "type": "paragraph",
+            "text": "Je propose deux formules : installation complète avec fourniture du matériel (je sélectionne les meilleures caméras selon votre budget), ou installation uniquement si vous avez déjà acheté votre matériel. Dans tous les cas, je vous conseille sur le choix des caméras et je garantis une installation professionnelle."
+          },
+          {
+            "type": "paragraph",
+            "text": "Intervention dans tout le Hainaut occidental : Ath, Tournai, Leuze-en-Hainaut, Lessines, Frasnes-lez-Anvaing, etc. Service disponible pour particuliers, commerces, artisans et petites entreprises."
+          }
+        ]
       }
     }
   ]

@@ -8,6 +8,7 @@
 	import { onMount } from 'svelte';
 	import PageContent from '$lib/comp/PageContent.svelte';
 	import RealizedProjects from '$lib/comp/RealizedProjects.svelte';
+	import CTA from '$lib/comp/CTA.svelte';
 	import blogData from '$lib/content/data_blog.json';
 
 	let isReady = $state(false);
@@ -172,9 +173,41 @@
 				return `<h${contentBlock.level} id="${id}">${contentBlock.text}</h${contentBlock.level}>`;
 			case 'list':
 				return `<ul>${contentBlock.items.map((item) => `<li>${item}</li>`).join('')}</ul>`;
+			case 'table':
+				const headers = contentBlock.headers || [];
+				const rows = contentBlock.rows || [];
+				return `
+					<div class="table-wrapper">
+						<table class="content-table">
+							<thead>
+								<tr>
+									${headers.map((header) => `<th>${header}</th>`).join('')}
+								</tr>
+							</thead>
+							<tbody>
+								${rows
+									.map(
+										(row) => `
+									<tr>
+										${row.map((cell) => `<td>${cell}</td>`).join('')}
+									</tr>
+								`
+									)
+									.join('')}
+							</tbody>
+						</table>
+					</div>
+				`;
+			case 'cta':
+			case 'blinkr-cta':
+				return null; // Le CTA sera rendu comme composant Svelte
 			default:
 				return '';
 		}
+	}
+
+	function isCTA(contentBlock) {
+		return contentBlock.type === 'cta' || contentBlock.type === 'blinkr-cta';
 	}
 
 	function scrollToHeading(id) {
@@ -322,7 +355,18 @@
 			<div class="article-body">
 				{#each article.content[$settings.lang] || article.content.fr || [] as contentBlock, index}
 					{#if index === 0}{((headingCounter = 0), '')}{/if}
-					{@html renderContent(contentBlock)}
+					{#if isCTA(contentBlock)}
+						<CTA
+							variant={contentBlock.variant || 'inline'}
+							title={contentBlock.title?.[$settings.lang]}
+							description={contentBlock.description?.[$settings.lang]}
+							buttonText={contentBlock.buttonText?.[$settings.lang]}
+							subject={contentBlock.subject?.[$settings.lang]}
+							url={contentBlock.url}
+						/>
+					{:else}
+						{@html renderContent(contentBlock)}
+					{/if}
 				{/each}
 			</div>
 
@@ -344,7 +388,7 @@
 						{#each article.faq as faqItem}
 							<details class="faq-item grain">
 								<summary>{faqItem.question[$settings.lang]}</summary>
-								<p>{faqItem.answer[$settings.lang]}</p>
+								<p>{@html faqItem.answer[$settings.lang]}</p>
 							</details>
 						{/each}
 					</div>
@@ -531,6 +575,57 @@
 
 			&:hover {
 				opacity: 0.8;
+			}
+		}
+
+		:global(.table-wrapper) {
+			overflow-x: auto;
+			margin: 2rem 0;
+			border-radius: 8px;
+			border: 1px solid var(--color-gray-15);
+		}
+
+		:global(.content-table) {
+			width: 100%;
+			border-collapse: collapse;
+
+			:global(thead) {
+				// background: var(--color-primary);
+				// color: var(--color-white);
+
+				:global(th) {
+					padding: 1rem;
+					text-align: left;
+					font-weight: 600;
+					border-bottom: 1px solid var(--color-gray-15);
+				}
+			}
+
+			:global(tbody) {
+				:global(tr) {
+					transition: background 0.1s ease;
+					&:not(:last-child) {
+						border-bottom: 1px solid var(--color-gray-15);
+					}
+					&:nth-child(even) {
+						background: var(--color-gray-5);
+					}
+
+					&:hover {
+						background: var(--color-gray-05);
+					}
+
+					:global(td) {
+						padding: 0.9rem 1rem;
+						line-height: 1.6;
+						font-size: var(--typo-comment);
+
+						:global(strong) {
+							color: var(--color-text);
+							font-weight: 600;
+						}
+					}
+				}
 			}
 		}
 	}

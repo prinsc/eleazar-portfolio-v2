@@ -8,7 +8,6 @@
 		ArrowLeft,
 		Calendar,
 		Euro,
-		ExternalLink,
 		Code2,
 		Palette,
 		LayoutGrid,
@@ -20,6 +19,7 @@
 	import { onMount } from 'svelte';
 	import PageContent from '$lib/comp/PageContent.svelte';
 	import RealizedProjects from '$lib/comp/RealizedProjects.svelte';
+	import CTA from '$lib/comp/CTA.svelte';
 
 	const iconMap = {
 		'code-2': Code2,
@@ -96,7 +96,35 @@
 				<h2>{$content.site.description[$settings.lang]}</h2>
 				<p>{service.description[$settings.lang]}</p>
 
-				{#if service.longDescription}
+				{#if service.contentBlocks && service.contentBlocks[$settings.lang]}
+					<div class="content-blocks">
+						{#each service.contentBlocks[$settings.lang] as block}
+							{#if block.type === 'paragraph'}
+								<p>{@html block.text}</p>
+							{:else if block.type === 'heading'}
+								{#if block.level === 2}
+									<h3>{block.text}</h3>
+								{:else if block.level === 3}
+									<h4>{block.text}</h4>
+								{/if}
+							{:else if block.type === 'list'}
+								<ul>
+									{#each block.items as item}
+										<li>{@html item}</li>
+									{/each}
+								</ul>
+							{:else if block.type === 'cta'}
+								<CTA
+									variant="inline"
+									title={block.title?.[$settings.lang]}
+									description={block.description?.[$settings.lang]}
+									buttonText={block.buttonText?.[$settings.lang]}
+									subject={block.subject?.[$settings.lang]}
+								/>
+							{/if}
+						{/each}
+					</div>
+				{:else if service.longDescription}
 					<div class="long-description">
 						{#each service.longDescription[$settings.lang].split('\n\n') as paragraph}
 							<p>{paragraph}</p>
@@ -161,23 +189,9 @@
 			{/if}
 		</section>
 
-		<section class="cta">
-			<div class="grain kl-container">
-				<h2>{$content.site.interestedInService[$settings.lang]}</h2>
-				<p>{$content.site.letsDiscuss[$settings.lang]}</p>
-				<a
-					href="mailto:{$settings.email.address}?subject={encodeURIComponent(
-						`${$content.site.inquirySubject[$settings.lang]} - ${service.name[$settings.lang]}`
-					)}&body={encodeURIComponent($settings.email.body[$settings.lang])}"
-					class="cta-button grain no-effect"
-				>
-					{$content.site.contactMe[$settings.lang]}
-					<span class="icon">
-						<ExternalLink />
-					</span>
-				</a>
-			</div>
-		</section>
+		<CTA
+			subject="{$content.site.inquirySubject[$settings.lang]} - {service.name[$settings.lang]}"
+		/>
 	</PageContent>
 {/if}
 
@@ -299,7 +313,8 @@
 				font-weight: 500;
 			}
 
-			.long-description {
+			.long-description,
+			.content-blocks {
 				margin-top: 2rem;
 				padding-top: 2rem;
 				border-top: 1px solid var(--color-gray-15);
@@ -313,6 +328,31 @@
 						margin-bottom: 0;
 					}
 				}
+
+				// h3 {
+				// 	font-size: 1.4rem;
+				// 	font-weight: 600;
+				// 	margin: 2rem 0 1rem;
+				// 	line-height: 1.3;
+				// }
+
+				// h4 {
+				// 	font-size: 1.2rem;
+				// 	font-weight: 600;
+				// 	margin: 1.5rem 0 0.75rem;
+				// 	line-height: 1.3;
+				// }
+
+				// ul {
+				// 	margin: 1.5rem 0;
+				// 	padding-left: 1.5rem;
+
+				// 	li {
+				// 		margin-bottom: 0.75rem;
+				// 		padding-left: 0.5rem;
+				// 		line-height: 1.6;
+				// 	}
+				// }
 			}
 		}
 
@@ -429,51 +469,6 @@
 				display: flex;
 				gap: 1rem;
 				flex-wrap: wrap;
-			}
-		}
-	}
-
-	.cta {
-		margin: 4rem 0 2rem;
-
-		.kl-container {
-			padding: 3rem 2rem;
-			text-align: center;
-			@include borderRadius('small');
-			overflow: hidden;
-
-			h2 {
-				font-size: 1.75rem;
-				font-weight: 700;
-				margin-bottom: 0.5rem;
-			}
-
-			p {
-				font-size: 1.1rem;
-				opacity: 0.8;
-				margin-bottom: 2rem;
-			}
-
-			.cta-button {
-				display: inline-flex;
-				align-items: center;
-				gap: 0.5rem;
-				padding: 1rem 2rem;
-				font-weight: 600;
-				font-size: 1.1rem;
-				@include borderRadius('xsmall');
-				transition: transform 0.2s;
-				overflow: hidden;
-				box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.1);
-
-				&:hover {
-					transform: scale(1.05);
-				}
-
-				.icon {
-					width: 18px;
-					display: inline-flex;
-				}
 			}
 		}
 	}

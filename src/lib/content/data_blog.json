@@ -7,7 +7,7 @@
         "fr": "Dépannage Lave-Vaisselle à Ath : Intervention Rapide et Professionnelle"
       },
       "metaDescription": {
-        "fr": "Votre lave-vaisselle est en panne à Ath ? Technicien spécialisé en dépannage et réparation de lave-vaisselle dans le Hainaut. Intervention rapide, diagnostic gratuit, toutes marques."
+        "fr": "Votre lave-vaisselle est en panne ? Technicien spécialisé en dépannage et réparation de lave-vaisselle dans le Hainaut. Intervention rapide, diagnostic gratuit, toutes marques."
       },
       "excerpt": {
         "fr": "Votre lave-vaisselle ne démarre plus, ne chauffe plus ou fuit ? Découvrez notre service de dépannage rapide pour lave-vaisselle à Ath et dans tout le Hainaut occidental."
@@ -127,6 +127,21 @@
           {
             "type": "paragraph",
             "text": "✅ <strong>Technicien local et disponible</strong> : basé à Mainvault, j'interviens rapidement dans toute la région d'Ath<br>✅ <strong>Diagnostic gratuit</strong> : je me déplace pour évaluer la panne sans frais<br>✅ <strong>Tarifs transparents</strong> : pas de surprise, devis clair avant intervention<br>✅ <strong>Expertise multi-marques</strong> : je répare tous les types de lave-vaisselle<br>✅ <strong>Pièces de qualité</strong> : je privilégie les pièces détachées d'origine ou équivalentes certifiées<br>✅ <strong>Service professionnel</strong> : intervention soignée et respect de votre domicile"
+          },
+          {
+            "type": "cta",
+            "title": {
+              "fr": "Votre lave-vaisselle est en panne à Ath ?"
+            },
+            "description": {
+              "fr": "Diagnostic gratuit et intervention rapide dans tout le Hainaut occidental. Contactez-moi dès maintenant pour un dépannage professionnel."
+            },
+            "buttonText": {
+              "fr": "Demander un diagnostic gratuit"
+            },
+            "subject": {
+              "fr": "Dépannage lave-vaisselle à Ath - Diagnostic gratuit"
+            }
           },
           {
             "type": "heading",
@@ -529,6 +544,21 @@
           {
             "type": "paragraph",
             "text": "L'objectif : que vos clients potentiels vous trouvent facilement quand ils cherchent vos services sur Google dans la région d'Ath."
+          },
+          {
+            "type": "cta",
+            "title": {
+              "fr": "Prêt à lancer votre site web professionnel ?"
+            },
+            "description": {
+              "fr": "Développeur web local à Ath, je crée votre site sur mesure avec un accompagnement personnalisé. Devis gratuit et tarifs transparents adaptés aux PME."
+            },
+            "buttonText": {
+              "fr": "Demander un devis gratuit"
+            },
+            "subject": {
+              "fr": "Création de site web à Ath - Demande de devis"
+            }
           },
           {
             "type": "heading",
@@ -970,6 +1000,21 @@
           {
             "type": "paragraph",
             "text": "Votre laptop est prêt ! Vous venez le récupérer ou je vous le livre à domicile. Je teste l'écran devant vous pour garantir le bon fonctionnement."
+          },
+          {
+            "type": "cta",
+            "title": {
+              "fr": "Votre écran de laptop est cassé ou fissuré ?"
+            },
+            "description": {
+              "fr": "Réparation rapide et professionnelle dans le Hainaut. Devis gratuit, prix compétitifs et intervention soignée. Toutes marques sauf MacBook."
+            },
+            "buttonText": {
+              "fr": "Demander un devis gratuit"
+            },
+            "subject": {
+              "fr": "Réparation écran laptop - Demande de devis gratuit"
+            }
           },
           {
             "type": "heading",
@@ -1460,6 +1505,21 @@
           {
             "type": "paragraph",
             "text": "📍 <strong>Frais de déplacement</strong> : 20€ en supplément pour la zone du Hainaut occidental (gratuit pour Ath centre et villages proches)."
+          },
+          {
+            "type": "cta",
+            "title": {
+              "fr": "Besoin d'un schéma unifilaire pour Vinçotte à Ath ?"
+            },
+            "description": {
+              "fr": "Je réalise vos plans électriques conformes aux normes en vigueur. Visite sur place, tarifs transparents et documents prêts rapidement pour votre contrôle."
+            },
+            "buttonText": {
+              "fr": "Demander mon devis"
+            },
+            "subject": {
+              "fr": "Schéma unifilaire et plan de position - Demande de devis"
+            }
           },
           {
             "type": "heading",
@@ -2002,6 +2062,21 @@
           {
             "type": "paragraph",
             "text": "\"Payez-moi en liquide, je vous fais 20% de réduction sans TVA\". C'est <strong>illégal</strong> et vous n'aurez aucune garantie ni recours en cas de problème. Toujours payer de manière traçable (virement, carte, Payconiq)."
+          },
+          {
+            "type": "cta",
+            "title": {
+              "fr": "Besoin d'un dépanneur fiable à Ath ?"
+            },
+            "description": {
+              "fr": "Interventions transparentes en électroménager, informatique et électricité. Diagnostic gratuit, devis clair et tarifs honnêtes. Pas de surprise, que du professionnalisme."
+            },
+            "buttonText": {
+              "fr": "Demander une intervention"
+            },
+            "subject": {
+              "fr": "Demande d'intervention dépannage - Ath et Hainaut"
+            }
           },
           {
             "type": "heading",
@@ -2576,6 +2651,21 @@
             "text": "Les événements sur Blinkr.events sont vérifiés et les informations sont à jour. Pas de doublons, pas d'événements annulés qui traînent, pas de spam."
           },
           {
+            "type": "cta",
+            "title": {
+              "fr": "Découvrez tous les événements autour de vous"
+            },
+            "description": {
+              "fr": "Visitez Blinkr.events pour explorer les concerts, festivals, marchés et activités dans le Hainaut. Gratuit, intuitif et toujours à jour."
+            },
+            "buttonText": {
+              "fr": "Découvrir Blinkr.events"
+            },
+            "subject": {
+              "fr": "Découverte de Blinkr.events - Plateforme d'événements"
+            }
+          },
+          {
             "type": "heading",
             "level": 2,
             "text": "Comment ajouter un événement sur Blinkr.events ?"
@@ -3008,6 +3098,21 @@
             "text": "En tant que technicien dans la région d'Ath, je peux vous <strong>conseiller sur l'upgrade RAM adapté à vos besoins</strong> et vous éviter de payer trop cher pour des spécifications dont vous n'avez pas besoin."
           },
           {
+            "type": "cta",
+            "title": {
+              "fr": "Besoin d'un upgrade de RAM pour votre PC ?"
+            },
+            "description": {
+              "fr": "Je vous conseille sur la mémoire adaptée à vos besoins et j'installe votre RAM au meilleur prix. Conseil gratuit et installation professionnelle à Ath et dans le Hainaut."
+            },
+            "buttonText": {
+              "fr": "Demander conseil"
+            },
+            "subject": {
+              "fr": "Upgrade RAM et conseil - Demande d'information"
+            }
+          },
+          {
             "type": "heading",
             "level": 2,
             "text": "Conclusion"
@@ -3281,6 +3386,21 @@
             ]
           },
           {
+            "type": "cta",
+            "title": {
+              "fr": "Votre ordinateur est trop lent ?"
+            },
+            "description": {
+              "fr": "Redonnez vie à votre PC avec un upgrade SSD, RAM ou un nettoyage complet. Diagnostic gratuit et devis transparent à Ath et dans le Hainaut."
+            },
+            "buttonText": {
+              "fr": "Demander un diagnostic gratuit"
+            },
+            "subject": {
+              "fr": "PC lent - Demande de diagnostic et upgrade"
+            }
+          },
+          {
             "type": "heading",
             "level": 2,
             "text": "Réparer ou remplacer son ordinateur ?"
@@ -3472,6 +3592,743 @@
           },
           "answer": {
             "fr": "Je me concentre principalement sur les PC Windows. Pour les Mac, certaines interventions sont possibles (ajout RAM, remplacement SSD sur anciens modèles), mais les Mac récents sont difficilement évolutifs. Contactez-moi pour en discuter."
+          }
+        }
+      ]
+    },
+    {
+      "id": "evenements-insolites-wallonie-toute-lannee",
+      "slug": "evenements-insolites-wallonie-toute-lannee",
+      "title": {
+        "fr": "10 Événements Extraordinaires et Insolites en Wallonie - Guide Complet"
+      },
+      "image": "/assets/img/mons.webp",
+      "imageAlt": {
+        "fr": "@alexmette de unsplash"
+      },
+      "metaDescription": {
+        "fr": "Découvrez les événements les plus fous de Wallonie : combats de géants, reconstitutions napoléoniennes, carnavals masqués, festivals underground... Guide complet des sorties insolites en Wallonie toute l'année !"
+      },
+      "excerpt": {
+        "fr": "Plongez dans l'univers des événements les plus déjantés de Wallonie : du combat du Doudou aux carnavals masqués, en passant par les reconstitutions historiques épiques. De quoi surprendre vos amis toute l'année."
+      },
+      "author": "Équipe Agenda Événements Wallonie",
+      "publishDate": "2024-10-15",
+      "updateDate": "2024-10-15",
+      "readingTime": 10,
+      "category": {
+        "fr": "Événements"
+      },
+      "tags": [
+        "événements insolites Wallonie",
+        "sorties originales Wallonie",
+        "traditions bizarres Belgique",
+        "festivals alternatifs",
+        "folklore wallon",
+        "événements underground",
+        "que faire en Wallonie original",
+        "carnavals étranges"
+      ],
+      "content": {
+        "fr": [
+          {
+            "type": "paragraph",
+            "text": "Vous cherchez des <strong>sorties vraiment originales en Wallonie</strong> ? Des événements qui sortent des sentiers battus et des agendas classiques ? La Wallonie cache des traditions séculaires bizarres, des festivals underground, des reconstitutions historiques épiques... Du patrimoine mondial UNESCO aux pépites ultra-locales, voici votre guide complet."
+          },
+          {
+            "type": "paragraph",
+            "text": "Entre grands classiques incontournables et événements méconnus, découvrez <strong>les rendez-vous les plus spectaculaires</strong> de Wallonie. De quoi surprendre vos potes toute l'année."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "text": "Les Grands Classiques Incontournables (UNESCO & Renommée Nationale)"
+          },
+          {
+            "type": "paragraph",
+            "text": "Ces événements sont célèbres, souvent inscrits au patrimoine mondial, et attirent des dizaines de milliers de visiteurs. Si vous ne les connaissez pas encore, c'est LE moment de les découvrir."
+          },
+          {
+            "type": "heading",
+            "level": 3,
+            "text": "1. Le Carnaval de Binche - Les Gilles et Leur Rituel Millénaire"
+          },
+          {
+            "type": "paragraph",
+            "text": "Le <strong>Mardi Gras à Binche</strong>, c'est LE carnaval belge par excellence, inscrit à l'UNESCO. Les <strong>Gilles</strong> portent des costumes de 80 kg, des sabots en bois, et lancent des oranges à la foule dans un rituel codifié depuis le XVIe siècle. Masques de cire, plumes d'autruche géantes, tambours assourdissants... L'ambiance est unique, entre solennité rituelle et euphorie collective. Attention : il faut être binchois de naissance pour être Gille, mais tout le monde peut assister au spectacle. Un incontournable absolu du folklore wallon."
+          },
+          {
+            "type": "heading",
+            "level": 3,
+            "text": "2. Le Combat du Doudou (Mons) - Affrontement Médiéval en Pleine Rue"
+          },
+          {
+            "type": "paragraph",
+            "text": "Chaque année à la <strong>Trinité (mai/juin)</strong>, Mons devient folle. Le point d'orgue ? Le <strong>Lumeçon</strong> : un affrontement ritualisé entre Saint-Georges et un dragon de 10 mètres traîné par des Hommes Blancs. Des milliers de personnes s'entassent sur la Grand-Place pour voir le saint terrasser le dragon dans un chaos organisé. Les chevaux, les figurants en costumes XVIIIe, la musique militaire... C'est du grand spectacle médiéval en live. Inscrit à l'UNESCO, cette tradition remonte au XIVe siècle et l'ambiance est absolument dingue, avec 3 jours de fête non-stop."
+          },
+          {
+            "type": "heading",
+            "level": 3,
+            "text": "3. La Ducasse d'Ath - Procession des Géants UNESCO"
+          },
+          {
+            "type": "paragraph",
+            "text": "Chaque année le <strong>4e week-end d'août</strong>, Ath sort ses géants pour la Ducasse. La <strong>Procession des Géants</strong>, inscrite au patrimoine mondial de l'UNESCO, met en scène Goliath (+/- 4 mètres de haut), Samson, et toute une famille de géants qui défilent dans les rues. Le dimanche, c'est le <strong>Combat de David contre Goliath</strong> sur la Grand-Place : un affrontement chorégraphié spectaculaire où David (enfant du village) terrasse le géant dans une mise en scène biblique. Ambiance médiévale, fanfares, cortège historique... Une tradition vivante depuis le XVe siècle qui attire des dizaines de milliers de spectateurs."
+          },
+          {
+            "type": "heading",
+            "level": 3,
+            "text": "4. La Reconstitution de la Bataille de Waterloo"
+          },
+          {
+            "type": "paragraph",
+            "text": "Chaque année en <strong>juin</strong>, des centaines de figurants rejouent des scènes de la <strong>Bataille de Waterloo</strong> sur le site historique. Tous les 5 ans (grandes années anniversaires), la reconstitution devient gigantesque : jusqu'à 5 000 figurants, 300 chevaux et des dizaines de canons. Fusillades, charges de cavalerie, campements napoléoniens reconstitués à l'identique... C'est la plus grande reconstitution historique d'Europe lors des grandes éditions. Même les années « normales », le spectacle reste impressionnant avec bivouacs, démonstrations tactiques et mises en scène chorégraphiées. Si vous aimez l'Histoire vivante, c'est un incontournable absolu."
+          },
+          {
+            "type": "heading",
+            "level": 3,
+            "text": "5. Le Festival Dour - 5 Jours de Folie Musicale"
+          },
+          {
+            "type": "paragraph",
+            "text": "En <strong>juillet</strong>, le petit village de Dour (Hainaut) accueille l'un des plus gros festivals alternatifs d'Europe. 5 jours non-stop, <strong>230 000 festivaliers</strong>, une programmation électro-rock-hip-hop-world démesurée répartie sur 10 scènes. L'ambiance est unique : mélange de hardcore festivaliers qui campent sur place, de Français qui traversent la frontière en masse, et d'une atmosphère bon enfant malgré la démesure. Moins cher que les gros festivals commerciaux, plus authentique, et la réputation n'est plus à faire. Un must pour les amateurs de musiques actuelles."
+          },
+          {
+            "type": "blinkr-cta",
+            "variant": "inline",
+            "title": {
+              "fr": "Où trouver tous ces événements ?"
+            },
+            "description": {
+              "fr": "Sur blinkr.events, votre agenda complet des événements en Wallonie. Découvrez les dates, lieux et programmes détaillés."
+            },
+            "buttonText": {
+              "fr": "Voir l'agenda"
+            },
+            "url": "https://blinkr.events"
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "text": "Les Vraies Pépites Méconnues"
+          },
+          {
+            "type": "paragraph",
+            "text": "Maintenant, place aux <strong>vrais trésors cachés</strong>. Ces événements que même les Wallons ne connaissent pas tous, ces rendez-vous qui font dire à vos potes : 'Attends, QUOI ? Ça existe vraiment en Belgique ?!'"
+          },
+          {
+            "type": "heading",
+            "level": 3,
+            "text": "1. Les Blancs-Moussis de Stavelot - Carnaval Masqué Version Hardcore"
+          },
+          {
+            "type": "paragraph",
+            "text": "Si vous trouvez les carnavals trop mignons, direction <strong>Stavelot pendant Laetare (mars)</strong>. Les <strong>Blancs-Moussis</strong> débarquent : masques au long nez rouge, cagoules blanches, vessies de porc gonflées pour taper les passants. Oui, vous avez bien lu. Ces figures mystérieuses paradent dans un délire carnavalesque ancestral, entre folklore et ambiance oppressante. Le cortège nocturne avec les feux et les Haguètes (autres personnages masqués) crée une atmosphère unique, quelque part entre fête populaire et rite païen. Frissons garantis."
+          },
+          {
+            "type": "heading",
+            "level": 3,
+            "text": "2. Le Cwarmê de Malmedy - 4 Jours de Folie Masquée"
+          },
+          {
+            "type": "paragraph",
+            "text": "Le <strong>Cwarmê (4 jours avant Mardi Gras)</strong> transforme Malmedy en zone de non-droit festive. Les <strong>Haguètes</strong> (masques grimaçants avec des vessies) coursent les spectateurs, les <strong>Longuès Brèsses</strong> (personnages en haillons) sortent d'on ne sait où... Tout le monde est déguisé et participe à des rituels absurdes transmis depuis le Moyen Âge. Le samedi soir, le <strong>Brûlage du Haguète</strong> clôt le délire : on brûle un mannequin géant dans une ambiance pyromane collective sur la place. L'un des carnavals les plus authentiques et déjantés d'Europe."
+          },
+          {
+            "type": "heading",
+            "level": 3,
+            "text": "3. La Nuit des Coteaux (Huy) - Balade Nocturne Féérique"
+          },
+          {
+            "type": "paragraph",
+            "text": "Une fois par an (généralement <strong>août</strong>), les Coteaux de Huy s'illuminent pour une <strong>balade nocturne spectaculaire</strong>. Des milliers de personnes montent dans les vignes (oui, il y a des vignes en Wallonie !) pour un parcours de plusieurs kilomètres ponctué d'installations lumineuses, de performances artistiques, de DJ sets en pleine nature, de food trucks... L'ambiance est unique : électro-nature-féerie, avec vue panoramique sur la Meuse éclairée en contrebas. BYOB (Bring Your Own Beer), bonnes chaussures de marche, et préparez-vous à une nuit magique hors du temps."
+          },
+          {
+            "type": "heading",
+            "level": 3,
+            "text": "4. Les Marches de l'Entre-Sambre-et-Meuse - Armées Napoléoniennes en Procession"
+          },
+          {
+            "type": "paragraph",
+            "text": "De <strong>mai à septembre</strong>, chaque dimanche, des villages de la région namuroise organisent des <strong>marches militaires folkloriques</strong> hallucinantes. Des centaines d'hommes en uniformes napoléoniens authentiques, mousquets à l'épaule, défilent pendant 20 à 30 kilomètres au son des fanfares et des salves de fusils. C'est hypnotique, solennel, et totalement anachronique : on croirait que l'armée de Napoléon traverse les villages wallons en 2024. Les plus impressionnantes : <strong>Gerpinnes, Fosses-la-Ville, Jumet, Ham-sur-Heure</strong>. Attention, ces marches peuvent durer 8 à 10 heures... L'endurance folklorique wallonne à l'état pur. Patrimoine immatériel exceptionnel."
+          },
+          {
+            "type": "heading",
+            "level": 3,
+            "text": "5. Le Festival International du Rire de Rochefort"
+          },
+          {
+            "type": "paragraph",
+            "text": "En <strong>octobre</strong>, Rochefort devient capitale belge du stand-up. Des humoristes français, belges, québécois, suisses débarquent pour une semaine complète de <strong>one-man-shows, impros, spectacles décalés</strong>. Ambiance petite ville transformée en scène géante, avec des shows dans des lieux improbables : grottes, brasseries, châteaux, salles de village... Plus de 100 représentations, du gratuit au premium, pour tous les goûts (absurde, noir, familial...). Parfait pour se marrer entre potes et découvrir des talents avant qu'ils explosent."
+          },
+          {
+            "type": "heading",
+            "level": 3,
+            "text": "6. Les Médiévales de Bouillon - Immersion Totale Moyen Âge"
+          },
+          {
+            "type": "paragraph",
+            "text": "Chaque <strong>juillet</strong>, le château de Bouillon et toute la ville replongent au Moyen Âge pour un week-end complet. Pas une reconstitution mollassonne : des combats de chevaliers ultra-chorégraphiés avec armures authentiques, des artisans en costumes d'époque (forgerons, tisserands, enlumineurs...), un marché médiéval immense, des spectacles de feu, du tir à l'arc, des banquets... Et le clou du spectacle : l'<strong>assaut nocturne du château</strong> avec effets pyrotechniques, projections sur les remparts et cascades équestres. 3 jours d'immersion totale dans l'univers de Godefroy de Bouillon, premier roi de Jérusalem. Idéal pour les fans de Game of Thrones et les familles."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "text": "Bonus : Les Événements Ultra-Nichés à Découvrir"
+          },
+          {
+            "type": "paragraph",
+            "text": "Parce qu'on ne pouvait pas s'arrêter là, voici d'autres pépites encore plus confidentielles :"
+          },
+          {
+            "type": "list",
+            "items": [
+              "<strong>Les Médiévales de Franchimont (Theux)</strong> : reconstitution dans les ruines d'un château perché, ambiance dark fantasy",
+              "<strong>Le Carnaval Vénitien de Remouchamps</strong> : version belge des masques vénitiens, défilé baroque sur la passerelle des grottes",
+              "<strong>La Grande Foire Agricole de Libramont</strong> : le plus grand événement agricole de Wallonie, mais aussi concerts et soirées surprises",
+              "<strong>Les Méga-Brocantes Spécialisées</strong> : brocante militaria (Bastogne), brocante vintage (Namur), brocante comics/geek itinérante",
+              "<strong>Festival Steampunk</strong> : conventions thématiques victorien-futuriste avec cosplay, expositions, concerts électro-mécaniques",
+              "<strong>Les Nocturnes des Musées</strong> : plusieurs fois par an, musées wallons ouverts la nuit avec performances, DJ sets, visites insolites"
+            ]
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "text": "Conseils de Survie pour Ces Événements"
+          },
+          {
+            "type": "list",
+            "items": [
+              "<strong>Carnavals masqués (Stavelot, Malmedy)</strong> : habillez-vous chaud (mars = froid), prévoyez de quoi vous protéger des vessies (capuche, lunettes), et ne restez pas sur les bords si vous êtes timide (vous ALLEZ vous faire taper)",
+              "<strong>Reconstitutions historiques</strong> : arrivez TÔT (places limitées, parking galère), apportez chaises pliantes et couverture, crème solaire obligatoire l'été",
+              "<strong>Marches militaires</strong> : chaussures ultra-confort, chapeau, eau, et acceptez que ça dure DES HEURES (certaines marches font 30 km)",
+              "<strong>Festivals (Dour...)</strong> : cash nécessaire sur place, tente si campement, chaussures qui ne craignent rien, et état d'esprit ouvert requis",
+              "<strong>Événements nocturnes (Coteaux, Nocturnes)</strong> : lampe frontale ou téléphone chargé, veste (nuits fraîches), et désignez un Sam si vous venez en voiture",
+              "<strong>Ducasses et processions</strong> : arrivez 1h avant pour bonne place, amenez enfants sur épaules pour qu'ils voient, prévoyez snacks (files d'attente longues)"
+            ]
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "text": "Pourquoi Ces Événements Sont-ils Si Méconnus ?"
+          },
+          {
+            "type": "paragraph",
+            "text": "Parce que la Wallonie ne marketise pas tout comme ses voisins. Ces traditions sont souvent <strong>ultra-locales</strong>, transmises de génération en génération, avec peu de communication externe. Résultat ? Des événements authentiques, pas pollués par le tourisme de masse institutionnel... mais difficiles à découvrir si vous n'êtes pas du coin ou si vous ne tombez pas dessus par hasard. D'où l'intérêt d'un agenda centralisé qui fait le boulot de veille toute l'année pour vous."
+          },
+          {
+            "type": "paragraph",
+            "text": "Beaucoup de ces événements sont aussi <strong>financés par les communes et les bénévoles</strong>, pas par de gros sponsors. Ils gardent donc leur âme, leur caractère populaire, mais ont moins de visibilité que les événements commerciaux. C'est ce qui fait leur charme... et leur confidentialité relative."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "text": "Conclusion : La Wallonie Insolite Vous Attend Toute l'Année"
+          },
+          {
+            "type": "paragraph",
+            "text": "La Wallonie ne se résume pas aux clichés touristiques. C'est un territoire de <strong>traditions dingues, de carnavals hallucinés, de reconstitutions épiques, de festivals underground</strong> et de folklores vivants. Du printemps à l'automne, il se passe TOUJOURS quelque chose de spectaculaire quelque part en Wallonie. Si vous cherchez des sorties qui sortent vraiment du lot et des histoires à raconter, cette liste est votre point de départ."
+          }
+        ]
+      },
+      "faq": [
+        {
+          "question": {
+            "fr": "C'est quoi exactement le Doudou de Mons ?"
+          },
+          "answer": {
+            "fr": "Le Doudou (ou Ducasse de Mons) est une fête médiévale annuelle qui culmine avec le Lumeçon : un combat ritualisé entre Saint-Georges à cheval et un dragon de 10 mètres. Inscrit à l'UNESCO, c'est l'un des événements les plus spectaculaires de Wallonie. Se déroule à la Trinité (mai/juin), avec procession religieuse, cortège historique et 3 jours de festivités."
+          }
+        },
+        {
+          "question": {
+            "fr": "Peut-on participer aux reconstitutions historiques comme figurant ?"
+          },
+          "answer": {
+            "fr": "Pour Waterloo et les grandes reconstitutions, il faut généralement être membre d'une association de reconstitution historique (uniformes, entraînement...). Mais vous pouvez souvent participer aux camps de bivouac, aux ateliers d'époque et à certaines scènes comme figurant civil. Renseignez-vous sur les sites officiels plusieurs mois à l'avance, car les places sont limitées."
+          }
+        },
+        {
+          "question": {
+            "fr": "Quels événements de cette liste sont gratuits ?"
+          },
+          "answer": {
+            "fr": "Gratuits : tous les carnavals (Stavelot, Malmedy, Binche), Doudou de Mons, Ducasse d'Ath, Marches folkloriques de l'Entre-Sambre-et-Meuse, Nuit des Coteaux à Huy. Payants : Médiévales de Bouillon (5-15€), reconstitution Waterloo (entrée variable), Festival Dour (pass festival), Festival du Rire (billets spectacles)."
+          }
+        },
+        {
+          "question": {
+            "fr": "Où trouver les dates exactes et mises à jour de tous ces événements ?"
+          },
+          "answer": {
+            "fr": "La plupart de ces événements ont des sites officiels ou des pages Facebook dédiées avec les dates annuelles. Pour une vue d'ensemble et des mises à jour régulières, consultez <a href=\"https://blinkr.events\">blinkr.events</a>, l'agenda complet des événements en Wallonie."
+          }
+        }
+      ]
+    },
+    {
+      "id": "cout-site-web-professionnel-2025-ia",
+      "slug": "cout-site-web-professionnel-2025-ia",
+      "title": {
+        "fr": "Combien coûte vraiment un site web professionnel en 2025 ? L'impact de l'IA",
+        "en": "How much does a professional website really cost in 2025? The impact of AI",
+        "ru": "Сколько на самом деле стоит профессиональный веб-сайт в 2025 году? Влияние ИИ"
+      },
+      "metaDescription": {
+        "fr": "Découvrez les vrais prix d'un site web professionnel en 2025 et comment l'intelligence artificielle révolutionne les coûts de création. Guide complet avec grille tarifaire transparente.",
+        "en": "Discover the real prices of a professional website in 2025 and how artificial intelligence is revolutionizing creation costs. Complete guide with transparent pricing grid.",
+        "ru": "Узнайте реальные цены на профессиональный веб-сайт в 2025 году и как искусственный интеллект революционизирует стоимость создания. Полное руководство с прозрачной ценовой сеткой."
+      },
+      "excerpt": {
+        "fr": "Site vitrine, e-commerce, landing page... Combien faut-il vraiment investir en 2025 ? Découvrez comment l'IA transforme les prix et ce que vous devez savoir avant de vous lancer.",
+        "en": "Showcase site, e-commerce, landing page... How much should you really invest in 2025? Discover how AI is transforming prices and what you need to know before getting started.",
+        "ru": "Сайт-витрина, электронная коммерция, целевая страница... Сколько действительно нужно инвестировать в 2025 году? Узнайте, как ИИ меняет цены и что вам нужно знать перед началом работы."
+      },
+      "image": "/assets/img/pc_website.webp",
+      "imageAlt": {
+        "fr": "Développeur travaillant sur la création d'un site web avec intelligence artificielle",
+        "en": "Developer working on website creation with artificial intelligence",
+        "ru": "Разработчик работает над созданием веб-сайта с искусственным интеллектом"
+      },
+      "author": "Eleazar Klyuvitkin",
+      "publishDate": "2025-12-21",
+      "updateDate": "2025-12-21",
+      "readingTime": 10,
+      "category": {
+        "fr": "Développement Web",
+        "en": "Web Development",
+        "ru": "Веб-разработка"
+      },
+      "tags": [
+        "prix site web",
+        "coût création site",
+        "tarif développeur web",
+        "intelligence artificielle",
+        "IA développement web",
+        "budget site internet",
+        "Hainaut"
+      ],
+      "relatedServices": [
+        "sites-web-sur-mesure",
+        "boutique-en-ligne-shopify"
+      ],
+      "content": {
+        "fr": [
+          {
+            "type": "paragraph",
+            "text": "Vous êtes artisan, commerçant ou entrepreneur dans le Hainaut et vous vous demandez combien coûte vraiment un site web professionnel en 2025 ? Entre les offres à 99€ et les devis à 10 000€, difficile de s'y retrouver. Dans cet article, je vous dévoile les vrais prix du marché et comment l'intelligence artificielle révolutionne les coûts de création."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "text": "Les différents types de sites web et leurs prix"
+          },
+          {
+            "type": "paragraph",
+            "text": "Avant de parler prix, il faut comprendre qu'il existe plusieurs types de sites web avec des besoins et des budgets très différents. Un site vitrine simple pour artisan ne nécessite pas le même investissement qu'une boutique e-commerce complète."
+          },
+          {
+            "type": "paragraph",
+            "text": "Le site vitrine simple entre 500€ et 1500€ convient parfaitement aux artisans, commerçants locaux et professions libérales du Hainaut qui souhaitent être visibles sur Internet. Il comprend généralement entre 5 et 10 pages avec un design responsive adapté aux mobiles, tablettes et ordinateurs, un formulaire de contact, une optimisation SEO de base et un hébergement professionnel sur Vercel, Netlify ou OVH."
+          },
+          {
+            "type": "paragraph",
+            "text": "Pour les PME et entreprises qui ont besoin d'un site plus élaboré, le site vitrine avancé entre 1500€ et 3500€ propose un design 100% sur mesure avec charte graphique personnalisée, entre 10 et 20 pages avec contenus riches, un blog intégré pour le référencement naturel, des formulaires avancés pour devis ou prise de rendez-vous, une optimisation SEO poussée, des animations modernes et une intégration complète des réseaux sociaux."
+          },
+          {
+            "type": "paragraph",
+            "text": "La landing page optimisée entre 400€ et 1200€ est une page unique ultra-ciblée conçue pour convertir un visiteur en client. Elle intègre un design percutant optimisé pour la conversion, des sections stratégiques avec bénéfices, témoignages, tarifs et FAQ, un système de réservation ou de contact, une optimisation SEO ciblée sur un mot-clé précis et un tracking analytics complet avec Google Analytics et Facebook Pixel."
+          },
+          {
+            "type": "paragraph",
+            "text": "Enfin, la boutique e-commerce entre 1800€ et 5000€ s'adresse aux créateurs, artisans et commerçants qui souhaitent vendre en ligne. Elle comprend une plateforme e-commerce complète sur Shopify, WooCommerce ou développée sur mesure, la configuration des moyens de paiement belges comme Bancontact et les cartes bancaires, la gestion des livraisons pour la Belgique et l'international, l'import des produits et catégories, l'optimisation SEO de chaque fiche produit et une formation complète à la gestion quotidienne de votre boutique."
+          },
+          {
+            "type": "cta",
+            "title": {
+              "fr": "Vous voulez connaître le prix exact de VOTRE projet ?"
+            },
+            "description": {
+              "fr": "Chaque projet est unique. Discutons de vos besoins et je vous proposerai un devis transparent adapté à votre budget."
+            },
+            "buttonText": {
+              "fr": "Demander un devis gratuit"
+            },
+            "subject": {
+              "fr": "Demande de devis - Site web professionnel"
+            }
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "text": "Les facteurs qui influencent le prix"
+          },
+          {
+            "type": "paragraph",
+            "text": "Pourquoi une telle variation de prix ? Plusieurs facteurs entrent en jeu dans le calcul du coût d'un site web. Le design constitue le premier élément déterminant. Un template adapté, c'est-à-dire un design pré-existant personnalisé à vos couleurs et votre logo, représente l'option la plus économique. En revanche, un design 100% sur mesure avec des maquettes Figma et une identité visuelle unique créée spécifiquement pour votre entreprise demande plus de temps et donc un investissement plus important."
+          },
+          {
+            "type": "paragraph",
+            "text": "Le nombre de pages et la quantité de contenu influencent directement le temps de développement. Un site de 5 pages ne mobilise pas les mêmes ressources qu'un site de 30 pages. Les fonctionnalités spécifiques représentent également un facteur significatif. L'ajout d'un formulaire de prise de rendez-vous en ligne, d'un système de réservation, d'un espace membre avec connexion, d'une carte interactive avec Mapbox ou Google Maps, d'une galerie photo et vidéo avancée, ou encore d'un site multilingue en français, anglais et néerlandais augmente le coût en fonction de la complexité technique."
+          },
+          {
+            "type": "paragraph",
+            "text": "L'optimisation SEO constitue un autre élément important. Le SEO technique de base qui comprend la structure du site, les balises meta et l'optimisation de la vitesse est généralement inclus dans mes tarifs. Pour un référencement plus poussé avec étude de mots-clés, rédaction de contenus optimisés et netlinking, il faut prévoir un budget supplémentaire entre 500€ et 2000€."
+          },
+          {
+            "type": "paragraph",
+            "text": "La création du contenu représente également une variable importante. Si vous fournissez vos propres textes et images, cela réduit considérablement le coût. La rédaction des textes par le développeur ajoute entre 300€ et 1000€, tandis que des photos professionnelles coûtent généralement entre 200€ et 800€ selon le photographe."
+          },
+          {
+            "type": "paragraph",
+            "text": "L'intégration de l'intelligence artificielle constitue le dernier facteur, et probablement le plus révolutionnaire en 2025. L'IA n'est plus réservée aux géants de la tech. Les petites entreprises peuvent désormais bénéficier de chatbots conversationnels pour un support client 24/7 qui répond aux questions fréquentes, de génération automatique de contenu et d'images pour créer des descriptions produits, de recommandations personnalisées qui suggèrent des produits selon le comportement utilisateur, d'analyse prédictive pour comprendre le comportement des visiteurs, et de rédaction assistée par IA pour générer des fiches produits et articles de blog optimisés SEO. L'impact sur les prix varie entre 300€ et 2000€ selon la complexité des fonctionnalités IA intégrées."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "text": "L'impact réel de l'IA sur les coûts en 2025"
+          },
+          {
+            "type": "paragraph",
+            "text": "Parlons franchement. L'intelligence artificielle n'est pas qu'un mot à la mode. Elle impacte réellement les coûts de création web en 2025 de trois façons majeures."
+          },
+          {
+            "type": "paragraph",
+            "text": "Premièrement, l'IA réduit les coûts de développement. Des outils comme Claude Code ou GitHub Copilot accélèrent l'écriture du code, le rendant plus rapide et avec moins d'erreurs. La génération automatique de designs avec Midjourney ou DALL-E permet de créer rapidement des premiers concepts visuels. La rédaction de contenu optimisé SEO assistée par IA comme ChatGPT ou Claude aide pour les textes de base. Au final, le temps de développement est réduit de 20 à 30%, et ces économies sont répercutées directement sur le prix final."
+          },
+          {
+            "type": "paragraph",
+            "text": "Deuxièmement, des fonctionnalités autrefois hors de prix deviennent abordables grâce à l'IA. Un chatbot intelligent coûte aujourd'hui entre 150€ et 400€, contre plus de 2000€ avant 2023. La traduction automatique multilingue offre désormais une qualité professionnelle à moindre coût. L'optimisation SEO en temps réel avec suggestions IA intégrées devient accessible. L'accessibilité s'améliore grâce aux descriptions automatiques d'images pour les personnes malvoyantes."
+          },
+          {
+            "type": "paragraph",
+            "text": "Troisièmement, la maintenance est facilitée. La détection automatique d'erreurs et de bugs intervient avant qu'ils n'impactent les utilisateurs. Des suggestions d'améliorations de performances basées sur l'analyse du trafic sont proposées automatiquement. Les mises à jour de sécurité assistées protègent votre site en continu. Résultat : les coûts de maintenance sont réduits sur le long terme."
+          },
+          {
+            "type": "table",
+            "headers": [
+              "Type de site",
+              "Sans IA (méthode traditionnelle)",
+              "Avec IA (2025)",
+              "Économie"
+            ],
+            "rows": [
+              [
+                "Site vitrine simple",
+                "600-1800€",
+                "500-1500€",
+                "-15%"
+              ],
+              [
+                "Site e-commerce",
+                "2200-5000€",
+                "1800-4200€",
+                "-18%"
+              ],
+              [
+                "+ Chatbot support client",
+                "+2000€",
+                "+200-400€",
+                "-80%"
+              ],
+              [
+                "+ Contenu SEO (10 articles)",
+                "+800€",
+                "+300€",
+                "-60%"
+              ],
+              [
+                "+ Traduction multilingue (3 langues)",
+                "+600€",
+                "+200€",
+                "-65%"
+              ]
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "Ces économies sont possibles grâce à l'IA utilisée comme assistant, pas comme remplacement du développeur. L'expertise humaine reste indispensable pour la qualité finale."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "text": "Comment j'utilise l'IA dans mes projets"
+          },
+          {
+            "type": "paragraph",
+            "text": "En tant que développeur freelance à Ath, j'ai fait le choix d'intégrer l'IA de façon intelligente dans mon processus de création. Soyons clairs sur ce que l'IA fait mieux que moi et ce que je fais mieux qu'elle."
+          },
+          {
+            "type": "paragraph",
+            "text": "L'IA excelle dans la génération rapide de variations de design, ce qui me permet de vous proposer plusieurs options visuelles en un temps record. Elle optimise le code pour la performance, garantissant des sites ultra-rapides. Elle traduit du contenu en plusieurs langues avec une cohérence remarquable. Elle rédige des premiers jets de textes SEO que je peaufine ensuite pour leur donner une touche humaine et personnelle. Elle détecte automatiquement les bugs et failles de sécurité avant même qu'ils ne posent problème."
+          },
+          {
+            "type": "paragraph",
+            "text": "En revanche, mon expertise humaine reste irremplaçable pour comprendre vos besoins spécifiques et votre métier en profondeur. Je crée une identité visuelle unique qui vous ressemble vraiment. J'assure la cohérence de votre marque sur tous les supports de communication. Je garantis la sécurité et la conformité RGPD pour protéger vos données et celles de vos clients. Je vous forme personnellement à l'utilisation de votre site. Surtout, je vous conseille stratégiquement sur quelle fonctionnalité prioriser et quel budget allouer pour maximiser votre retour sur investissement."
+          },
+          {
+            "type": "paragraph",
+            "text": "Le résultat final ? Des sites plus abordables, livrés plus rapidement, sans aucun compromis sur la qualité et la personnalisation. C'est précisément cette combinaison d'efficacité technologique et d'expertise humaine qui fait la différence."
+          },
+          {
+            "type": "cta",
+            "title": {
+              "fr": "Discutons de votre projet web"
+            },
+            "description": {
+              "fr": "Profitez de la révolution IA pour obtenir un site professionnel à prix maîtrisé. Devis gratuit et sans engagement."
+            },
+            "buttonText": {
+              "fr": "Obtenir mon devis personnalisé"
+            },
+            "subject": {
+              "fr": "Demande de devis - Projet web avec IA"
+            }
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "text": "Attention aux offres trompeuses"
+          },
+          {
+            "type": "paragraph",
+            "text": "Avec l'engouement pour l'IA, de nombreuses offres trompeuses fleurissent sur Internet. Il faut savoir les identifier pour éviter les déconvenues. Les sites créés par IA en 5 minutes à 99€ ne sont que des templates génériques sans aucune personnalisation. Le contenu généré automatiquement produit des textes de mauvaise qualité, non optimisés pour votre activité spécifique. Les promesses d'aucune compétence technique requise signifient en réalité aucun accompagnement, vous laissant complètement livré à vous-même. La mise en ligne immédiate cache souvent des problèmes de sécurité, une non-conformité RGPD et des bugs non résolus. Les abonnements à vie se terminent généralement par un site abandonné après 3 mois ou une plateforme qui ferme sans préavis."
+          },
+          {
+            "type": "paragraph",
+            "text": "Un site professionnel en 2025 résulte de la combinaison entre IA et expertise humaine. L'IA est un outil puissant, mais elle ne remplace pas la compréhension approfondie de votre métier et de vos clients. Elle ne peut pas égaler la créativité et l'originalité d'un design pensé par un humain. Elle ne fournit pas le conseil stratégique nécessaire pour décider quelle fonctionnalité prioriser ou comment convertir vos visiteurs. Elle ne remplace pas le support technique personnalisé quand vous avez une question urgente. Enfin, elle ne peut pas créer cette relation de confiance essentielle entre client et développeur."
+          },
+          {
+            "type": "paragraph",
+            "text": "Mon engagement reste clair : l'IA me permet de vous livrer un meilleur site, plus vite, à moindre coût. C'est gagnant-gagnant pour vous et moi, mais sans jamais sacrifier la qualité ni la personnalisation qui font qu'un site vous ressemble vraiment."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "text": "Les coûts récurrents à prévoir"
+          },
+          {
+            "type": "paragraph",
+            "text": "Au-delà du prix de création initial, plusieurs frais récurrents sont à anticiper pour maintenir votre site en ligne et performant."
+          },
+          {
+            "type": "paragraph",
+            "text": "Le nom de domaine représente votre adresse web, par exemple votre-entreprise.be. Il coûte entre 10€ et 30€ par an selon l'extension choisie, que ce soit .be, .com ou .fr. Le renouvellement annuel est obligatoire pour conserver votre nom."
+          },
+          {
+            "type": "paragraph",
+            "text": "L'hébergement web varie considérablement selon la solution choisie. Pour les sites vitrines, j'utilise des hébergements modernes comme Vercel ou Netlify qui sont gratuits grâce à leurs offres généreuses. L'hébergement classique sur OVH ou Infomaniak coûte entre 40€ et 150€ par an selon les performances souhaitées. Pour l'e-commerce sur Shopify, il faut compter à partir de 29€ par mois, soit 348€ par an. Le bon plan à retenir : avec les sites vitrines sur hébergements modernes gratuits et ultra-performants, vous ne payez que le nom de domaine."
+          },
+          {
+            "type": "paragraph",
+            "text": "La maintenance et les mises à jour dépendent de la complexité de votre site. Un site vitrine simple nécessite entre 0€ et 200€ par an pour les mises à jour occasionnelles et la sécurité. Un e-commerce ou un site complexe demande entre 300€ et 800€ par an pour les mises à jour régulières, les sauvegardes et le monitoring. Je propose des contrats de maintenance adaptés à vos besoins, mais ce n'est jamais obligatoire."
+          },
+          {
+            "type": "paragraph",
+            "text": "Le certificat SSL pour la sécurité HTTPS est indispensable pour sécuriser votre site et rassurer vos visiteurs. Avec les hébergements modernes, il est gratuit et automatique grâce à Let's Encrypt. Avec les hébergements classiques, il est souvent inclus, sinon il faut prévoir entre 50€ et 150€ par an."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "text": "Grille tarifaire complète"
+          },
+          {
+            "type": "paragraph",
+            "text": "Voici un tableau récapitulatif transparent de mes tarifs en tant que développeur freelance dans le Hainaut. Ces prix incluent la conception, le design, le développement, la mise en ligne, la formation de base et un mois de support gratuit."
+          },
+          {
+            "type": "table",
+            "headers": [
+              "Type de site",
+              "Prix avec IA",
+              "Délai",
+              "Idéal pour"
+            ],
+            "rows": [
+              [
+                "Site vitrine simple\n5-10 pages",
+                "500€ - 1500€",
+                "2-3 semaines",
+                "Artisan, commerçant local, profession libérale"
+              ],
+              [
+                "Site vitrine avancé\n10-20 pages, design sur mesure",
+                "1500€ - 3500€",
+                "3-5 semaines",
+                "PME, entreprise établie"
+              ],
+              [
+                "Landing page\n1 page ultra-optimisée",
+                "400€ - 1200€",
+                "1-2 semaines",
+                "Lancement produit, campagne marketing"
+              ],
+              [
+                "Boutique e-commerce\nShopify ou sur mesure",
+                "1800€ - 5000€+",
+                "4-8 semaines",
+                "Créateur, artisan, commerçant en ligne"
+              ],
+              [
+                "Options IA",
+                "",
+                "",
+                ""
+              ],
+              [
+                "+ Chatbot IA",
+                "+200€ - 400€",
+                "+3 jours",
+                "Support client automatisé 24/7"
+              ],
+              [
+                "+ Rédaction IA (10 articles SEO)",
+                "+300€",
+                "+1 semaine",
+                "Blog, référencement naturel"
+              ],
+              [
+                "+ Traduction multilingue IA",
+                "+200€",
+                "+3 jours",
+                "Site FR/EN/NL"
+              ]
+            ]
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "text": "Pourquoi choisir un développeur local"
+          },
+          {
+            "type": "paragraph",
+            "text": "Vous pourriez être tenté par des plateformes en ligne ou des agences lointaines. Pourtant, un développeur freelance local comme moi dans le Hainaut présente des avantages concrets et tangibles qui font vraiment la différence au quotidien."
+          },
+          {
+            "type": "paragraph",
+            "text": "La relation de proximité permet des rendez-vous en personne à Ath, Tournai ou Leuze-en-Hainaut pour discuter de votre projet autour d'un café. La communication directe signifie que vous parlez directement au développeur qui crée votre site, pas à un commercial qui transmet ensuite vos demandes. Ma connaissance du marché local me permet de comprendre les spécificités du Hainaut et de la Belgique, ce qui se reflète dans les solutions que je propose. La réactivité devient concrète avec une intervention rapide en cas de problème ou de question urgente."
+          },
+          {
+            "type": "paragraph",
+            "text": "Les tarifs transparents éliminent les frais cachés ou la structure coûteuse d'une agence. La TVA belge garantit une facture parfaitement conforme pour votre comptabilité. La formation personnalisée vous apprend à gérer votre site en autonomie, vous rendant indépendant pour les modifications courantes."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "text": "Questions fréquentes"
+          },
+          {
+            "type": "paragraph",
+            "text": "Pourquoi certains sites coûtent 99€ et d'autres 5000€ ? Les offres à 99€ proposent généralement des templates génériques que vous devez configurer vous-même, sans accompagnement ni personnalisation. Un site professionnel sur mesure implique l'analyse de vos besoins, un design personnalisé, le développement technique, des tests approfondis, la mise en ligne et une formation complète. C'est précisément ce processus complet qui justifie la différence de prix et la valeur ajoutée pour votre entreprise."
+          },
+          {
+            "type": "paragraph",
+            "text": "L'IA va-t-elle remplacer les développeurs web ? Non, absolument pas. L'IA est un outil puissant, mais elle ne remplace pas la compréhension approfondie de votre métier, la créativité dans le design, le conseil stratégique pour prioriser les fonctionnalités, le support technique personnalisé et la relation de confiance entre client et développeur. L'IA me permet simplement de vous livrer un meilleur site, plus vite et à moindre coût. C'est une collaboration gagnant-gagnant entre technologie et expertise humaine."
+          },
+          {
+            "type": "paragraph",
+            "text": "Mon site aura-t-il l'air généré par IA ? Absolument pas. J'utilise l'IA comme assistant pour les tâches répétitives comme l'optimisation de code ou les traductions, mais chaque site reste personnalisé selon votre identité, vos couleurs et vos valeurs. Je me concentre sur ce qui rend votre site unique et reconnaissable entre mille."
+          },
+          {
+            "type": "paragraph",
+            "text": "Puis-je payer en plusieurs fois ? Oui, bien sûr. Pour les projets de plus de 1000€, je propose un paiement en trois fois : 30% à la commande pour lancer le projet, 40% à mi-parcours quand les maquettes sont validées, et 30% à la livraison finale. Ce système permet d'étaler l'investissement tout en suivant l'avancement concret du projet."
+          },
+          {
+            "type": "paragraph",
+            "text": "Combien de temps faut-il pour créer un site web ? Un site vitrine simple prend entre 2 et 3 semaines. Un site vitrine avancé nécessite entre 3 et 5 semaines. Un site e-commerce demande entre 4 et 8 semaines selon la complexité. Ces délais peuvent varier selon votre réactivité dans la fourniture des contenus et validations, ainsi que selon mes disponibilités au moment où vous me contactez."
+          },
+          {
+            "type": "paragraph",
+            "text": "Dois-je fournir les textes et les photos ? C'est préférable pour réduire les coûts, mais ce n'est absolument pas obligatoire. Je peux rédiger les textes avec l'aide de l'IA, que je relis et personnalise ensuite humainement, pour un supplément entre 300€ et 800€. J'utilise aussi des banques d'images professionnelles gratuites comme Unsplash ou Pexels. Si vous préférez des photos vraiment uniques, je peux vous recommander des photographes locaux de confiance pour des photos sur mesure."
+          },
+          {
+            "type": "paragraph",
+            "text": "Que se passe-t-il si je veux modifier mon site après sa création ? Deux options s'offrent à vous. Pour les modifications simples comme les textes et les images, je vous forme pendant la livraison pour que vous puissiez les faire vous-même gratuitement et en toute autonomie. Pour les modifications complexes comme l'ajout de nouvelles fonctionnalités ou de pages entières, je vous facture au temps passé, soit avec un tarif horaire soit avec un forfait selon l'ampleur des changements demandés."
+          },
+          {
+            "type": "paragraph",
+            "text": "Est-ce que mon site sera bien référencé sur Google ? Tous mes sites incluent une optimisation SEO technique de base qui comprend la structure du site, les balises meta, la vitesse de chargement et le responsive design. Pour un référencement naturel vraiment poussé qui vous place en première page Google sur des mots-clés concurrentiels, il faut prévoir un budget supplémentaire pour la rédaction de contenus optimisés de qualité et du netlinking avec des sites de confiance."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "text": "Investir intelligemment en 2025"
+          },
+          {
+            "type": "paragraph",
+            "text": "Créer un site web professionnel en 2025 n'a jamais été aussi accessible grâce à l'intelligence artificielle. Les coûts ont baissé, les délais se sont raccourcis, mais la qualité ne doit jamais être sacrifiée. C'est cette triple promesse de prix abordables, de rapidité de livraison et d'excellence qui définit aujourd'hui un bon projet web."
+          },
+          {
+            "type": "paragraph",
+            "text": "Que vous soyez artisan, commerçant ou entrepreneur dans le Hainaut, vous méritez un site qui reflète votre identité et vos valeurs. Un site qui attire de nouveaux clients via Google grâce à un bon référencement naturel. Un site qui se charge rapidement sur tous les appareils, offrant une expérience utilisateur fluide. Un site qui respecte votre budget sans frais cachés ni mauvaises surprises. Un site qui évolue avec votre activité au fil du temps."
+          },
+          {
+            "type": "paragraph",
+            "text": "Mon conseil final reste simple : ne choisissez pas le site le moins cher, choisissez le meilleur rapport qualité-prix avec un développeur de confiance qui comprend vraiment vos besoins et votre métier. C'est cet investissement réfléchi qui fera la différence entre un site qui existe et un site qui performe vraiment pour votre entreprise."
+          },
+          {
+            "type": "cta",
+            "title": {
+              "fr": "Prêt à lancer votre site web professionnel ?"
+            },
+            "description": {
+              "fr": "Discutons de votre projet autour d'un café ou en visio. Devis gratuit, transparent et sans engagement. Profitez de la révolution IA pour un site moderne à prix maîtrisé."
+            },
+            "buttonText": {
+              "fr": "Demander mon devis personnalisé"
+            },
+            "subject": {
+              "fr": "Demande de devis - Site web professionnel 2025"
+            }
+          },
+          {
+            "type": "paragraph",
+            "text": "Contactez-moi au <a href=\"tel:+32485700737\">+32 485 700 737</a> ou par email à <a href=\"mailto:eleazar@kltk.be\">eleazar@kltk.be</a>."
+          },
+          {
+            "type": "paragraph",
+            "text": "Zone d'intervention : Ath, Tournai, Leuze-en-Hainaut, Lessines, Frasnes-lez-Anvaing et tout le Hainaut occidental."
+          }
+        ]
+      },
+      "faq": [
+        {
+          "question": {
+            "fr": "Pourquoi certains sites coûtent 99€ et d'autres 5000€ ?"
+          },
+          "answer": {
+            "fr": "Les offres à 99€ sont des templates génériques sans personnalisation ni accompagnement. Un site professionnel sur mesure implique : analyse de vos besoins, design personnalisé, développement, tests, mise en ligne, formation. C'est ce qui justifie la différence de prix."
+          }
+        },
+        {
+          "question": {
+            "fr": "L'IA va-t-elle remplacer les développeurs web ?"
+          },
+          "answer": {
+            "fr": "Non. L'IA est un outil puissant, mais elle ne remplace pas la compréhension de votre métier, la créativité, le conseil stratégique, le support personnalisé et la relation de confiance. L'IA me permet de livrer un meilleur site, plus vite, à moindre coût."
+          }
+        },
+        {
+          "question": {
+            "fr": "Mon site aura-t-il l'air généré par IA ?"
+          },
+          "answer": {
+            "fr": "Non. J'utilise l'IA comme assistant, pas comme remplacement. Chaque site est personnalisé selon votre identité, vos couleurs, vos valeurs. L'IA m'aide sur les tâches répétitives, je me concentre sur ce qui rend votre site unique."
+          }
+        },
+        {
+          "question": {
+            "fr": "Puis-je payer en plusieurs fois ?"
+          },
+          "answer": {
+            "fr": "Oui. Pour les projets de plus de 1000€, je propose : 30% à la commande, 40% à mi-parcours, 30% à la livraison. Cela permet d'étaler l'investissement."
+          }
+        },
+        {
+          "question": {
+            "fr": "Combien de temps faut-il pour créer un site web ?"
+          },
+          "answer": {
+            "fr": "Site vitrine simple : 2-3 semaines. Site avancé : 3-5 semaines. E-commerce : 4-8 semaines. Ces délais varient selon votre réactivité et mes disponibilités."
           }
         }
       ]
