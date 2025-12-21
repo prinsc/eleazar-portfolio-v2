@@ -58,6 +58,10 @@
 		<h2>{t.sections.intellectualProperty.title[lang]}</h2>
 		<p>{t.sections.intellectualProperty.content1[lang]}</p>
 		<p>{t.sections.intellectualProperty.content2[lang]}</p>
+		<p>
+			{t.sections.intellectualProperty.images[lang]}
+			<a href="https://unsplash.com" target="_blank" rel="noopener noreferrer">Unsplash</a>.
+		</p>
 	</section>
 
 	<!-- 5. Protection des données -->

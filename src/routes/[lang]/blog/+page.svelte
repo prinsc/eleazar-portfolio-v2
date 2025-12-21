@@ -59,6 +59,15 @@
 		en: 'min read',
 		ru: 'мин чтения'
 	};
+
+	const languageWarning = {
+		fr: null, // Pas de message pour le français
+		en: 'Most articles are only available in French. We are working on translations.',
+		ru: 'Большинство статей доступны только на французском языке. Мы работаем над переводами.'
+	};
+
+	// Vérifier si la langue actuelle a des traductions limitées
+	let hasLimitedTranslations = $derived($settings.lang !== 'fr');
 </script>
 
 <MetaTags
@@ -99,19 +108,41 @@
 			<p class="intro">{introText[$settings.lang]}</p>
 		</header>
 
+		{#if hasLimitedTranslations && languageWarning[$settings.lang]}
+			<div class="language-warning" role="alert">
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					width="20"
+					height="20"
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="2"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					aria-hidden="true"
+				>
+					<circle cx="12" cy="12" r="10"></circle>
+					<line x1="12" y1="8" x2="12" y2="12"></line>
+					<line x1="12" y1="16" x2="12.01" y2="16"></line>
+				</svg>
+				<p>{languageWarning[$settings.lang]}</p>
+			</div>
+		{/if}
+
 		<section class="blog-grid" aria-label="Liste des articles">
 			{#each articles as article}
 				<article class="article-card grain">
 					<button
 						class="article-link"
 						onclick={() => goToArticle(article.slug)}
-						aria-label="Lire l'article {article.title[$settings.lang]}"
+						aria-label="Lire l'article {article.title[$settings.lang] || article.title.fr}"
 					>
 						{#if article.image}
 							<div class="article-image">
 								<img
 									src={article.image}
-									alt={article.imageAlt[$settings.lang] || article.title[$settings.lang]}
+									alt={article.imageAlt[$settings.lang] || article.imageAlt?.fr || article.title[$settings.lang] || article.title.fr}
 									loading="lazy"
 								/>
 							</div>
@@ -129,9 +160,9 @@
 								</span>
 							</div>
 
-							<h2>{article.title[$settings.lang]}</h2>
+							<h2>{article.title[$settings.lang] || article.title.fr}</h2>
 
-							<p class="excerpt">{article.excerpt[$settings.lang]}</p>
+							<p class="excerpt">{article.excerpt[$settings.lang] || article.excerpt.fr}</p>
 
 							{#if article.tags && article.tags.length > 0}
 								<div class="tags">
@@ -202,6 +233,30 @@
 			@include breakpoint('small') {
 				font-size: 1.25rem;
 			}
+		}
+	}
+
+	.language-warning {
+		display: flex;
+		align-items: flex-start;
+		gap: 0.75rem;
+		padding: 1rem 1.25rem;
+		margin: 1.5rem 0;
+		background: rgba(255, 193, 7, 0.1);
+		border-left: 4px solid #ffc107;
+		border-radius: 4px;
+		font-size: 0.95rem;
+		line-height: 1.5;
+		color: var(--color-text);
+
+		svg {
+			flex-shrink: 0;
+			margin-top: 0.1rem;
+			color: #ffc107;
+		}
+
+		p {
+			margin: 0;
 		}
 	}
 

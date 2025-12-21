@@ -11,6 +11,7 @@
 	import blogData from '$lib/content/data_blog.json';
 
 	let isReady = $state(false);
+	let activeHeadingId = $state('');
 
 	// Utilisez $derived pour les valeurs calculées
 	let article = $derived(blogData.articles.find((a) => a.slug === $page.params.slug));
@@ -21,10 +22,74 @@
 			: []
 	);
 
+	// Extraire les headings pour la table des matières
+	let headings = $derived.by(() => {
+		if (!article) return [];
+
+		// Utiliser le contenu dans la langue actuelle ou français par défaut
+		const content = article.content[$settings.lang] || article.content.fr || [];
+		let headingIndex = 0;
+		return content
+			.map((block, index) => {
+				if (block.type === 'heading') {
+					const heading = {
+						id: `heading-${headingIndex}`,
+						text: block.text,
+						level: block.level,
+						contentIndex: index
+					};
+					headingIndex++;
+					return heading;
+				}
+				return null;
+			})
+			.filter(Boolean);
+	});
+
 	onMount(async () => {
 		isReady = false;
 		await new Promise((resolve) => setTimeout(resolve, 100));
 		isReady = true;
+
+		// Observer pour détecter quel heading est actuellement visible
+		const observerOptions = {
+			rootMargin: '-120px 0px -60% 0px',
+			threshold: [0, 0.25, 0.5, 0.75, 1]
+		};
+
+		let visibleHeadings = new Set();
+
+		const observer = new IntersectionObserver((entries) => {
+			entries.forEach((entry) => {
+				if (entry.isIntersecting) {
+					visibleHeadings.add(entry.target.id);
+				} else {
+					visibleHeadings.delete(entry.target.id);
+				}
+			});
+
+			// Prendre le premier heading visible
+			if (visibleHeadings.size > 0) {
+				// Trouver le heading le plus haut dans la page
+				const headingElements = Array.from(visibleHeadings)
+					.map((id) => document.getElementById(id))
+					.filter(Boolean)
+					.sort((a, b) => a.getBoundingClientRect().top - b.getBoundingClientRect().top);
+
+				if (headingElements.length > 0) {
+					activeHeadingId = headingElements[0].id;
+				}
+			}
+		}, observerOptions);
+
+		// Attendre que les headings soient rendus
+		setTimeout(() => {
+			document.querySelectorAll('.article-body h2, .article-body h3').forEach((heading) => {
+				observer.observe(heading);
+			});
+		}, 200);
+
+		return () => observer.disconnect();
 	});
 
 	const readingTimeText = {
@@ -95,18 +160,51 @@
 		return structuredData;
 	};
 
+	let headingCounter = 0;
+
 	function renderContent(contentBlock) {
 		switch (contentBlock.type) {
 			case 'paragraph':
 				return `<p>${contentBlock.text}</p>`;
 			case 'heading':
-				return `<h${contentBlock.level}>${contentBlock.text}</h${contentBlock.level}>`;
+				const id = `heading-${headingCounter}`;
+				headingCounter++;
+				return `<h${contentBlock.level} id="${id}">${contentBlock.text}</h${contentBlock.level}>`;
 			case 'list':
 				return `<ul>${contentBlock.items.map((item) => `<li>${item}</li>`).join('')}</ul>`;
 			default:
 				return '';
 		}
 	}
+
+	function scrollToHeading(id) {
+		const element = document.getElementById(id);
+		if (element) {
+			const yOffset = -100; // Offset pour éviter que le titre soit caché sous le header
+			const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+			window.scrollTo({ top: y, behavior: 'smooth' });
+		}
+	}
+
+	const tocTitle = {
+		fr: 'Sommaire',
+		en: 'Table of Contents',
+		ru: 'Содержание'
+	};
+
+	const languageWarning = {
+		fr: null, // Pas de message pour le français
+		en: 'This article is only available in French. We are working on translations.',
+		ru: 'Эта статья доступна только на французском языке. Мы работаем над переводами.'
+	};
+
+	// Vérifier si l'article a du contenu dans la langue actuelle
+	let hasContentInCurrentLang = $derived(
+		article && article.content && article.content[$settings.lang]
+	);
+	let showLanguageWarning = $derived(
+		article && $settings.lang !== 'fr' && !hasContentInCurrentLang
+	);
 </script>
 
 <svelte:head>
@@ -136,7 +234,12 @@
 		</div>
 	</PageContent>
 {:else}
-	<PageContent>
+	<PageContent
+		toc={headings}
+		tocTitle={tocTitle[$settings.lang]}
+		{activeHeadingId}
+		onHeadingClick={scrollToHeading}
+	>
 		<nav aria-label="Breadcrumb">
 			<button class="back-button" onclick={goBack} aria-label="Retour au blog">
 				<span class="icon" aria-hidden="true">
@@ -155,6 +258,28 @@
 		</nav>
 
 		<article class="blog-article">
+			{#if showLanguageWarning && languageWarning[$settings.lang]}
+				<div class="language-warning" role="alert">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						width="20"
+						height="20"
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						aria-hidden="true"
+					>
+						<circle cx="12" cy="12" r="10"></circle>
+						<line x1="12" y1="8" x2="12" y2="12"></line>
+						<line x1="12" y1="16" x2="12.01" y2="16"></line>
+					</svg>
+					<p>{languageWarning[$settings.lang]}</p>
+				</div>
+			{/if}
+
 			<header class="article-header">
 				<div class="article-meta">
 					<span class="date">
@@ -195,7 +320,8 @@
 			</header>
 
 			<div class="article-body">
-				{#each article.content[$settings.lang] as contentBlock}
+				{#each article.content[$settings.lang] || article.content.fr || [] as contentBlock, index}
+					{#if index === 0}{((headingCounter = 0), '')}{/if}
 					{@html renderContent(contentBlock)}
 				{/each}
 			</div>
@@ -285,9 +411,28 @@
 		}
 	}
 
-	.blog-article {
-		max-width: 800px;
-		margin: 0 auto;
+	.language-warning {
+		display: flex;
+		align-items: flex-start;
+		gap: 0.75rem;
+		padding: 1rem 1.25rem;
+		margin-bottom: 2rem;
+		background: rgba(255, 193, 7, 0.1);
+		border-left: 4px solid #ffc107;
+		border-radius: 4px;
+		font-size: 0.95rem;
+		line-height: 1.5;
+		color: var(--color-text);
+
+		svg {
+			flex-shrink: 0;
+			margin-top: 0.1rem;
+			color: #ffc107;
+		}
+
+		p {
+			margin: 0;
+		}
 	}
 
 	.article-header {
@@ -331,19 +476,13 @@
 
 		.featured-image {
 			width: 100%;
-			height: 400px;
 			border-radius: 8px;
 			overflow: hidden;
 			margin-top: 2rem;
 
-			@include breakpoint('small') {
-				height: 500px;
-			}
-
 			img {
 				width: 100%;
-				height: 100%;
-				object-fit: cover;
+				object-fit: contain;
 			}
 		}
 	}
@@ -441,6 +580,7 @@
 			border-radius: 8px;
 			padding: 1rem;
 			cursor: pointer;
+			overflow: hidden;
 
 			summary {
 				font-weight: 600;

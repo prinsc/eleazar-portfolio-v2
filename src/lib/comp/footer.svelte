@@ -52,7 +52,7 @@
 				text-decoration: underline;
 			}
 			.legal {
-				font-size: 0.85rem;
+				font-size: var(--typo-comment);
 				opacity: 0.6;
 				margin: 0.25rem 0;
 			}

@@ -33,11 +33,14 @@ export const GET: RequestHandler = async () => {
             changefreq: 'weekly'
         })),
         ...languages.flatMap(lang =>
-            blogData.articles.map(article => ({
-                path: `/${lang}/blog/${article.slug}`,
-                priority: '0.8',
-                changefreq: 'monthly'
-            }))
+            blogData.articles
+                // Ne référencer que les articles qui ont du contenu dans cette langue
+                .filter(article => article.content && article.content[lang])
+                .map(article => ({
+                    path: `/${lang}/blog/${article.slug}`,
+                    priority: '0.8',
+                    changefreq: 'monthly'
+                }))
         ),
         ...languages.map(lang => ({
             path: `/${lang}/legal`,
@@ -49,19 +52,45 @@ export const GET: RequestHandler = async () => {
     const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
-${pages.map(page => `	<url>
+${pages.map(page => {
+        // Déterminer les langues disponibles pour cette page
+        const availableLanguages = (() => {
+            // Pour les articles de blog, vérifier si le contenu existe dans chaque langue
+            const blogMatch = page.path.match(/^\/(fr|en|ru)\/blog\/(.+)$/);
+            if (blogMatch) {
+                const slug = blogMatch[2];
+                const article = blogData.articles.find(a => a.slug === slug);
+                if (article) {
+                    return languages.filter(lang => article.content && article.content[lang]);
+                }
+            }
+            // Pour les autres pages, toutes les langues sont disponibles
+            return languages;
+        })();
+
+        // Générer les liens hreflang uniquement pour les langues disponibles
+        const hreflangLinks = availableLanguages.map(lang => {
+            const altPath = page.path === ''
+                ? `/${lang}`
+                : page.path.replace(/^\/(fr|en|ru)/, `/${lang}`);
+            return `		<xhtml:link rel="alternate" hreflang="${lang}" href="${site}${altPath}" />`;
+        }).join('\n');
+
+        // x-default pointe toujours vers le français si disponible, sinon la première langue disponible
+        const defaultLang = availableLanguages.includes('fr') ? 'fr' : availableLanguages[0];
+        const defaultPath = page.path === ''
+            ? `/${defaultLang}`
+            : page.path.replace(/^\/(fr|en|ru)/, `/${defaultLang}`);
+
+        return `	<url>
 		<loc>${site}${page.path}</loc>
 		<lastmod>${lastmod}</lastmod>
 		<changefreq>${page.changefreq}</changefreq>
 		<priority>${page.priority}</priority>
-		<xhtml:link rel="alternate" hreflang="x-default" href="${site}${page.path === '' ? '/fr' : page.path.replace(/^\/(en|ru)/, '/fr')}" />
-${languages.map(lang => {
-        const altPath = page.path === ''
-            ? `/${lang}`
-            : page.path.replace(/^\/(fr|en|ru)/, `/${lang}`);
-        return `		<xhtml:link rel="alternate" hreflang="${lang}" href="${site}${altPath}" />`;
+		<xhtml:link rel="alternate" hreflang="x-default" href="${site}${defaultPath}" />
+${hreflangLinks}
+	</url>`;
     }).join('\n')}
-	</url>`).join('\n')}
 </urlset>`;
 
     const response = new Response(xml);

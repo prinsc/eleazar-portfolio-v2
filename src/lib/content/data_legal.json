@@ -101,6 +101,11 @@
         "fr": "Toute reproduction, distribution, modification, adaptation, retransmission ou publication de ces différents éléments est strictement interdite sans l'accord écrit d'Eléazar Klyuvitkin.",
         "en": "Any reproduction, distribution, modification, adaptation, retransmission or publication of these various elements is strictly prohibited without the written consent of Eléazar Klyuvitkin.",
         "ru": "Любое воспроизведение, распространение, модификация, адаптация, ретрансляция или публикация этих различных элементов строго запрещены без письменного согласия Елизар Клювиткин."
+      },
+      "images": {
+        "fr": "Les images utilisées sur ce site proviennent de",
+        "en": "The images used on this site are from",
+        "ru": "Изображения, используемые на этом сайте, взяты из"
       }
     },
     "dataProtection": {

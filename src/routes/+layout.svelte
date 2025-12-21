@@ -8,8 +8,8 @@
 	let { children } = $props();
 
 	let color = $state({ r: 0, g: 0, b: 0 });
-	let speed = $state(0.0002);
-	let scale = $state(8.5);
+	let speed = $state(0.0001);
+	let scale = $state(6.5);
 
 	// Observe le store `settings`
 	$effect(() => {
@@ -47,7 +47,7 @@
 		height: 100%;
 		z-index: -1;
 		pointer-events: none;
-		opacity: 0.3;
+		opacity: 0.1;
 		&::after {
 			content: '';
 			position: absolute;
