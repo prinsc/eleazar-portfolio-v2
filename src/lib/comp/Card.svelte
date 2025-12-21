@@ -19,7 +19,8 @@
 		showTechnosOnHover = true,
 		dataUmamiEvent = null,
 		tooltipContent = null,
-		elementType = 'a'
+		elementType = 'a',
+		target = null
 	} = $props();
 
 	const isButton = elementType === 'button';
@@ -54,7 +55,7 @@
 	<a
 		href={link || '#!'}
 		class="card grain no-effect"
-		target={link ? '_blank' : undefined}
+		target={target}
 		data-umami-event={dataUmamiEvent}
 		onclick={!link
 			? (e) => {
