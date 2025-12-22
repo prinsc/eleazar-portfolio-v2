@@ -122,24 +122,32 @@
 	const getStructuredData = () => {
 		if (!article) return null;
 
+		// Fonction pour formater les dates avec fuseau horaire
+		const formatDateWithTimezone = (dateString) => {
+			const date = new Date(dateString);
+			// Format ISO 8601 avec fuseau horaire Europe/Brussels (UTC+1/+2)
+			return date.toISOString();
+		};
+
 		const structuredData = {
 			'@context': 'https://schema.org',
 			'@type': 'BlogPosting',
 			headline: article.title[$settings.lang],
 			description: article.metaDescription[$settings.lang],
 			image: article.image,
-			datePublished: article.publishDate,
-			dateModified: article.lastModified || article.publishDate,
+			datePublished: formatDateWithTimezone(article.publishDate),
+			dateModified: formatDateWithTimezone(article.lastModified || article.publishDate),
 			author: {
 				'@type': 'Person',
-				name: article.author || 'Freelance Web'
+				name: article.author || 'Eléazar Klyuvitkin',
+				url: 'https://kltk.be'
 			},
 			publisher: {
 				'@type': 'Organization',
-				name: 'Freelance Web',
+				name: 'Eléazar Klyuvitkin - Services Web & Design',
 				logo: {
 					'@type': 'ImageObject',
-					url: 'https://kltk.be/favicon-32x32.png'
+					url: 'https://kltk.be/favicon.svg'
 				}
 			}
 		};

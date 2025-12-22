@@ -35,6 +35,7 @@
 		},
 		address: {
 			'@type': 'PostalAddress',
+			streetAddress: 'Route de Frasnes 180',
 			addressLocality: 'Mainvault',
 			addressRegion: 'Hainaut',
 			postalCode: '7812',
@@ -65,13 +66,52 @@
 			'https://www.linkedin.com/in/eléazar-k-235246243',
 			'https://www.behance.net/prinss'
 		],
-		serviceType: [
-			'Développement Web',
-			'Design Graphique',
-			'E-commerce Shopify',
-			'Formation Web',
-			'Assistance Technique'
-		]
+		hasOfferCatalog: {
+			'@type': 'OfferCatalog',
+			name: 'Services Web & Design',
+			itemListElement: [
+				{
+					'@type': 'Offer',
+					itemOffered: {
+						'@type': 'Service',
+						name: 'Développement Web',
+						description: 'Création de sites web sur mesure et applications web'
+					}
+				},
+				{
+					'@type': 'Offer',
+					itemOffered: {
+						'@type': 'Service',
+						name: 'Design Graphique',
+						description: 'Création d\'identité visuelle et design graphique'
+					}
+				},
+				{
+					'@type': 'Offer',
+					itemOffered: {
+						'@type': 'Service',
+						name: 'E-commerce Shopify',
+						description: 'Développement de boutiques en ligne Shopify'
+					}
+				},
+				{
+					'@type': 'Offer',
+					itemOffered: {
+						'@type': 'Service',
+						name: 'Formation Web',
+						description: 'Formation aux technologies web et outils digitaux'
+					}
+				},
+				{
+					'@type': 'Offer',
+					itemOffered: {
+						'@type': 'Service',
+						name: 'Assistance Technique',
+						description: 'Support technique et maintenance web'
+					}
+				}
+			]
+		}
 	};
 
 	// Normaliser title et description
