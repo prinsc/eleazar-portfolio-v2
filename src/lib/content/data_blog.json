@@ -1,6 +1,317 @@
 {
   "articles": [
     {
+      "id": "creation-site-internet-ath",
+      "slug": "creation-site-internet-ath",
+      "title": {
+        "fr": "Création Site Internet Ath : Développeur Web Local Hainaut"
+      },
+      "metaDescription": {
+        "fr": "Développeur web freelance à Mainvault près d'Ath. Création de sites professionnels, vitrines et sur-mesure pour artisans et PME du Hainaut occidental. Devis gratuit."
+      },
+      "excerpt": {
+        "fr": "Développeur web freelance basé près d'Ath, je crée des sites internet professionnels sur-mesure pour artisans, commerçants et PME du Hainaut occidental."
+      },
+      "image": "/assets/img/pc_website2.webp",
+      "imageAlt": {
+        "fr": "Développeur web créant un site internet professionnel à Ath"
+      },
+      "author": "Eleazar Klyuvitkin",
+      "publishDate": "2025-12-26",
+      "updateDate": "2025-12-26",
+      "readingTime": 5,
+      "category": {
+        "fr": "Développement Web"
+      },
+      "tags": [
+        "création site internet Ath",
+        "développeur web Hainaut",
+        "site vitrine Ath",
+        "freelance web Tournai",
+        "site professionnel PME"
+      ],
+      "relatedServices": [
+        "sites-web-sur-mesure",
+        "boutique-en-ligne-shopify"
+      ],
+      "realizedProjects": [
+        "Blinkr",
+        "Renaissance Coach",
+        "Noumis Jewelry",
+        "Mustang Template"
+      ],
+      "content": {
+        "fr": [
+          {
+            "type": "paragraph",
+            "text": "Vous êtes <strong>artisan, commerçant ou entrepreneur à Ath</strong> et souhaitez développer votre présence en ligne ? En tant que <strong>développeur web freelance basé à Mainvault</strong>, à quelques kilomètres d'Ath, je vous accompagne dans la création de votre site internet professionnel, adapté à vos besoins et votre budget."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "text": "Pourquoi Avoir un Site Web Professionnel à Ath ?"
+          },
+          {
+            "type": "paragraph",
+            "text": "Dans un environnement de plus en plus digital, votre présence en ligne fait la différence :"
+          },
+          {
+            "type": "list",
+            "items": [
+              "<strong>Visibilité permanente</strong> : Vos clients vous trouvent 24h/24",
+              "<strong>Crédibilité renforcée</strong> : Une image moderne et professionnelle",
+              "<strong>Référencement local</strong> : Apparaissez dans les recherches Google à Ath et alentours",
+              "<strong>Contact facilité</strong> : Formulaires, appels directs, demandes de devis en ligne",
+              "<strong>Avantage concurrentiel</strong> : Démarquez-vous de vos concurrents"
+            ]
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "text": "Mes Services de Création Web à Ath"
+          },
+          {
+            "type": "heading",
+            "level": 3,
+            "text": "Site Vitrine Professionnel"
+          },
+          {
+            "type": "paragraph",
+            "text": "Solution idéale pour <strong>artisans, commerçants et PME</strong> du Hainaut :"
+          },
+          {
+            "type": "list",
+            "items": [
+              "Pages essentielles : Accueil, Services, À propos, Contact",
+              "Galerie photos de vos réalisations",
+              "Formulaire de contact et coordonnées",
+              "Design responsive (mobile, tablette, ordinateur)",
+              "Optimisation SEO pour le référencement local"
+            ]
+          },
+          {
+            "type": "heading",
+            "level": 3,
+            "text": "Landing Page Conversion"
+          },
+          {
+            "type": "paragraph",
+            "text": "Page unique optimisée pour <strong>promouvoir une offre ou capter des leads</strong> :"
+          },
+          {
+            "type": "list",
+            "items": [
+              "Design percutant et appels à l'action stratégiques",
+              "Chargement ultra-rapide",
+              "Formulaire de contact ou prise de rendez-vous",
+              "Optimisation maximale pour la conversion"
+            ]
+          },
+          {
+            "type": "heading",
+            "level": 3,
+            "text": "Développement Sur-Mesure"
+          },
+          {
+            "type": "paragraph",
+            "text": "Solutions personnalisées : <strong>système de réservation, plateforme de gestion, espace membre, blog professionnel</strong> avec fonctionnalités avancées selon vos besoins spécifiques."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "text": "Mon Processus de Travail"
+          },
+          {
+            "type": "list",
+            "items": [
+              "<strong>1. Rendez-vous initial</strong> : Déplacement à Ath pour comprendre votre activité et vos objectifs",
+              "<strong>2. Maquette graphique</strong> : Création et validation du design",
+              "<strong>3. Développement</strong> : Technologies modernes (SvelteKit) pour rapidité et sécurité",
+              "<strong>4. Optimisation SEO</strong> : Intégration de contenus et référencement local Google",
+              "<strong>5. Mise en ligne</strong> : Tests multi-appareils et déploiement",
+              "<strong>6. Formation</strong> : Accompagnement à l'utilisation et support continu"
+            ]
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "text": "Avantages du Développeur Web Local"
+          },
+          {
+            "type": "paragraph",
+            "text": "✅ <strong>Proximité</strong> : Rendez-vous en présentiel à Ath et dans le Hainaut occidental<br>✅ <strong>Disponibilité</strong> : Contact direct et réactivité<br>✅ <strong>Connaissance locale</strong> : Maîtrise du marché et des spécificités régionales<br>✅ <strong>Tarifs transparents</strong> : Devis détaillé sans frais cachés<br>✅ <strong>Technologies modernes</strong> : Sites rapides, sécurisés et évolutifs<br>✅ <strong>Solution complète</strong> : De la conception à l'hébergement"
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "text": "Tarifs Création Site Internet Ath"
+          },
+          {
+            "type": "paragraph",
+            "text": "Tarifs indicatifs selon le type de projet :"
+          },
+          {
+            "type": "list",
+            "items": [
+              "<strong>Landing page</strong> : à partir de 500€",
+              "<strong>Site vitrine 3-5 pages</strong> : à partir de 1200€",
+              "<strong>Site sur-mesure</strong> : sur devis personnalisé"
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "Inclus : développement, mise en ligne, formation et premier support. <strong>Hébergement web</strong> : à partir de 50€/an selon vos besoins."
+          },
+          {
+            "type": "cta",
+            "title": {
+              "fr": "Lancez votre site internet à Ath"
+            },
+            "description": {
+              "fr": "Contactez-moi pour un devis gratuit et personnalisé. Rendez-vous possibles à Ath et dans tout le Hainaut occidental."
+            },
+            "buttonText": {
+              "fr": "Demander un devis gratuit"
+            },
+            "subject": {
+              "fr": "Demande de devis - Création site internet à Ath"
+            }
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "text": "Zone d'Intervention dans le Hainaut Occidental"
+          },
+          {
+            "type": "paragraph",
+            "text": "Basé à <strong>Mainvault</strong>, j'interviens dans toute la région :"
+          },
+          {
+            "type": "list",
+            "items": [
+              "<strong>Ath</strong> et villages (Ligne, Irchonwelz, Ghislenghien, Gibecq, Meslin-l'Évêque, Rebaix, Lanquesaint, Maffle, Bouvignies, Mainvault, Moulbaix...)",
+              "Tournai et agglomération",
+              "Leuze-en-Hainaut, Lessines, Frasnes-lez-Anvaing",
+              "Ellezelles, Péruwelz, Beloeil",
+              "Brugelette, Chièvres",
+              "Tout le Hainaut occidental"
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "Rendez-vous possibles <strong>chez vous, dans vos locaux ou en visioconférence</strong>."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "text": "Freelance vs Agence : Pourquoi Me Choisir ?"
+          },
+          {
+            "type": "list",
+            "items": [
+              "<strong>Tarifs compétitifs</strong> : Pas de frais de structure",
+              "<strong>Contact direct</strong> : Vous travaillez directement avec le développeur",
+              "<strong>Flexibilité</strong> : Souplesse dans les délais et ajustements",
+              "<strong>Implication personnelle</strong> : Attention particulière à votre projet",
+              "<strong>Réactivité</strong> : Communication facilitée"
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "Pour un <strong>site vitrine ou sur-mesure de taille moyenne</strong>, le freelance local offre le meilleur rapport qualité-prix-proximité."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "text": "Démarrez Votre Projet Web à Ath"
+          },
+          {
+            "type": "paragraph",
+            "text": "Que vous soyez <strong>plombier, électricien, coiffeur, restaurateur ou commerçant</strong>, contactez-moi pour :"
+          },
+          {
+            "type": "list",
+            "items": [
+              "Obtenir un <strong>devis gratuit personnalisé</strong>",
+              "Poser vos questions sur la création web",
+              "Planifier un rendez-vous à Ath",
+              "Discuter de vos objectifs digitaux"
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "Créons ensemble le <strong>site internet qui boostera votre activité</strong> dans le Hainaut !"
+          }
+        ]
+      },
+      "faq": [
+        {
+          "question": {
+            "fr": "Quel délai pour créer mon site internet à Ath ?"
+          },
+          "answer": {
+            "fr": "Pour un site vitrine standard : entre 2 et 4 semaines du premier rendez-vous à la mise en ligne, selon la complexité et la fourniture du contenu. Pour un projet sur-mesure, le délai est défini lors du devis."
+          }
+        },
+        {
+          "question": {
+            "fr": "Combien coûte un site internet professionnel à Ath ?"
+          },
+          "answer": {
+            "fr": "À partir de 500€ pour une landing page, 1200€ pour un site vitrine 3-5 pages. Le tarif varie selon vos besoins (nombre de pages, fonctionnalités, design). L'hébergement débute à 50€/an. Devis gratuit et personnalisé sur demande."
+          }
+        },
+        {
+          "question": {
+            "fr": "Dois-je fournir les textes et photos de mon site ?"
+          },
+          "answer": {
+            "fr": "Idéalement oui, car vous connaissez votre activité. Je peux cependant vous accompagner dans la rédaction optimisée SEO et vous orienter vers des banques d'images professionnelles si nécessaire."
+          }
+        },
+        {
+          "question": {
+            "fr": "Mon site sera-t-il bien référencé sur Google ?"
+          },
+          "answer": {
+            "fr": "Oui, tous mes sites respectent les bonnes pratiques SEO : structure sémantique, balises meta optimisées, chargement rapide, responsive design. Je configure également Google My Business pour le référencement local. Le positionnement s'améliore progressivement avec du contenu de qualité."
+          }
+        },
+        {
+          "question": {
+            "fr": "Pourrai-je modifier mon site moi-même après sa création ?"
+          },
+          "answer": {
+            "fr": "Oui ! J'intègre un système de gestion simple (CMS) et vous forme à son utilisation pour que vous puissiez mettre à jour textes et photos. Pour les modifications techniques ou structurelles, je reste disponible."
+          }
+        },
+        {
+          "question": {
+            "fr": "Mon site s'adaptera-t-il aux smartphones et tablettes ?"
+          },
+          "answer": {
+            "fr": "Absolument ! Tous mes sites sont 100% responsive et parfaitement adaptés aux mobiles, tablettes et ordinateurs. C'est essentiel puisque plus de 60% des internautes naviguent depuis leur smartphone."
+          }
+        },
+        {
+          "question": {
+            "fr": "Proposez-vous un service de maintenance pour mon site ?"
+          },
+          "answer": {
+            "fr": "Oui, je propose des contrats de maintenance incluant : mises à jour de sécurité, sauvegardes régulières, support technique et modifications mineures. Tarif sur devis selon vos besoins."
+          }
+        },
+        {
+          "question": {
+            "fr": "Où se déroulent les rendez-vous pour mon projet web ?"
+          },
+          "answer": {
+            "fr": "Je me déplace à votre domicile ou dans vos locaux à Ath et dans tout le Hainaut occidental. Les rendez-vous en visioconférence sont également possibles selon vos préférences."
+          }
+        }
+      ]
+    },
+    {
       "id": "depannage-lave-vaisselle-ath",
       "slug": "depannage-lave-vaisselle-ath",
       "title": {

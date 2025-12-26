@@ -83,7 +83,7 @@
 					itemOffered: {
 						'@type': 'Service',
 						name: 'Design Graphique',
-						description: 'Création d\'identité visuelle et design graphique'
+						description: "Création d'identité visuelle et design graphique"
 					}
 				},
 				{
@@ -216,12 +216,7 @@
 	<meta name="MobileOptimized" content="360" />
 	<meta name="application-name" content={siteName} />
 
-	<!-- Favicons -->
-	<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-	<link rel="icon" href="/favicon.ico" type="image/x-icon" />
-
 	<!-- Theme -->
-	<meta name="apple-mobile-web-app-title" content={siteName} />
 	<meta name="apple-mobile-web-app-capable" content="yes" />
 	<meta name="mobile-web-app-capable" content="yes" />
 	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />

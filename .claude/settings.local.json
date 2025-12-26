@@ -4,7 +4,8 @@
       "Bash(npm install:*)",
       "Bash(npm run dev:*)",
       "Bash(node:*)",
-      "Bash(npx jsonlint:*)"
+      "Bash(npx jsonlint:*)",
+      "Bash(move:*)"
     ]
   }
 }
