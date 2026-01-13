@@ -8,6 +8,11 @@ export const load = async ({ url }) => {
     const { langList } = get(settings);
     const lang = url.pathname.split('/')[1];
 
+    // Redirige les visiteurs venant du QR code vers /fr/services
+    if (url.searchParams.get('f') === 'qr') {
+        throw redirect(302, '/fr/services');
+    }
+
     // Redirige vers la langue par défaut si absent ou inconnu
     if (!lang || !langList.includes(lang)) {
         throw redirect(301, `/${langList[0]}`); // Par exemple, 'fr'
