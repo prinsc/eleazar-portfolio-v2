@@ -3,9 +3,19 @@
 	import NeuroShader from '@prinsc/svelte-neuro-shader';
 	import Nav from '$lib/comp/nav.svelte';
 	import { browser } from '$app/environment';
+	import { page } from '$app/stores';
 	import { settings } from '$lib/stores/settings.js';
 
 	let { children } = $props();
+
+	// Track QR code visitors with Umami
+	$effect(() => {
+		if (browser && $page.url.searchParams.get('from') === 'qr') {
+			if (typeof umami !== 'undefined') {
+				umami.track('qr-code-visit');
+			}
+		}
+	});
 
 	let color = $state({ r: 0, g: 0, b: 0 });
 	let speed = $state(0.0001);
