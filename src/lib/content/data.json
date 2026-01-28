@@ -105,11 +105,6 @@
       "en": "Back",
       "ru": "Назад"
     },
-    "description": {
-      "fr": "Description",
-      "en": "Description",
-      "ru": "Описание"
-    },
     "interventionZone": {
       "fr": "Zone d'intervention",
       "en": "Service area",
