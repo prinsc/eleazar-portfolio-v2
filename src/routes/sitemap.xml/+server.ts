@@ -6,8 +6,6 @@ const languages = ['fr', 'en', 'ru'];
 
 export const GET = async () => {
     try {
-        const lastmod = new Date().toISOString().split('T')[0];
-
         const pages = [
             { path: '', priority: '1.0', changefreq: 'weekly' },
             ...languages.map(lang => ({
@@ -50,13 +48,18 @@ export const GET = async () => {
 
         const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset 
-xmlns="https://www.sitemaps.org/schemas/sitemap/0.9"
-	xmlns:xhtml="https://www.w3.org/1999/xhtml"
-	xmlns:mobile="https://www.google.com/schemas/sitemap-mobile/1.0"
-	xmlns:news="https://www.google.com/schemas/sitemap-news/0.9"
-	xmlns:image="https://www.google.com/schemas/sitemap-image/1.1"
-	xmlns:video="https://www.google.com/schemas/sitemap-video/1.1"
-	xmlns:event="http://www.google.com/schemas/sitemap-event/1.1">
+xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+                      http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd
+                      http://www.w3.org/TR/xhtml11/xhtml11_schema.html
+                      http://www.w3.org/2002/08/xhtml/xhtml1-strict.xsd"
+  xmlns:xhtml="http://www.w3.org/TR/xhtml11/xhtml11_schema.html"
+  xmlns:news="http://www.google.com/schemas/sitemap-news/0.9"
+  xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0"
+  xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+  xmlns:video="http://www.google.com/schemas/sitemap-video/1.1"
+>
 ${pages.map(page => {
             const availableLanguages = (() => {
                 const blogMatch = page.path.match(/^\/(fr|en|ru)\/blog\/(.+)$/);
@@ -70,44 +73,52 @@ ${pages.map(page => {
                 return languages;
             })();
 
-            const hreflangLinks = availableLanguages.map(lang => {
-                const altPath = page.path === ''
-                    ? `/${lang}`
-                    : page.path.replace(/^\/(fr|en|ru)/, `/${lang}`);
-                return `		<xhtml:link rel="alternate" hreflang="${lang}" href="${site}${altPath}" />`;
-            }).join('\n');
-
             const defaultLang = availableLanguages.includes('fr') ? 'fr' : availableLanguages[0];
             const defaultPath = page.path === ''
                 ? `/${defaultLang}`
                 : page.path.replace(/^\/(fr|en|ru)/, `/${defaultLang}`);
 
-            return `	<url>
-        <loc>${site}${page.path}</loc>
-        <lastmod>${lastmod}</lastmod>
-        <changefreq>${page.changefreq}</changefreq>
-        <priority>${page.priority}</priority>
-        <xhtml:link rel="alternate" hreflang="x-default" href="${site}${defaultPath}" />
+            // ← FIX : Construction propre des hreflang DANS <url>
+            const hreflangLinks = [
+                `    <xhtml:link rel="alternate" hreflang="x-default" href="${site}${defaultPath}" />`,
+                ...availableLanguages.map(lang => {
+                    const altPath = page.path === ''
+                        ? `/${lang}`
+                        : page.path.replace(/^\/(fr|en|ru)/, `/${lang}`);
+                    return `    <xhtml:link rel="alternate" hreflang="${lang}" href="${site}${altPath}" />`;
+                })
+            ].join('\n');
+
+            const isBlog = page.path.includes('/blog');
+            const lastmodTag = isBlog ? '<lastmod>2026-01-01</lastmod>' : '';
+
+            // ← FIX : Structure XML propre avec indentation cohérente
+            return `  <url>
+    <loc>${site}${page.path}</loc>
+    ${lastmodTag}
+    <changefreq>${page.changefreq}</changefreq>
+    <priority>${page.priority}</priority>
 ${hreflangLinks}
-    </url>`;
+  </url>`;
         }).join('\n')}
 </urlset>`;
 
         return new Response(xml, {
             headers: {
                 'Content-Type': 'application/xml; charset=utf-8',
-                'Cache-Control': 'public, max-age=0, must-revalidate', // ← Ajoutez "public" et "must-revalidate"
+                'Cache-Control': 'public, max-age=0, must-revalidate',
                 'X-Content-Type-Options': 'nosniff',
-                'Vercel-CDN-Cache-Control': 'max-age=0', // ← Force Vercel à recacher proprement
+                'Vercel-CDN-Cache-Control': 'max-age=0',
                 'x-vercel-cache': 'MISS'
             }
         });
     } catch (e) {
         console.error(e);
-        return new Response(`<?xml version="1.0" encoding="UTF-8"?><urlset><error>${e.message}</error></urlset>`, {
+        return new Response(`<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><error>${e.message}</error></urlset>`, {
             headers: {
                 'Content-Type': 'application/xml; charset=utf-8'
-            }
+            },
+            status: 500
         });
     }
 };
