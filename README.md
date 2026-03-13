@@ -18,3 +18,16 @@ You can easily modify the content of this portfolio by adjusting the following f
   - `lib/styles/base/_typographie.scss` for typography.
 
 This will allow you to easily adjust the appearance and content of your portfolio according to your needs.
+
+## Email (devis) via Resend
+
+Le formulaire de devis (`/api/estimate`) peut envoyer un email via Resend.
+
+Variables d'environnement à définir :
+
+- `RESEND_API_KEY` : clé API Resend
+- `RESEND_FROM` : expéditeur autorisé (ex: `KLTK <no-reply@votre-domaine.tld>`)
+- `RESEND_TO` : (optionnel) destinataire(s) séparés par des virgules (ex: `contact@domaine.tld,hello@domaine.tld`).
+  - Par défaut, l'email est envoyé à `kltk.eleazar@gmail.com`.
+
+Si une de ces variables manque, l'endpoint renvoie une erreur (pour éviter de croire que l'envoi a marché).
