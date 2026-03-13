@@ -53,7 +53,7 @@ const SECTIONS: Section[] = [
         fields: [
             { key: 'domaine', label: 'Nom de domaine' },
             { key: 'hebergement', label: 'Hébergement' },
-            { key: 'acces', label: 'Accès (Registrar / DNS)' }
+            { key: 'dns_owner', label: 'Domaine / DNS (gestion)' }
         ]
     },
     {
@@ -118,6 +118,7 @@ const buildTextEmail = (contact: { name: string; email: string; phone: string; c
     lines.push(`Email: ${normalizeValue(contact.email)}`);
     lines.push(`Téléphone: ${normalizeValue(contact.phone)}`);
     lines.push(`Société: ${normalizeValue(contact.company)}`);
+    lines.push(`Politique de confidentialité: ${answers.privacy_accepted ? 'Acceptée' : 'Non acceptée'}`);
     lines.push('');
 
     for (const section of SECTIONS) {
@@ -183,6 +184,10 @@ const buildHtmlEmail = (contact: { name: string; email: string; phone: string; c
                         <td style="padding:8px 10px;vertical-align:top;border-top:1px solid #eee;white-space:nowrap;"><strong>Société</strong></td>
                         <td style="padding:8px 10px;vertical-align:top;border-top:1px solid #eee;">${escapeHtml(normalizeValue(contact.company))}</td>
                     </tr>
+                    <tr>
+                        <td style="padding:8px 10px;vertical-align:top;border-top:1px solid #eee;white-space:nowrap;"><strong>Politique de confidentialité</strong></td>
+                        <td style="padding:8px 10px;vertical-align:top;border-top:1px solid #eee;">${answers.privacy_accepted ? 'Acceptée' : 'Non acceptée'}</td>
+                    </tr>
                 </tbody>
             </table>
             ${sectionHtml}
@@ -207,6 +212,12 @@ export const POST = async ({ request }) => {
         }
         if (!contact.email || !isValidEmail(contact.email)) {
             return new Response(JSON.stringify({ error: 'Email invalide' }), { status: 400 });
+        }
+        if (!answers?.privacy_accepted) {
+            return new Response(
+                JSON.stringify({ error: "Veuillez accepter la politique de confidentialité." }),
+                { status: 400 }
+            );
         }
 
         const text = buildTextEmail(contact, answers);

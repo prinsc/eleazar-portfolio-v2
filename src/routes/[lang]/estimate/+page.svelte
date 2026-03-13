@@ -4,6 +4,7 @@
 	let success = false;
 	let errorMsg = '';
 	let contactError = '';
+	let privacyError = '';
 
 	const steps = [
 		'Identité & Objectifs',
@@ -37,7 +38,7 @@
 		photos: '',
 		domaine: '',
 		hebergement: '',
-		acces: '',
+		dns_owner: '',
 		textes: '',
 		langues: '',
 		pages: '',
@@ -57,6 +58,7 @@
 		seo_target: '',
 		content_updates_owner: '',
 		need_pro_email: '',
+		privacy_accepted: false,
 		mentions: '',
 		rgpd: ''
 	};
@@ -81,6 +83,7 @@
 		sending = true;
 		errorMsg = '';
 		contactError = '';
+		privacyError = '';
 
 		const name = String(answers.contact_name || '').trim();
 		const email = String(answers.contact_email || '').trim();
@@ -91,6 +94,12 @@
 		}
 		if (!email || !isValidEmail(email)) {
 			contactError = 'Veuillez indiquer une adresse email valide.';
+			sending = false;
+			return;
+		}
+		if (!answers.privacy_accepted) {
+			privacyError =
+				"Veuillez accepter la politique de confidentialité avant d'envoyer votre demande.";
 			sending = false;
 			return;
 		}
@@ -241,12 +250,12 @@
 				</div>
 
 				<div class="field">
-					<label for="acces">Accès (Registrar / DNS)</label>
+					<label for="dns_owner">Qui gère actuellement votre nom de domaine / DNS ?</label>
 					<textarea
-						id="acces"
+						id="dns_owner"
 						rows="2"
-						bind:value={answers.acces}
-						placeholder="Si vous avez déjà des comptes, pouvez-vous fournir les accès ?"
+						bind:value={answers.dns_owner}
+						placeholder="Ex: OVH / Hostinger / une agence / je ne sais pas / à créer"
 					></textarea>
 				</div>
 			{/if}
@@ -617,8 +626,8 @@
 								<dd>{answers.hebergement || '-'}</dd>
 							</div>
 							<div class="row">
-								<dt>Accès</dt>
-								<dd class="multiline">{answers.acces || '-'}</dd>
+								<dt>Domaine / DNS (gestion)</dt>
+								<dd class="multiline">{answers.dns_owner || '-'}</dd>
 							</div>
 						</dl>
 					</section>
@@ -750,6 +759,18 @@
 					Votre demande a été envoyée. Merci - je vous répondrai bientôt.
 				</p>
 			{:else}
+				<div class="privacy-consent">
+					<label class="checkbox">
+						<input type="checkbox" bind:checked={answers.privacy_accepted} />
+						<span>
+							J'accepte la
+							<a href="/fr/legal" target="_blank" rel="noreferrer">politique de confidentialité</a>
+							et le traitement de mes données pour être recontacté.
+						</span>
+					</label>
+					{#if privacyError}<p class="status error">{privacyError}</p>{/if}
+				</div>
+
 				<div class="controls">
 					<button
 						class="grain"
@@ -857,7 +878,6 @@
 		opacity: 0.75;
 		font-style: italic;
 		margin-top: 0.25rem;
-		color: #0b5300;
 	}
 	dt {
 		font-weight: 500;
@@ -914,6 +934,30 @@
 		p {
 			opacity: 0.85;
 			margin: 0.35rem 0 0;
+		}
+	}
+
+	.privacy-consent {
+		margin-top: 1rem;
+		padding: 1rem;
+		background: rgba(0, 0, 0, 0.02);
+		border-radius: 10px;
+	}
+
+	.checkbox {
+		display: grid;
+		grid-template-columns: 20px 1fr;
+		gap: 0.75rem;
+		align-items: start;
+		font-size: 0.95rem;
+		line-height: 1.4;
+
+		input {
+			margin-top: 0.2rem;
+		}
+
+		a {
+			text-decoration: underline;
 		}
 	}
 </style>
