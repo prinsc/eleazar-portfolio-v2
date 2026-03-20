@@ -110,6 +110,30 @@
       "en": "Service area",
       "ru": "Зона обслуживания"
     },
+    "reviews": {
+      "title": {
+        "fr": "Avis Google",
+        "en": "Google Reviews",
+        "ru": "Отзывы Google"
+      },
+      "cta": {
+        "title": {
+          "fr": "Partagez votre avis",
+          "en": "Share your review",
+          "ru": "Поделитесь своим мнением"
+        },
+        "description": {
+          "fr": "Votre avis nous aide à nous améliorer",
+          "en": "Your feedback helps us improve",
+          "ru": "Ваше мнение помогает нам улучшаться"
+        },
+        "button": {
+          "fr": "Laisser un avis",
+          "en": "Leave a review",
+          "ru": "Оставить отзыв"
+        }
+      }
+    },
     "pricing": {
       "fr": "Tarif",
       "en": "Price",
@@ -359,7 +383,7 @@
         }
       },
       "description": {
-        "fr": "<p>Chez Webstanz, j’ai approfondi mes compétences en CSS avec SCSS, en JavaScript (manipulation du DOM, animation avec GSAP), ainsi qu’en Twig et PHP, en travaillant sur des projets concrets avec le CMS Drupal et en appliquant ces technologies de manière structurée.</p><p>J’ai également développé mon autonomie, ma gestion du temps avec des outils de timesheeting et ma capacité à m’adapter aux outils et méthodes de travail. Les réunions et échanges techniques m’ont permis de renforcer ma communication et ma compréhension des dynamiques d’équipe.</p>",
+        "fr": "<p>Chez Webstanz, j’ai approfondi mes compétences en CSS avec SCSS, en JavaScript (manipulation du DOM, animation avec GSAP), ainsi qu’en Twig et PHP, en travaillant sur des projets concrets avec le CMS Drupal et en appliquant эти технологии de manière структурée.</p><p>J’ai également développé mon autonomie, ma gestion du temps avec des outils de timesheeting et ma capacité à m’adapter aux outils et méthodes de travail. Les réunions et échanges techniques m’ont permis de renforcer ma communication et ma compréhension des dynamiques d’équipe.</p>",
         "en": "<p>At Webstanz, I deepened my skills in CSS with SCSS, JavaScript (DOM manipulation, animations with GSAP), as well as Twig and PHP, by working on concrete projects with the Drupal CMS and applying these technologies in a structured way.</p><p>I also developed my independence, time management with timesheeting tools, and my ability to adapt to tools and working methods. Technical meetings and discussions helped me strengthen my communication and understanding of team dynamics.</p>",
         "ru": "<p>В Webstanz я углубил свои навыки работы с CSS через SCSS, JavaScript (управление DOM, анимации с GSAP), а также Twig и PHP, работая над конкретными проектами с использованием CMS Drupal и применяя эти технологии структурированно.</p><p>Я также развил свою самостоятельность, управление временем с помощью инструментов учета рабочего времени и способность адаптироваться к инструментам и методам работы. Технические совещания и обсуждения помогли мне укрепить навыки коммуникации и понимание динамики команды.</p>"
       },

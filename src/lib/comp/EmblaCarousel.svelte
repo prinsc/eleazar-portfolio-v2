@@ -10,10 +10,12 @@
 	let emblaApi;
 	let canScrollPrev = $state(false);
 	let canScrollNext = $state(true);
+	let itemCount = $state(0);
 
 	function onInit(event) {
 		emblaApi = event.detail;
 		updateButtons();
+		updateItemCount();
 		emblaApi.on('select', updateButtons);
 		emblaApi.on('reInit', updateButtons);
 	}
@@ -22,6 +24,14 @@
 		if (!emblaApi) return;
 		canScrollPrev = emblaApi.canScrollPrev();
 		canScrollNext = emblaApi.canScrollNext();
+	}
+
+	function updateItemCount() {
+		if (!emblaApi) return;
+		const container = emblaApi.containerNode();
+		if (container) {
+			itemCount = container.querySelectorAll(':scope > [class*="embla__slide"]').length;
+		}
 	}
 
 	function scrollPrev() {
@@ -42,7 +52,7 @@
 
 <div class="slider">
 	<div class="embla" use:emblaCarouselSvelte={{ options: emblaOptions }} onemblaInit={onInit}>
-		<div class="embla__container">
+		<div class="embla__container" class:has-more-items={itemCount > 3}>
 			{@render children()}
 		</div>
 	</div>
@@ -123,6 +133,12 @@
 		}
 		.embla__container {
 			display: flex;
+
+			&.has-more-items :global(.embla__slide:last-child) {
+				:global(.item) {
+					padding-right: 0;
+				}
+			}
 		}
 		:global(.item) {
 			padding: 1rem;
@@ -137,9 +153,6 @@
 			}
 			&:nth-child(1) {
 				padding-left: 0;
-			}
-			&:last-child {
-				padding-right: 0;
 			}
 		}
 	}

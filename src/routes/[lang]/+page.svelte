@@ -13,9 +13,11 @@
 	import { content } from '$lib/stores/content.js';
 	import { onMount } from 'svelte';
 	import PageContent from '$lib/comp/PageContent.svelte';
+	import Reviews from '$lib/comp/reviews.svelte';
+	let { data } = $props();
+	const { googleData } = data;
 
-	let focused = $state(true);
-	let isReady = $state(false);
+	let focused = false;
 
 	const getAge = function () {
 		const birthDate = new Date($content.me.birthday); // Replace with your actual birth date
@@ -29,12 +31,6 @@
 
 		return age;
 	};
-
-	onMount(async () => {
-		isReady = false;
-		await new Promise((resolve) => setTimeout(resolve, 100));
-		isReady = true;
-	});
 </script>
 
 <!-- Né pour coder, programmé pour réussir -->
@@ -64,82 +60,77 @@
 	</noscript>
 </svelte:head>
 
-{#if !isReady}
-	<div class="loading">
-		<div class="spinner"></div>
-	</div>
-{:else}
-	<PageContent>
-		<header>
-			<div class="element">
-				<h1>{$content.me.h1[$settings.lang]}</h1>
-				<h2>
-					<a
-						href="mailto:{$settings.email.address}?subject={$settings.email.subject[
-							$settings.lang
-						]}&body={$settings.email.body[$settings.lang]}"
-						class="no-effect">eleazar@kltk.be</a
-					>
-				</h2>
-			</div>
+<PageContent>
+	<header>
+		<div class="element">
+			<h1>{$content.me.h1[$settings.lang]}</h1>
+			<h2>
+				<a
+					href="mailto:{$settings.email.address}?subject={$settings.email.subject[
+						$settings.lang
+					]}&body={$settings.email.body[$settings.lang]}"
+					class="no-effect">eleazar@kltk.be</a
+				>
+			</h2>
+		</div>
 
-			<div class="element">
-				<a href="https://cal.com/eleazar-kltk-bbheg9" class="no-effect" target="_blank">
-					<span class="pulse"></span>
-					<span>
-						{$content.me.disponibility[$settings.lang]}
-					</span>
-					<span class="cal">
-						[cal
-						<span class="icon">
-							<ExternalLink />
-						</span>]
-					</span>
-				</a>
-			</div>
-		</header>
+		<div class="element">
+			<a href="https://cal.com/eleazar-kltk-bbheg9" class="no-effect" target="_blank">
+				<span class="pulse"></span>
+				<span>
+					{$content.me.disponibility[$settings.lang]}
+				</span>
+				<span class="cal">
+					[cal
+					<span class="icon">
+						<ExternalLink />
+					</span>]
+				</span>
+			</a>
+		</div>
+	</header>
 
-		<section class="me">
-			<div class="left-side">
-				<!-- svelte-ignore a11y_img_redundant_alt -->
-				<img
-					src="/assets/img/photo.webp"
-					alt={$content.site.profilePicture[$settings.lang]}
-					width="100%"
-					height="100%"
-				/>
-			</div>
-			<div class="right-side">
-				<h2>{getAge()} {$content.me.h2[$settings.lang]}</h2>
-				{#key $settings.lang}
-					<p>
-						{@html $content.me.description[$settings.lang]}
-					</p>
-				{/key}
-				<!-- Autodidacte, je baigne dans le développement web depuis près de 9 ans. J’ai commencé avec la
+	<section class="me">
+		<div class="left-side">
+			<!-- svelte-ignore a11y_img_redundant_alt -->
+			<img
+				src="/assets/img/photo.webp"
+				alt={$content.site.profilePicture[$settings.lang]}
+				width="100%"
+				height="100%"
+			/>
+		</div>
+		<div class="right-side">
+			<h2>{getAge()} {$content.me.h2[$settings.lang]}</h2>
+			{#key $settings.lang}
+				<p>
+					{@html $content.me.description[$settings.lang]}
+				</p>
+			{/key}
+			<!-- Autodidacte, je baigne dans le développement web depuis près de 9 ans. J’ai commencé avec la
 				création de serveurs Minecraft, appris le Java en développant des plugins, puis enchaîné
 				avec des sites web, des boutiques en ligne et des outils pour aider mon père dans son
 				activité. Passionné par les défis techniques, j’ai aussi développé des jeux en ligne comme
 				Catane et Skyjo. Toujours en avance sur mon apprentissage, j’ai renforcé mon expérience
 				professionnelle lors de mon stage et job étudiant chez Webstanz. Je cherche à évoluer dans
 				une équipe dynamique où les projets s’enchaînent et ne se ressemblent pas. -->
-				<!-- svelte-ignore a11y_no_noninteractive_tabindex -->
-				<address tabindex="0">
-					<div class="icon">
-						<MapPin />
-					</div>
-					{$content.me.location[$settings.lang]}
-				</address>
-			</div>
-		</section>
+			<!-- svelte-ignore a11y_no_noninteractive_tabindex -->
+			<address tabindex="0">
+				<div class="icon">
+					<MapPin />
+				</div>
+				{$content.me.location[$settings.lang]}
+			</address>
+		</div>
+	</section>
 
-		<section class="works" class:focused>
-			<h2>{$content.site.course[$settings.lang]}</h2>
+	<section class="works" class:focused>
+		<h2>{$content.site.course[$settings.lang]}</h2>
 
-			{#each $content.school as school}
-				<Experience data={school} />
-			{/each}
-			<!-- 
+		{#each $content.school as school}
+			<Experience data={school} />
+		{/each}
+		<!-- 
 			<button
 				onclick={() => {
 					focused = !focused;
@@ -156,108 +147,114 @@
 					<Experience data={exp} />
 				{/each}
 			</div> -->
-		</section>
+	</section>
 
-		<section class="services">
-			<h2>
-				{#if $settings.lang === 'fr'}
-					Services ({$content.services?.length || 0})
-				{:else if $settings.lang === 'en'}
-					Services ({$content.services?.length || 0})
-				{:else}
-					Услуги ({$content.services?.length || 0})
-				{/if}
-			</h2>
-			{#if $content.services}
-				<Services data={$content.services} />
+	<section class="services">
+		<h2>
+			{#if $settings.lang === 'fr'}
+				Services ({$content.services?.length || 0})
+			{:else if $settings.lang === 'en'}
+				Services ({$content.services?.length || 0})
+			{:else}
+				Услуги ({$content.services?.length || 0})
 			{/if}
-		</section>
-		<section class="works exp" class:focused>
-			<button
-				onclick={() => {
-					focused = !focused;
-				}}
-			>
-				<span class="icon">
-					<ChevronDown strokeWidth={3} />
-				</span>
-				<h2>{$content.site.experience[$settings.lang]} ({$content.exp.length})</h2>
-			</button>
+		</h2>
+		{#if $content.services}
+			<Services data={$content.services} />
+		{/if}
+	</section>
 
-			<div class="sub-element-container">
-				{#each $content.exp as exp}
-					<Experience data={exp} />
-				{/each}
+	<Reviews {googleData} />
+
+	<div class="divider"></div>
+	<section class="works exp" class:focused>
+		<button
+			onclick={() => {
+				focused = !focused;
+			}}
+		>
+			<span class="icon">
+				<ChevronDown strokeWidth={3} />
+			</span>
+			<h2>{$content.site.experience[$settings.lang]} ({$content.exp.length})</h2>
+		</button>
+
+		<div class="sub-element-container">
+			{#each $content.exp as exp}
+				<Experience data={exp} />
+			{/each}
+		</div>
+	</section>
+
+	<section class="projects">
+		<h2>{$content.site.projects[$settings.lang]} ({$content.projets.length})</h2>
+		<Projets data={$content.projets} />
+	</section>
+
+	<section class="resume">
+		<a
+			class="no-effect grain kl-container"
+			href="/assets/Klyuvitkin_Eleazar.pdf"
+			target="_blank"
+			rel="noopener noreferrer"
+		>
+			<h2>
+				{$content.site.resume[$settings.lang]}<span>.pdf</span>
+				<span>({$content.site.resume.resumeOnlyFr[$settings.lang]})</span><br /><span>93.4ko</span>
+			</h2>
+
+			<div class="icon grain">
+				<Download />
 			</div>
-		</section>
+		</a>
+	</section>
 
-		<section class="projects">
-			<h2>{$content.site.projects[$settings.lang]} ({$content.projets.length})</h2>
-			<Projets data={$content.projets} />
-		</section>
-
-		<section class="resume">
-			<a
-				class="no-effect grain kl-container"
-				href="/assets/Klyuvitkin_Eleazar.pdf"
-				target="_blank"
-				rel="noopener noreferrer"
-			>
-				<h2>
-					{$content.site.resume[$settings.lang]}<span>.pdf</span>
-					<span>({$content.site.resume.resumeOnlyFr[$settings.lang]})</span><br /><span>93.4ko</span
-					>
-				</h2>
-
-				<div class="icon grain">
-					<Download />
-				</div>
-			</a>
-		</section>
-
-		<section class="technos">
-			<h2>{$content.site.technologies[$settings.lang]}</h2>
-			<div class="cards">
-				{#each $content.technos as techno}
-					<div class="card grain">
-						<div class="icon">
-							<img src="/assets/icons/{techno}.svg" alt={techno} width="100%" height="100%" />
-						</div>
-						<span> {formatText(techno)} </span>
+	<section class="technos">
+		<h2>{$content.site.technologies[$settings.lang]}</h2>
+		<div class="cards">
+			{#each $content.technos as techno}
+				<div class="card grain">
+					<div class="icon">
+						<img src="/assets/icons/{techno}.svg" alt={techno} width="100%" height="100%" />
 					</div>
-				{/each}
-			</div>
-		</section>
+					<span>
+						{@html techno === 'svelte-4'
+							? 'Svelte 4<span class="mini">&</span>5'
+							: formatText(techno)}
+					</span>
+				</div>
+			{/each}
+		</div>
+	</section>
 
-		<div class="divider"></div>
+	<div class="divider"></div>
 
-		<section class="socials">
-			<h2>{$content.site.socials[$settings.lang]}</h2>
-			<div class="container">
-				{#each $content.socials as social}
-					<a
-						class="no-effect"
-						href={social.name === 'Email'
-							? `mailto:${$settings.email.address}?subject=${encodeURIComponent($settings.email.subject[$settings.lang])}&body=${encodeURIComponent($settings.email.body[$settings.lang])}`
-							: social.link}
-						target="_blank"
-						rel="noopener noreferrer"
-						data-umami-event="click-{social.icon}"
-					>
-						<span class="icon">
-							<img
-								src={`/assets/icons/${social.icon}.svg`}
-								alt={social.name}
-								width="100%"
-								height="100%"
-							/>
-						</span>
-					</a>
-				{/each}
-			</div>
-		</section>
-	</PageContent>
-{/if}
+	<section class="socials">
+		<h2>{$content.site.socials[$settings.lang]}</h2>
+		<div class="container">
+			{#each $content.socials as social}
+				<a
+					class="no-effect"
+					href={social.name === 'Email'
+						? `mailto:${$settings.email.address}?subject=${encodeURIComponent($settings.email.subject[$settings.lang])}&body=${encodeURIComponent($settings.email.body[$settings.lang])}`
+						: social.link}
+					target="_blank"
+					rel="noopener noreferrer"
+					data-umami-event="click-{social.icon}"
+				>
+					<span class="icon">
+						<img
+							src={`/assets/icons/${social.icon}.svg`}
+							alt={social.name}
+							width="100%"
+							height="100%"
+						/>
+					</span>
+				</a>
+			{/each}
+		</div>
+	</section>
+</PageContent>
 
 <style lang="scss">
 	@use 'lib/styles/themes/_mixins' as *;
@@ -265,6 +262,10 @@
 	section,
 	header {
 		margin: 2rem 0;
+	}
+	:global(.mini) {
+		font-size: 0.75em;
+		margin: 0 2px;
 	}
 	header {
 		display: flex;

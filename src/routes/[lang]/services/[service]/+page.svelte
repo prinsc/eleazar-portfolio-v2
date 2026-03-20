@@ -20,6 +20,9 @@
 	import PageContent from '$lib/comp/PageContent.svelte';
 	import RealizedProjects from '$lib/comp/RealizedProjects.svelte';
 	import CTA from '$lib/comp/CTA.svelte';
+	import Reviews from '$lib/comp/reviews.svelte';
+
+	let { data } = $props();
 
 	const iconMap = {
 		'code-2': Code2,
@@ -188,6 +191,8 @@
 				<RealizedProjects projects={service.realizedProjects} />
 			{/if}
 		</section>
+
+		<Reviews googleData={data.googleData} />
 
 		<CTA
 			subject="{$content.site.inquirySubject[$settings.lang]} - {service.name[$settings.lang]}"
