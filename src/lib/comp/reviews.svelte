@@ -215,8 +215,8 @@
 				flex-grow: 1;
 				overflow: hidden;
 				display: -webkit-box;
-				-webkit-line-clamp: 3;
-				line-clamp: 3;
+				-webkit-line-clamp: 4;
+				line-clamp: 4;
 				-webkit-box-orient: vertical;
 			}
 

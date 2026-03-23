@@ -17,7 +17,7 @@
 	let { data } = $props();
 	const { googleData } = data;
 
-	let focused = false;
+	let focused = $state(false);
 
 	const getAge = function () {
 		const birthDate = new Date($content.me.birthday); // Replace with your actual birth date
