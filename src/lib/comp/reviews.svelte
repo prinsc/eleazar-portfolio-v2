@@ -8,7 +8,7 @@
 
 	let reviewsToShow = $derived.by(() => {
 		if (!googleData?.reviews) return [];
-		return googleData.reviews.slice(0, 5);
+		return googleData.reviews.slice(0, 15);
 	});
 </script>
 
@@ -48,7 +48,8 @@
 							</div>
 							<p class="review-text">{review.text}</p>
 							<p class="review-date">
-								{new Date(review.time * 1000).toLocaleDateString($settings.lang)} - {review.relative_time_description}
+								{new Date(review.time * 1000).toLocaleDateString($settings.lang)}<br
+								/>{review.relative_time_description}
 							</p>
 						</div>
 					</div>
