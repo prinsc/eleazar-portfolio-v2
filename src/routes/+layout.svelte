@@ -8,6 +8,24 @@
 
 	let { children } = $props();
 
+	// Détecte si on est sur un petit écran (mobile)
+	let isSmallScreen = $state(true);
+
+	$effect(() => {
+		if (!browser) return;
+
+		const checkScreenSize = () => {
+			isSmallScreen = window.innerWidth < 676; // breakpoint small
+		};
+
+		checkScreenSize();
+		window.addEventListener('resize', checkScreenSize);
+
+		return () => {
+			window.removeEventListener('resize', checkScreenSize);
+		};
+	});
+
 	// Track QR code visitors with Umami
 	$effect(() => {
 		if (browser && $page.url.searchParams.get('from') === 'qr') {
@@ -31,7 +49,7 @@
 	});
 </script>
 
-{#if browser}
+{#if browser && !isSmallScreen}
 	<div class="neuro">
 		<NeuroShader
 			baseColor={color}
@@ -49,6 +67,8 @@
 <!-- <Cursor /> -->
 
 <style lang="scss">
+	@use '../lib/styles/themes/mixins' as *;
+
 	.neuro {
 		position: fixed;
 		top: 0;
@@ -73,6 +93,13 @@
 				rgba(255, 255, 255, 0) 100%
 			);
 			pointer-events: none;
+		}
+
+		// Cache le neuroshader sur les petits écrans (mobile) pour économiser la performance
+		display: none;
+
+		@include breakpoint('small') {
+			display: unset;
 		}
 	}
 </style>
