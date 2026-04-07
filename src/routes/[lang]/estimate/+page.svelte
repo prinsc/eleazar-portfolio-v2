@@ -70,38 +70,38 @@
 		// ─────────────────────────────────────────────
 		// DESIGN & IDENTITÉ VISUELLE
 		// ─────────────────────────────────────────────
-		logo: '',                      // boolean/string : existant ?
-		charte: '',                    // charte graphique dispo ?
-		photos: '',                    // assets photo/vidéo
-		design_from_scratch: '',       // boolean — full custom ou thème
-		theme_preference: '',          // free / paid / to_define   (si !design_from_scratch)
-		theme_name: '',                // si thème connu            (si !design_from_scratch)
-		design_inspiration: '',        // URLs de sites qui plaisent
-		design_mood: [],               // array: modern, minimaliste, coloré, corporate, fun, luxe
+		logo: '', // boolean/string : existant ?
+		charte: '', // charte graphique dispo ?
+		photos: '', // assets photo/vidéo
+		design_from_scratch: '', // boolean — full custom ou thème
+		theme_preference: '', // free / paid / to_define   (si !design_from_scratch)
+		theme_name: '', // si thème connu            (si !design_from_scratch)
+		design_inspiration: '', // URLs de sites qui plaisent
+		design_mood: [], // array: modern, minimaliste, coloré, corporate, fun, luxe
 
 		// ─────────────────────────────────────────────
 		// CONTENU & RÉDACTION
 		// ─────────────────────────────────────────────
-		textes: '',                    // qui rédige
-		langues: [],                   // array: fr, nl, en, de, autre
-		i18n_owner: '',                // si langues.length > 1
-		pages: '',                     // pages spécifiques
-		blog_needed: '',               // boolean
-		blog_owner: '',                // si blog_needed : qui rédige
-		video_needed: '',              // boolean
-		video_source: '',              // si video_needed : client / à produire / embed
+		textes: '', // qui rédige
+		langues: [], // array: fr, nl, en, de, autre
+		i18n_owner: '', // si langues.length > 1
+		pages: '', // pages spécifiques
+		blog_needed: '', // boolean
+		blog_owner: '', // si blog_needed : qui rédige
+		video_needed: '', // boolean
+		video_source: '', // si video_needed : client / à produire / embed
 
 		// ─────────────────────────────────────────────
 		// TECHNIQUE (infra, CMS, perf)
 		// ─────────────────────────────────────────────
-		domaine: '',                   // boolean : domaine existant ?
-		domain_help_needed: '',        // si !domaine : aide achat ?
-		hebergement: '',               // existing / needed / included_in_offer
-		hebergement_provider: '',      // si hebergement === 'existing'
-		dns_owner: '',                 // qui gère actuellement les DNS
-		cms_preference: '',            // headless / shopify / drupal / aucun / à définir
-		performance_priority: '',      // standard / optimisé / core_web_vitals_strict
-		accessibility_needed: '',      // boolean — WCAG
+		domaine: '', // boolean : domaine existant ?
+		domain_help_needed: '', // si !domaine : aide achat ?
+		hebergement: '', // existing / needed / included_in_offer
+		hebergement_provider: '', // si hebergement === 'existing'
+		dns_owner: '', // qui gère actuellement les DNS
+		cms_preference: '', // headless / shopify / drupal / aucun / à définir
+		performance_priority: '', // standard / optimisé / core_web_vitals_strict
+		accessibility_needed: '', // boolean — WCAG
 
 		// ─────────────────────────────────────────────
 		// FONCTIONNALITÉS GÉNÉRALES
@@ -109,32 +109,32 @@
 		conversion: '',
 		contact_form: '',
 		rendezvous: '',
-		integrations: [],              // array : google_analytics, meta_pixel, google_ads, crm, erp, calendly, stripe, mollie, autre
-		interactive_map: '',           // boolean
-		map_provider: '',              // si interactive_map : google / mapbox / osm
-		map_features: [],              // si interactive_map : markers / itinéraires / zones / clustering
-		user_accounts: '',             // boolean
-		user_accounts_features: [],    // si user_accounts : historique, wishlist, profil, abonnement
-		user_accounts_auth: '',        // si user_accounts : email/password, google oauth, magic link
-		newsletter: '',                // boolean
-		newsletter_tool: '',           // si newsletter : mailchimp / klaviyo / brevo / autre / à définir
+		integrations: [], // array : google_analytics, meta_pixel, google_ads, crm, erp, calendly, stripe, mollie, autre
+		interactive_map: '', // boolean
+		map_provider: '', // si interactive_map : google / mapbox / osm
+		map_features: [], // si interactive_map : markers / itinéraires / zones / clustering
+		user_accounts: '', // boolean
+		user_accounts_features: [], // si user_accounts : historique, wishlist, profil, abonnement
+		user_accounts_auth: '', // si user_accounts : email/password, google oauth, magic link
+		newsletter: '', // boolean
+		newsletter_tool: '', // si newsletter : mailchimp / klaviyo / brevo / autre / à définir
 
 		// ─────────────────────────────────────────────
 		// E-COMMERCE (conditionnel — ecommerce === true)
 		// ─────────────────────────────────────────────
-		ecommerce: '',                 // boolean maître
-		ecommerce_platform: '',        // shopify / woocommerce / prestashop / custom / other
-		shopify_plan_exists: '',       // boolean (si platform === shopify)
-		shopify_theme_preference: '',  // free / paid / custom_liquid / headless_sveltekit
-		ecommerce_products_count: '',  // number
-		ecommerce_products_ready: '',  // boolean — CSV/ERP dispo
-		ecommerce_variants: '',        // boolean — variantes taille/couleur
+		ecommerce: '', // boolean maître
+		ecommerce_platform: '', // shopify / woocommerce / prestashop / custom / other
+		shopify_plan_exists: '', // boolean (si platform === shopify)
+		shopify_theme_preference: '', // free / paid / custom_liquid / headless_sveltekit
+		ecommerce_products_count: '', // number
+		ecommerce_products_ready: '', // boolean — CSV/ERP dispo
+		ecommerce_variants: '', // boolean — variantes taille/couleur
 		ecommerce_payment_methods: [], // array : bancontact, visa, paypal, virement, autre
-		ecommerce_shipping: '',        // bpost / dhl / mondial_relay / click_collect / other
-		ecommerce_shipping_type: '',   // fixed / calculated / free_above
-		ecommerce_b2b: '',             // boolean — vente pro
-		ecommerce_erp: '',             // boolean — ERP à connecter
-		ecommerce_erp_name: '',        // si ecommerce_erp
+		ecommerce_shipping: '', // bpost / dhl / mondial_relay / click_collect / other
+		ecommerce_shipping_type: '', // fixed / calculated / free_above
+		ecommerce_b2b: '', // boolean — vente pro
+		ecommerce_erp: '', // boolean — ERP à connecter
+		ecommerce_erp_name: '', // si ecommerce_erp
 
 		// ─────────────────────────────────────────────
 		// PREUVES SOCIALES
@@ -149,32 +149,32 @@
 		seo_keywords: '',
 		primary_action: '',
 		seo_target: '',
-		google_search_console: '',     // boolean
-		sitemap_needed: '',            // boolean
-		cookie_banner_needed: '',      // boolean — RGPD
+		google_search_console: '', // boolean
+		sitemap_needed: '', // boolean
+		cookie_banner_needed: '', // boolean — RGPD
 
 		// ─────────────────────────────────────────────
 		// MAINTENANCE & SUIVI
 		// ─────────────────────────────────────────────
 		content_updates_owner: '',
-		maintenance_needed: '',        // none / ponctuel / mensuel / annuel
-		maintenance_scope: [],         // updates, backups, monitoring, support, content
+		maintenance_needed: '', // none / ponctuel / mensuel / annuel
+		maintenance_scope: [], // updates, backups, monitoring, support, content
 		maintenance_budget_monthly: '',
 		need_pro_email: '',
 
 		// ─────────────────────────────────────────────
 		// FORMATION
 		// ─────────────────────────────────────────────
-		training_needed: '',           // boolean
-		training_scope: [],            // produits, articles, commandes, analytics
+		training_needed: '', // boolean
+		training_scope: [], // produits, articles, commandes, analytics
 
 		// ─────────────────────────────────────────────
 		// LÉGAL & RGPD
 		// ─────────────────────────────────────────────
 		mentions: '',
 		rgpd: '',
-		invoice_tool: '',              // outil de facturation connecté ?
-		legal_pages_needed: [],        // mentions légales, CGV, politique confidentialité, CGU
+		invoice_tool: '', // outil de facturation connecté ?
+		legal_pages_needed: [], // mentions légales, CGV, politique confidentialité, CGU
 		privacy_accepted: false
 	});
 
@@ -430,8 +430,14 @@
 				<div class="field">
 					<label>Design sur-mesure ou thème existant ?</label>
 					<div class="radio-group">
-						<label class="radio"><input type="radio" bind:group={answers.design_from_scratch} value={true} /> Sur-mesure (full custom)</label>
-						<label class="radio"><input type="radio" bind:group={answers.design_from_scratch} value={false} /> Thème existant adapté</label>
+						<label class="radio"
+							><input type="radio" bind:group={answers.design_from_scratch} value={true} /> Sur-mesure
+							(full custom)</label
+						>
+						<label class="radio"
+							><input type="radio" bind:group={answers.design_from_scratch} value={false} /> Thème existant
+							adapté</label
+						>
 					</div>
 				</div>
 
@@ -450,13 +456,22 @@
 				{#if shouldShow('theme_name')}
 					<div class="field sub">
 						<label for="theme_name">Nom du thème (si déjà choisi)</label>
-						<input id="theme_name" bind:value={answers.theme_name} placeholder="Ex: Dawn (Shopify), Astra Pro (WP), Impulse, à choisir ensemble…" />
+						<input
+							id="theme_name"
+							bind:value={answers.theme_name}
+							placeholder="Ex: Dawn (Shopify), Astra Pro (WP), Impulse, à choisir ensemble…"
+						/>
 					</div>
 				{/if}
 
 				<div class="field">
 					<label for="design_inspiration">Inspirations (URLs)</label>
-					<textarea id="design_inspiration" rows="2" bind:value={answers.design_inspiration} placeholder="Ex: stripe.com (j'adore les dégradés), notion.so (la grille), un site qui m'a marqué chez un concurrent en Allemagne…"></textarea>
+					<textarea
+						id="design_inspiration"
+						rows="2"
+						bind:value={answers.design_inspiration}
+						placeholder="Ex: stripe.com (j'adore les dégradés), notion.so (la grille), un site qui m'a marqué chez un concurrent en Allemagne…"
+					></textarea>
 				</div>
 
 				<div class="field">
@@ -464,7 +479,11 @@
 					<div class="checkbox-group">
 						{#each ['modern', 'minimaliste', 'coloré', 'corporate', 'fun', 'luxe'] as mood}
 							<label class="chip">
-								<input type="checkbox" checked={inArray('design_mood', mood)} onchange={() => toggleArray('design_mood', mood)} />
+								<input
+									type="checkbox"
+									checked={inArray('design_mood', mood)}
+									onchange={() => toggleArray('design_mood', mood)}
+								/>
 								<span>{mood}</span>
 							</label>
 						{/each}
@@ -487,7 +506,11 @@
 					<div class="checkbox-group">
 						{#each ['fr', 'nl', 'en', 'de', 'autre'] as lang}
 							<label class="chip">
-								<input type="checkbox" checked={inArray('langues', lang)} onchange={() => toggleArray('langues', lang)} />
+								<input
+									type="checkbox"
+									checked={inArray('langues', lang)}
+									onchange={() => toggleArray('langues', lang)}
+								/>
 								<span>{lang.toUpperCase()}</span>
 							</label>
 						{/each}
@@ -497,35 +520,56 @@
 				{#if shouldShow('i18n_owner')}
 					<div class="field sub">
 						<label for="i18n_owner">Qui gère les traductions ?</label>
-						<input id="i18n_owner" bind:value={answers.i18n_owner} placeholder="Ex: ma sœur est traductrice NL, agence Berlitz pour l'EN, DeepL relu par moi, je compte sur toi…" />
+						<input
+							id="i18n_owner"
+							bind:value={answers.i18n_owner}
+							placeholder="Ex: ma sœur est traductrice NL, agence Berlitz pour l'EN, DeepL relu par moi, je compte sur toi…"
+						/>
 					</div>
 				{/if}
 
 				<div class="field">
 					<label for="pages">Pages spécifiques souhaitées</label>
-					<textarea id="pages" rows="2" bind:value={answers.pages} placeholder="Ex: configurateur de cuisine, page « avant/après » avec slider, journal de bord du chantier, espace presse, calculateur de devis instantané, page recrutement avec quiz…"></textarea>
+					<textarea
+						id="pages"
+						rows="2"
+						bind:value={answers.pages}
+						placeholder="Ex: configurateur de cuisine, page « avant/après » avec slider, journal de bord du chantier, espace presse, calculateur de devis instantané, page recrutement avec quiz…"
+					></textarea>
 				</div>
 
 				<div class="field">
 					<span class="group-label">Blog / actualités nécessaires ?</span>
 					<div class="radio-group">
-						<label class="radio"><input type="radio" bind:group={answers.blog_needed} value={true} /> Oui</label>
-						<label class="radio"><input type="radio" bind:group={answers.blog_needed} value={false} /> Non</label>
+						<label class="radio"
+							><input type="radio" bind:group={answers.blog_needed} value={true} /> Oui</label
+						>
+						<label class="radio"
+							><input type="radio" bind:group={answers.blog_needed} value={false} /> Non</label
+						>
 					</div>
 				</div>
 
 				{#if shouldShow('blog_owner')}
 					<div class="field sub">
 						<label for="blog_owner">Qui rédige les articles ?</label>
-						<input id="blog_owner" bind:value={answers.blog_owner} placeholder="Ex: 1 article/mois rédigé par moi, ghostwriter externe, IA + relecture, on en discute…" />
+						<input
+							id="blog_owner"
+							bind:value={answers.blog_owner}
+							placeholder="Ex: 1 article/mois rédigé par moi, ghostwriter externe, IA + relecture, on en discute…"
+						/>
 					</div>
 				{/if}
 
 				<div class="field">
 					<span class="group-label">Vidéos nécessaires ?</span>
 					<div class="radio-group">
-						<label class="radio"><input type="radio" bind:group={answers.video_needed} value={true} /> Oui</label>
-						<label class="radio"><input type="radio" bind:group={answers.video_needed} value={false} /> Non</label>
+						<label class="radio"
+							><input type="radio" bind:group={answers.video_needed} value={true} /> Oui</label
+						>
+						<label class="radio"
+							><input type="radio" bind:group={answers.video_needed} value={false} /> Non</label
+						>
 					</div>
 				</div>
 
@@ -546,17 +590,27 @@
 				<div class="field">
 					<span class="group-label">Avez-vous déjà un nom de domaine ?</span>
 					<div class="radio-group">
-						<label class="radio"><input type="radio" bind:group={answers.domaine} value={true} /> Oui</label>
-						<label class="radio"><input type="radio" bind:group={answers.domaine} value={false} /> Non</label>
+						<label class="radio"
+							><input type="radio" bind:group={answers.domaine} value={true} /> Oui</label
+						>
+						<label class="radio"
+							><input type="radio" bind:group={answers.domaine} value={false} /> Non</label
+						>
 					</div>
 				</div>
 
 				{#if shouldShow('domain_help_needed')}
 					<div class="field sub">
-						<span class="group-label">Souhaitez-vous de l'aide pour choisir/acheter un domaine ?</span>
+						<span class="group-label"
+							>Souhaitez-vous de l'aide pour choisir/acheter un domaine ?</span
+						>
 						<div class="radio-group">
-							<label class="radio"><input type="radio" bind:group={answers.domain_help_needed} value={true} /> Oui</label>
-							<label class="radio"><input type="radio" bind:group={answers.domain_help_needed} value={false} /> Non</label>
+							<label class="radio"
+								><input type="radio" bind:group={answers.domain_help_needed} value={true} /> Oui</label
+							>
+							<label class="radio"
+								><input type="radio" bind:group={answers.domain_help_needed} value={false} /> Non</label
+							>
 						</div>
 					</div>
 				{/if}
@@ -574,13 +628,22 @@
 				{#if shouldShow('hebergement_provider')}
 					<div class="field sub">
 						<label for="hebergement_provider">Quel hébergeur ?</label>
-						<input id="hebergement_provider" bind:value={answers.hebergement_provider} placeholder="Ex: OVH Perso depuis 2019, Infomaniak (Suisse), o2switch, hébergé chez mon beau-frère sur un Raspberry Pi…" />
+						<input
+							id="hebergement_provider"
+							bind:value={answers.hebergement_provider}
+							placeholder="Ex: OVH Perso depuis 2019, Infomaniak (Suisse), o2switch, hébergé chez mon beau-frère sur un Raspberry Pi…"
+						/>
 					</div>
 				{/if}
 
 				<div class="field">
 					<label for="dns_owner">Qui gère actuellement les DNS ?</label>
-					<textarea id="dns_owner" rows="2" bind:value={answers.dns_owner} placeholder="Ex: l'agence qui a fait l'ancien site (plus joignable), mon comptable a tout en main, c'est sur le compte Gandi de mon ex-associé, aucune idée…"></textarea>
+					<textarea
+						id="dns_owner"
+						rows="2"
+						bind:value={answers.dns_owner}
+						placeholder="Ex: l'agence qui a fait l'ancien site (plus joignable), mon comptable a tout en main, c'est sur le compte Gandi de mon ex-associé, aucune idée…"
+					></textarea>
 				</div>
 
 				<div class="field">
@@ -609,8 +672,12 @@
 				<div class="field">
 					<span class="group-label">Conformité accessibilité (WCAG) requise ?</span>
 					<div class="radio-group">
-						<label class="radio"><input type="radio" bind:group={answers.accessibility_needed} value={true} /> Oui</label>
-						<label class="radio"><input type="radio" bind:group={answers.accessibility_needed} value={false} /> Non</label>
+						<label class="radio"
+							><input type="radio" bind:group={answers.accessibility_needed} value={true} /> Oui</label
+						>
+						<label class="radio"
+							><input type="radio" bind:group={answers.accessibility_needed} value={false} /> Non</label
+						>
 					</div>
 				</div>
 			{/if}
@@ -618,17 +685,30 @@
 			{#if step === 5}
 				<div class="field">
 					<label for="conversion">Objectif de conversion principal</label>
-					<input id="conversion" bind:value={answers.conversion} placeholder="Ex: réservation directe d'une table, devis automatisé envoyé par mail, click-to-call mobile, scan QR vers WhatsApp Business…" />
+					<input
+						id="conversion"
+						bind:value={answers.conversion}
+						placeholder="Ex: réservation directe d'une table, devis automatisé envoyé par mail, click-to-call mobile, scan QR vers WhatsApp Business…"
+					/>
 				</div>
 
 				<div class="field">
 					<label for="contact_form">Formulaire de contact spécifique ?</label>
-					<textarea id="contact_form" rows="2" bind:value={answers.contact_form} placeholder="Ex: upload de plans PDF jusqu'à 20 Mo, sélecteur de date d'intervention, champ conditionnel selon type de bien (maison/appart), captcha invisible…"></textarea>
+					<textarea
+						id="contact_form"
+						rows="2"
+						bind:value={answers.contact_form}
+						placeholder="Ex: upload de plans PDF jusqu'à 20 Mo, sélecteur de date d'intervention, champ conditionnel selon type de bien (maison/appart), captcha invisible…"
+					></textarea>
 				</div>
 
 				<div class="field">
 					<label for="rendezvous">Prise de rendez-vous en ligne ?</label>
-					<input id="rendezvous" bind:value={answers.rendezvous} placeholder="Ex: Cal.com synchronisé sur 3 collaborateurs, créneaux de 45 min uniquement le mardi, paiement d'acompte avant validation…" />
+					<input
+						id="rendezvous"
+						bind:value={answers.rendezvous}
+						placeholder="Ex: Cal.com synchronisé sur 3 collaborateurs, créneaux de 45 min uniquement le mardi, paiement d'acompte avant validation…"
+					/>
 				</div>
 
 				<div class="field">
@@ -636,7 +716,11 @@
 					<div class="checkbox-group">
 						{#each ['google_analytics', 'meta_pixel', 'google_ads', 'crm', 'erp', 'calendly', 'stripe', 'mollie', 'autre'] as tool}
 							<label class="chip">
-								<input type="checkbox" checked={inArray('integrations', tool)} onchange={() => toggleArray('integrations', tool)} />
+								<input
+									type="checkbox"
+									checked={inArray('integrations', tool)}
+									onchange={() => toggleArray('integrations', tool)}
+								/>
 								<span>{tool.replace('_', ' ')}</span>
 							</label>
 						{/each}
@@ -646,8 +730,12 @@
 				<div class="field">
 					<span class="group-label">Carte interactive ?</span>
 					<div class="radio-group">
-						<label class="radio"><input type="radio" bind:group={answers.interactive_map} value={true} /> Oui</label>
-						<label class="radio"><input type="radio" bind:group={answers.interactive_map} value={false} /> Non</label>
+						<label class="radio"
+							><input type="radio" bind:group={answers.interactive_map} value={true} /> Oui</label
+						>
+						<label class="radio"
+							><input type="radio" bind:group={answers.interactive_map} value={false} /> Non</label
+						>
 					</div>
 				</div>
 
@@ -669,7 +757,11 @@
 						<div class="checkbox-group">
 							{#each ['markers', 'itinéraires', 'zones', 'clustering'] as feat}
 								<label class="chip">
-									<input type="checkbox" checked={inArray('map_features', feat)} onchange={() => toggleArray('map_features', feat)} />
+									<input
+										type="checkbox"
+										checked={inArray('map_features', feat)}
+										onchange={() => toggleArray('map_features', feat)}
+									/>
 									<span>{feat}</span>
 								</label>
 							{/each}
@@ -680,8 +772,12 @@
 				<div class="field">
 					<span class="group-label">Espace client / comptes utilisateurs ?</span>
 					<div class="radio-group">
-						<label class="radio"><input type="radio" bind:group={answers.user_accounts} value={true} /> Oui</label>
-						<label class="radio"><input type="radio" bind:group={answers.user_accounts} value={false} /> Non</label>
+						<label class="radio"
+							><input type="radio" bind:group={answers.user_accounts} value={true} /> Oui</label
+						>
+						<label class="radio"
+							><input type="radio" bind:group={answers.user_accounts} value={false} /> Non</label
+						>
 					</div>
 				</div>
 
@@ -691,7 +787,11 @@
 						<div class="checkbox-group">
 							{#each ['historique commandes', 'wishlist', 'profil', 'abonnement'] as feat}
 								<label class="chip">
-									<input type="checkbox" checked={inArray('user_accounts_features', feat)} onchange={() => toggleArray('user_accounts_features', feat)} />
+									<input
+										type="checkbox"
+										checked={inArray('user_accounts_features', feat)}
+										onchange={() => toggleArray('user_accounts_features', feat)}
+									/>
 									<span>{feat}</span>
 								</label>
 							{/each}
@@ -714,8 +814,12 @@
 				<div class="field">
 					<span class="group-label">Newsletter ?</span>
 					<div class="radio-group">
-						<label class="radio"><input type="radio" bind:group={answers.newsletter} value={true} /> Oui</label>
-						<label class="radio"><input type="radio" bind:group={answers.newsletter} value={false} /> Non</label>
+						<label class="radio"
+							><input type="radio" bind:group={answers.newsletter} value={true} /> Oui</label
+						>
+						<label class="radio"
+							><input type="radio" bind:group={answers.newsletter} value={false} /> Non</label
+						>
 					</div>
 				</div>
 
@@ -738,8 +842,12 @@
 				<div class="field">
 					<span class="group-label">Avez-vous besoin d'une boutique en ligne ?</span>
 					<div class="radio-group">
-						<label class="radio"><input type="radio" bind:group={answers.ecommerce} value={true} /> Oui</label>
-						<label class="radio"><input type="radio" bind:group={answers.ecommerce} value={false} /> Non</label>
+						<label class="radio"
+							><input type="radio" bind:group={answers.ecommerce} value={true} /> Oui</label
+						>
+						<label class="radio"
+							><input type="radio" bind:group={answers.ecommerce} value={false} /> Non</label
+						>
 					</div>
 				</div>
 
@@ -760,8 +868,12 @@
 						<div class="field sub">
 							<span class="group-label">Avez-vous déjà un plan Shopify ?</span>
 							<div class="radio-group">
-								<label class="radio"><input type="radio" bind:group={answers.shopify_plan_exists} value={true} /> Oui</label>
-								<label class="radio"><input type="radio" bind:group={answers.shopify_plan_exists} value={false} /> Non</label>
+								<label class="radio"
+									><input type="radio" bind:group={answers.shopify_plan_exists} value={true} /> Oui</label
+								>
+								<label class="radio"
+									><input type="radio" bind:group={answers.shopify_plan_exists} value={false} /> Non</label
+								>
 							</div>
 						</div>
 					{/if}
@@ -781,22 +893,36 @@
 
 					<div class="field sub">
 						<label for="ecommerce_products_count">Nombre de produits</label>
-						<input id="ecommerce_products_count" type="number" min="0" bind:value={answers.ecommerce_products_count} placeholder="Ex: 12 produits artisanaux, ~350 SKU avec variantes, 2 000+ pièces auto importées d'un fournisseur…" />
+						<input
+							id="ecommerce_products_count"
+							type="number"
+							min="0"
+							bind:value={answers.ecommerce_products_count}
+							placeholder="Ex: 12 produits artisanaux, ~350 SKU avec variantes, 2 000+ pièces auto importées d'un fournisseur…"
+						/>
 					</div>
 
 					<div class="field sub">
 						<span class="group-label">Catalogue prêt (CSV / ERP dispo) ?</span>
 						<div class="radio-group">
-							<label class="radio"><input type="radio" bind:group={answers.ecommerce_products_ready} value={true} /> Oui</label>
-							<label class="radio"><input type="radio" bind:group={answers.ecommerce_products_ready} value={false} /> Non</label>
+							<label class="radio"
+								><input type="radio" bind:group={answers.ecommerce_products_ready} value={true} /> Oui</label
+							>
+							<label class="radio"
+								><input type="radio" bind:group={answers.ecommerce_products_ready} value={false} /> Non</label
+							>
 						</div>
 					</div>
 
 					<div class="field sub">
 						<span class="group-label">Variantes produits (taille, couleur…) ?</span>
 						<div class="radio-group">
-							<label class="radio"><input type="radio" bind:group={answers.ecommerce_variants} value={true} /> Oui</label>
-							<label class="radio"><input type="radio" bind:group={answers.ecommerce_variants} value={false} /> Non</label>
+							<label class="radio"
+								><input type="radio" bind:group={answers.ecommerce_variants} value={true} /> Oui</label
+							>
+							<label class="radio"
+								><input type="radio" bind:group={answers.ecommerce_variants} value={false} /> Non</label
+							>
 						</div>
 					</div>
 
@@ -805,7 +931,11 @@
 						<div class="checkbox-group">
 							{#each ['bancontact', 'visa', 'paypal', 'virement', 'autre'] as pay}
 								<label class="chip">
-									<input type="checkbox" checked={inArray('ecommerce_payment_methods', pay)} onchange={() => toggleArray('ecommerce_payment_methods', pay)} />
+									<input
+										type="checkbox"
+										checked={inArray('ecommerce_payment_methods', pay)}
+										onchange={() => toggleArray('ecommerce_payment_methods', pay)}
+									/>
 									<span>{pay}</span>
 								</label>
 							{/each}
@@ -837,23 +967,35 @@
 					<div class="field sub">
 						<span class="group-label">Vente aussi aux professionnels (B2B) ?</span>
 						<div class="radio-group">
-							<label class="radio"><input type="radio" bind:group={answers.ecommerce_b2b} value={true} /> Oui</label>
-							<label class="radio"><input type="radio" bind:group={answers.ecommerce_b2b} value={false} /> Non</label>
+							<label class="radio"
+								><input type="radio" bind:group={answers.ecommerce_b2b} value={true} /> Oui</label
+							>
+							<label class="radio"
+								><input type="radio" bind:group={answers.ecommerce_b2b} value={false} /> Non</label
+							>
 						</div>
 					</div>
 
 					<div class="field sub">
 						<span class="group-label">ERP / logiciel de gestion à connecter ?</span>
 						<div class="radio-group">
-							<label class="radio"><input type="radio" bind:group={answers.ecommerce_erp} value={true} /> Oui</label>
-							<label class="radio"><input type="radio" bind:group={answers.ecommerce_erp} value={false} /> Non</label>
+							<label class="radio"
+								><input type="radio" bind:group={answers.ecommerce_erp} value={true} /> Oui</label
+							>
+							<label class="radio"
+								><input type="radio" bind:group={answers.ecommerce_erp} value={false} /> Non</label
+							>
 						</div>
 					</div>
 
 					{#if shouldShow('ecommerce_erp_name')}
 						<div class="field sub">
 							<label for="ecommerce_erp_name">Nom de l'ERP</label>
-							<input id="ecommerce_erp_name" bind:value={answers.ecommerce_erp_name} placeholder="Ex: Odoo Community v16, Horus comptabilité, EBP Gestion Co, un Excel maison synchronisé via Zapier…" />
+							<input
+								id="ecommerce_erp_name"
+								bind:value={answers.ecommerce_erp_name}
+								placeholder="Ex: Odoo Community v16, Horus comptabilité, EBP Gestion Co, un Excel maison synchronisé via Zapier…"
+							/>
 						</div>
 					{/if}
 				{/if}
@@ -862,17 +1004,30 @@
 			{#if step === 7}
 				<div class="field">
 					<label for="avis">Avis clients</label>
-					<input id="avis" bind:value={answers.avis} placeholder="Ex: 4,8/5 sur 127 avis Google, captures d'écran d'emails clients, vidéos témoignages tournées au salon, rien encore…" />
+					<input
+						id="avis"
+						bind:value={answers.avis}
+						placeholder="Ex: 4,8/5 sur 127 avis Google, captures d'écran d'emails clients, vidéos témoignages tournées au salon, rien encore…"
+					/>
 				</div>
 
 				<div class="field">
 					<label for="chiffres">Chiffres clés</label>
-					<input id="chiffres" bind:value={answers.chiffres} placeholder="Ex: 1 247 chantiers livrés, 0 retard en 2025, 38 tonnes de matériaux recyclés, présent dans 4 provinces…" />
+					<input
+						id="chiffres"
+						bind:value={answers.chiffres}
+						placeholder="Ex: 1 247 chantiers livrés, 0 retard en 2025, 38 tonnes de matériaux recyclés, présent dans 4 provinces…"
+					/>
 				</div>
 
 				<div class="field">
 					<label for="partenaires">Partenaires</label>
-					<textarea id="partenaires" rows="2" bind:value={answers.partenaires} placeholder="Ex: revendeur agréé Bosch + Velux, certifié RGIE, membre de la Fédération Horeca Wallonie, partenariat avec l'asbl Empreintes…"></textarea>
+					<textarea
+						id="partenaires"
+						rows="2"
+						bind:value={answers.partenaires}
+						placeholder="Ex: revendeur agréé Bosch + Velux, certifié RGIE, membre de la Fédération Horeca Wallonie, partenariat avec l'asbl Empreintes…"
+					></textarea>
 				</div>
 			{/if}
 
@@ -883,40 +1038,65 @@
 
 				<div class="field">
 					<label for="seo_keywords">3 mots-clés cibles sur Google</label>
-					<textarea id="seo_keywords" rows="2" bind:value={answers.seo_keywords} placeholder="Ex: réparation lave-vaisselle Tournai, cours de yoga prénatal Mons, traiteur mariage bio Brabant wallon…"></textarea>
+					<textarea
+						id="seo_keywords"
+						rows="2"
+						bind:value={answers.seo_keywords}
+						placeholder="Ex: réparation lave-vaisselle Tournai, cours de yoga prénatal Mons, traiteur mariage bio Brabant wallon…"
+					></textarea>
 				</div>
 
 				<div class="field">
 					<label for="primary_action">Action principale attendue du visiteur</label>
-					<input id="primary_action" bind:value={answers.primary_action} placeholder="Ex: télécharger mon catalogue PDF, réserver une visite d'atelier, s'inscrire à la prochaine session de formation…" />
+					<input
+						id="primary_action"
+						bind:value={answers.primary_action}
+						placeholder="Ex: télécharger mon catalogue PDF, réserver une visite d'atelier, s'inscrire à la prochaine session de formation…"
+					/>
 				</div>
 
 				<div class="field">
 					<label for="seo_target">Cible géographique</label>
-					<input id="seo_target" bind:value={answers.seo_target} placeholder="Ex: 25 km autour d'Ath uniquement, Hainaut + Nord de la France, toute la Belgique francophone, Europe DACH…" />
+					<input
+						id="seo_target"
+						bind:value={answers.seo_target}
+						placeholder="Ex: 25 km autour d'Ath uniquement, Hainaut + Nord de la France, toute la Belgique francophone, Europe DACH…"
+					/>
 				</div>
 
 				<div class="field">
 					<span class="group-label">Configurer Google Search Console ?</span>
 					<div class="radio-group">
-						<label class="radio"><input type="radio" bind:group={answers.google_search_console} value={true} /> Oui</label>
-						<label class="radio"><input type="radio" bind:group={answers.google_search_console} value={false} /> Non</label>
+						<label class="radio"
+							><input type="radio" bind:group={answers.google_search_console} value={true} /> Oui</label
+						>
+						<label class="radio"
+							><input type="radio" bind:group={answers.google_search_console} value={false} /> Non</label
+						>
 					</div>
 				</div>
 
 				<div class="field">
 					<span class="group-label">Sitemap XML à générer ?</span>
 					<div class="radio-group">
-						<label class="radio"><input type="radio" bind:group={answers.sitemap_needed} value={true} /> Oui</label>
-						<label class="radio"><input type="radio" bind:group={answers.sitemap_needed} value={false} /> Non</label>
+						<label class="radio"
+							><input type="radio" bind:group={answers.sitemap_needed} value={true} /> Oui</label
+						>
+						<label class="radio"
+							><input type="radio" bind:group={answers.sitemap_needed} value={false} /> Non</label
+						>
 					</div>
 				</div>
 
 				<div class="field">
 					<span class="group-label">Bannière cookies (RGPD) ?</span>
 					<div class="radio-group">
-						<label class="radio"><input type="radio" bind:group={answers.cookie_banner_needed} value={true} /> Oui</label>
-						<label class="radio"><input type="radio" bind:group={answers.cookie_banner_needed} value={false} /> Non</label>
+						<label class="radio"
+							><input type="radio" bind:group={answers.cookie_banner_needed} value={true} /> Oui</label
+						>
+						<label class="radio"
+							><input type="radio" bind:group={answers.cookie_banner_needed} value={false} /> Non</label
+						>
 					</div>
 				</div>
 			{/if}
@@ -927,8 +1107,14 @@
 				</div>
 
 				<div class="field">
-					<label for="content_updates_owner">Qui mettra à jour le contenu après la mise en ligne ?</label>
-					<input id="content_updates_owner" bind:value={answers.content_updates_owner} placeholder="Ex: ma secrétaire mettra à jour les horaires, je veux pouvoir changer les prix moi-même, je préfère t'envoyer les modifs par mail…" />
+					<label for="content_updates_owner"
+						>Qui mettra à jour le contenu après la mise en ligne ?</label
+					>
+					<input
+						id="content_updates_owner"
+						bind:value={answers.content_updates_owner}
+						placeholder="Ex: ma secrétaire mettra à jour les horaires, je veux pouvoir changer les prix moi-même, je préfère t'envoyer les modifs par mail…"
+					/>
 				</div>
 
 				<div class="field">
@@ -948,7 +1134,11 @@
 						<div class="checkbox-group">
 							{#each ['updates', 'backups', 'monitoring', 'support', 'content'] as s}
 								<label class="chip">
-									<input type="checkbox" checked={inArray('maintenance_scope', s)} onchange={() => toggleArray('maintenance_scope', s)} />
+									<input
+										type="checkbox"
+										checked={inArray('maintenance_scope', s)}
+										onchange={() => toggleArray('maintenance_scope', s)}
+									/>
 									<span>{s}</span>
 								</label>
 							{/each}
@@ -959,20 +1149,32 @@
 				{#if shouldShow('maintenance_budget_monthly')}
 					<div class="field sub">
 						<label for="maintenance_budget_monthly">Budget mensuel estimé (€)</label>
-						<input id="maintenance_budget_monthly" bind:value={answers.maintenance_budget_monthly} placeholder="Ex: 50€/mois pour les essentiels, 120€/mois avec ajout de contenus, à voir selon ta proposition…" />
+						<input
+							id="maintenance_budget_monthly"
+							bind:value={answers.maintenance_budget_monthly}
+							placeholder="Ex: 50€/mois pour les essentiels, 120€/mois avec ajout de contenus, à voir selon ta proposition…"
+						/>
 					</div>
 				{/if}
 
 				<div class="field">
 					<label for="need_pro_email">Adresse email pro (ex: contact@entreprise.be) ?</label>
-					<input id="need_pro_email" bind:value={answers.need_pro_email} placeholder="Ex: oui contact@ + bonjour@ sur Google Workspace, déjà sur OVH mais à migrer, juste un alias forwardé vers Gmail…" />
+					<input
+						id="need_pro_email"
+						bind:value={answers.need_pro_email}
+						placeholder="Ex: oui contact@ + bonjour@ sur Google Workspace, déjà sur OVH mais à migrer, juste un alias forwardé vers Gmail…"
+					/>
 				</div>
 
 				<div class="field">
 					<span class="group-label">Formation back-office nécessaire ?</span>
 					<div class="radio-group">
-						<label class="radio"><input type="radio" bind:group={answers.training_needed} value={true} /> Oui</label>
-						<label class="radio"><input type="radio" bind:group={answers.training_needed} value={false} /> Non</label>
+						<label class="radio"
+							><input type="radio" bind:group={answers.training_needed} value={true} /> Oui</label
+						>
+						<label class="radio"
+							><input type="radio" bind:group={answers.training_needed} value={false} /> Non</label
+						>
 					</div>
 				</div>
 
@@ -982,7 +1184,11 @@
 						<div class="checkbox-group">
 							{#each ['gestion produits', 'articles', 'commandes', 'analytics'] as s}
 								<label class="chip">
-									<input type="checkbox" checked={inArray('training_scope', s)} onchange={() => toggleArray('training_scope', s)} />
+									<input
+										type="checkbox"
+										checked={inArray('training_scope', s)}
+										onchange={() => toggleArray('training_scope', s)}
+									/>
 									<span>{s}</span>
 								</label>
 							{/each}
@@ -994,17 +1200,29 @@
 			{#if step === 10}
 				<div class="field">
 					<label for="mentions">Mentions légales (Belgique)</label>
-					<input id="mentions" bind:value={answers.mentions} placeholder="Ex: BCE 0123.456.789, TVA BE0123456789, siège social rue X à Mons, n° d'agréation IPI 506.123…" />
+					<input
+						id="mentions"
+						bind:value={answers.mentions}
+						placeholder="Ex: BCE 0123.456.789, TVA BE0123456789, siège social rue X à Mons, n° d'agréation IPI 506.123…"
+					/>
 				</div>
 
 				<div class="field">
 					<label for="rgpd">RGPD</label>
-					<input id="rgpd" bind:value={answers.rgpd} placeholder="Ex: politique rédigée par mon avocat en 2023, j'ai juste un modèle CCI à adapter, rien encore — à créer from scratch…" />
+					<input
+						id="rgpd"
+						bind:value={answers.rgpd}
+						placeholder="Ex: politique rédigée par mon avocat en 2023, j'ai juste un modèle CCI à adapter, rien encore — à créer from scratch…"
+					/>
 				</div>
 
 				<div class="field">
 					<label for="invoice_tool">Outil de facturation à connecter ?</label>
-					<input id="invoice_tool" bind:value={answers.invoice_tool} placeholder="Ex: Billit synchronisé à mon compte BNP, Horus via mon comptable, je facture encore au format Word…" />
+					<input
+						id="invoice_tool"
+						bind:value={answers.invoice_tool}
+						placeholder="Ex: Billit synchronisé à mon compte BNP, Horus via mon comptable, je facture encore au format Word…"
+					/>
 				</div>
 
 				<div class="field">
@@ -1012,7 +1230,11 @@
 					<div class="checkbox-group">
 						{#each ['mentions légales', 'CGV', 'politique confidentialité', 'CGU'] as p}
 							<label class="chip">
-								<input type="checkbox" checked={inArray('legal_pages_needed', p)} onchange={() => toggleArray('legal_pages_needed', p)} />
+								<input
+									type="checkbox"
+									checked={inArray('legal_pages_needed', p)}
+									onchange={() => toggleArray('legal_pages_needed', p)}
+								/>
 								<span>{p}</span>
 							</label>
 						{/each}
@@ -1110,78 +1332,204 @@
 					<section class="summary-section grain">
 						<h3>1. Projet & Objectifs</h3>
 						<dl>
-							<div class="row"><dt>But principal</dt><dd>{fmt(answers.objectif)}</dd></div>
-							<div class="row"><dt>Cible</dt><dd>{fmt(answers.cible)}</dd></div>
-							<div class="row"><dt>Exemples</dt><dd class="multiline">{fmt(answers.exemples)}</dd></div>
+							<div class="row">
+								<dt>But principal</dt>
+								<dd>{fmt(answers.objectif)}</dd>
+							</div>
+							<div class="row">
+								<dt>Cible</dt>
+								<dd>{fmt(answers.cible)}</dd>
+							</div>
+							<div class="row">
+								<dt>Exemples</dt>
+								<dd class="multiline">{fmt(answers.exemples)}</dd>
+							</div>
 						</dl>
 					</section>
 
 					<section class="summary-section grain">
 						<h3>2. Budget & Planning</h3>
 						<dl>
-							<div class="row"><dt>Lancement</dt><dd>{fmt(answers.launch_date)}</dd></div>
-							<div class="row"><dt>Budget</dt><dd>{fmt(answers.budget)}</dd></div>
-							<div class="row"><dt>Décideur final</dt><dd>{fmt(answers.final_decider)}</dd></div>
+							<div class="row">
+								<dt>Lancement</dt>
+								<dd>{fmt(answers.launch_date)}</dd>
+							</div>
+							<div class="row">
+								<dt>Budget</dt>
+								<dd>{fmt(answers.budget)}</dd>
+							</div>
+							<div class="row">
+								<dt>Décideur final</dt>
+								<dd>{fmt(answers.final_decider)}</dd>
+							</div>
 						</dl>
 					</section>
 
 					<section class="summary-section grain">
 						<h3>3. Design & Identité</h3>
 						<dl>
-							<div class="row"><dt>Logo</dt><dd>{fmt(answers.logo)}</dd></div>
-							<div class="row"><dt>Charte</dt><dd class="multiline">{fmt(answers.charte)}</dd></div>
-							<div class="row"><dt>Photos / vidéos</dt><dd class="multiline">{fmt(answers.photos)}</dd></div>
-							<div class="row"><dt>Sur-mesure</dt><dd>{fmt(answers.design_from_scratch)}</dd></div>
-							<div class="row"><dt>Thème</dt><dd>{fmt(answers.theme_preference)}</dd></div>
-							<div class="row"><dt>Nom thème</dt><dd>{fmt(answers.theme_name)}</dd></div>
-							<div class="row"><dt>Inspirations</dt><dd class="multiline">{fmt(answers.design_inspiration)}</dd></div>
-							<div class="row"><dt>Ambiance</dt><dd>{fmt(answers.design_mood)}</dd></div>
+							<div class="row">
+								<dt>Logo</dt>
+								<dd>{fmt(answers.logo)}</dd>
+							</div>
+							<div class="row">
+								<dt>Charte</dt>
+								<dd class="multiline">{fmt(answers.charte)}</dd>
+							</div>
+							<div class="row">
+								<dt>Photos / vidéos</dt>
+								<dd class="multiline">{fmt(answers.photos)}</dd>
+							</div>
+							<div class="row">
+								<dt>Sur-mesure</dt>
+								<dd>{fmt(answers.design_from_scratch)}</dd>
+							</div>
+							<div class="row">
+								<dt>Thème</dt>
+								<dd>{fmt(answers.theme_preference)}</dd>
+							</div>
+							<div class="row">
+								<dt>Nom thème</dt>
+								<dd>{fmt(answers.theme_name)}</dd>
+							</div>
+							<div class="row">
+								<dt>Inspirations</dt>
+								<dd class="multiline">{fmt(answers.design_inspiration)}</dd>
+							</div>
+							<div class="row">
+								<dt>Ambiance</dt>
+								<dd>{fmt(answers.design_mood)}</dd>
+							</div>
 						</dl>
 					</section>
 
 					<section class="summary-section grain">
 						<h3>4. Contenu & Rédaction</h3>
 						<dl>
-							<div class="row"><dt>Textes</dt><dd>{fmt(answers.textes)}</dd></div>
-							<div class="row"><dt>Langues</dt><dd>{fmt(answers.langues)}</dd></div>
-							<div class="row"><dt>Gestion i18n</dt><dd>{fmt(answers.i18n_owner)}</dd></div>
-							<div class="row"><dt>Pages spéc.</dt><dd class="multiline">{fmt(answers.pages)}</dd></div>
-							<div class="row"><dt>Blog</dt><dd>{fmt(answers.blog_needed)}</dd></div>
-							<div class="row"><dt>Rédacteur blog</dt><dd>{fmt(answers.blog_owner)}</dd></div>
-							<div class="row"><dt>Vidéos</dt><dd>{fmt(answers.video_needed)}</dd></div>
-							<div class="row"><dt>Source vidéo</dt><dd>{fmt(answers.video_source)}</dd></div>
+							<div class="row">
+								<dt>Textes</dt>
+								<dd>{fmt(answers.textes)}</dd>
+							</div>
+							<div class="row">
+								<dt>Langues</dt>
+								<dd>{fmt(answers.langues)}</dd>
+							</div>
+							<div class="row">
+								<dt>Gestion i18n</dt>
+								<dd>{fmt(answers.i18n_owner)}</dd>
+							</div>
+							<div class="row">
+								<dt>Pages spéc.</dt>
+								<dd class="multiline">{fmt(answers.pages)}</dd>
+							</div>
+							<div class="row">
+								<dt>Blog</dt>
+								<dd>{fmt(answers.blog_needed)}</dd>
+							</div>
+							<div class="row">
+								<dt>Rédacteur blog</dt>
+								<dd>{fmt(answers.blog_owner)}</dd>
+							</div>
+							<div class="row">
+								<dt>Vidéos</dt>
+								<dd>{fmt(answers.video_needed)}</dd>
+							</div>
+							<div class="row">
+								<dt>Source vidéo</dt>
+								<dd>{fmt(answers.video_source)}</dd>
+							</div>
 						</dl>
 					</section>
 
 					<section class="summary-section grain">
 						<h3>5. Technique & Infra</h3>
 						<dl>
-							<div class="row"><dt>Domaine existant</dt><dd>{fmt(answers.domaine)}</dd></div>
-							<div class="row"><dt>Aide domaine</dt><dd>{fmt(answers.domain_help_needed)}</dd></div>
-							<div class="row"><dt>Hébergement</dt><dd>{fmt(answers.hebergement)}</dd></div>
-							<div class="row"><dt>Hébergeur</dt><dd>{fmt(answers.hebergement_provider)}</dd></div>
-							<div class="row"><dt>DNS (gestion)</dt><dd class="multiline">{fmt(answers.dns_owner)}</dd></div>
-							<div class="row"><dt>CMS</dt><dd>{fmt(answers.cms_preference)}</dd></div>
-							<div class="row"><dt>Performance</dt><dd>{fmt(answers.performance_priority)}</dd></div>
-							<div class="row"><dt>Accessibilité</dt><dd>{fmt(answers.accessibility_needed)}</dd></div>
+							<div class="row">
+								<dt>Domaine existant</dt>
+								<dd>{fmt(answers.domaine)}</dd>
+							</div>
+							<div class="row">
+								<dt>Aide domaine</dt>
+								<dd>{fmt(answers.domain_help_needed)}</dd>
+							</div>
+							<div class="row">
+								<dt>Hébergement</dt>
+								<dd>{fmt(answers.hebergement)}</dd>
+							</div>
+							<div class="row">
+								<dt>Hébergeur</dt>
+								<dd>{fmt(answers.hebergement_provider)}</dd>
+							</div>
+							<div class="row">
+								<dt>DNS (gestion)</dt>
+								<dd class="multiline">{fmt(answers.dns_owner)}</dd>
+							</div>
+							<div class="row">
+								<dt>CMS</dt>
+								<dd>{fmt(answers.cms_preference)}</dd>
+							</div>
+							<div class="row">
+								<dt>Performance</dt>
+								<dd>{fmt(answers.performance_priority)}</dd>
+							</div>
+							<div class="row">
+								<dt>Accessibilité</dt>
+								<dd>{fmt(answers.accessibility_needed)}</dd>
+							</div>
 						</dl>
 					</section>
 
 					<section class="summary-section grain">
 						<h3>6. Fonctionnalités</h3>
 						<dl>
-							<div class="row"><dt>Conversion</dt><dd>{fmt(answers.conversion)}</dd></div>
-							<div class="row"><dt>Formulaire</dt><dd class="multiline">{fmt(answers.contact_form)}</dd></div>
-							<div class="row"><dt>RDV en ligne</dt><dd>{fmt(answers.rendezvous)}</dd></div>
-							<div class="row"><dt>Intégrations</dt><dd>{fmt(answers.integrations)}</dd></div>
-							<div class="row"><dt>Carte</dt><dd>{fmt(answers.interactive_map)}</dd></div>
-							<div class="row"><dt>Fournisseur carte</dt><dd>{fmt(answers.map_provider)}</dd></div>
-							<div class="row"><dt>Options carte</dt><dd>{fmt(answers.map_features)}</dd></div>
-							<div class="row"><dt>Comptes users</dt><dd>{fmt(answers.user_accounts)}</dd></div>
-							<div class="row"><dt>Fonctions compte</dt><dd>{fmt(answers.user_accounts_features)}</dd></div>
-							<div class="row"><dt>Auth</dt><dd>{fmt(answers.user_accounts_auth)}</dd></div>
-							<div class="row"><dt>Newsletter</dt><dd>{fmt(answers.newsletter)}</dd></div>
-							<div class="row"><dt>Outil newsletter</dt><dd>{fmt(answers.newsletter_tool)}</dd></div>
+							<div class="row">
+								<dt>Conversion</dt>
+								<dd>{fmt(answers.conversion)}</dd>
+							</div>
+							<div class="row">
+								<dt>Formulaire</dt>
+								<dd class="multiline">{fmt(answers.contact_form)}</dd>
+							</div>
+							<div class="row">
+								<dt>RDV en ligne</dt>
+								<dd>{fmt(answers.rendezvous)}</dd>
+							</div>
+							<div class="row">
+								<dt>Intégrations</dt>
+								<dd>{fmt(answers.integrations)}</dd>
+							</div>
+							<div class="row">
+								<dt>Carte</dt>
+								<dd>{fmt(answers.interactive_map)}</dd>
+							</div>
+							<div class="row">
+								<dt>Fournisseur carte</dt>
+								<dd>{fmt(answers.map_provider)}</dd>
+							</div>
+							<div class="row">
+								<dt>Options carte</dt>
+								<dd>{fmt(answers.map_features)}</dd>
+							</div>
+							<div class="row">
+								<dt>Comptes users</dt>
+								<dd>{fmt(answers.user_accounts)}</dd>
+							</div>
+							<div class="row">
+								<dt>Fonctions compte</dt>
+								<dd>{fmt(answers.user_accounts_features)}</dd>
+							</div>
+							<div class="row">
+								<dt>Auth</dt>
+								<dd>{fmt(answers.user_accounts_auth)}</dd>
+							</div>
+							<div class="row">
+								<dt>Newsletter</dt>
+								<dd>{fmt(answers.newsletter)}</dd>
+							</div>
+							<div class="row">
+								<dt>Outil newsletter</dt>
+								<dd>{fmt(answers.newsletter_tool)}</dd>
+							</div>
 						</dl>
 					</section>
 
@@ -1189,18 +1537,54 @@
 						<section class="summary-section grain">
 							<h3>7. E-commerce</h3>
 							<dl>
-								<div class="row"><dt>Plateforme</dt><dd>{fmt(answers.ecommerce_platform)}</dd></div>
-								<div class="row"><dt>Plan Shopify</dt><dd>{fmt(answers.shopify_plan_exists)}</dd></div>
-								<div class="row"><dt>Thème Shopify</dt><dd>{fmt(answers.shopify_theme_preference)}</dd></div>
-								<div class="row"><dt>Nb produits</dt><dd>{fmt(answers.ecommerce_products_count)}</dd></div>
-								<div class="row"><dt>Catalogue prêt</dt><dd>{fmt(answers.ecommerce_products_ready)}</dd></div>
-								<div class="row"><dt>Variantes</dt><dd>{fmt(answers.ecommerce_variants)}</dd></div>
-								<div class="row"><dt>Paiements</dt><dd>{fmt(answers.ecommerce_payment_methods)}</dd></div>
-								<div class="row"><dt>Livraison</dt><dd>{fmt(answers.ecommerce_shipping)}</dd></div>
-								<div class="row"><dt>Frais de port</dt><dd>{fmt(answers.ecommerce_shipping_type)}</dd></div>
-								<div class="row"><dt>B2B</dt><dd>{fmt(answers.ecommerce_b2b)}</dd></div>
-								<div class="row"><dt>ERP</dt><dd>{fmt(answers.ecommerce_erp)}</dd></div>
-								<div class="row"><dt>Nom ERP</dt><dd>{fmt(answers.ecommerce_erp_name)}</dd></div>
+								<div class="row">
+									<dt>Plateforme</dt>
+									<dd>{fmt(answers.ecommerce_platform)}</dd>
+								</div>
+								<div class="row">
+									<dt>Plan Shopify</dt>
+									<dd>{fmt(answers.shopify_plan_exists)}</dd>
+								</div>
+								<div class="row">
+									<dt>Thème Shopify</dt>
+									<dd>{fmt(answers.shopify_theme_preference)}</dd>
+								</div>
+								<div class="row">
+									<dt>Nb produits</dt>
+									<dd>{fmt(answers.ecommerce_products_count)}</dd>
+								</div>
+								<div class="row">
+									<dt>Catalogue prêt</dt>
+									<dd>{fmt(answers.ecommerce_products_ready)}</dd>
+								</div>
+								<div class="row">
+									<dt>Variantes</dt>
+									<dd>{fmt(answers.ecommerce_variants)}</dd>
+								</div>
+								<div class="row">
+									<dt>Paiements</dt>
+									<dd>{fmt(answers.ecommerce_payment_methods)}</dd>
+								</div>
+								<div class="row">
+									<dt>Livraison</dt>
+									<dd>{fmt(answers.ecommerce_shipping)}</dd>
+								</div>
+								<div class="row">
+									<dt>Frais de port</dt>
+									<dd>{fmt(answers.ecommerce_shipping_type)}</dd>
+								</div>
+								<div class="row">
+									<dt>B2B</dt>
+									<dd>{fmt(answers.ecommerce_b2b)}</dd>
+								</div>
+								<div class="row">
+									<dt>ERP</dt>
+									<dd>{fmt(answers.ecommerce_erp)}</dd>
+								</div>
+								<div class="row">
+									<dt>Nom ERP</dt>
+									<dd>{fmt(answers.ecommerce_erp_name)}</dd>
+								</div>
 							</dl>
 						</section>
 					{/if}
@@ -1208,44 +1592,104 @@
 					<section class="summary-section grain">
 						<h3>8. Preuves sociales</h3>
 						<dl>
-							<div class="row"><dt>Avis</dt><dd>{fmt(answers.avis)}</dd></div>
-							<div class="row"><dt>Chiffres</dt><dd>{fmt(answers.chiffres)}</dd></div>
-							<div class="row"><dt>Partenaires</dt><dd class="multiline">{fmt(answers.partenaires)}</dd></div>
+							<div class="row">
+								<dt>Avis</dt>
+								<dd>{fmt(answers.avis)}</dd>
+							</div>
+							<div class="row">
+								<dt>Chiffres</dt>
+								<dd>{fmt(answers.chiffres)}</dd>
+							</div>
+							<div class="row">
+								<dt>Partenaires</dt>
+								<dd class="multiline">{fmt(answers.partenaires)}</dd>
+							</div>
 						</dl>
 					</section>
 
 					<section class="summary-section grain">
 						<h3>9. SEO & Analytics</h3>
 						<dl>
-							<div class="row"><dt>Mots-clés</dt><dd class="multiline">{fmt(answers.seo_keywords)}</dd></div>
-							<div class="row"><dt>Action principale</dt><dd>{fmt(answers.primary_action)}</dd></div>
-							<div class="row"><dt>Cible géo</dt><dd>{fmt(answers.seo_target)}</dd></div>
-							<div class="row"><dt>Search Console</dt><dd>{fmt(answers.google_search_console)}</dd></div>
-							<div class="row"><dt>Sitemap</dt><dd>{fmt(answers.sitemap_needed)}</dd></div>
-							<div class="row"><dt>Cookie banner</dt><dd>{fmt(answers.cookie_banner_needed)}</dd></div>
+							<div class="row">
+								<dt>Mots-clés</dt>
+								<dd class="multiline">{fmt(answers.seo_keywords)}</dd>
+							</div>
+							<div class="row">
+								<dt>Action principale</dt>
+								<dd>{fmt(answers.primary_action)}</dd>
+							</div>
+							<div class="row">
+								<dt>Cible géo</dt>
+								<dd>{fmt(answers.seo_target)}</dd>
+							</div>
+							<div class="row">
+								<dt>Search Console</dt>
+								<dd>{fmt(answers.google_search_console)}</dd>
+							</div>
+							<div class="row">
+								<dt>Sitemap</dt>
+								<dd>{fmt(answers.sitemap_needed)}</dd>
+							</div>
+							<div class="row">
+								<dt>Cookie banner</dt>
+								<dd>{fmt(answers.cookie_banner_needed)}</dd>
+							</div>
 						</dl>
 					</section>
 
 					<section class="summary-section grain">
 						<h3>10. Maintenance & Formation</h3>
 						<dl>
-							<div class="row"><dt>MAJ contenu</dt><dd>{fmt(answers.content_updates_owner)}</dd></div>
-							<div class="row"><dt>Maintenance</dt><dd>{fmt(answers.maintenance_needed)}</dd></div>
-							<div class="row"><dt>Périmètre</dt><dd>{fmt(answers.maintenance_scope)}</dd></div>
-							<div class="row"><dt>Budget mensuel</dt><dd>{fmt(answers.maintenance_budget_monthly)}</dd></div>
-							<div class="row"><dt>Email pro</dt><dd>{fmt(answers.need_pro_email)}</dd></div>
-							<div class="row"><dt>Formation</dt><dd>{fmt(answers.training_needed)}</dd></div>
-							<div class="row"><dt>Périmètre formation</dt><dd>{fmt(answers.training_scope)}</dd></div>
+							<div class="row">
+								<dt>MAJ contenu</dt>
+								<dd>{fmt(answers.content_updates_owner)}</dd>
+							</div>
+							<div class="row">
+								<dt>Maintenance</dt>
+								<dd>{fmt(answers.maintenance_needed)}</dd>
+							</div>
+							<div class="row">
+								<dt>Périmètre</dt>
+								<dd>{fmt(answers.maintenance_scope)}</dd>
+							</div>
+							<div class="row">
+								<dt>Budget mensuel</dt>
+								<dd>{fmt(answers.maintenance_budget_monthly)}</dd>
+							</div>
+							<div class="row">
+								<dt>Email pro</dt>
+								<dd>{fmt(answers.need_pro_email)}</dd>
+							</div>
+							<div class="row">
+								<dt>Formation</dt>
+								<dd>{fmt(answers.training_needed)}</dd>
+							</div>
+							<div class="row">
+								<dt>Périmètre formation</dt>
+								<dd>{fmt(answers.training_scope)}</dd>
+							</div>
 						</dl>
 					</section>
 
 					<section class="summary-section grain">
 						<h3>11. Légal & RGPD</h3>
 						<dl>
-							<div class="row"><dt>Mentions légales</dt><dd>{fmt(answers.mentions)}</dd></div>
-							<div class="row"><dt>RGPD</dt><dd>{fmt(answers.rgpd)}</dd></div>
-							<div class="row"><dt>Facturation</dt><dd>{fmt(answers.invoice_tool)}</dd></div>
-							<div class="row"><dt>Pages légales</dt><dd>{fmt(answers.legal_pages_needed)}</dd></div>
+							<div class="row">
+								<dt>Mentions légales</dt>
+								<dd>{fmt(answers.mentions)}</dd>
+							</div>
+							<div class="row">
+								<dt>RGPD</dt>
+								<dd>{fmt(answers.rgpd)}</dd>
+							</div>
+							<div class="row">
+								<dt>Facturation</dt>
+								<dd>{fmt(answers.invoice_tool)}</dd>
+							</div>
+							<div class="row">
+								<dt>Pages légales</dt>
+								<dd>{fmt(answers.legal_pages_needed)}</dd>
+							</div>
 						</dl>
 					</section>
 				</div>
@@ -1324,42 +1768,29 @@
 		margin-bottom: 0.35rem;
 	}
 
+	.checkbox-group,
 	.radio-group {
 		display: flex;
 		flex-wrap: wrap;
-		gap: 0.75rem;
+		gap: 1.25rem;
 	}
+
+	.chip,
 	.radio {
 		display: inline-flex;
 		align-items: center;
 		gap: 0.4rem;
 		cursor: pointer;
-		padding: 0.5rem 0.85rem;
-		background: var(--color-white);
-		border-radius: 5px;
-		box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.03);
-	}
-
-	.checkbox-group {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 0.5rem;
-	}
-	.chip {
-		display: inline-flex;
-		align-items: center;
-		gap: 0.4rem;
-		cursor: pointer;
-		padding: 0.5rem 0.85rem;
-		background: var(--color-white);
-		border-radius: 999px;
-		box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.03);
+		// background: var(--color-white);
+		// border-radius: 999px;
+		// box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.03);
 		font-size: 0.9rem;
 		text-transform: capitalize;
-	}
-	.chip:has(input:checked) {
-		background: var(--color-primary, #00c878);
-		color: #fff;
+		&:has(input:checked) {
+			// background: var(--color-primary, #00c878);
+			// color: var(--color-green);
+			font-weight: 700;
+		}
 	}
 
 	select {
@@ -1370,6 +1801,10 @@
 		box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.03);
 		border-radius: 5px;
 		font: inherit;
+		color: var(--color-black);
+		option {
+			color: var(--color-black);
+		}
 	}
 
 	.field.sub {
