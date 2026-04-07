@@ -7,6 +7,9 @@ const escapeHtml = (input: string) =>
     String(input).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
 const normalizeValue = (value: unknown) => {
+    if (value === true) return 'Oui';
+    if (value === false) return 'Non';
+    if (Array.isArray(value)) return value.length ? value.join(', ') : '-';
     const v = String(value ?? '').trim();
     return v.length ? v : '-';
 };
@@ -25,7 +28,7 @@ type Section = {
 
 const SECTIONS: Section[] = [
     {
-        title: '1) Identité & Objectifs',
+        title: '1) Projet & Objectifs',
         fields: [
             { key: 'objectif', label: 'But principal du site' },
             { key: 'cible', label: 'Cible prioritaire' },
@@ -41,31 +44,81 @@ const SECTIONS: Section[] = [
         ]
     },
     {
-        title: '3) Identité Visuelle & Assets',
+        title: '3) Design & Identité visuelle',
         fields: [
             { key: 'logo', label: 'Logo' },
             { key: 'charte', label: 'Charte graphique' },
-            { key: 'photos', label: 'Photos & vidéos' }
+            { key: 'photos', label: 'Photos & vidéos disponibles' },
+            { key: 'design_from_scratch', label: 'Design sur-mesure ?' },
+            { key: 'theme_preference', label: 'Préférence de thème' },
+            { key: 'theme_name', label: 'Nom du thème' },
+            { key: 'design_inspiration', label: 'Inspirations (URLs)' },
+            { key: 'design_mood', label: 'Ambiance design' }
         ]
     },
     {
-        title: '4) Aspect Technique',
-        fields: [
-            { key: 'domaine', label: 'Nom de domaine' },
-            { key: 'hebergement', label: 'Hébergement' },
-            { key: 'dns_owner', label: 'Domaine / DNS (gestion)' }
-        ]
-    },
-    {
-        title: '5) Contenu & Rédaction',
+        title: '4) Contenu & Rédaction',
         fields: [
             { key: 'textes', label: 'Qui fournit les textes' },
             { key: 'langues', label: 'Langues' },
-            { key: 'pages', label: 'Pages spécifiques' }
+            { key: 'i18n_owner', label: 'Gestion des traductions' },
+            { key: 'pages', label: 'Pages spécifiques' },
+            { key: 'blog_needed', label: 'Blog / actualités' },
+            { key: 'blog_owner', label: 'Rédacteur du blog' },
+            { key: 'video_needed', label: 'Vidéos nécessaires' },
+            { key: 'video_source', label: 'Source des vidéos' }
         ]
     },
     {
-        title: '6) Preuves Sociales & Chiffres',
+        title: '5) Technique & Infrastructure',
+        fields: [
+            { key: 'domaine', label: 'Domaine existant' },
+            { key: 'domain_help_needed', label: 'Aide achat domaine' },
+            { key: 'hebergement', label: 'Hébergement' },
+            { key: 'hebergement_provider', label: 'Hébergeur actuel' },
+            { key: 'dns_owner', label: 'Gestion DNS actuelle' },
+            { key: 'cms_preference', label: 'Préférence CMS / stack' },
+            { key: 'performance_priority', label: 'Niveau de performance' },
+            { key: 'accessibility_needed', label: 'Conformité WCAG' }
+        ]
+    },
+    {
+        title: '6) Fonctionnalités',
+        fields: [
+            { key: 'conversion', label: 'Objectif de conversion' },
+            { key: 'contact_form', label: 'Formulaire spécifique' },
+            { key: 'rendezvous', label: 'Prise de rendez-vous en ligne' },
+            { key: 'integrations', label: 'Intégrations' },
+            { key: 'interactive_map', label: 'Carte interactive' },
+            { key: 'map_provider', label: 'Fournisseur de carte' },
+            { key: 'map_features', label: 'Options carte' },
+            { key: 'user_accounts', label: 'Espace client' },
+            { key: 'user_accounts_features', label: 'Fonctionnalités du compte' },
+            { key: 'user_accounts_auth', label: 'Authentification' },
+            { key: 'newsletter', label: 'Newsletter' },
+            { key: 'newsletter_tool', label: 'Outil de newsletter' }
+        ]
+    },
+    {
+        title: '7) E-commerce',
+        fields: [
+            { key: 'ecommerce', label: 'Boutique en ligne' },
+            { key: 'ecommerce_platform', label: 'Plateforme' },
+            { key: 'shopify_plan_exists', label: 'Plan Shopify existant' },
+            { key: 'shopify_theme_preference', label: 'Thème Shopify' },
+            { key: 'ecommerce_products_count', label: 'Nombre de produits' },
+            { key: 'ecommerce_products_ready', label: 'Catalogue prêt (CSV/ERP)' },
+            { key: 'ecommerce_variants', label: 'Variantes produits' },
+            { key: 'ecommerce_payment_methods', label: 'Moyens de paiement' },
+            { key: 'ecommerce_shipping', label: 'Transporteur' },
+            { key: 'ecommerce_shipping_type', label: 'Type de frais de port' },
+            { key: 'ecommerce_b2b', label: 'Vente B2B' },
+            { key: 'ecommerce_erp', label: 'ERP à connecter' },
+            { key: 'ecommerce_erp_name', label: 'Nom de l\'ERP' }
+        ]
+    },
+    {
+        title: '8) Preuves sociales',
         fields: [
             { key: 'avis', label: 'Avis clients' },
             { key: 'chiffres', label: 'Chiffres clés' },
@@ -73,38 +126,35 @@ const SECTIONS: Section[] = [
         ]
     },
     {
-        title: '7) Fonctionnalités & Business',
-        fields: [
-            { key: 'conversion', label: 'Conversion (action souhaitée)' },
-            { key: 'contact_form', label: 'Formulaire de contact spécifique' },
-            { key: 'rendezvous', label: 'Prise de rendez-vous en ligne' },
-            { key: 'integrations', label: 'Intégrations (CRM, WhatsApp, etc.)' },
-            { key: 'interactive_map', label: 'Carte interactive' },
-            { key: 'user_accounts', label: 'Comptes utilisateurs / espace client' },
-            { key: 'ecommerce', label: 'E-commerce' },
-            { key: 'newsletter', label: 'Newsletter' }
-        ]
-    },
-    {
-        title: '8) Marketing & SEO',
+        title: '9) SEO & Analytics',
         fields: [
             { key: 'seo_keywords', label: '3 mots-clés (cibles Google)' },
             { key: 'primary_action', label: 'Action principale du visiteur' },
-            { key: 'seo_target', label: 'Cible (locale / nationale)' }
+            { key: 'seo_target', label: 'Cible géographique' },
+            { key: 'google_search_console', label: 'Google Search Console' },
+            { key: 'sitemap_needed', label: 'Sitemap XML' },
+            { key: 'cookie_banner_needed', label: 'Bannière cookies (RGPD)' }
         ]
     },
     {
-        title: '9) Après-vente',
+        title: '10) Maintenance & Formation',
         fields: [
-            { key: 'content_updates_owner', label: 'Qui met à jour le contenu' },
-            { key: 'need_pro_email', label: 'Adresse email pro (contact@...)' }
+            { key: 'content_updates_owner', label: 'Mise à jour du contenu' },
+            { key: 'maintenance_needed', label: 'Type de maintenance' },
+            { key: 'maintenance_scope', label: 'Périmètre maintenance' },
+            { key: 'maintenance_budget_monthly', label: 'Budget mensuel maintenance' },
+            { key: 'need_pro_email', label: 'Email pro (contact@...)' },
+            { key: 'training_needed', label: 'Formation back-office' },
+            { key: 'training_scope', label: 'Périmètre de la formation' }
         ]
     },
     {
-        title: '10) Obligations légales',
+        title: '11) Légal & RGPD',
         fields: [
             { key: 'mentions', label: 'Mentions légales (BCE + TVA)' },
-            { key: 'rgpd', label: 'RGPD (politique / consentement cookies)' }
+            { key: 'rgpd', label: 'RGPD' },
+            { key: 'invoice_tool', label: 'Outil de facturation' },
+            { key: 'legal_pages_needed', label: 'Pages légales nécessaires' }
         ]
     }
 ];
