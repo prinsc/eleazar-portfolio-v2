@@ -10,6 +10,12 @@ export const load = async ({ url }) => {
         throw redirect(302, '/fr/services?from=qr');
     }
 
+    // Les routes /template/* sont totalement indépendantes (templates client) :
+    // pas de redirection langue, pas de layout global.
+    if (url.pathname.startsWith('/template')) {
+        return {};
+    }
+
     const { langList } = get(settings);
     const lang = url.pathname.split('/')[1];
 

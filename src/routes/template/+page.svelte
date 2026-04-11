@@ -12,7 +12,10 @@
 	import Footer from '$lib/comp/footer.svelte';
 	import PageContent from '$lib/comp/PageContent.svelte';
 
-	let { children } = $props();
+	const templates = [
+		{ slug: 'warlord', name: 'Warlord' },
+		{ slug: 'cafe-des-delices', name: 'Café des Délices' }
+	];
 
 	const iconMap = {
 		github: Github,
@@ -65,8 +68,16 @@
 {/if}
 
 <Nav />
-
-{@render children()}
+<PageContent>
+	<h1>Templates</h1>
+	<ul>
+		{#each templates as t}
+			<li data-sveltekit-preload-data="false">
+				<a data-sveltekit-reload href="/template/{t.slug}">{t.name}</a>
+			</li>
+		{/each}
+	</ul>
+</PageContent>
 
 <Footer />
 
