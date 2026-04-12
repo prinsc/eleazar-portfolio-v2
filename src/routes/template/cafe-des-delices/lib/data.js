@@ -1,30 +1,30 @@
-// Données du template Café des Délices — toutes les infos textuelles centralisées.
+// Données du template Café des Délices - toutes les infos textuelles centralisées.
 // Le client remplacera les URLs Unsplash par ses propres photos plus tard.
 
 export const infos = {
 	nom: 'Le Café des Délices',
 	ville: 'Ath',
 	pays: 'Belgique',
-	adresse: 'Grand Place d\u2019Ath',
-	adresseComplete: 'Grand Place, 7800 Ath, Belgique',
+	adresse: 'Grand Place d\u2019Ath 8',
+	adresseComplete: 'Grand Place 8, 7800 Ath, Belgique',
 	email: 'info@lecafedesdelices-ath.com',
-	telephone: '+32 68 00 00 00', // placeholder — à remplacer
-	fonde: '—'
+	telephone: '+32 68 28 04 24', // placeholder - à remplacer
+	fonde: '-'
 };
 
 export const horaires = [
-	{ j: 'Lundi', h: '10h00 — 22h00' },
-	{ j: 'Mardi', h: '10h00 — 22h00' },
-	{ j: 'Mercredi', h: '10h00 — 22h00' },
-	{ j: 'Jeudi', h: '09h00 — 22h00' },
-	{ j: 'Vendredi', h: '10h00 — 22h00' },
-	{ j: 'Samedi', h: '10h00 — 22h00' },
-	{ j: 'Dimanche', h: '10h00 — 22h00' }
+	{ j: 'Lundi', h: '10h00 - 22h00' },
+	{ j: 'Mardi', h: '10h00 - 22h00' },
+	{ j: 'Mercredi', h: '10h00 - 22h00' },
+	{ j: 'Jeudi', h: '09h00 - 22h00' },
+	{ j: 'Vendredi', h: '10h00 - 22h00' },
+	{ j: 'Samedi', h: '10h00 - 22h00' },
+	{ j: 'Dimanche', h: '10h00 - 22h00' }
 ];
 
 export const cuisine = {
-	midi: '12h00 — 14h30',
-	soir: '18h00 — 22h00'
+	midi: '12h00 - 14h30',
+	soir: '18h00 - 22h00'
 };
 
 // Les deux menus repris du site existant
@@ -36,16 +36,16 @@ export const menus = [
 		sections: [
 			{
 				titre: 'Entrée',
-				choix: 'Duo de croquettes de fromage — ou — Scampis à l\u2019ail'
+				choix: 'Duo de croquettes de fromage - ou - Scampis à l\u2019ail'
 			},
 			{
 				titre: 'Plat',
 				choix:
-					'Burger Délice — ou — Boulettes à la liégeoise — ou — Carbonnade Athoise maison'
+					'Burger Délice - ou - Boulettes à la liégeoise - ou - Carbonnade Athoise maison'
 			},
 			{
 				titre: 'Dessert',
-				choix: 'Dame Blanche — ou — Dame Noire'
+				choix: 'Dame Blanche - ou - Dame Noire'
 			}
 		]
 	},
@@ -57,15 +57,15 @@ export const menus = [
 			{
 				titre: 'Entrée',
 				choix:
-					'Carpaccio de bœuf Holshtein fumé — ou — Foie gras'
+					'Carpaccio de bœuf Holshtein fumé - ou - Foie gras'
 			},
 			{
 				titre: 'Plat',
-				choix: 'Tagliata de bœuf — ou — Pâtes aux scampis — ou — Burger au choix'
+				choix: 'Tagliata de bœuf - ou - Pâtes aux scampis - ou - Burger au choix'
 			},
 			{
 				titre: 'Dessert',
-				choix: 'Mousse au chocolat — ou — Dame Blanche — ou — Gourmand'
+				choix: 'Mousse au chocolat - ou - Dame Blanche - ou - Gourmand'
 			}
 		]
 	}
@@ -95,27 +95,67 @@ export const poles = [
 	}
 ];
 
-// Galerie ambiance
+// Galerie ambiance - images à remplacer par le client
 export const galerie = [
 	{
 		src: 'https://images.unsplash.com/photo-1600891964092-4316c288032e?w=1200&q=80',
 		alt: 'Grillade au feu de bois',
-		label: 'Au grill'
+		label: 'Au grill',
+		tall: true
 	},
 	{
 		src: 'https://images.unsplash.com/photo-1555658636-6e4a36218be7?w=1200&q=80',
 		alt: 'Bière belge en terrasse',
-		label: 'À la pression'
+		label: 'À la pression',
+		tall: false
 	},
 	{
 		src: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&q=80',
 		alt: 'Salle du restaurant',
-		label: 'En salle'
+		label: 'En salle',
+		tall: false
 	},
 	{
 		src: 'https://images.unsplash.com/photo-1572116469696-31de0f17cc34?w=1200&q=80',
 		alt: 'Terrasse ensoleillée',
-		label: 'Sur la place'
+		label: 'Sur la place',
+		tall: true
+	},
+	{
+		src: 'https://images.unsplash.com/photo-1544025162-d76694265947?w=1200&q=80',
+		alt: 'Côte de bœuf grillée',
+		label: 'Côte de bœuf',
+		tall: false
+	},
+	{
+		src: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1200&q=80',
+		alt: 'Ambiance intérieure du restaurant',
+		label: 'L\u2019intérieur',
+		tall: true
+	},
+	{
+		src: 'https://images.unsplash.com/photo-1551218808-94e220e084d2?w=1200&q=80',
+		alt: 'Verres de bière artisanale',
+		label: 'Dégustation',
+		tall: false
+	},
+	{
+		src: 'https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1200&q=80',
+		alt: 'Burger artisanal',
+		label: 'Le Délice',
+		tall: false
+	},
+	{
+		src: 'https://images.unsplash.com/photo-1488477181946-6428a0291777?w=1200&q=80',
+		alt: 'Dessert maison',
+		label: 'Fait maison',
+		tall: true
+	},
+	{
+		src: 'https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?w=1200&q=80',
+		alt: 'Terrasse de café en été',
+		label: 'En terrasse',
+		tall: false
 	}
 ];
 

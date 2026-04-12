@@ -4,7 +4,7 @@
 </script>
 
 <section class="menus" id="menus">
-	<span class="menus__num">03 — Nos menus</span>
+	<span class="menus__num">03 - Nos menus</span>
 
 	<header class="menus__head">
 		<h2 class="menus__title">
@@ -12,8 +12,8 @@
 			<em>une seule cuisine</em>
 		</h2>
 		<p class="menus__sub">
-			Nos menus évoluent avec la saison et l'humeur du chef. Voici ceux du moment.
-			La carte complète, avec les plats à la pièce et la sélection de bières, est à deux clics.
+			Nos menus évoluent avec la saison et l'humeur du chef. Voici ceux du moment. La carte
+			complète, avec les plats à la pièce et la sélection de bières, est à deux clics.
 		</p>
 	</header>
 
@@ -26,7 +26,14 @@
 	<footer class="menus__foot">
 		<a class="menus__link" href="/template/cafe-des-delices/menu">
 			<span>Voir la carte complète</span>
-			<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5">
+			<svg
+				viewBox="0 0 24 24"
+				width="14"
+				height="14"
+				fill="none"
+				stroke="currentColor"
+				stroke-width="1.5"
+			>
 				<path d="M5 12h14M13 6l6 6-6 6" />
 			</svg>
 		</a>
@@ -107,7 +114,10 @@
 		text-decoration: none;
 		padding-bottom: 0.4em;
 		border-bottom: 1px solid var(--slate);
-		transition: gap 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+		transition:
+			gap 0.3s ease,
+			color 0.3s ease,
+			border-color 0.3s ease;
 	}
 	.menus__link:hover {
 		gap: 1em;

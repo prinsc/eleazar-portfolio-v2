@@ -1,4 +1,4 @@
-# Templates — démos clients
+# Templates - démos clients
 
 Ce dossier contient des **démos visuelles** destinées à être **montrées à des clients potentiels** pour illustrer une direction artistique possible. Chaque sous-dossier (`warlord/`, `cafe-des-delices/`, etc.) est une proposition autonome.
 
@@ -17,7 +17,7 @@ Ce dossier contient des **démos visuelles** destinées à être **montrées à 
 - **Contenu placeholder accepté** : faux textes, fausses images, faux horaires, fausses promos… du moment que c'est crédible et en phase avec le secteur du client.
 - **Pas besoin de tout internationaliser** : une seule langue (celle du client) suffit sauf demande contraire.
 - **Pas besoin de backend réel** : formulaires factices, liens morts OK tant que visuellement ça tient.
-- **Privilégier le "wow"** : animations, transitions, micro-interactions, typo marquante — c'est ce qui vend.
+- **Privilégier le "wow"** : animations, transitions, micro-interactions, typo marquante - c'est ce qui vend.
 - **Responsive quand même** : le client va probablement ouvrir sur son mobile. Mobile-first reste la règle.
 
 ## Règle d'autonomie
@@ -66,9 +66,9 @@ template/<nom>/
 
 Un template peut (et devrait) avoir plusieurs pages quand c'est pertinent :
 
-- `/template/<nom>` — accueil
-- `/template/<nom>/menu` — carte détaillée
-- `/template/<nom>/reservation` — formulaire
+- `/template/<nom>` - accueil
+- `/template/<nom>/menu` - carte détaillée
+- `/template/<nom>/reservation` - formulaire
 - etc.
 
 Un `+layout.svelte` dans le dossier du template permet de partager Nav / Footer / fonts entre toutes les pages du template. Ce layout est **local au template** et n'interfère pas avec le layout du site kltk (cf. architecture des routes plus haut).
@@ -77,7 +77,7 @@ Un `+layout.svelte` dans le dossier du template permet de partager Nav / Footer 
 
 - **Pas d'images locales** (pas de copie dans `static/`)
 - Utiliser des URLs Unsplash : `https://images.unsplash.com/photo-...`
-- Le client remplacera lui-même plus tard — laisser un commentaire à côté de chaque image pour qu'il repère les points d'intervention
+- Le client remplacera lui-même plus tard - laisser un commentaire à côté de chaque image pour qu'il repère les points d'intervention
 
 ## Architecture des routes (déjà en place)
 
@@ -91,7 +91,7 @@ Ne pas toucher à cette séparation.
 
 Chaque template a son propre `CLAUDE.md` qui décrit le contexte client (voir le squelette dans un template existant : secteur, site actuel, charte souhaitée, ambiance, référence, etc.).
 
-**Lire ce fichier AVANT de coder quoi que ce soit** — il donne le "brief créatif".
+**Lire ce fichier AVANT de coder quoi que ce soit** - il donne le "brief créatif".
 
 ## Ajouter un nouveau template
 

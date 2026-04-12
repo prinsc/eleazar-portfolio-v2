@@ -35,8 +35,8 @@
 		padding: 0;
 	}
 	:global(body) {
-		--ember: #a23a16; /* braise / accent principal — 4.8:1 on cream */
-		--amber: #96702e; /* cuivre / bière — 4.6:1 on cream */
+		--ember: #a23a16; /* braise / accent principal - 4.8:1 on cream */
+		--amber: #96702e; /* cuivre / bière - 4.6:1 on cream */
 		--cream: #f1ead8; /* fond chaud */
 		--cream-deep: #e6dcc2;
 		--slate: #14100d; /* noir ardoise */

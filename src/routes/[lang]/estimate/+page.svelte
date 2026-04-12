@@ -73,7 +73,7 @@
 		logo: '', // boolean/string : existant ?
 		charte: '', // charte graphique dispo ?
 		photos: '', // assets photo/vidéo
-		design_from_scratch: '', // boolean — full custom ou thème
+		design_from_scratch: '', // boolean - full custom ou thème
 		theme_preference: '', // free / paid / to_define   (si !design_from_scratch)
 		theme_name: '', // si thème connu            (si !design_from_scratch)
 		design_inspiration: '', // URLs de sites qui plaisent
@@ -101,7 +101,7 @@
 		dns_owner: '', // qui gère actuellement les DNS
 		cms_preference: '', // headless / shopify / drupal / aucun / à définir
 		performance_priority: '', // standard / optimisé / core_web_vitals_strict
-		accessibility_needed: '', // boolean — WCAG
+		accessibility_needed: '', // boolean - WCAG
 
 		// ─────────────────────────────────────────────
 		// FONCTIONNALITÉS GÉNÉRALES
@@ -120,20 +120,20 @@
 		newsletter_tool: '', // si newsletter : mailchimp / klaviyo / brevo / autre / à définir
 
 		// ─────────────────────────────────────────────
-		// E-COMMERCE (conditionnel — ecommerce === true)
+		// E-COMMERCE (conditionnel - ecommerce === true)
 		// ─────────────────────────────────────────────
 		ecommerce: '', // boolean maître
 		ecommerce_platform: '', // shopify / woocommerce / prestashop / custom / other
 		shopify_plan_exists: '', // boolean (si platform === shopify)
 		shopify_theme_preference: '', // free / paid / custom_liquid / headless_sveltekit
 		ecommerce_products_count: '', // number
-		ecommerce_products_ready: '', // boolean — CSV/ERP dispo
-		ecommerce_variants: '', // boolean — variantes taille/couleur
+		ecommerce_products_ready: '', // boolean - CSV/ERP dispo
+		ecommerce_variants: '', // boolean - variantes taille/couleur
 		ecommerce_payment_methods: [], // array : bancontact, visa, paypal, virement, autre
 		ecommerce_shipping: '', // bpost / dhl / mondial_relay / click_collect / other
 		ecommerce_shipping_type: '', // fixed / calculated / free_above
-		ecommerce_b2b: '', // boolean — vente pro
-		ecommerce_erp: '', // boolean — ERP à connecter
+		ecommerce_b2b: '', // boolean - vente pro
+		ecommerce_erp: '', // boolean - ERP à connecter
 		ecommerce_erp_name: '', // si ecommerce_erp
 
 		// ─────────────────────────────────────────────
@@ -151,7 +151,7 @@
 		seo_target: '',
 		google_search_console: '', // boolean
 		sitemap_needed: '', // boolean
-		cookie_banner_needed: '', // boolean — RGPD
+		cookie_banner_needed: '', // boolean - RGPD
 
 		// ─────────────────────────────────────────────
 		// MAINTENANCE & SUIVI
@@ -445,7 +445,7 @@
 					<div class="field sub">
 						<label for="theme_preference">Préférence de thème</label>
 						<select id="theme_preference" bind:value={answers.theme_preference}>
-							<option value="">— Choisir —</option>
+							<option value="">- Choisir -</option>
 							<option value="free">Gratuit</option>
 							<option value="paid">Payant</option>
 							<option value="to_define">À définir ensemble</option>
@@ -577,7 +577,7 @@
 					<div class="field sub">
 						<label for="video_source">Source des vidéos</label>
 						<select id="video_source" bind:value={answers.video_source}>
-							<option value="">— Choisir —</option>
+							<option value="">- Choisir -</option>
 							<option value="client">Fournies par le client</option>
 							<option value="to_produce">À produire</option>
 							<option value="embed">Embed YouTube/Vimeo</option>
@@ -618,7 +618,7 @@
 				<div class="field">
 					<label for="hebergement">Hébergement</label>
 					<select id="hebergement" bind:value={answers.hebergement}>
-						<option value="">— Choisir —</option>
+						<option value="">- Choisir -</option>
 						<option value="existing">J'ai déjà un hébergeur</option>
 						<option value="needed">J'en ai besoin</option>
 						<option value="included_in_offer">À inclure dans l'offre</option>
@@ -649,7 +649,7 @@
 				<div class="field">
 					<label for="cms_preference">Préférence CMS / stack</label>
 					<select id="cms_preference" bind:value={answers.cms_preference}>
-						<option value="">— Choisir —</option>
+						<option value="">- Choisir -</option>
 						<option value="headless">Headless (SvelteKit + CMS)</option>
 						<option value="shopify">Shopify</option>
 						<option value="drupal">Drupal</option>
@@ -662,7 +662,7 @@
 				<div class="field">
 					<label for="performance_priority">Niveau de performance attendu</label>
 					<select id="performance_priority" bind:value={answers.performance_priority}>
-						<option value="">— Choisir —</option>
+						<option value="">- Choisir -</option>
 						<option value="standard">Standard</option>
 						<option value="optimized">Optimisé</option>
 						<option value="core_web_vitals_strict">Core Web Vitals strict</option>
@@ -743,7 +743,7 @@
 					<div class="field sub">
 						<label for="map_provider">Fournisseur de carte</label>
 						<select id="map_provider" bind:value={answers.map_provider}>
-							<option value="">— Choisir —</option>
+							<option value="">- Choisir -</option>
 							<option value="google">Google Maps</option>
 							<option value="mapbox">Mapbox</option>
 							<option value="osm">OpenStreetMap</option>
@@ -803,7 +803,7 @@
 					<div class="field sub">
 						<label for="user_accounts_auth">Méthode d'authentification</label>
 						<select id="user_accounts_auth" bind:value={answers.user_accounts_auth}>
-							<option value="">— Choisir —</option>
+							<option value="">- Choisir -</option>
 							<option value="email_password">Email / mot de passe</option>
 							<option value="google_oauth">Google OAuth</option>
 							<option value="magic_link">Magic link</option>
@@ -827,7 +827,7 @@
 					<div class="field sub">
 						<label for="newsletter_tool">Outil de newsletter</label>
 						<select id="newsletter_tool" bind:value={answers.newsletter_tool}>
-							<option value="">— Choisir —</option>
+							<option value="">- Choisir -</option>
 							<option value="mailchimp">Mailchimp</option>
 							<option value="klaviyo">Klaviyo</option>
 							<option value="brevo">Brevo</option>
@@ -855,7 +855,7 @@
 					<div class="field sub">
 						<label for="ecommerce_platform">Plateforme e-commerce</label>
 						<select id="ecommerce_platform" bind:value={answers.ecommerce_platform}>
-							<option value="">— Choisir —</option>
+							<option value="">- Choisir -</option>
 							<option value="shopify">Shopify</option>
 							<option value="woocommerce">WooCommerce</option>
 							<option value="prestashop">PrestaShop</option>
@@ -882,7 +882,7 @@
 						<div class="field sub">
 							<label for="shopify_theme_preference">Thème Shopify</label>
 							<select id="shopify_theme_preference" bind:value={answers.shopify_theme_preference}>
-								<option value="">— Choisir —</option>
+								<option value="">- Choisir -</option>
 								<option value="free">Gratuit</option>
 								<option value="paid">Payant</option>
 								<option value="custom_liquid">Custom Liquid</option>
@@ -945,7 +945,7 @@
 					<div class="field sub">
 						<label for="ecommerce_shipping">Transporteur / livraison</label>
 						<select id="ecommerce_shipping" bind:value={answers.ecommerce_shipping}>
-							<option value="">— Choisir —</option>
+							<option value="">- Choisir -</option>
 							<option value="bpost">Bpost</option>
 							<option value="dhl">DHL</option>
 							<option value="mondial_relay">Mondial Relay</option>
@@ -957,7 +957,7 @@
 					<div class="field sub">
 						<label for="ecommerce_shipping_type">Type de frais de port</label>
 						<select id="ecommerce_shipping_type" bind:value={answers.ecommerce_shipping_type}>
-							<option value="">— Choisir —</option>
+							<option value="">- Choisir -</option>
 							<option value="fixed">Forfait fixe</option>
 							<option value="calculated">Calculés (poids/zone)</option>
 							<option value="free_above">Gratuits au-dessus de X€</option>
@@ -1120,7 +1120,7 @@
 				<div class="field">
 					<label for="maintenance_needed">Type de maintenance</label>
 					<select id="maintenance_needed" bind:value={answers.maintenance_needed}>
-						<option value="">— Choisir —</option>
+						<option value="">- Choisir -</option>
 						<option value="none">Aucune</option>
 						<option value="ponctuel">Ponctuelle</option>
 						<option value="mensuel">Mensuelle</option>
@@ -1212,7 +1212,7 @@
 					<input
 						id="rgpd"
 						bind:value={answers.rgpd}
-						placeholder="Ex: politique rédigée par mon avocat en 2023, j'ai juste un modèle CCI à adapter, rien encore — à créer from scratch…"
+						placeholder="Ex: politique rédigée par mon avocat en 2023, j'ai juste un modèle CCI à adapter, rien encore - à créer from scratch…"
 					/>
 				</div>
 

@@ -26,20 +26,20 @@
 			<p>
 				<a href="/template/cafe-des-delices">Maison</a><br />
 				<a href="/template/cafe-des-delices/menu">Carte</a><br />
-				<a href="/template/cafe-des-delices#visite">Réserver</a>
+				<a href="/template/cafe-des-delices/reservation">Réserver</a>
 			</p>
 		</div>
 		<div class="col col--right">
 			<span class="label">Ouverture</span>
 			<p>
-				Lu — Di : 10h00 — 22h00<br />
-				Jeu : 09h00 — 22h00
+				Lu - Di : 10h00 - 22h00<br />
+				Jeu : 09h00 - 22h00
 			</p>
 		</div>
 	</div>
 
 	<div class="footer__meta">
-		<span>© {infos.nom} — {infos.ville}, {infos.pays}</span>
+		<span>© {infos.nom} - {infos.ville}, {infos.pays}</span>
 		<span>Tous droits réservés</span>
 	</div>
 </footer>

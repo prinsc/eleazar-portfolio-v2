@@ -301,7 +301,7 @@ export const POST = async ({ request }) => {
         const { data, error } = await resend.emails.send({
             from: resendFrom,
             to,
-            subject: 'Nouvelle demande de devis — site web',
+            subject: 'Nouvelle demande de devis - site web',
             replyTo: contact.email,
             text,
             html

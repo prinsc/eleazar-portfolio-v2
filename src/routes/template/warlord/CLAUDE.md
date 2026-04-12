@@ -1,4 +1,4 @@
-# Démo — Warlord
+# Démo - Warlord
 
 > Squelette à remplir. Ce fichier sert de brief créatif avant de coder la démo. Tout ce qui est entre `<!-- ... -->` est une consigne à compléter puis effacer.
 
@@ -21,7 +21,7 @@
   - Fond : `#______`
   - Texte : `#______`
 - **Typographies** :
-  - Titres : <!-- ex: une display marquante — Tusker, PP Neue Machina, Syne… -->
+  - Titres : <!-- ex: une display marquante - Tusker, PP Neue Machina, Syne… -->
   - Corps : <!-- ex: Inter, IBM Plex Sans, système -->
 - **Éléments signatures** : <!-- animations, curseur custom, transitions, 3D, effets WebGL… -->
 

@@ -1,5 +1,5 @@
 <script>
-	// Template Warlord — zone de jeu totalement autonome.
+	// Template Warlord - zone de jeu totalement autonome.
 	// Ajoute ici tout le markup / style / logique nécessaires.
 	// Tout ce qui est dans ce dossier est livrable tel quel au client.
 	import PageContent from '$lib/comp/PageContent.svelte';

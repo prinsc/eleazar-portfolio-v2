@@ -8,7 +8,8 @@
 		{ href: `${base}/menu`, label: 'Carte' },
 		{ href: `${base}#grilles`, label: 'Grillés' },
 		{ href: `${base}#maltes`, label: 'Maltés' },
-		{ href: `${base}#visite`, label: 'Nous trouver' }
+		{ href: `${base}#visite`, label: 'Nous trouver' },
+		{ href: `${base}/reservation`, label: 'Réserver' }
 	];
 
 	function isActive(href, exact) {
@@ -21,7 +22,7 @@
 <header class="topbar">
 	<span class="topbar__left">Grand Place · Ath · Belgique</span>
 	<span class="topbar__center"><LiveBadge /></span>
-	<span class="topbar__right">Cuisine 12h00 — 14h30 · 18h00 — 22h00</span>
+	<span class="topbar__right">Cuisine 12h00 - 14h30 · 18h00 - 22h00</span>
 </header>
 
 <nav class="nav">
@@ -39,9 +40,17 @@
 		{/each}
 	</ul>
 
-	<a class="cta" href="{base}#visite" aria-label="Réserver une table">
+	<a class="cta" href="{base}/reservation" aria-label="Réserver une table">
 		<span>Réserver une table</span>
-		<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+		<svg
+			viewBox="0 0 24 24"
+			width="14"
+			height="14"
+			fill="none"
+			stroke="currentColor"
+			stroke-width="1.5"
+			aria-hidden="true"
+		>
 			<path d="M5 12h14M13 6l6 6-6 6" />
 		</svg>
 	</a>

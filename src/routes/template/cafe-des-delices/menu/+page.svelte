@@ -1,15 +1,12 @@
 <script>
-	// Page Carte complète — Le Café des Délices
+	// Page Carte complète - Le Café des Délices
 	// Tab-based navigation: content swaps with crossfade + staggered reveal
 	import { onMount, tick } from 'svelte';
 	import MenuCard from '../lib/MenuCard.svelte';
 	import { menus, carte, menuSections, cuisine } from '../lib/data.js';
 
 	// "formules" is a special first tab, then menuSections
-	const allTabs = [
-		{ id: 'formules', label: 'Formules' },
-		...menuSections
-	];
+	const allTabs = [{ id: 'formules', label: 'Formules' }, ...menuSections];
 
 	let activeTab = $state('formules');
 	let contentEl;
@@ -28,7 +25,7 @@
 	});
 
 	function killRunning() {
-		runningTweens.forEach(t => t.kill());
+		runningTweens.forEach((t) => t.kill());
 		runningTweens = [];
 	}
 
@@ -60,8 +57,8 @@
 		// Kill any in-progress animation immediately
 		killRunning();
 
-		const oldIdx = allTabs.findIndex(t => t.id === activeTab);
-		const newIdx = allTabs.findIndex(t => t.id === id);
+		const oldIdx = allTabs.findIndex((t) => t.id === activeTab);
+		const newIdx = allTabs.findIndex((t) => t.id === id);
 		direction = newIdx > oldIdx ? 1 : -1;
 
 		// Swap content instantly (no animate-out wait)
@@ -90,17 +87,20 @@
 
 	// Get categories for active tab
 	function getActiveCategories() {
-		const section = menuSections.find(s => s.id === activeTab);
+		const section = menuSections.find((s) => s.id === activeTab);
 		if (!section) return [];
 		return section.categories
-			.map(name => carte.find(c => c.categorie === name))
+			.map((name) => carte.find((c) => c.categorie === name))
 			.filter(Boolean);
 	}
 </script>
 
 <svelte:head>
-	<title>La Carte — Le Café des Délices</title>
-	<meta name="description" content="Carte complète du Café des Délices à Ath — salades, grillades, burgers, pâtes, bières belges, cocktails, desserts maison." />
+	<title>La Carte - Le Café des Délices</title>
+	<meta
+		name="description"
+		content="Carte complète du Café des Délices à Ath - salades, grillades, burgers, pâtes, bières belges, cocktails, desserts maison."
+	/>
 </svelte:head>
 
 <!-- ─── Hero ─── -->
@@ -116,8 +116,8 @@
 	</h1>
 
 	<p class="lede">
-		Tout est préparé sur place, à la commande. Ce qui n'est plus frais n'est plus servi.
-		Si vous avez une allergie, une exigence, une curiosité — dites-le-nous, nous trouverons.
+		Tout est préparé sur place, à la commande. Ce qui n'est plus frais n'est plus servi. Si vous
+		avez une allergie, une exigence, une curiosité - dites-le-nous, nous trouverons.
 	</p>
 
 	<div class="cuisine-times">
@@ -146,11 +146,11 @@
 <!-- ─── Tab content ─── -->
 <section class="tab-content" bind:this={contentEl}>
 	<div class="tab-inner">
-
 		{#if activeTab === 'formules'}
 			<!-- Formules tab -->
 			<div class="formules-header anim-item">
-				<span class="num">00 — Formules</span>
+				<span class="num">00 - Formules</span>
+				<h2 class="formules-title">Nos Formules</h2>
 				<p class="formules-sub">Du lundi au vendredi, uniquement les midis</p>
 			</div>
 
@@ -171,14 +171,13 @@
 					</div>
 				{/each}
 			</div>
-
 		{:else}
 			<!-- Category tab -->
 			{@const categories = getActiveCategories()}
 			{#each categories as cat, cIdx}
 				<div class="category anim-item">
 					<div class="category__head">
-						<h3 class="category__title">{cat.categorie}</h3>
+						<h2 class="category__title">{cat.categorie}</h2>
 						{#if cat.note}
 							<p class="category__note">{cat.note}</p>
 						{/if}
@@ -201,7 +200,6 @@
 				</div>
 			{/each}
 		{/if}
-
 	</div>
 </section>
 
@@ -211,9 +209,16 @@
 		<p class="cta__text">
 			<em>Une faim ?</em> Nos cuisines sont ouvertes de 12h00 à 14h30 et de 18h00 à 22h00.
 		</p>
-		<a class="cta__link" href="/template/cafe-des-delices#visite">
+		<a class="cta__link" href="/template/cafe-des-delices/reservation">
 			<span>Réserver une table</span>
-			<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5">
+			<svg
+				viewBox="0 0 24 24"
+				width="14"
+				height="14"
+				fill="none"
+				stroke="currentColor"
+				stroke-width="1.5"
+			>
 				<path d="M5 12h14M13 6l6 6-6 6" />
 			</svg>
 		</a>
@@ -410,6 +415,18 @@
 		color: var(--slate-soft);
 		margin-bottom: 0.5rem;
 	}
+	.formules-title {
+		/* Present for heading hierarchy (h1 > h2 > h3), visually hidden */
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		padding: 0;
+		margin: -1px;
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
+		white-space: nowrap;
+		border: 0;
+	}
 	.formules-sub {
 		margin: 0;
 		font-family: var(--f-italic);
@@ -593,7 +610,7 @@
 	.cta__text em {
 		font-family: var(--f-italic);
 		font-style: italic;
-		color: var(--ember);
+		color: #e8a48e; /* ember clair sur fond slate — 4.8:1 contrast */
 	}
 	.cta__link {
 		display: inline-flex;

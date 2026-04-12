@@ -14,8 +14,8 @@
 		mapboxgl.accessToken = PUBLIC_MAPBOX_TOKEN;
 
 		// Coordinates: Grand Place d'Ath, Belgium
-		const athCoords = [3.7783, 50.6294];
-
+		const athCoords = [3.776396, 50.630975];
+// mapbox://styles/eleazarkltk/cmnditln3001901sd6avp4jyj
 		const map = new mapboxgl.Map({
 			container: mapContainer,
 			// Warm monochrome style matching the cafe's cream/slate palette
@@ -26,7 +26,8 @@
 					'osm-tiles': {
 						type: 'raster',
 						tiles: [
-							'https://api.mapbox.com/styles/v1/mapbox/light-v11/tiles/{z}/{x}/{y}?access_token=' + PUBLIC_MAPBOX_TOKEN
+							'https://api.mapbox.com/styles/v1/mapbox/outdoors-v12/tiles/{z}/{x}/{y}?access_token=' +
+								PUBLIC_MAPBOX_TOKEN
 						],
 						tileSize: 256
 					}
@@ -35,14 +36,7 @@
 					{
 						id: 'osm-tiles',
 						type: 'raster',
-						source: 'osm-tiles',
-						paint: {
-							'raster-saturation': -0.6,
-							'raster-brightness-min': 0.08,
-							'raster-brightness-max': 0.95,
-							'raster-contrast': 0.1,
-							'raster-hue-rotate': 30
-						}
+						source: 'osm-tiles'
 					}
 				]
 			},
@@ -89,14 +83,11 @@
 			</strong>
 			<br/>
 			<span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.1em; color: #3a332c;">
-				Grand Place, 7800 Ath
+				Grand Place 8, 7800 Ath
 			</span>
 		`);
 
-		new mapboxgl.Marker({ element: markerEl })
-			.setLngLat(athCoords)
-			.setPopup(popup)
-			.addTo(map);
+		new mapboxgl.Marker({ element: markerEl }).setLngLat(athCoords).setPopup(popup).addTo(map);
 
 		map.on('load', () => {
 			mapLoaded = true;
@@ -107,7 +98,7 @@
 </script>
 
 <section class="visite" id="visite">
-	<span class="visite__num">05 — Nous trouver</span>
+	<span class="visite__num">05 - Nous trouver</span>
 
 	<div class="visite__grid">
 		<div class="col col--intro">
@@ -155,16 +146,24 @@
 			<div class="map" bind:this={mapContainer} class:map--loaded={mapLoaded}>
 				{#if !mapLoaded}
 					<div class="map__placeholder">
-						<svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1" opacity="0.4">
-							<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
-							<circle cx="12" cy="9" r="2.5"/>
+						<svg
+							viewBox="0 0 24 24"
+							width="32"
+							height="32"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="1"
+							opacity="0.4"
+						>
+							<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
+							<circle cx="12" cy="9" r="2.5" />
 						</svg>
 					</div>
 				{/if}
 			</div>
-			<span class="map__cap">{infos.adresse} — {infos.ville}</span>
+			<span class="map__cap">{infos.adresse} - {infos.ville}</span>
 
-			<a class="reserv" href="mailto:{infos.email}?subject=Réservation">
+			<a class="reserv" href="/template/cafe-des-delices/reservation">
 				<span>Réserver une table</span>
 				<svg
 					viewBox="0 0 24 24"

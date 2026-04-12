@@ -5,7 +5,7 @@ import { writable } from 'svelte/store';
 import { browser } from '$app/environment';
 
 // ============================================================================
-// HORAIRES — structure : jour (0 = Lundi … 6 = Dimanche)
+// HORAIRES - structure : jour (0 = Lundi … 6 = Dimanche)
 // Le lieu est ouvert 10h-22h tous les jours, sauf jeudi 9h-22h.
 // Note : on ne modélise pas ici les heures de cuisine (12h-14h30, 18h-22h)
 // car l'info affichée concerne l'ouverture du lieu (café/bar).
@@ -49,7 +49,7 @@ function computeStatus(now = new Date()) {
 		};
 	}
 
-	// FERMÉ — ouvre aujourd'hui (avant l'heure d'ouverture)
+	// FERMÉ - ouvre aujourd'hui (avant l'heure d'ouverture)
 	if (nowMin < openMin) {
 		const remainMin = openMin - nowMin;
 		return {
@@ -61,7 +61,7 @@ function computeStatus(now = new Date()) {
 		};
 	}
 
-	// FERMÉ — ouvre demain
+	// FERMÉ - ouvre demain
 	const tomorrowIdx = (dayIdx + 1) % 7;
 	const tomorrow = OPENING[tomorrowIdx];
 	// minutes jusqu'à minuit + minutes d'ouverture demain
@@ -88,7 +88,7 @@ function formatRemaining(minutes, verb) {
 	return `${verb} dans ${h}h${String(m).padStart(2, '0')}`;
 }
 
-// Store d'horaires — mis à jour toutes les minutes côté client
+// Store d'horaires - mis à jour toutes les minutes côté client
 export const status = writable(computeStatus());
 
 if (browser) {
@@ -97,7 +97,7 @@ if (browser) {
 }
 
 // ============================================================================
-// MÉTÉO — API Open-Meteo (gratuite, pas de clé, CORS ok)
+// MÉTÉO - API Open-Meteo (gratuite, pas de clé, CORS ok)
 // Ath : latitude 50.63, longitude 3.78
 // ============================================================================
 
@@ -138,11 +138,11 @@ function interpretWeather(code, temp, isDay) {
 	} else if (found.flavor === 'sunny' && isDay) {
 		reco = 'Un rayon, un café, la terrasse vous tend les bras.';
 	} else if (found.flavor === 'sunny' && !isDay) {
-		reco = 'La nuit est claire — parfait pour une bière dehors.';
+		reco = 'La nuit est claire - parfait pour une bière dehors.';
 	} else if (found.flavor === 'cloudy' && warm) {
 		reco = 'Ciel doux, température idéale. Terrasse ou salle, à vous de voir.';
 	} else if (found.flavor === 'cloudy' && cold) {
-		reco = 'Il fait frais — une place près de la cuisine, ça vous dit ?';
+		reco = 'Il fait frais - une place près de la cuisine, ça vous dit ?';
 	} else if (found.flavor === 'cloudy') {
 		reco = 'Ni trop chaud ni trop froid : la bonne heure pour passer.';
 	} else if (found.flavor === 'rain') {
@@ -174,13 +174,13 @@ async function fetchWeather() {
 			...interp
 		});
 	} catch (e) {
-		// Échec silencieux — le composant affiche un fallback
+		// Échec silencieux - le composant affiche un fallback
 		weather.set({ error: true });
 	}
 }
 
 if (browser) {
 	fetchWeather();
-	// Rafraîchit toutes les 30 minutes — suffit largement pour une démo
+	// Rafraîchit toutes les 30 minutes - suffit largement pour une démo
 	setInterval(fetchWeather, 30 * 60 * 1000);
 }

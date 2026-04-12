@@ -17,29 +17,67 @@
 			<span class="icon" aria-hidden="true">
 				{#if $weather.flavor === 'sunny' && $weather.isDay}
 					<!-- soleil -->
-					<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5">
+					<svg
+						viewBox="0 0 24 24"
+						width="16"
+						height="16"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="1.5"
+					>
 						<circle cx="12" cy="12" r="4" />
-						<path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" stroke-linecap="round" />
+						<path
+							d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"
+							stroke-linecap="round"
+						/>
 					</svg>
 				{:else if $weather.flavor === 'sunny' && !$weather.isDay}
 					<!-- lune -->
-					<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5">
+					<svg
+						viewBox="0 0 24 24"
+						width="16"
+						height="16"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="1.5"
+					>
 						<path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" />
 					</svg>
 				{:else if $weather.flavor === 'cloudy'}
 					<!-- nuage -->
-					<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5">
+					<svg
+						viewBox="0 0 24 24"
+						width="16"
+						height="16"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="1.5"
+					>
 						<path d="M18 10a6 6 0 0 0-11.5-1.5A4 4 0 1 0 6 17h12a4 4 0 0 0 0-7z" />
 					</svg>
 				{:else if $weather.flavor === 'rain'}
 					<!-- pluie -->
-					<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5">
+					<svg
+						viewBox="0 0 24 24"
+						width="16"
+						height="16"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="1.5"
+					>
 						<path d="M18 10a6 6 0 0 0-11.5-1.5A4 4 0 1 0 6 15h12a4 4 0 0 0 0-5z" />
 						<path d="M8 18l-1 3M12 18l-1 3M16 18l-1 3" stroke-linecap="round" />
 					</svg>
 				{:else if $weather.flavor === 'snow'}
 					<!-- neige -->
-					<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5">
+					<svg
+						viewBox="0 0 24 24"
+						width="16"
+						height="16"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="1.5"
+					>
 						<path d="M12 2v20M4 6l16 12M4 18l16-12" stroke-linecap="round" />
 					</svg>
 				{/if}
@@ -54,7 +92,7 @@
 		{/if}
 	{:else if $weather === null}
 		<div class="row row--weather is-loading">
-			<span class="temp">—°</span>
+			<span class="temp">-°</span>
 			<span class="sep">·</span>
 			<span class="wlabel">Météo à l'instant</span>
 		</div>

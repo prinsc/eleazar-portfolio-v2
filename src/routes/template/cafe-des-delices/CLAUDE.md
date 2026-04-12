@@ -1,4 +1,4 @@
-# Démo — Le Café des Délices (Ath)
+# Démo - Le Café des Délices (Ath)
 
 **⚠️ Rappel** : démo visuelle pour convaincre le client, pas un produit final. Priorité absolue au "wow".
 
@@ -8,7 +8,7 @@ Avant de coder, **invoque le skill `frontend-design`** via l'outil Skill. Ce ski
 
 ## Règles d'architecture (IMPORTANT)
 
-Ces règles sont spécifiques à ce template mais devraient s'appliquer à tous les templates — garde-les en tête.
+Ces règles sont spécifiques à ce template mais devraient s'appliquer à tous les templates - garde-les en tête.
 
 ### 1. Composants, autant que possible
 
@@ -21,16 +21,16 @@ Ces règles sont spécifiques à ce template mais devraient s'appliquer à tous 
 ### 2. Pages multiples autorisées (et encouragées)
 
 - Le template peut avoir plusieurs pages, par exemple :
-  - `/template/cafe-des-delices` — accueil
-  - `/template/cafe-des-delices/menu` — carte complète
-  - `/template/cafe-des-delices/reservation` — formulaire de réservation
+  - `/template/cafe-des-delices` - accueil
+  - `/template/cafe-des-delices/menu` - carte complète
+  - `/template/cafe-des-delices/reservation` - formulaire de réservation
 - Créer un `+layout.svelte` dans le dossier du template si on veut partager Nav + Footer entre pages (toujours avec imports relatifs)
 - Chaque page reste légère et composée de composants
 
 ### 3. Images
 
 - **Pas d'images locales**. Utiliser des URLs Unsplash random ou des placeholders (`https://source.unsplash.com/...` / `https://images.unsplash.com/photo-...`).
-- Le client remplacera lui-même plus tard — note-le en commentaire à côté de chaque image pour qu'il sache où intervenir
+- Le client remplacera lui-même plus tard - note-le en commentaire à côté de chaque image pour qu'il sache où intervenir
 - Choisir des photos en phase avec le secteur (grillades, bières, terrasse, ambiance de restaurant)
 
 ### 4. Autonomie (rappel du CLAUDE.md parent)
@@ -42,7 +42,7 @@ Ces règles sont spécifiques à ce template mais devraient s'appliquer à tous 
 
 ### 5. Mixins SCSS locaux (breakpoints)
 
-Le template a son propre fichier de mixins à [lib/styles/\_mixins.scss](./lib/styles/_mixins.scss) — une **copie autonome** des breakpoints du site kltk (xsmall → xxlarge). Usage dans un composant :
+Le template a son propre fichier de mixins à [lib/styles/\_mixins.scss](./lib/styles/_mixins.scss) - une **copie autonome** des breakpoints du site kltk (xsmall → xxlarge). Usage dans un composant :
 
 ```svelte
 <style lang="scss">
@@ -63,30 +63,30 @@ Cela remplace les `@media (max-width: ...)` manuels. Préférer **mobile-first**
 
 Le template utilise **Open-Meteo** (API gratuite, pas de clé, CORS ok) pour afficher la météo d'Ath en direct. Le fichier [lib/status.js](./lib/status.js) expose deux stores Svelte :
 
-- `status` — statut d'ouverture live (ouvert/fermé + "ferme dans 2h15"), mis à jour chaque minute
-- `weather` — météo Ath + recommandation éditoriale ("Profitez du soleil en terrasse", etc.)
+- `status` - statut d'ouverture live (ouvert/fermé + "ferme dans 2h15"), mis à jour chaque minute
+- `weather` - météo Ath + recommandation éditoriale ("Profitez du soleil en terrasse", etc.)
 
 Ces stores sont consommés par [lib/Status.svelte](./lib/Status.svelte) (bloc statut complet) et [lib/LiveBadge.svelte](./lib/LiveBadge.svelte) (pastille compacte dans la topbar).
 
-## Client — Le Café des Délices
+## Client - Le Café des Délices
 
 - **Nom officiel** : Le Café des Délices
 - **Ville** : Ath (Belgique)
 - **Type** : restaurant-brasserie, spécialiste des grillades + bières belges
-- **Adresse** : Grand Place d'Ath, Belgium
+- **Adresse** : Grand Place 8, 7800 Ath, Belgium
 - **Email** : info@lecafedesdelices-ath.com
 - **Horaires** :
-  - Lundi — Mercredi, Vendredi — Dimanche : 10h00 — 22h00
-  - Jeudi : 09h00 — 22h00
-  - Cuisine : 12h00 — 14h30 et 18h00 — 22h00
+  - Lundi - Mercredi, Vendredi - Dimanche : 10h00 - 22h00
+  - Jeudi : 09h00 - 22h00
+  - Cuisine : 12h00 - 14h30 et 18h00 - 22h00
 - **Site existant** : oui, à refondre (direction actuelle assez "template générique", on vient faire mieux)
 
 ## Positionnement / ambiance à transmettre
 
 Le site actuel parle de deux choses en parallèle, qu'on peut reprendre comme "deux pôles" du lieu :
 
-1. **"Délices Grillés"** — spécialité grillades, viandes sélectionnées, ambiance conviviale, terrasse place d'Ath
-2. **"Moments Maltés"** — sélection de bières belges d'exception, apéritif, terrasse ensoleillée
+1. **"Délices Grillés"** - spécialité grillades, viandes sélectionnées, ambiance conviviale, terrasse place d'Ath
+2. **"Moments Maltés"** - sélection de bières belges d'exception, apéritif, terrasse ensoleillée
 
 => Le template peut jouer sur ce **diptyque** (grill / bière, feu / malt, jour / soir) comme fil conducteur éditorial fort. C'est une opportunité visuelle : deux mondes, un seul lieu.
 
@@ -101,12 +101,12 @@ Le site actuel parle de deux choses en parallèle, qu'on peut reprendre comme "d
 
 ### Menus existants (à reprendre tels quels)
 
-**Menu 1 — 38,00 €**
+**Menu 1 - 38,00 €**
 - Entrée au choix : Duo de croquettes de fromage OU Pâté sur toast
 - Plat au choix : Burger Délice OU Tagliatelles sauce roquefort et éclat de noix OU Macaroni au gratin
 - Dessert au choix : Dame Blanche OU Dame Noire
 
-**Menu 2 — 48,00 €**
+**Menu 2 - 48,00 €**
 - Entrée au choix : Carpaccio de bœuf Holstein fumé OU Foie gras confit d'oignon aux fruits rouges
 - Plat au choix : Tagliata de bœuf OU Pâtes aux scampis OU Burger au choix
 - Dessert au choix : Mousse au chocolat OU Coupe Dame Blanche OU Gourmand
@@ -138,5 +138,5 @@ Le site actuel parle de deux choses en parallèle, qu'on peut reprendre comme "d
 - Pas d'images locales (tout en URL Unsplash)
 - Pas d'import `$lib` du projet kltk
 - Pas de bordeaux "resto parisien" (trop cliché, on est à Ath, pas à Montmartre)
-- Pas de lorem ipsum — reprendre les textes existants et les améliorer si besoin
+- Pas de lorem ipsum - reprendre les textes existants et les améliorer si besoin
 - Pas d'emoji

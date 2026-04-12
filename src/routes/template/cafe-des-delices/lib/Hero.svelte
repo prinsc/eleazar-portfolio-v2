@@ -98,24 +98,35 @@
 		<div class="hero__left">
 			<span class="hero__eyebrow">
 				<span class="rule" bind:this={eyebrowRule}></span>
-				<span class="eb-text" bind:this={eyebrowText}>Restaurant · Grand Place d'Ath · Belgique</span>
+				<span class="eb-text" bind:this={eyebrowText}
+					>Restaurant · Grand Place d'Ath 8 · Belgique</span
+				>
 			</span>
 
 			<h1 class="hero__title">
 				<span class="mask"><span class="line line--sm" bind:this={lineEls[0]}>Le Café</span></span>
-				<span class="mask"><span class="line line--sm indent" bind:this={lineEls[1]}><em>des</em></span></span>
+				<span class="mask"
+					><span class="line line--sm indent" bind:this={lineEls[1]}><em>des</em></span></span
+				>
 				<span class="mask"><span class="line line--xl" bind:this={lineEls[2]}>Délices</span></span>
 			</h1>
 
 			<div class="hero__lede" bind:this={ledeEl}>
 				<p>
-					Grillades à la flamme, bières belges d'exception, terrasse au cœur de la Grand Place. Le même lieu
-					depuis toujours, servi avec la même attention — qu'il soit 13 heures un mardi midi ou 21 heures un
-					samedi soir.
+					Grillades à la flamme, bières belges d'exception, terrasse au cœur de la Grand Place. Le
+					même lieu depuis toujours, servi avec la même attention - qu'il soit 13 heures un mardi
+					midi ou 21 heures un samedi soir.
 				</p>
 				<a class="more" href="#grilles">
 					<span>Voir les deux faces du lieu</span>
-					<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5">
+					<svg
+						viewBox="0 0 24 24"
+						width="14"
+						height="14"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="1.5"
+					>
 						<path d="M12 5v14M6 13l6 6 6-6" />
 					</svg>
 				</a>

@@ -1,5 +1,5 @@
 <script>
-	// Accueil — Le Café des Délices (Ath)
+	// Accueil - Le Café des Délices (Ath)
 	// Cette page assemble des composants du dossier ./lib/
 	// Tout est autonome et local au template.
 	import Hero from './lib/Hero.svelte';
@@ -11,7 +11,7 @@
 </script>
 
 <svelte:head>
-	<title>Le Café des Délices — Grand Place d'Ath</title>
+	<title>Le Café des Délices - Grand Place 8, 7800 Ath</title>
 	<meta
 		name="description"
 		content="Restaurant Le Café des Délices à Ath. Grillades, bières belges d'exception, terrasse sur la Grand Place."

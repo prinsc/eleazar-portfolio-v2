@@ -5,7 +5,7 @@
 </script>
 
 <section class="pole" class:flip {id}>
-	<span class="pole__num">{pole.num} — Un pôle du lieu</span>
+	<span class="pole__num">{pole.num} - Un pôle du lieu</span>
 
 	<div class="pole__grid">
 		<figure class="pole__photo">
@@ -21,7 +21,14 @@
 			<p class="pole__text">{pole.texte}</p>
 			<a class="pole__cta" href={pole.cta.href}>
 				<span>{pole.cta.label}</span>
-				<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5">
+				<svg
+					viewBox="0 0 24 24"
+					width="14"
+					height="14"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="1.5"
+				>
 					<path d="M5 12h14M13 6l6 6-6 6" />
 				</svg>
 			</a>
