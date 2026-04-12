@@ -1,0 +1,176 @@
+{
+  "title": {
+    "fr": "Conditions Générales d'Utilisation",
+    "en": "Terms of Use",
+    "ru": "Условия использования"
+  },
+  "metaDescription": {
+    "fr": "Conditions générales d'utilisation du site kltk.be - Eléazar Klyuvitkin, développeur web freelance.",
+    "en": "Terms of use for the website kltk.be - Eléazar Klyuvitkin, freelance web developer.",
+    "ru": "Условия использования сайта kltk.be - Елизар Клювиткин, фрилансер-разработчик."
+  },
+  "lastUpdate": {
+    "fr": "Dernière mise à jour : 12 avril 2026",
+    "en": "Last update: April 12, 2026",
+    "ru": "Последнее обновление: 12 апреля 2026 года"
+  },
+  "sections": {
+    "intro": {
+      "title": {
+        "fr": "Préambule",
+        "en": "Preamble",
+        "ru": "Преамбула"
+      },
+      "content": {
+        "fr": "Les présentes Conditions Générales d'Utilisation (ci-après « CGU ») régissent l'accès et l'utilisation du site web kltk.be (ci-après « le Site »), édité par Eléazar Klyuvitkin, développeur web freelance, inscrit sous le numéro d'entreprise BE 1031.777.419, domicilié à Mainvault 7812, Belgique.",
+        "en": "These Terms of Use (hereinafter \"Terms\") govern access to and use of the website kltk.be (hereinafter \"the Site\"), published by Eléazar Klyuvitkin, freelance web developer, registered under business number BE 1031.777.419, located at Mainvault 7812, Belgium.",
+        "ru": "Настоящие Условия использования (далее «Услов��я») регулируют доступ и использование веб-сайта kltk.be (далее «Сайт»), опубликованного Ели��аром Клювиткиным, фрилансером-разработчиком, зар��гистрированным под номером предприятия BE 1031.777.419, проживающим по адресу Mainvault 7812, Бельгия."
+      }
+    },
+    "acceptance": {
+      "title": {
+        "fr": "1. Acceptation des conditions",
+        "en": "1. Acceptance of Terms",
+        "ru": "1. Принятие условий"
+      },
+      "content": {
+        "fr": "En accédant au Site, vous acceptez sans réserve les présentes CGU. Si vous n'acceptez pas ces conditions, veuillez ne pas utiliser le Site.",
+        "en": "By accessing the Site, you accept these Terms without reservation. If you do not accept these conditions, please do not use the Site.",
+        "ru": "Получая доступ к Сайту, вы безоговорочно принимаете настоящие Условия. Если вы не принимаете эти условия, пожалуйста, не используйте Сайт."
+      }
+    },
+    "purpose": {
+      "title": {
+        "fr": "2. Objet du site",
+        "en": "2. Purpose of the Site",
+        "ru": "2. Назначение сайта"
+      },
+      "content": {
+        "fr": "Le Site a pour objet de présenter les services, réalisations et compétences d'Eléazar Klyuvitkin en tant que développeur web freelance. Il sert également de vitrine pour des démonstrations de sites web (ci-après « templates ») destinées à illustrer des directions créatives possibles pour des clients potentiels.",
+        "en": "The Site aims to present the services, achievements, and skills of Eléazar Klyuvitkin as a freelance web developer. It also serves as a showcase for website demonstrations (hereinafter \"templates\") designed to illustrate possible creative directions for potential clients.",
+        "ru": "Сайт предназначен для представления услуг, достижений и ��авыков Елизара Клювиткина как фрилансера-разработчика. Он также служит витриной для демонстраций веб-сайтов (далее «шаблоны»), предназначенных для иллюстрации возможных творческих направлений для потенциальных клиентов."
+      }
+    },
+    "ip": {
+      "title": {
+        "fr": "3. Propriété intellectuelle",
+        "en": "3. Intellectual Property",
+        "ru": "3. Интеллектуальная собственность"
+      },
+      "content1": {
+        "fr": "L'ensemble du contenu du Site (code source, design, textes, images, graphismes, animations, mise en page, et tout autre élément) est protégé par le droit d'auteur et reste la propriété exclusive d'Eléazar Klyuvitkin, sauf mention contraire.",
+        "en": "All content on the Site (source code, design, texts, images, graphics, animations, layout, and any other element) is protected by copyright and remains the exclusive property of Eléazar Klyuvitkin, unless otherwise stated.",
+        "ru": "Весь контент Сайта (исходный код, дизайн, тексты, изображения, графика, анимации, макет и любой другой элемент) защищен авторским правом и является исключительной собственностью Елизара Клювиткина, если не указано иное."
+      },
+      "content2": {
+        "fr": "Les images d'illustration (photos Unsplash, etc.) restent soumises à leurs licences respectives.",
+        "en": "Illustrative images (Unsplash photos, etc.) remain subject to their respective licenses.",
+        "ru": "Иллюстративные изображения (фотографии Unsplash и т.д.) остаются предметом соответствующих лицензий."
+      }
+    },
+    "templates": {
+      "title": {
+        "fr": "4. Templates et démonstrations",
+        "en": "4. Templates and Demonstrations",
+        "ru": "4. Шаблоны и демонстрации"
+      },
+      "content1": {
+        "fr": "Les templates accessibles sur le Site sont des démonstrations visuelles à but commercial. Ils sont protégés par le droit d'auteur au même titre que le reste du Site.",
+        "en": "The templates available on the Site are visual demonstrations for commercial purposes. They are protected by copyright in the same way as the rest of the Site.",
+        "ru": "Шаблоны, доступные на Сайте, являются визуальными ��емонстрациями в коммерческих целях. Они защищены авторс��им правом так же, как и остальная часть Сайта."
+      },
+      "content2": {
+        "fr": "Il est strictement interdit de copier, reproduire, modifier, distribuer ou réutiliser tout ou partie du code, du design ou du contenu des templates sans l'autorisation écrite préalable d'Eléazar Klyuvitkin.",
+        "en": "It is strictly prohibited to copy, reproduce, modify, distribute, or reuse all or part of the code, design, or content of the templates without the prior written authorization of Eléazar Klyuvitkin.",
+        "ru": "Строго запрещено копировать, воспроизводить, модифицировать, распространять или повторно использовать весь или часть кода, дизайна или контента шаблонов без предварительного письменного разрешения Елизара Клювиткина."
+      },
+      "content3": {
+        "fr": "Les noms de commerces, adresses, menus, tarifs et autres informations figurant dans les templates sont fictifs ou utilisés à titre de démonstration uniquement. Toute ressemblance avec des entités existantes ne saurait engager la responsabilité de l'auteur.",
+        "en": "Business names, addresses, menus, prices, and other information appearing in the templates are fictitious or used for demonstration purposes only. Any resemblance to existing entities does not engage the author's responsibility.",
+        "ru": "Названия предприятий, адреса, меню, цены и другая информация, представленная в шаблонах, являются вымышленными или используются только в демонстрационных целях. Любое сходство с существующими организациями не влечет ответственности автора."
+      }
+    },
+    "prohibitions": {
+      "title": {
+        "fr": "5. Interdictions",
+        "en": "5. Prohibitions",
+        "ru": "5. Запреты"
+      },
+      "intro": {
+        "fr": "Il est interdit de :",
+        "en": "It is prohibited to:",
+        "ru": "Запрещается:"
+      },
+      "items": {
+        "copy": {
+          "fr": "Copier ou reproduire le code source, le design ou les éléments graphiques du Site ou des templates",
+          "en": "Copy or reproduce the source code, design, or graphical elements of the Site or templates",
+          "ru": "Копировать или воспроизводить исходный код, дизайн или графические элементы Сайта или шаблонов"
+        },
+        "distribute": {
+          "fr": "Distribuer, vendre ou exploiter commercialement tout contenu du Site sans autorisation",
+          "en": "Distribute, sell, or commercially exploit any content from the Site without authorization",
+          "ru": "Распространять, продавать или коммерчески использовать любой контент Сайта без разрешения"
+        },
+        "reverseEngineer": {
+          "fr": "Effectuer de l'ingénierie inverse sur les templates dans le but de reproduire les fonctionnalités ou le design",
+          "en": "Reverse-engineer the templates in order to reproduce their functionalities or design",
+          "ru": "Проводить обратную разработку шаблонов с целью воспроизв��дения их функциональности или дизайна"
+        },
+        "removeNotices": {
+          "fr": "Supprimer ou masquer les mentions de droits d'auteur ou d'attribution",
+          "en": "Remove or conceal copyright or attribution notices",
+          "ru": "Удалять или скрывать уведомления об авторских правах или атрибуции"
+        }
+      }
+    },
+    "liability": {
+      "title": {
+        "fr": "6. Limitation de responsabilité",
+        "en": "6. Limitation of Liability",
+        "ru": "6. Ограничение ответственности"
+      },
+      "content": {
+        "fr": "Le Site est fourni « en l'état ». Eléazar Klyuvitkin ne garantit pas que le Site sera exempt d'erreurs ou de dysfonctionnements. En aucun cas il ne pourra être tenu responsable de dommages directs ou indirects résultant de l'utilisation du Site.",
+        "en": "The Site is provided \"as is.\" Eléazar Klyuvitkin does not guarantee that the Site will be free from errors or malfunctions. Under no circumstances shall he be held liable for direct or indirect damages resulting from the use of the Site.",
+        "ru": "Сайт предоставляется «как есть». Елизар Клювиткин не гарантирует, что Сайт будет свободен от ошибок или сбоев. Ни при каких обстоятельс��вах он не несет ответственности за прямые или косвенные убытки, возникшие в результате и��пользования Сайта."
+      }
+    },
+    "law": {
+      "title": {
+        "fr": "7. Droit applicable",
+        "en": "7. Applicable Law",
+        "ru": "7. Применимое право"
+      },
+      "content": {
+        "fr": "Les présentes CGU sont régies par le droit belge. Tout litige sera soumis à la compétence exclusive des tribunaux de l'arrondissement judiciaire de Tournai, Belgique.",
+        "en": "These Terms are governed by Belgian law. Any dispute shall be subject to the exclusive jurisdiction of the courts of the judicial district of Tournai, Belgium.",
+        "ru": "Настоящие Условия регулируются бельгийским законодательством. Любой спор подлежит исключительной юрисдикции судов судебного округа Турне, Бельгия."
+      }
+    },
+    "modifications": {
+      "title": {
+        "fr": "8. Modifications",
+        "en": "8. Modifications",
+        "ru": "8. Изменения"
+      },
+      "content": {
+        "fr": "Eléazar Klyuvitkin se réserve le droit de modifier les présentes CGU à tout moment. Les utilisateurs sont invités à consulter régulièrement cette page.",
+        "en": "Eléazar Klyuvitkin reserves the right to modify these Terms at any time. Users are invited to regularly check this page.",
+        "ru": "Елизар Клювиткин оставляет за собой право изменять настоящие Условия в любое время. Пользователям рекомендуется регулярно посещать эту страницу."
+      }
+    },
+    "contact": {
+      "title": {
+        "fr": "9. Contact",
+        "en": "9. Contact",
+        "ru": "9. Контакт"
+      },
+      "content": {
+        "fr": "Pour toute question relative aux présentes CGU, vous pouvez contacter :",
+        "en": "For any questions regarding these Terms, you may contact:",
+        "ru": "По любым вопросам, связанным с настоящими Условиями, вы можете обратиться:"
+      }
+    }
+  }
+}

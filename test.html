@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contacts Wallonie – post 2026</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #0f1117;
+      color: #e0e0e0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    #header {
+      background: #1a1d2e;
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #2e3150;
+      flex-shrink: 0;
+    }
+
+    #header h1 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #7c83fd;
+    }
+
+    #status {
+      font-size: 0.82rem;
+      color: #a0a0b0;
+    }
+
+    #count-badge {
+      background: #7c83fd22;
+      color: #7c83fd;
+      border: 1px solid #7c83fd55;
+      border-radius: 20px;
+      padding: 2px 10px;
+      font-size: 0.78rem;
+    }
+
+    #map {
+      flex: 1;
+    }
+
+    /* Popup */
+    .leaflet-popup-content-wrapper {
+      background: #1a1d2e;
+      color: #e0e0e0;
+      border: 1px solid #2e3150;
+      border-radius: 8px;
+      max-height: 400px;
+      overflow-y: auto;
+    }
+
+    .leaflet-popup-tip {
+      background: #1a1d2e;
+    }
+
+    .popup-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.8rem;
+    }
+
+    .popup-table tr:nth-child(even) {
+      background: #ffffff08;
+    }
+
+    .popup-table td {
+      padding: 5px 8px;
+      border-bottom: 1px solid #2e315044;
+      vertical-align: top;
+    }
+
+    .popup-table td:first-child {
+      color: #7c83fd;
+      font-weight: 600;
+      white-space: nowrap;
+      padding-right: 12px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="header">
+    <h1>📍 Contacts Wallonie — après le 01/01/2026</h1>
+    <div id="status">
+      <span id="count-badge">Chargement...</span>
+    </div>
+    <div style="display:flex; gap:12px; font-size:0.78rem; align-items:center;">
+      <span><span style="color:#7c83fd">●</span> Website présent</span>
+      <span><span style="color:#f39c12">●</span> Autre URL</span>
+      <span><span style="color:#e74c3c">●</span> Aucune URL</span>
+    </div>
+  </div>
+
+  <div id="map"></div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    // ── Carte ──────────────────────────────────────────────────────────────────
+    const map = L.map('map', { preferCanvas: true }).setView([50.5, 4.5], 8);
+
+    function getColor(props) {
+      const raw = props.urls;
+      if (!raw || raw === '—') return '#e74c3c'; // rouge = pas d'URLs du tout
+
+      let urls = raw;
+      if (typeof raw === 'string') {
+        try { urls = JSON.parse(raw); } catch { return '#e74c3c'; }
+      }
+
+      if (!Array.isArray(urls) || urls.length === 0) return '#e74c3c'; // rouge = tableau vide
+
+      const hasWebsite = urls.some(u => u.type === 'website');
+      if (hasWebsite) return '#7c83fd'; // bleu = website présent
+      return '#f39c12';                 // orange = URLs mais pas de type "website"
+    }
+
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+      attribution: '&copy; OpenStreetMap &copy; CARTO',
+      maxZoom: 19
+    }).addTo(map);
+
+    // ── Popup builder ──────────────────────────────────────────────────────────
+    const SKIP_KEYS = ['geo_point_2d', 'geo_shape', 'geometry'];
+
+    function buildPopup(props) {
+      // ── Titre / Sous-titre ───────────────────────────────────────────────────
+      const title = props.title ?? '—';
+      const subtitle = props.subtitle ?? '';
+
+      // ── URLs ─────────────────────────────────────────────────────────────────
+      let urlsHtml = '<span style="color:#666">Aucune URL</span>';
+      const raw = props.urls;
+      if (raw && raw !== '—') {
+        let urls = raw;
+        if (typeof raw === 'string') {
+          try { urls = JSON.parse(raw); } catch { urls = []; }
+        }
+        if (Array.isArray(urls) && urls.length > 0) {
+          urlsHtml = urls.map(u => {
+            const isWebsite = u.type === 'website';
+            const color = isWebsite ? '#7c83fd' : '#f39c12';
+            const label = u.type ?? 'lien';
+            return `
+            <a href="${u.url}" target="_blank"
+               style="display:inline-block; margin:3px 4px 3px 0; padding:4px 10px;
+                      background:${color}22; border:1px solid ${color}88;
+                      color:${color}; border-radius:20px; font-size:0.78rem;
+                      text-decoration:none; font-weight:600;">
+              🔗 ${label} ↗
+            </a>`;
+          }).join('');
+        }
+      }
+
+      // ── Autres champs ────────────────────────────────────────────────────────
+      const SKIP_KEYS = ['geo_point_2d', 'geo_shape', 'geometry', 'title', 'subtitle', 'urls'];
+      const rows = Object.entries(props)
+        .filter(([k]) => !SKIP_KEYS.includes(k))
+        .map(([k, v]) => {
+          let display = v ?? '—';
+          if (typeof display === 'string' && display.startsWith('http')) {
+            display = `<a href="${display}" target="_blank" style="color:#7c83fd">${display}</a>`;
+          }
+          return `<tr><td>${k}</td><td>${display}</td></tr>`;
+        })
+        .join('');
+
+      return `
+      <!-- Titre -->
+      <div style="padding:10px 4px 6px;">
+        <div style="font-size:1rem; font-weight:700; color:#fff; margin-bottom:2px;">${title}</div>
+        <div style="font-size:0.82rem; color:#a0a0b0;">${subtitle}</div>
+      </div>
+
+      <!-- URLs -->
+      <div style="background:#ffffff08; border:1px solid #2e3150;
+                  border-radius:8px; padding:10px; margin:8px 0;">
+        <div style="font-size:0.72rem; color:#7c83fd; font-weight:700;
+                    text-transform:uppercase; letter-spacing:0.05em; margin-bottom:8px;">
+          🌐 Sites web & liens
+        </div>
+        ${urlsHtml}
+      </div>
+
+      <!-- Reste des données -->
+      <table class="popup-table">${rows}</table>
+    `;
+    }
+
+    // ── Filtre date ────────────────────────────────────────────────────────────
+    const CUTOFF = new Date('2026-01-01T00:00:00');
+
+    function passesFilter(props) {
+      const raw = props.creation_datetime;
+      if (!raw) return false;
+      return new Date(raw) > CUTOFF;
+    }
+
+    // ── Chargement GeoJSON ─────────────────────────────────────────────────────
+    fetch('data.geojson')
+      .then(r => {
+        if (!r.ok) throw new Error(`HTTP ${r.status}`);
+        return r.json();
+      })
+      .then(geojson => {
+        let count = 0;
+
+        L.geoJSON(geojson, {
+          filter: feature => passesFilter(feature.properties),
+          pointToLayer: (feature, latlng) => {
+            count++;
+            const color = getColor(feature.properties);
+            return L.circleMarker(latlng, {
+              radius: 6,
+              fillColor: color,
+              color: '#fff',
+              weight: 1,
+              opacity: 0.9,
+              fillOpacity: 0.75
+            });
+          },
+          onEachFeature: (feature, layer) => {
+            layer.bindPopup(buildPopup(feature.properties), { maxWidth: 420 });
+          }
+        }).addTo(map);
+
+        document.getElementById('count-badge').textContent =
+          `${count.toLocaleString('fr-BE')} points affichés`;
+      })
+      .catch(err => {
+        console.error(err);
+        document.getElementById('count-badge').textContent = 'Erreur : ' + err.message;
+      });
+  </script>
+</body>
+
+</html>

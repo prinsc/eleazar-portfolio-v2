@@ -482,7 +482,7 @@
 		font-size: 10px;
 		letter-spacing: 0.22em;
 		text-transform: uppercase;
-		color: #e8a48e;
+		color: var(--ember-light);
 		margin-bottom: 1.25rem;
 		padding-bottom: 0.6rem;
 		border-bottom: 1px solid rgba(241, 234, 216, 0.1);
@@ -645,7 +645,7 @@
 		color: var(--cream);
 	}
 	.aside-block strong {
-		color: #e8a48e;
+		color: var(--ember-light);
 		font-weight: 600;
 	}
 	.aside-block a {
@@ -658,8 +658,8 @@
 			border-color 0.3s ease;
 	}
 	.aside-block a:hover {
-		color: #e8a48e;
-		border-color: #e8a48e;
+		color: var(--ember-light);
+		border-color: var(--ember-light);
 	}
 	.aside-note {
 		margin-top: 2.5rem;
@@ -693,7 +693,7 @@
 		width: 100%;
 	}
 	.confirm__icon {
-		color: #e8a48e;
+		color: var(--ember-light);
 		margin-bottom: 2rem;
 	}
 	.confirm__title {
@@ -709,7 +709,7 @@
 		font-family: var(--f-italic);
 		font-style: italic;
 		font-weight: 400;
-		color: #e8a48e;
+		color: var(--ember-light);
 	}
 	.confirm__details {
 		border-top: 1px solid rgba(241, 234, 216, 0.12);
@@ -747,14 +747,14 @@
 		font-weight: 400;
 	}
 	.confirm__text a {
-		color: #e8a48e;
+		color: var(--ember-light);
 		text-decoration: none;
 		border-bottom: 1px solid rgba(232, 164, 142, 0.3);
 		padding-bottom: 0.1em;
 		transition: border-color 0.3s ease;
 	}
 	.confirm__text a:hover {
-		border-color: #e8a48e;
+		border-color: var(--ember-light);
 	}
 	.confirm__actions {
 		display: flex;

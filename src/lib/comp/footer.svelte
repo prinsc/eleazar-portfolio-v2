@@ -15,6 +15,13 @@
 						? 'Legal Notice'
 						: 'Юридическая информация'}
 			</a>
+			<a href="/{$settings.lang}/cgu" class="footer-link legal no-effect">
+				{$settings.lang === 'fr'
+					? "Conditions générales d'utilisation"
+					: $settings.lang === 'en'
+						? 'Terms of Service'
+						: 'Условия использования'}
+			</a>
 		</div>
 	</PageContent>
 </footer>
@@ -24,7 +31,10 @@
 
 	footer {
 		// border-top: 1px solid var(--color-gray-15);
-
+		.footer-link {
+			padding: 0 0.5rem;
+			display: inline-block;
+		}
 		.footer-content {
 			max-width: 1200px;
 			margin: 0 auto;

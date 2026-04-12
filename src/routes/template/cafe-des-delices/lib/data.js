@@ -9,7 +9,21 @@ export const infos = {
 	adresseComplete: 'Grand Place 8, 7800 Ath, Belgique',
 	email: 'info@lecafedesdelices-ath.com',
 	telephone: '+32 68 28 04 24', // placeholder - à remplacer
-	fonde: '-'
+	fonde: '-',
+	siteWeb: 'https://lecafedesdelices-ath.com', // placeholder - à remplacer
+	capacite: {
+		salle: 60,    // nombre de couverts en salle
+		terrasse: 40  // nombre de couverts en terrasse
+	},
+	terrasse: true,
+	parking: 'Parking payant à 50m',
+	accesHandicape: true,
+	wifi: true,
+	wifiNom: 'CafeDelices_Guest', // placeholder - à remplacer
+	googlePlaceId: '', // à remplir : ChIJ... — active les liens directs Google Maps / avis
+	googleMapsUrl: 'https://maps.google.com/?q=Grand+Place+8,+7800+Ath', // placeholder - à remplacer
+	reservationUrl: '', // à remplir : lien TheFork, Resengo, ou mailto:
+	tripadvisorId: 'd5263042'
 };
 
 export const horaires = [
@@ -24,7 +38,26 @@ export const horaires = [
 
 export const cuisine = {
 	midi: '12h00 - 14h30',
-	soir: '18h00 - 22h00'
+	soir: '18h00 - 22h00',
+	serviceContinuWeekend: true,  // cuisine ouverte en continu sam/dim ?
+	reservationConseilleeWeekend: true,
+	noteService: 'Le bar est ouvert en continu de 10h à 22h'
+};
+
+// Plat du jour - le client met à jour quotidiennement.
+// `type` : 'text' (nom + description + accompagnement) ou 'image' (photo du plat).
+// Un seul des deux modes est affiché selon le type choisi.
+export const platDuJour = {
+	type: 'text', // 'text' | 'image'
+	// -- Mode texte --
+	nom: 'Carbonnade flamande',
+	description: 'Boeuf mijoté à la bière brune et au sirop de Liège',
+	accompagnement: 'Frites maison, salade verte',
+	prix: '18,50',
+	badge: 'Midi & soir',
+	// -- Mode image (le client dépose sa photo du jour) --
+	image: 'https://images.unsplash.com/photo-1544025162-d76694265947?w=800&q=80', // placeholder
+	imageAlt: 'Plat du jour - Carbonnade flamande'
 };
 
 // Les deux menus repris du site existant
@@ -71,7 +104,9 @@ export const menus = [
 	}
 ];
 
-// Les deux pôles narratifs du lieu
+// Les pôles narratifs du lieu
+// `layout` : 'immersive' | 'classic' | 'editorial'
+// `flip`   : true = image à droite (texte à gauche), false = image à gauche
 export const poles = [
 	{
 		num: '01',
@@ -80,6 +115,8 @@ export const poles = [
 		texte:
 			'Spécialistes de la grillade authentique. Des viandes sélectionnées avec soin, travaillées à la flamme, servies sans chichi. Un burger qui tient debout, une tagliata qui fond, une terrasse qui prolonge l\u2019été. C\u2019est ici.',
 		cta: { label: 'Voir la carte', href: '/template/cafe-des-delices/menu' },
+		layout: 'immersive',
+		flip: false,
 		// À remplacer par la vraie photo du client
 		img: 'https://images.unsplash.com/photo-1558030006-450675393462?w=1400&q=80'
 	},
@@ -90,8 +127,22 @@ export const poles = [
 		texte:
 			'Une sélection de bières belges d\u2019exception. Des classiques incontournables aux pépites artisanales, chaque verre raconte un terroir. Installez-vous en terrasse, sur la Grand Place, et prenez le temps.',
 		cta: { label: 'Notre sélection', href: '/template/cafe-des-delices/menu' },
+		layout: 'classic',
+		flip: true,
 		// À remplacer par la vraie photo du client
 		img: 'https://images.unsplash.com/photo-1436076863939-06870fe779c2?w=1400&q=80'
+	},
+	{
+		num: '03',
+		sur: 'Moments',
+		titre: 'Brunch du dimanche',
+		texte:
+			"Chaque dimanche, notre brunch réunit produits locaux et recettes maison : œufs brouillés onctueux, pancakes au sirop d'érable, planches de charcuterie et fromages affinés.Parfait pour se retrouver en famille ou entre amis, accompagné d'un jus pressé et d'un bon café.",
+		cta: { label: 'Réserver un brunch', href: '/template/cafe-des-delices/reservation' },
+		layout: 'editorial',
+		flip: false,
+		// À remplacer par la vraie photo du client
+		img: 'https://images.unsplash.com/photo-1496412705862-e0088f16f791?w=1400&q=80'
 	}
 ];
 
@@ -503,6 +554,164 @@ export const carte = [
 		]
 	}
 ];
+
+// Avis Google (placeholder - à remplacer par les vrais avis via l'API)
+export const avis = [
+	{
+		auteur: 'Sophie Dupont',
+		note: 5,
+		texte:
+			'Un vrai coup de coeur. La tagliata est parfaitement cuite, les frites maison impeccables. Le cadre sur la Grand Place est magnifique, surtout en terrasse. On y retourne sans hésiter.',
+		date: '2026-03-18',
+		photo: 'https://lh3.googleusercontent.com/a/default-user=s40-c'
+	},
+	{
+		auteur: 'Marc Leroy',
+		note: 5,
+		texte:
+			'Excellente sélection de bières belges. Le serveur nous a conseillé une Chimay Bleue avec la grillade, accord parfait. Ambiance chaleureuse, service attentionné.',
+		date: '2026-03-02',
+		photo: 'https://lh3.googleusercontent.com/a/default-user=s40-c'
+	},
+	{
+		auteur: 'Isabelle Fontaine',
+		note: 4,
+		texte:
+			'Très bon burger Délice, généreux et bien assaisonné. Seul bémol : l\'attente un peu longue le samedi soir, mais la qualité compense largement. Desserts gourmands.',
+		date: '2026-02-14',
+		photo: 'https://lh3.googleusercontent.com/a/default-user=s40-c'
+	},
+	{
+		auteur: 'Thomas Vandenberghe',
+		note: 5,
+		texte:
+			'Notre restaurant préféré à Ath. Le menu à 48 euros est un rapport qualité-prix imbattable : le carpaccio fumé en entrée est une tuerie. Personnel aux petits soins.',
+		date: '2026-02-01',
+		photo: 'https://lh3.googleusercontent.com/a/default-user=s40-c'
+	},
+	{
+		auteur: 'Claire Moreau',
+		note: 5,
+		texte:
+			'Réservation pour un anniversaire, tout était parfait. Table en terrasse avec vue sur la place, menu adapté pour les enfants, et le personnel a apporté un dessert surprise. Merci !',
+		date: '2026-01-22',
+		photo: 'https://lh3.googleusercontent.com/a/default-user=s40-c'
+	},
+	{
+		auteur: 'Philippe Dewit',
+		note: 4,
+		texte:
+			'Bonnes grillades, cuisson respectée. La carte des bières est impressionnante pour une brasserie de cette taille. Terrasse agréable quand il fait beau.',
+		date: '2026-01-10',
+		photo: 'https://lh3.googleusercontent.com/a/default-user=s40-c'
+	},
+	{
+		auteur: 'Nathalie Peeters',
+		note: 5,
+		texte:
+			'Les croquettes au fromage sont addictives. On a testé les pâtes aux scampis aussi, très bien. Cadre soigné sans être guindé, exactement ce qu\'on cherchait.',
+		date: '2025-12-28',
+		photo: 'https://lh3.googleusercontent.com/a/default-user=s40-c'
+	},
+	{
+		auteur: 'Antoine Lefebvre',
+		note: 5,
+		texte:
+			'Première visite à Ath et quelle découverte. Le foie gras confit est exceptionnel, la mousse au chocolat maison divine. Un vrai restaurant de qualité sur cette belle place.',
+		date: '2025-12-15',
+		photo: 'https://lh3.googleusercontent.com/a/default-user=s40-c'
+	}
+];
+
+// Réseaux sociaux
+export const socials = [
+	{
+		id: 'facebook',
+		label: 'Facebook',
+		url: 'https://www.facebook.com/profile.php?id=61575160191289', // placeholder - à remplacer
+		actif: true
+	},
+	{
+		id: 'instagram',
+		label: 'Instagram',
+		url: 'https://www.instagram.com/cafe_des_delices_ath/?hl=fr', // placeholder - à remplacer
+		actif: true
+	},
+	{
+		id: 'tiktok',
+		label: 'TikTok',
+		url: 'https://www.tiktok.com/@lecafedesdelicesath', // placeholder - à remplacer
+		actif: false
+	},
+	{
+		id: 'tripadvisor',
+		label: 'TripAdvisor',
+		url: 'https://fr.tripadvisor.be/Restaurant_Review-g1234020-d5263042-Reviews-Le_Cafe_des_Delices-Ath_Hainaut_Province_Wallonia.html', // placeholder - à remplacer
+		actif: true
+	}
+];
+
+// ── Alerte temporaire (bandeau sur le site) ────────────────────────────────
+// Passer `actif: true` pour afficher, `false` pour masquer sans supprimer le message.
+export const alerteOuverture = {
+	actif: false,
+	message: 'Fermé du 15 au 22 août — bonnes vacances à tous !'
+};
+
+// ── Fermetures exceptionnelles ─────────────────────────────────────────────
+// Dates affichées / vérifiées par le widget de statut (status.js).
+export const fermetures = [
+	{ date: '2025-12-25', motif: 'Noël' },
+	{ date: '2026-01-01', motif: 'Nouvel An' }
+];
+
+// ── Évènements ─────────────────────────────────────────────────────────────
+// `actif: false` masque l'évènement sans le supprimer.
+export const evenements = [
+	{
+		titre: 'Soirée bières du mois',
+		date: '2026-04-18',
+		description: 'Dégustation guidée de 4 bières artisanales avec le brasseur.',
+		actif: true
+	}
+];
+
+// ── Appels à l'action globaux ──────────────────────────────────────────────
+// `methode` : 'url' | 'tel' | 'email'
+export const cta = {
+	reservation: {
+		label: 'Réserver une table',
+		url: '', // à remplir : TheFork, Resengo, ou mailto:
+		methode: 'url'
+	},
+	commande: {
+		actif: false, // passer à true si click & collect / livraison activés
+		label: 'Commander en ligne',
+		url: ''
+	}
+};
+
+// ── SEO ────────────────────────────────────────────────────────────────────
+export const seo = {
+	titleDefault: 'Le Café des Délices — Restaurant & Brasserie à Ath',
+	description:
+		"Grillades, burgers maison et bières belges d\u2019exception sur la Grand Place d\u2019Ath. Terrasse, menus midi et soir.",
+	keywords: ['restaurant ath', 'brasserie ath', 'grillade ath', 'burger ath', 'terrasse grand place'],
+	ogImage: '', // à remplir : URL image réseaux sociaux (1200x630)
+	locale: 'fr_BE',
+	twitterHandle: ''
+};
+
+// ── Structured data (rich snippets Google) ────────────────────────────────
+export const schema = {
+	type: 'Restaurant',
+	priceRange: '\u20AC\u20AC', // €, €€, €€€
+	servesCuisine: ['Belge', 'Grillades', 'Burgers'],
+	hasMenu: '/template/cafe-des-delices/menu',
+	acceptsReservations: true,
+	paymentAccepted: ['Cash', 'Credit Card'],
+	currenciesAccepted: 'EUR'
+};
 
 // Regroupement logique pour la navigation dans la page menu
 export const menuSections = [

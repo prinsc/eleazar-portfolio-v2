@@ -610,7 +610,7 @@
 	.cta__text em {
 		font-family: var(--f-italic);
 		font-style: italic;
-		color: #e8a48e; /* ember clair sur fond slate — 4.8:1 contrast */
+		color: var(--ember-light); /* ember clair sur fond slate — 4.8:1 contrast */
 	}
 	.cta__link {
 		display: inline-flex;

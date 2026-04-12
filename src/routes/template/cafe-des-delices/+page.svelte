@@ -6,6 +6,8 @@
 	import Pole from './lib/Pole.svelte';
 	import MenusPreview from './lib/MenusPreview.svelte';
 	import Gallery from './lib/Gallery.svelte';
+	import Avis from './lib/Avis.svelte';
+	import Social from './lib/Social.svelte';
 	import Visite from './lib/Visite.svelte';
 	import { poles } from './lib/data.js';
 </script>
@@ -20,11 +22,16 @@
 
 <Hero />
 
-<Pole pole={poles[0]} id="grilles" />
-<Pole pole={poles[1]} flip={true} id="maltes" />
+{#each poles as pole}
+	<Pole {pole} id={pole.titre.toLowerCase().replace(/\s+/g, '-')} layout={pole.layout} flip={pole.flip} />
+{/each}
 
 <MenusPreview />
 
 <Gallery />
+
+<Avis />
+
+<Social />
 
 <Visite />

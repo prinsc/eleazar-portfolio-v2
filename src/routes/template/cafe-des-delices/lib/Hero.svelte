@@ -1,6 +1,12 @@
 <script>
 	import { onMount } from 'svelte';
-	import { heroImage } from './data.js';
+	import { heroImage, platDuJour } from './data.js';
+
+	const jour = new Date().toLocaleDateString('fr-BE', {
+		weekday: 'long',
+		day: 'numeric',
+		month: 'long'
+	});
 
 	let heroEl;
 	let eyebrowRule;
@@ -133,15 +139,54 @@
 			</div>
 		</div>
 
-		<!-- COLONNE DROITE : photo plein hauteur -->
-		<figure class="hero__photo" bind:this={photoEl}>
-			<!-- Image à remplacer par le client -->
-			<img src={heroImage} alt="Grillade en cuisine" loading="eager" bind:this={photoImgEl} />
-			<figcaption>
-				<span class="num">N<sup>o</sup> 01</span>
-				<span class="cap">À la flamme</span>
-			</figcaption>
-		</figure>
+		<!-- COLONNE DROITE : photo + plat du jour -->
+		<div class="hero__right">
+			<figure class="hero__photo" bind:this={photoEl}>
+				<!-- Image à remplacer par le client -->
+				<img src={heroImage} alt="Grillade en cuisine" loading="eager" bind:this={photoImgEl} />
+				<figcaption>
+					<span class="num">N<sup>o</sup> 01</span>
+					<span class="cap">À la flamme</span>
+				</figcaption>
+			</figure>
+
+			<div class="pdj">
+				<div class="pdj__header">
+					<span class="pdj__tag">Plat du jour</span>
+					<time class="pdj__date">{jour}</time>
+				</div>
+
+				{#if platDuJour.type === 'image'}
+					<div class="pdj__content pdj__content--img">
+						<figure class="pdj__fig">
+							<img src={platDuJour.image} alt={platDuJour.imageAlt} loading="lazy" />
+						</figure>
+						<div class="pdj__info">
+							<span class="pdj__nom">{platDuJour.nom}</span>
+							{#if platDuJour.prix}
+								<span class="pdj__prix">{platDuJour.prix} &euro;</span>
+							{/if}
+						</div>
+					</div>
+				{:else}
+					<div class="pdj__content pdj__content--txt">
+						<div class="pdj__main">
+							<span class="pdj__nom">{platDuJour.nom}</span>
+							{#if platDuJour.badge}
+								<span class="pdj__badge">{platDuJour.badge}</span>
+							{/if}
+						</div>
+						<p class="pdj__desc">{platDuJour.description}</p>
+						{#if platDuJour.accompagnement}
+							<p class="pdj__acc">{platDuJour.accompagnement}</p>
+						{/if}
+						{#if platDuJour.prix}
+							<span class="pdj__prix">{platDuJour.prix} &euro;</span>
+						{/if}
+					</div>
+				{/if}
+			</div>
+		</div>
 	</div>
 
 	<div class="hero__footer" bind:this={footerEl}>
@@ -296,8 +341,17 @@
 	}
 
 	/* ============================================================
-	   PHOTO
+	   RIGHT COLUMN (photo + plat du jour)
 	   ============================================================ */
+	.hero__right {
+		display: flex;
+		flex-direction: column;
+
+		@include breakpoint('large') {
+			height: 100%;
+		}
+	}
+
 	.hero__photo {
 		margin: 0;
 		position: relative;
@@ -306,7 +360,8 @@
 
 		@include breakpoint('large') {
 			aspect-ratio: auto;
-			height: 100%;
+			flex: 1;
+			min-height: 0;
 		}
 	}
 	.hero__photo img {
@@ -333,6 +388,136 @@
 	}
 	figcaption .cap {
 		color: var(--ember);
+	}
+
+	/* ============================================================
+	   PLAT DU JOUR
+	   ============================================================ */
+	.pdj {
+		background: var(--slate);
+		color: var(--cream);
+		padding: 1.25rem;
+
+		@include breakpoint('medium') {
+			padding: 1.5rem;
+		}
+	}
+
+	.pdj__header {
+		display: flex;
+		align-items: baseline;
+		justify-content: space-between;
+		margin-bottom: 0.75rem;
+		padding-bottom: 0.65rem;
+		border-bottom: 1px solid rgba(241, 234, 216, 0.12);
+	}
+
+	.pdj__tag {
+		font-family: var(--f-mono);
+		font-size: 10px;
+		letter-spacing: 0.2em;
+		text-transform: uppercase;
+		color: var(--ember-light);
+	}
+
+	.pdj__date {
+		font-family: var(--f-italic);
+		font-style: italic;
+		font-size: 0.9rem;
+		color: var(--cream);
+		opacity: 0.5;
+	}
+
+	/* -- Text mode -- */
+	.pdj__content--txt {
+		display: flex;
+		flex-direction: column;
+		gap: 0.35rem;
+	}
+
+	.pdj__main {
+		display: flex;
+		align-items: baseline;
+		gap: 0.75rem;
+		flex-wrap: wrap;
+	}
+
+	.pdj__nom {
+		font-family: var(--f-display);
+		font-weight: 600;
+		font-size: 1.15rem;
+		letter-spacing: -0.01em;
+	}
+
+	.pdj__badge {
+		font-family: var(--f-mono);
+		font-size: 9px;
+		letter-spacing: 0.15em;
+		text-transform: uppercase;
+		padding: 0.25em 0.6em;
+		border: 1px solid rgba(241, 234, 216, 0.2);
+		border-radius: 999px;
+		color: var(--cream);
+		opacity: 0.6;
+	}
+
+	.pdj__desc {
+		margin: 0;
+		font-family: var(--f-display);
+		font-size: 0.92rem;
+		line-height: 1.45;
+		opacity: 0.7;
+	}
+
+	.pdj__acc {
+		margin: 0;
+		font-family: var(--f-mono);
+		font-size: 10px;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		opacity: 0.4;
+	}
+
+	.pdj__prix {
+		font-family: var(--f-mono);
+		font-size: 14px;
+		letter-spacing: 0.06em;
+		color: var(--ember-light);
+		margin-top: 0.25rem;
+	}
+
+	/* -- Image mode -- */
+	.pdj__content--img {
+		display: flex;
+		gap: 1rem;
+		align-items: center;
+	}
+
+	.pdj__fig {
+		margin: 0;
+		overflow: hidden;
+		width: 80px;
+		height: 80px;
+		flex-shrink: 0;
+
+		@include breakpoint('medium') {
+			width: 96px;
+			height: 96px;
+		}
+	}
+
+	.pdj__fig img {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		filter: grayscale(12%) contrast(1.05);
+	}
+
+	.pdj__content--img .pdj__info {
+		display: flex;
+		flex-direction: column;
+		gap: 0.25rem;
 	}
 
 	/* ============================================================
