@@ -49,7 +49,9 @@
 			<span class="wlabel">{$weather.label}, Ath</span>
 		</div>
 
-		<p class="reco"><em>{$weather.reco}</em></p>
+		{#if $status.open}
+			<p class="reco"><em>{$weather.reco}</em></p>
+		{/if}
 	{:else if $weather === null}
 		<div class="row row--weather is-loading">
 			<span class="temp">—°</span>

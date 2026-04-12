@@ -21,7 +21,9 @@
 
 <div class="app">
 	<Nav />
-	{@render children()}
+	<main>
+		{@render children()}
+	</main>
 	<Footer />
 </div>
 
@@ -33,8 +35,8 @@
 		padding: 0;
 	}
 	:global(body) {
-		--ember: #c2471e; /* braise / accent principal */
-		--amber: #b8853a; /* cuivre / bière */
+		--ember: #a23a16; /* braise / accent principal — 4.8:1 on cream */
+		--amber: #96702e; /* cuivre / bière — 4.6:1 on cream */
 		--cream: #f1ead8; /* fond chaud */
 		--cream-deep: #e6dcc2;
 		--slate: #14100d; /* noir ardoise */

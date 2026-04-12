@@ -1,6 +1,109 @@
 <script>
+	import { onMount } from 'svelte';
 	import { infos, horaires, cuisine } from './data.js';
 	import Status from './Status.svelte';
+	import { PUBLIC_MAPBOX_TOKEN } from '$env/static/public';
+
+	let mapContainer;
+	let mapLoaded = $state(false);
+
+	onMount(async () => {
+		const mapboxgl = (await import('mapbox-gl')).default;
+		await import('mapbox-gl/dist/mapbox-gl.css');
+
+		mapboxgl.accessToken = PUBLIC_MAPBOX_TOKEN;
+
+		// Coordinates: Grand Place d'Ath, Belgium
+		const athCoords = [3.7783, 50.6294];
+
+		const map = new mapboxgl.Map({
+			container: mapContainer,
+			// Warm monochrome style matching the cafe's cream/slate palette
+			style: {
+				version: 8,
+				name: 'Cafe des Delices',
+				sources: {
+					'osm-tiles': {
+						type: 'raster',
+						tiles: [
+							'https://api.mapbox.com/styles/v1/mapbox/light-v11/tiles/{z}/{x}/{y}?access_token=' + PUBLIC_MAPBOX_TOKEN
+						],
+						tileSize: 256
+					}
+				},
+				layers: [
+					{
+						id: 'osm-tiles',
+						type: 'raster',
+						source: 'osm-tiles',
+						paint: {
+							'raster-saturation': -0.6,
+							'raster-brightness-min': 0.08,
+							'raster-brightness-max': 0.95,
+							'raster-contrast': 0.1,
+							'raster-hue-rotate': 30
+						}
+					}
+				]
+			},
+			center: athCoords,
+			zoom: 15.5,
+			attributionControl: false,
+			scrollZoom: false,
+			interactive: true,
+			pitch: 0
+		});
+
+		map.addControl(new mapboxgl.NavigationControl({ showCompass: false }), 'top-right');
+		map.addControl(new mapboxgl.AttributionControl({ compact: true }), 'bottom-left');
+
+		// Custom marker element
+		const markerEl = document.createElement('div');
+		markerEl.innerHTML = `
+			<div style="
+				width: 40px; height: 40px;
+				background: #c2471e;
+				border: 3px solid #f1ead8;
+				border-radius: 50%;
+				box-shadow: 0 2px 12px rgba(194,71,30,0.45), 0 0 0 6px rgba(194,71,30,0.15);
+				position: relative;
+				cursor: pointer;
+			">
+				<div style="
+					position: absolute; top: 50%; left: 50%;
+					transform: translate(-50%, -50%);
+					width: 10px; height: 10px;
+					background: #f1ead8;
+					border-radius: 50%;
+				"></div>
+			</div>
+		`;
+
+		const popup = new mapboxgl.Popup({
+			offset: 28,
+			closeButton: false,
+			className: 'cdd-popup'
+		}).setHTML(`
+			<strong style="font-family: 'Fraunces', serif; font-size: 14px; color: #14100d;">
+				Le Cafe des Delices
+			</strong>
+			<br/>
+			<span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.1em; color: #3a332c;">
+				Grand Place, 7800 Ath
+			</span>
+		`);
+
+		new mapboxgl.Marker({ element: markerEl })
+			.setLngLat(athCoords)
+			.setPopup(popup)
+			.addTo(map);
+
+		map.on('load', () => {
+			mapLoaded = true;
+		});
+
+		return () => map.remove();
+	});
 </script>
 
 <section class="visite" id="visite">
@@ -49,71 +152,15 @@
 		</div>
 
 		<div class="col col--map">
-			<div class="map">
-				<svg viewBox="0 0 200 200" width="100%" height="100%" aria-hidden="true">
-					<defs>
-						<pattern id="cdd-grid" width="10" height="10" patternUnits="userSpaceOnUse">
-							<path
-								d="M 10 0 L 0 0 0 10"
-								fill="none"
-								stroke="currentColor"
-								stroke-width="0.3"
-								opacity="0.3"
-							/>
-						</pattern>
-					</defs>
-					<rect width="200" height="200" fill="url(#cdd-grid)" />
-					<path
-						d="M 0 120 Q 60 110 100 100 T 200 90"
-						stroke="currentColor"
-						stroke-width="0.8"
-						fill="none"
-						opacity="0.5"
-					/>
-					<path
-						d="M 40 0 L 60 200"
-						stroke="currentColor"
-						stroke-width="0.8"
-						fill="none"
-						opacity="0.5"
-					/>
-					<path
-						d="M 0 60 L 200 80"
-						stroke="currentColor"
-						stroke-width="0.8"
-						fill="none"
-						opacity="0.5"
-					/>
-					<rect
-						x="86"
-						y="86"
-						width="28"
-						height="28"
-						fill="none"
-						stroke="currentColor"
-						stroke-width="0.6"
-						opacity="0.5"
-					/>
-					<circle cx="100" cy="100" r="4" fill="var(--ember, currentColor)" />
-					<circle
-						cx="100"
-						cy="100"
-						r="14"
-						fill="none"
-						stroke="var(--ember, currentColor)"
-						stroke-width="0.6"
-						opacity="0.6"
-					>
-						<animate attributeName="r" from="14" to="30" dur="2.4s" repeatCount="indefinite" />
-						<animate
-							attributeName="opacity"
-							from="0.6"
-							to="0"
-							dur="2.4s"
-							repeatCount="indefinite"
-						/>
-					</circle>
-				</svg>
+			<div class="map" bind:this={mapContainer} class:map--loaded={mapLoaded}>
+				{#if !mapLoaded}
+					<div class="map__placeholder">
+						<svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1" opacity="0.4">
+							<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+							<circle cx="12" cy="9" r="2.5"/>
+						</svg>
+					</div>
+				{/if}
 			</div>
 			<span class="map__cap">{infos.adresse} — {infos.ville}</span>
 
@@ -221,7 +268,7 @@
 	.label {
 		display: block;
 		font-family: var(--f-mono);
-		font-size: 9px;
+		font-size: 10px;
 		letter-spacing: 0.2em;
 		text-transform: uppercase;
 		color: var(--slate-soft);
@@ -267,7 +314,40 @@
 		aspect-ratio: 1;
 		border: 1px solid var(--slate);
 		color: var(--slate);
+		background: var(--cream-deep);
+		position: relative;
+		overflow: hidden;
+	}
+	.map--loaded {
+		border-color: var(--rule);
+	}
+	.map__placeholder {
+		position: absolute;
+		inset: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: var(--slate-soft);
+	}
+	/* Style the Mapbox popup to match the cafe aesthetic */
+	.map :global(.mapboxgl-popup-content) {
 		background: var(--cream);
+		border: 1px solid var(--rule);
+		border-radius: 0;
+		padding: 0.9rem 1.1rem;
+		box-shadow: 0 4px 20px rgba(20, 16, 13, 0.12);
+	}
+	.map :global(.mapboxgl-popup-tip) {
+		border-top-color: var(--cream);
+	}
+	.map :global(.mapboxgl-ctrl-group) {
+		border-radius: 0;
+		border: 1px solid var(--rule);
+		box-shadow: none;
+	}
+	.map :global(.mapboxgl-ctrl-group button) {
+		width: 32px;
+		height: 32px;
 	}
 	.map__cap {
 		display: block;

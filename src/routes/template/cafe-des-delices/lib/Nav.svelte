@@ -39,9 +39,9 @@
 		{/each}
 	</ul>
 
-	<a class="cta" href="{base}#visite">
+	<a class="cta" href="{base}#visite" aria-label="Réserver une table">
 		<span>Réserver une table</span>
-		<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5">
+		<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
 			<path d="M5 12h14M13 6l6 6-6 6" />
 		</svg>
 	</a>

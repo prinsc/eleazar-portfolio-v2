@@ -353,7 +353,7 @@
 	.label {
 		display: block;
 		font-family: var(--f-mono);
-		font-size: 9px;
+		font-size: 10px;
 		letter-spacing: 0.2em;
 		text-transform: uppercase;
 		color: var(--slate-soft);
