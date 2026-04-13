@@ -6,8 +6,7 @@
 	const links = [
 		{ href: base, label: 'Maison', exact: true },
 		{ href: `${base}/menu`, label: 'Carte' },
-		{ href: `${base}#grilles`, label: 'Grillés' },
-		{ href: `${base}#maltes`, label: 'Maltés' },
+		{ href: `${base}#social`, label: 'Réseaux' },
 		{ href: `${base}#visite`, label: 'Nous trouver' },
 		{ href: `${base}/reservation`, label: 'Réserver' }
 	];

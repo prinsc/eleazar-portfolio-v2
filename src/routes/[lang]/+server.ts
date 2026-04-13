@@ -1,16 +1,16 @@
 // src/routes/api/places/[placeId]/+server.ts
 import { GOOGLE_PLACES_API_KEY } from '$env/static/private'
+import { PUBLIC_GOOGLE_PLACE_ID } from "$env/static/public"
 import { env } from '$env/dynamic/private';
 import { json, error } from '@sveltejs/kit'
 import type { RequestHandler } from './$types'
-import { settings } from '$lib/stores/settings.js';
 
 const apiGoogle = env.GOOGLE_PLACES_API_KEY;
-
+const placeId = PUBLIC_GOOGLE_PLACE_ID;
 export const GET: RequestHandler = async ({ }) => {
 
     const url = new URL('https://maps.googleapis.com/maps/api/place/details/json')
-    url.searchParams.set('place_id', settings.google.placeId)
+    url.searchParams.set('place_id', placeId)
     url.searchParams.set('fields', 'reviews,rating,user_ratings_total,name')
     url.searchParams.set('language', 'fr')
     url.searchParams.set('key', apiGoogle)

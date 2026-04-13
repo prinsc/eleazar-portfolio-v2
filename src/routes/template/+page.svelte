@@ -14,7 +14,8 @@
 
 	const templates = [
 		{ slug: 'warlord', name: 'Warlord' },
-		{ slug: 'cafe-des-delices', name: 'Café des Délices' }
+		{ slug: 'cafe-des-delices', name: 'Café des Délices' },
+		{ slug: 'map-contact', name: 'Carte des contacts' }
 	];
 
 	const iconMap = {
