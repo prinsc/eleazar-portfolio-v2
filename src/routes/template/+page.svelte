@@ -13,7 +13,7 @@
 	import PageContent from '$lib/comp/PageContent.svelte';
 
 	const templates = [
-		{ slug: 'warlord', name: 'Warlord' },
+		{ slug: 'l-essentielles', name: "L'essenti'elles" },
 		{ slug: 'cafe-des-delices', name: 'Café des Délices' },
 		{ slug: 'map-contact', name: 'Carte des contacts' }
 	];

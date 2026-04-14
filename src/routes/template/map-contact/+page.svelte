@@ -5,30 +5,49 @@
 	let mapEl = $state(null);
 	let count = $state('Chargement...');
 	let mapInstance = null;
+	let geojsonData = null;
 
-	const CUTOFF = new Date('2026-01-01T00:00:00');
+	// Filtres
+	let cutoffDate = $state('2026-01-01');
+	let showBlue = $state(true);
+	let showYellow = $state(true);
+	let showRed = $state(true);
+
+	const COLORS = {
+		blue: '#7c83fd',
+		yellow: '#f39c12',
+		red: '#e74c3c'
+	};
 
 	function getColor(props) {
 		const raw = props.urls;
-		if (!raw || raw === '—') return '#e74c3c';
+		if (!raw || raw === '—') return 'red';
 
 		let urls = raw;
 		if (typeof raw === 'string') {
 			try {
 				urls = JSON.parse(raw);
 			} catch {
-				return '#e74c3c';
+				return 'red';
 			}
 		}
 
-		if (!Array.isArray(urls) || urls.length === 0) return '#e74c3c';
-		return urls.some((u) => u.type === 'website') ? '#7c83fd' : '#f39c12';
+		if (!Array.isArray(urls) || urls.length === 0) return 'red';
+		return urls.some((u) => u.type === 'website') ? 'blue' : 'yellow';
 	}
 
 	function passesFilter(props) {
 		const raw = props.creation_datetime;
 		if (!raw) return false;
-		return new Date(raw) > CUTOFF;
+		const cutoff = new Date(cutoffDate + 'T00:00:00');
+		return new Date(raw) > cutoff;
+	}
+
+	function isColorVisible(colorKey) {
+		if (colorKey === 'blue') return showBlue;
+		if (colorKey === 'yellow') return showYellow;
+		if (colorKey === 'red') return showRed;
+		return true;
 	}
 
 	function buildPopupHTML(props) {
@@ -93,6 +112,44 @@
     `;
 	}
 
+	function rebuildSource() {
+		if (!mapInstance || !geojsonData || !mapInstance.isStyleLoaded()) return;
+
+		const filtered = {
+			type: 'FeatureCollection',
+			features: geojsonData.features
+				.filter((f) => {
+					const colorKey = getColor(f.properties);
+					return passesFilter(f.properties) && isColorVisible(colorKey);
+				})
+				.map((f) => ({
+					...f,
+					properties: {
+						...f.properties,
+						_color: COLORS[getColor(f.properties)],
+						_popup: buildPopupHTML(f.properties)
+					}
+				}))
+		};
+
+		count = `${filtered.features.length.toLocaleString('fr-BE')} points affichés`;
+
+		const source = mapInstance.getSource('contacts');
+		if (source) {
+			source.setData(filtered);
+		}
+	}
+
+	// Reactive: re-render on filter change
+	$effect(() => {
+		// Track all filter state
+		cutoffDate;
+		showBlue;
+		showYellow;
+		showRed;
+		rebuildSource();
+	});
+
 	onMount(async () => {
 		const mapboxgl = (await import('mapbox-gl')).default;
 		await import('mapbox-gl/dist/mapbox-gl.css');
@@ -105,7 +162,7 @@
 			return;
 		}
 
-		const geojsonData = await res.json();
+		geojsonData = await res.json();
 		console.log('GeoJSON chargé :', geojsonData?.features?.length, 'features');
 
 		if (!geojsonData?.features) {
@@ -124,16 +181,18 @@
 
 		mapInstance.on('load', async () => {
 			try {
-				// Filtre + colorisation des features
 				const filtered = {
 					type: 'FeatureCollection',
 					features: geojsonData.features
-						.filter((f) => passesFilter(f.properties))
+						.filter((f) => {
+							const colorKey = getColor(f.properties);
+							return passesFilter(f.properties) && isColorVisible(colorKey);
+						})
 						.map((f) => ({
 							...f,
 							properties: {
 								...f.properties,
-								_color: getColor(f.properties),
+								_color: COLORS[getColor(f.properties)],
 								_popup: buildPopupHTML(f.properties)
 							}
 						}))
@@ -191,14 +250,39 @@
 
 <div id="wrapper">
 	<div id="header">
-		<h1>Contacts Wallonie – après le 01/01/2026</h1>
+		<h1>Contacts Wallonie</h1>
+		<div id="controls">
+			<label for="cutoff">Depuis le :</label>
+			<input type="date" id="cutoff" bind:value={cutoffDate} />
+		</div>
 		<div id="status">
 			<span id="count-badge">{count}</span>
 		</div>
 		<div class="legend">
-			<span><span style="color:#7c83fd">●</span> Website présent</span>
-			<span><span style="color:#f39c12">●</span> Autre URL</span>
-			<span><span style="color:#e74c3c">●</span> Aucune URL</span>
+			<button
+				class="legend-btn"
+				class:off={!showBlue}
+				style="--c: {COLORS.blue}"
+				onclick={() => (showBlue = !showBlue)}
+			>
+				<span class="dot">●</span> Website présent
+			</button>
+			<button
+				class="legend-btn"
+				class:off={!showYellow}
+				style="--c: {COLORS.yellow}"
+				onclick={() => (showYellow = !showYellow)}
+			>
+				<span class="dot">●</span> Autre URL
+			</button>
+			<button
+				class="legend-btn"
+				class:off={!showRed}
+				style="--c: {COLORS.red}"
+				onclick={() => (showRed = !showRed)}
+			>
+				<span class="dot">●</span> Aucune URL
+			</button>
 		</div>
 	</div>
 	<div id="map" bind:this={mapEl}></div>
@@ -227,18 +311,42 @@
 
 	#header {
 		background: #1a1d2e;
-		padding: 12px 20px;
+		padding: 10px 20px;
 		display: flex;
 		align-items: center;
-		justify-content: space-between;
+		gap: 20px;
 		border-bottom: 1px solid #2e3150;
 		flex-shrink: 0;
+		flex-wrap: wrap;
 	}
 
 	#header h1 {
 		font-size: 1.1rem;
 		font-weight: 600;
 		color: #7c83fd;
+	}
+
+	#controls {
+		display: flex;
+		align-items: center;
+		gap: 8px;
+		font-size: 0.82rem;
+		color: #a0a0b0;
+	}
+
+	#controls input[type='date'] {
+		background: #0f1117;
+		color: #e0e0e0;
+		border: 1px solid #2e3150;
+		border-radius: 6px;
+		padding: 4px 8px;
+		font-size: 0.82rem;
+		cursor: pointer;
+	}
+
+	#controls input[type='date']:focus {
+		outline: none;
+		border-color: #7c83fd88;
 	}
 
 	#status {
@@ -257,9 +365,35 @@
 
 	.legend {
 		display: flex;
-		gap: 12px;
+		gap: 8px;
 		font-size: 0.78rem;
 		align-items: center;
+		margin-left: auto;
+	}
+
+	.legend-btn {
+		display: flex;
+		align-items: center;
+		gap: 4px;
+		background: none;
+		border: 1px solid var(--c);
+		border-radius: 20px;
+		padding: 3px 10px;
+		color: var(--c);
+		font-size: 0.78rem;
+		cursor: pointer;
+		transition: opacity 0.2s;
+		user-select: none;
+	}
+
+	.legend-btn .dot {
+		color: var(--c);
+	}
+
+	.legend-btn.off {
+		opacity: 0.4;
+		text-decoration: line-through;
+		border-style: dashed;
 	}
 
 	#map {
@@ -267,7 +401,7 @@
 	}
 
 	:global(.mapboxgl-popup-content) {
-		background: #1a1d2e;
+		background: #1a1d2e !important;
 		color: #e0e0e0;
 		border: 1px solid #2e3150;
 		border-radius: 8px;

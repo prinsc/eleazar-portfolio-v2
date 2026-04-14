@@ -85,6 +85,8 @@
 			>
 			<span> • </span>
 			<a class="no-effect" href={`/${$settings.lang}/blog`}>blog</a>
+			<span> • </span>
+			<a class="no-effect" href={`/template`}>templates</a>
 		</div>
 
 		<div class="nav-actions">
