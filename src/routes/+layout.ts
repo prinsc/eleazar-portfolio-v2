@@ -1,12 +1,8 @@
 import { settings } from '$lib/stores/settings.js';
 import { get } from 'svelte/store';
 import { redirect } from '@sveltejs/kit';
-import { PUBLIC_SUPABASE_PUBLISHABLE_KEY, PUBLIC_SUPABASE_URL } from '$env/static/public';
-import type { LayoutLoad } from './$types';
-import { createBrowserClient, createServerClient, isBrowser } from '@supabase/ssr';
 
-export const load: LayoutLoad = async ({ url, fetch, data, depends }) => {
-    depends('supabase:auth');
+export const load = async ({ url, fetch, data, depends }) => {
 
     // Redirige les visiteurs venant du QR code vers /fr/services (prioritaire)
     if (url.searchParams.get('f') === 'q') {
@@ -32,21 +28,5 @@ export const load: LayoutLoad = async ({ url, fetch, data, depends }) => {
         return $settings;
     });
 
-    const supabase = isBrowser()
-        ? createBrowserClient(PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_PUBLISHABLE_KEY, {
-            global: { fetch },
-        })
-        : createServerClient(PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_PUBLISHABLE_KEY, {
-            global: { fetch },
-            cookies: {
-                getAll() {
-                    return data.cookies;
-                },
-            },
-        });
-
-    const { data: claimsData, error } = await supabase.auth.getClaims();
-    const claims = error ? null : claimsData?.claims;
-
-    return { lang, supabase, claims };
+    return { lang };
 };
