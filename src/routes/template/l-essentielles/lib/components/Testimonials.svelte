@@ -48,7 +48,7 @@
 						<span class="quote-mark">"</span>
 						<p>{t.text}</p>
 					</blockquote>
-					<cite>— {t.author}</cite>
+					<cite>- {t.author}</cite>
 				</div>
 			{/each}
 		</div>

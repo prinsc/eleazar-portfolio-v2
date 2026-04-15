@@ -23,7 +23,7 @@
 		rel="stylesheet"
 	/>
 	<title>{salon.name}</title>
-	<meta name="description" content="{salon.tagline} — {salon.description}" />
+	<meta name="description" content="{salon.tagline} - {salon.description}" />
 </svelte:head>
 
 <div class="le-site" class:loaded>
@@ -98,7 +98,8 @@
 	:global(.reveal) {
 		opacity: 0;
 		transform: translateY(40px);
-		transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+		transition:
+			opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
 			transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 	}
 

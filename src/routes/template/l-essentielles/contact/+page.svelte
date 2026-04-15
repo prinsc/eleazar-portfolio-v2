@@ -32,7 +32,7 @@
 </script>
 
 <svelte:head>
-	<title>Contact — {salon.name}</title>
+	<title>Contact - {salon.name}</title>
 </svelte:head>
 
 <section class="contact-page">
@@ -41,7 +41,8 @@
 			<span class="section-label">Contact</span>
 			<h1 class="contact-title">Prenons rendez-vous</h1>
 			<p class="contact-subtitle">
-				Envie d'un moment beauté ? Contactez-nous par téléphone ou remplissez le formulaire ci-dessous.
+				Envie d'un moment beauté ? Contactez-nous par téléphone ou remplissez le formulaire
+				ci-dessous.
 			</p>
 		</div>
 
@@ -69,7 +70,9 @@
 							<input type="tel" id="phone" name="phone" placeholder="04XX XX XX XX" />
 						</div>
 						<div class="form-group">
-							<label for="service">Prestation souhaitée <span class="optional">(optionnel)</span></label>
+							<label for="service"
+								>Prestation souhaitée <span class="optional">(optionnel)</span></label
+							>
 							<select id="service" name="service">
 								<option value="">Choisir une prestation</option>
 								<option value="esthetique">Esthétique</option>
@@ -80,7 +83,13 @@
 						</div>
 						<div class="form-group">
 							<label for="message">Message</label>
-							<textarea id="message" name="message" rows="5" required placeholder="Décrivez votre demande…"></textarea>
+							<textarea
+								id="message"
+								name="message"
+								rows="5"
+								required
+								placeholder="Décrivez votre demande…"
+							></textarea>
 						</div>
 						<button type="submit" class="btn-submit">Envoyer ma demande</button>
 					</form>
@@ -123,7 +132,14 @@
 				<div class="map-placeholder">
 					<!-- client: embed Google Maps iframe here -->
 					<div class="map-fake">
-						<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#8b7d6b" stroke-width="1">
+						<svg
+							width="40"
+							height="40"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="#8b7d6b"
+							stroke-width="1"
+						>
 							<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
 							<circle cx="12" cy="10" r="3" />
 						</svg>

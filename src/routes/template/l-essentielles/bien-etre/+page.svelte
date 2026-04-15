@@ -5,11 +5,11 @@
 	import { bienEtre, salon } from '../lib/data.js';
 	import { onMount } from 'svelte';
 
-	// Photos per section — client: replace with real salon photos
+	// Photos per section - client: replace with real salon photos
 	const sectionImages = {
 		'Soin du visage': 'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=800&q=80',
 		'Head Spa': 'https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=800&q=80',
-		'Massage': 'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=800&q=80'
+		Massage: 'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=800&q=80'
 	};
 
 	onMount(async () => {
@@ -47,7 +47,7 @@
 </script>
 
 <svelte:head>
-	<title>Bien-être — {salon.name}</title>
+	<title>Bien-être - {salon.name}</title>
 </svelte:head>
 
 <ServicePageHeader
@@ -64,8 +64,8 @@
 			<span class="orn-line"></span>
 		</div>
 		<p>
-			Offrez-vous une pause hors du temps. Nos soins bien-être sont conçus pour
-			vous envelopper de douceur, libérer vos tensions et éveiller vos sens.
+			Offrez-vous une pause hors du temps. Nos soins bien-être sont conçus pour vous envelopper de
+			douceur, libérer vos tensions et éveiller vos sens.
 		</p>
 	</div>
 </section>
@@ -78,7 +78,8 @@
 				<div class="section-banner">
 					<!-- client: replace with real salon photo -->
 					<img
-						src={sectionImages[section.title] || 'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=800&q=80'}
+						src={sectionImages[section.title] ||
+							'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=800&q=80'}
 						alt={section.title}
 					/>
 					<div class="banner-overlay"></div>
@@ -212,11 +213,7 @@
 		.banner-overlay {
 			position: absolute;
 			inset: 0;
-			background: linear-gradient(
-				to right,
-				rgba(26, 26, 26, 0.6) 0%,
-				rgba(26, 26, 26, 0.2) 100%
-			);
+			background: linear-gradient(to right, rgba(26, 26, 26, 0.6) 0%, rgba(26, 26, 26, 0.2) 100%);
 		}
 	}
 
@@ -278,7 +275,8 @@
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
-		transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+		transition:
+			transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
 			box-shadow 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
 			border-color 0.3s;
 

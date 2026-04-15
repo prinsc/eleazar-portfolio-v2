@@ -5,11 +5,12 @@
 	import { esthetique, salon } from '../lib/data.js';
 	import { onMount } from 'svelte';
 
-	// Photos for each section — client: replace with real salon photos
+	// Photos for each section - client: replace with real salon photos
 	const sectionImages = {
 		'Beauté du regard': 'https://images.unsplash.com/photo-1583001931096-959e9a1a6223?w=700&q=80',
-		'Manucure': 'https://images.unsplash.com/photo-1604654894610-df63bc536371?w=700&q=80',
-		'Épilation & Sourcils': 'https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=700&q=80',
+		Manucure: 'https://images.unsplash.com/photo-1604654894610-df63bc536371?w=700&q=80',
+		'Épilation & Sourcils':
+			'https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=700&q=80',
 		'Beauté du sourire': 'https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=700&q=80',
 		'Mise en beauté': 'https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=700&q=80'
 	};
@@ -49,7 +50,7 @@
 </script>
 
 <svelte:head>
-	<title>Esthétique — {salon.name}</title>
+	<title>Esthétique - {salon.name}</title>
 </svelte:head>
 
 <ServicePageHeader
@@ -75,7 +76,8 @@
 				<div class="section-image">
 					<!-- client: replace with real salon photo -->
 					<img
-						src={sectionImages[section.title] || 'https://images.unsplash.com/photo-1560066984-138dadb4c035?w=700&q=80'}
+						src={sectionImages[section.title] ||
+							'https://images.unsplash.com/photo-1560066984-138dadb4c035?w=700&q=80'}
 						alt={section.title}
 					/>
 					<div class="image-frame"></div>

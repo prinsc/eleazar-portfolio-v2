@@ -50,7 +50,7 @@
 </script>
 
 <svelte:head>
-	<title>{salon.name} — {salon.tagline}</title>
+	<title>{salon.name} - {salon.tagline}</title>
 </svelte:head>
 
 <Hero />
@@ -58,11 +58,27 @@
 <!-- Photo mosaic band -->
 <div class="photo-mosaic">
 	<!-- client: replace with real salon photos -->
-	<div class="mosaic-img"><img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=400&q=80" alt="Salon" /></div>
-	<div class="mosaic-img"><img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=400&q=80" alt="Nails" /></div>
-	<div class="mosaic-img"><img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400&q=80" alt="Coiffure" /></div>
-	<div class="mosaic-img"><img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=400&q=80" alt="Soin" /></div>
-	<div class="mosaic-img"><img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=400&q=80" alt="Massage" /></div>
+	<div class="mosaic-img">
+		<img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=400&q=80" alt="Salon" />
+	</div>
+	<div class="mosaic-img">
+		<img
+			src="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=400&q=80"
+			alt="Nails"
+		/>
+	</div>
+	<div class="mosaic-img">
+		<img
+			src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400&q=80"
+			alt="Coiffure"
+		/>
+	</div>
+	<div class="mosaic-img">
+		<img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=400&q=80" alt="Soin" />
+	</div>
+	<div class="mosaic-img">
+		<img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=400&q=80" alt="Massage" />
+	</div>
 </div>
 
 <ServicesOverview />
@@ -91,14 +107,13 @@
 			<span class="section-label">Notre salon</span>
 			<h2>Un lieu pensé pour votre bien-être</h2>
 			<p>
-				Situé au cœur d'Ath, L'essenti'elles vous accueille dans un cadre raffiné
-				où chaque détail a été pensé pour votre confort. Notre équipe passionnée
-				met son savoir-faire à votre service pour vous offrir une expérience unique
-				de beauté et de relaxation.
+				Situé au cœur d'Ath, L'essenti'elles vous accueille dans un cadre raffiné où chaque détail a
+				été pensé pour votre confort. Notre équipe passionnée met son savoir-faire à votre service
+				pour vous offrir une expérience unique de beauté et de relaxation.
 			</p>
 			<p>
-				Que vous veniez pour une coupe, un soin du visage, un massage ou une pose d'ongles,
-				nous vous garantissons un moment de détente dans une atmosphère chaleureuse et élégante.
+				Que vous veniez pour une coupe, un soin du visage, un massage ou une pose d'ongles, nous
+				vous garantissons un moment de détente dans une atmosphère chaleureuse et élégante.
 			</p>
 			<div class="about-details">
 				<div class="detail">

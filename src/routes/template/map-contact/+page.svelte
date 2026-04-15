@@ -21,7 +21,7 @@
 
 	function getColor(props) {
 		const raw = props.urls;
-		if (!raw || raw === '—') return 'red';
+		if (!raw || raw === '-') return 'red';
 
 		let urls = raw;
 		if (typeof raw === 'string') {
@@ -52,13 +52,13 @@
 
 	function buildPopupHTML(props) {
 		const SKIP_KEYS = ['geo_point_2d', 'geo_shape', 'title', 'subtitle', 'urls'];
-		const title = props.title ?? '—';
+		const title = props.title ?? '-';
 		const subtitle = props.subtitle ?? '';
 
 		let urlsHtml = '<span style="color:#666">Aucune URL</span>';
 		const raw = props.urls;
 
-		if (raw && raw !== '—') {
+		if (raw && raw !== '-') {
 			let urls = raw;
 			if (typeof raw === 'string') {
 				try {
@@ -87,7 +87,7 @@
 		const rows = Object.entries(props)
 			.filter(([k]) => !SKIP_KEYS.includes(k))
 			.map(([k, v]) => {
-				let display = v ?? '—';
+				let display = v ?? '-';
 				if (typeof display === 'string' && display.startsWith('http')) {
 					display = `<a href="${display}" target="_blank" style="color:#7c83fd">${display}</a>`;
 				}

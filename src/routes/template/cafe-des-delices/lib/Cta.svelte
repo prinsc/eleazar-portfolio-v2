@@ -1,12 +1,19 @@
 <script>
-	// CTA pill button — réutilisable dans tout le template.
+	// CTA pill button - réutilisable dans tout le template.
 	// variant: 'dark' (fond clair, texte sombre) | 'glass' (fond sombre/transparent, texte cream)
 	let { href, label, variant = 'dark' } = $props();
 </script>
 
 <a class="cta cta--{variant}" {href}>
 	<span>{label}</span>
-	<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5">
+	<svg
+		viewBox="0 0 24 24"
+		width="14"
+		height="14"
+		fill="none"
+		stroke="currentColor"
+		stroke-width="1.5"
+	>
 		<path d="M5 12h14M13 6l6 6-6 6" />
 	</svg>
 </a>

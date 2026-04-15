@@ -20,7 +20,7 @@ export const infos = {
 	accesHandicape: true,
 	wifi: true,
 	wifiNom: 'CafeDelices_Guest', // placeholder - à remplacer
-	googlePlaceId: '', // à remplir : ChIJ... — active les liens directs Google Maps / avis
+	googlePlaceId: '', // à remplir : ChIJ... - active les liens directs Google Maps / avis
 	googleMapsUrl: 'https://maps.google.com/?q=Grand+Place+8,+7800+Ath', // placeholder - à remplacer
 	reservationUrl: '', // à remplir : lien TheFork, Resengo, ou mailto:
 	tripadvisorId: 'd5263042'
@@ -655,7 +655,7 @@ export const socials = [
 // Passer `actif: true` pour afficher, `false` pour masquer sans supprimer le message.
 export const alerteOuverture = {
 	actif: false,
-	message: 'Fermé du 15 au 22 août — bonnes vacances à tous !'
+	message: 'Fermé du 15 au 22 août - bonnes vacances à tous !'
 };
 
 // ── Fermetures exceptionnelles ─────────────────────────────────────────────
@@ -693,7 +693,7 @@ export const cta = {
 
 // ── SEO ────────────────────────────────────────────────────────────────────
 export const seo = {
-	titleDefault: 'Le Café des Délices — Restaurant & Brasserie à Ath',
+	titleDefault: 'Le Café des Délices - Restaurant & Brasserie à Ath',
 	description:
 		"Grillades, burgers maison et bières belges d\u2019exception sur la Grand Place d\u2019Ath. Terrasse, menus midi et soir.",
 	keywords: ['restaurant ath', 'brasserie ath', 'grillade ath', 'burger ath', 'terrasse grand place'],
@@ -712,6 +712,65 @@ export const schema = {
 	paymentAccepted: ['Cash', 'Credit Card'],
 	currenciesAccepted: 'EUR'
 };
+
+// Actualités - commun à tous les types de sites
+export const actualites = [
+	{
+		titre: 'Nouvelle carte d\'été',
+		date: '2026-04-10',
+		resume: 'Découvrez nos nouvelles grillades et salades fraîches pour la belle saison.',
+		contenu: 'Avec l\'arrivée des beaux jours, notre chef a composé une nouvelle carte mettant à l\'honneur les produits de saison. Nouvelles grillades, salades composées et desserts fruités vous attendent en salle comme en terrasse.',
+		image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800&q=80',
+		actif: true
+	},
+	{
+		titre: 'Soirée bières belges le 25 avril',
+		date: '2026-04-08',
+		resume: 'Dégustation de 8 bières artisanales belges avec planches de fromages.',
+		contenu: 'Rejoignez-nous le vendredi 25 avril pour une soirée dégustation exceptionnelle. 8 bières artisanales de brasseries wallonnes, accompagnées de planches de fromages et charcuteries locales. Places limitées, réservation conseillée.',
+		image: 'https://images.unsplash.com/photo-1535958636474-b021ee887b13?w=800&q=80',
+		actif: true
+	}
+];
+
+// Blog - commun à tous les types de sites
+export const blog = [
+	{
+		titre: 'Comment choisir une bonne brasserie belge',
+		slug: 'choisir-brasserie-belge',
+		categorie: 'Conseils',
+		auteur: 'Le Café des Délices',
+		date: '2026-03-15',
+		resume: 'Quelques repères pour identifier une brasserie de qualité : la carte des bières, la fraîcheur des produits, l\'ambiance.',
+		contenu: 'Une bonne brasserie belge se reconnaît avant tout à sa sélection de bières. Privilégiez les établissements qui proposent des bières régionales et artisanales plutôt qu\'une liste de grandes marques industrielles...',
+		image: 'https://images.unsplash.com/photo-1559526324-4b87b5e36e44?w=900&q=80',
+		statut: 'publie'
+	},
+	{
+		titre: 'Les grillades : secrets d\'une cuisson parfaite',
+		slug: 'secrets-cuisson-grillade',
+		categorie: 'Cuisine',
+		auteur: 'Le Café des Délices',
+		date: '2026-02-28',
+		resume: 'Température, repos de la viande, assaisonnement - les trois piliers d\'une grillade réussie.',
+		contenu: 'La cuisson sur grill est un art qui demande autant de rigueur que de feeling. Tout commence par la qualité de la viande et la maîtrise de la température...',
+		image: 'https://images.unsplash.com/photo-1558030006-450675393462?w=900&q=80',
+		statut: 'publie'
+	},
+	{
+		titre: 'Notre nouvelle terrasse pour l\'été 2026',
+		slug: 'terrasse-ete-2026',
+		categorie: 'Actualités',
+		auteur: 'Le Café des Délices',
+		date: '2026-04-01',
+		resume: 'Réaménagée et agrandie, notre terrasse Grand Place rouvre le 1er mai.',
+		contenu: 'Après plusieurs semaines de travaux, nous sommes heureux de vous présenter notre terrasse entièrement rénovée...',
+		image: 'https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?w=900&q=80',
+		statut: 'brouillon'
+	}
+];
+
+export const blogCategories = ['Actualités', 'Cuisine', 'Conseils', 'Événements', 'À propos'];
 
 // Regroupement logique pour la navigation dans la page menu
 export const menuSections = [

@@ -40,7 +40,7 @@
 </script>
 
 <svelte:head>
-	<title>Coiffure — {salon.name}</title>
+	<title>Coiffure - {salon.name}</title>
 </svelte:head>
 
 <ServicePageHeader
@@ -58,20 +58,29 @@
 				<span class="orn-line"></span>
 			</div>
 			<p>
-				De la coupe au soin profond, nos coiffeuses vous accompagnent
-				pour sublimer votre chevelure avec les meilleurs produits et techniques.
+				De la coupe au soin profond, nos coiffeuses vous accompagnent pour sublimer votre chevelure
+				avec les meilleurs produits et techniques.
 			</p>
 		</div>
 		<div class="mini-gallery">
 			<!-- client: replace with real salon photos -->
 			<div class="gallery-img">
-				<img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?w=500&q=80" alt="Coiffure 1" />
+				<img
+					src="https://images.unsplash.com/photo-1562322140-8baeececf3df?w=500&q=80"
+					alt="Coiffure 1"
+				/>
 			</div>
 			<div class="gallery-img">
-				<img src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?w=500&q=80" alt="Coiffure 2" />
+				<img
+					src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?w=500&q=80"
+					alt="Coiffure 2"
+				/>
 			</div>
 			<div class="gallery-img tall">
-				<img src="https://images.unsplash.com/photo-1634449571010-02389ed0f9b0?w=500&q=80" alt="Coiffure 3" />
+				<img
+					src="https://images.unsplash.com/photo-1634449571010-02389ed0f9b0?w=500&q=80"
+					alt="Coiffure 3"
+				/>
 			</div>
 		</div>
 	</div>
@@ -124,10 +133,27 @@
 <!-- Photo band before CTA -->
 <div class="photo-band">
 	<!-- client: replace with real salon photos -->
-	<div class="band-img"><img src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?w=400&q=80" alt="Salon" /></div>
-	<div class="band-img"><img src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=400&q=80" alt="Salon" /></div>
-	<div class="band-img"><img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=400&q=80" alt="Salon" /></div>
-	<div class="band-img"><img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400&q=80" alt="Salon" /></div>
+	<div class="band-img">
+		<img
+			src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?w=400&q=80"
+			alt="Salon"
+		/>
+	</div>
+	<div class="band-img">
+		<img
+			src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=400&q=80"
+			alt="Salon"
+		/>
+	</div>
+	<div class="band-img">
+		<img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=400&q=80" alt="Salon" />
+	</div>
+	<div class="band-img">
+		<img
+			src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400&q=80"
+			alt="Salon"
+		/>
+	</div>
 </div>
 
 <BookingBanner />
@@ -280,7 +306,10 @@
 		background: #fff;
 		border: 1px solid #e8e3dc;
 		padding: 2rem;
-		transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+		transition:
+			transform 0.3s,
+			box-shadow 0.3s,
+			border-color 0.3s;
 
 		&:hover {
 			transform: translateY(-4px);

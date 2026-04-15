@@ -1,4 +1,4 @@
-// L'essenti'elles — salon data
+// L'essenti'elles - salon data
 // All content centralized here for easy client updates
 
 export const salon = {
@@ -73,7 +73,7 @@ export const testimonials = [
 	}
 ];
 
-// — ESTHÉTIQUE —
+// - ESTHÉTIQUE -
 export const esthetique = {
 	title: 'Esthétique',
 	sections: [
@@ -187,7 +187,7 @@ export const esthetique = {
 	]
 };
 
-// — BIEN-ÊTRE —
+// - BIEN-ÊTRE -
 export const bienEtre = {
 	title: 'Bien-être',
 	sections: [
@@ -244,7 +244,7 @@ export const bienEtre = {
 	]
 };
 
-// — COIFFURE —
+// - COIFFURE -
 export const coiffure = {
 	title: 'Coiffure',
 	sections: [

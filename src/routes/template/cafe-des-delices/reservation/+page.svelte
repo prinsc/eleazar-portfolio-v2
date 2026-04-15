@@ -89,7 +89,7 @@
 		e.preventDefault();
 		submitting = true;
 
-		// Simulate sending (fake delay — backend comes later)
+		// Simulate sending (fake delay - backend comes later)
 		await new Promise((r) => setTimeout(r, 1200));
 
 		submitting = false;
@@ -134,8 +134,8 @@
 	</h1>
 
 	<p class="lede anim-item">
-		Terrasse sur la Grand Place ou salle intérieure, midi ou soir - choisissez votre moment.
-		Nous nous occupons du reste.
+		Terrasse sur la Grand Place ou salle intérieure, midi ou soir - choisissez votre moment. Nous
+		nous occupons du reste.
 	</p>
 </section>
 
@@ -259,8 +259,8 @@
 					</button>
 
 					<p class="form__note">
-						Vous recevrez une confirmation par email. Pour les groupes de plus de 12
-						personnes, contactez-nous directement.
+						Vous recevrez une confirmation par email. Pour les groupes de plus de 12 personnes,
+						contactez-nous directement.
 					</p>
 				</div>
 			</div>
@@ -293,8 +293,8 @@
 
 				<div class="aside-note">
 					<p>
-						Pour les groupes, les privatisations ou les demandes particulières, merci de
-						nous appeler directement ou d'envoyer un email.
+						Pour les groupes, les privatisations ou les demandes particulières, merci de nous
+						appeler directement ou d'envoyer un email.
 					</p>
 				</div>
 			</aside>
@@ -349,9 +349,8 @@
 
 			<p class="confirm__text anim-item">
 				Un email de confirmation sera envoyé à <strong>{email}</strong>.<br />
-				Pour toute modification, contactez-nous au <a href="tel:{infos.telephone}"
-					>{infos.telephone}</a
-				>.
+				Pour toute modification, contactez-nous au
+				<a href="tel:{infos.telephone}">{infos.telephone}</a>.
 			</p>
 
 			<div class="confirm__actions anim-item">
@@ -449,7 +448,7 @@
 		margin: 2rem 0 0;
 	}
 
-	/* ── Form section — dark slate background ── */
+	/* ── Form section - dark slate background ── */
 	.resa {
 		background: var(--slate);
 		border-top: 1px solid var(--slate);
