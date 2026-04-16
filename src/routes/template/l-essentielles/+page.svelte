@@ -3,8 +3,10 @@
 	import ServicesOverview from './lib/components/ServicesOverview.svelte';
 	import Testimonials from './lib/components/Testimonials.svelte';
 	import BookingBanner from './lib/components/BookingBanner.svelte';
-	import { salon } from './lib/data.js';
+	import { salon, groupHoraires } from './lib/data.js';
 	import { onMount } from 'svelte';
+
+	let { data } = $props();
 
 	onMount(async () => {
 		const { gsap } = await import('gsap');
@@ -47,6 +49,7 @@
 			}
 		});
 	});
+	console.log(data);
 </script>
 
 <svelte:head>
@@ -144,18 +147,12 @@
 		<div class="hours-grid">
 			<div class="hours-card">
 				<h3>Horaires</h3>
-				<div class="hour-row">
-					<span>{salon.hours.weekdays.label}</span>
-					<span>{salon.hours.weekdays.time}</span>
-				</div>
-				<div class="hour-row">
-					<span>{salon.hours.saturday.label}</span>
-					<span>{salon.hours.saturday.time}</span>
-				</div>
-				<div class="hour-row closed">
-					<span>{salon.hours.sunday.label}</span>
-					<span>{salon.hours.sunday.time}</span>
-				</div>
+				{#each groupHoraires(data.horaires ?? salon.hours) as { label, h }}
+					<div class="hour-row">
+						<span>{label}</span>
+						<span>{h}</span>
+					</div>
+				{/each}
 			</div>
 
 			<div class="hours-card">
@@ -410,10 +407,6 @@
 		padding: 0.5rem 0;
 		font-size: 0.9rem;
 		color: #555;
-
-		&.closed {
-			color: #bbb;
-		}
 	}
 
 	.address {

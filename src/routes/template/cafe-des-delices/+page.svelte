@@ -10,6 +10,8 @@
 	import Social from './lib/Social.svelte';
 	import Visite from './lib/Visite.svelte';
 	import { poles } from './lib/data.js';
+
+	let { data } = $props();
 </script>
 
 <svelte:head>
@@ -22,8 +24,14 @@
 
 <Hero />
 
-{#each poles as pole}
-	<Pole {pole} id={pole.titre.toLowerCase().replace(/\s+/g, '-')} layout={pole.layout} flip={pole.flip} />
+{#each data.poles as pole, index}
+	<Pole
+		{pole}
+		id={pole.titre.toLowerCase().replace(/\s+/g, '-')}
+		layout={pole.layout}
+		flip={pole.flip}
+		num={index + 1}
+	/>
 {/each}
 
 <MenusPreview />
@@ -34,4 +42,4 @@
 
 <Social />
 
-<Visite />
+<Visite horairesAPI={data.horaires} />

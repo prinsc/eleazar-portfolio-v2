@@ -2,7 +2,7 @@
 	// Bloc "diptyque" : présente un pôle du lieu (Grillés / Maltés)
 	// 3 layouts switchables : "immersive" | "classic" | "editorial"
 	import Cta from './Cta.svelte';
-	let { pole, flip = false, id = '', layout = 'immersive' } = $props();
+	let { pole, flip = false, id = '', layout = 'immersive', num = 1 } = $props();
 </script>
 
 <!-- ╔═══════════════════════════════════════════╗
@@ -11,14 +11,14 @@
      ╚═══════════════════════════════════════════╝ -->
 {#if layout === 'immersive'}
 	<section class="pole immersive" class:flip {id}>
-		<span class="pole__num">{pole.num} - Un pôle du lieu</span>
+		<span class="pole__num">0{num} - Un pôle du lieu</span>
 
 		<div class="imm__inner">
 			<figure class="imm__photo">
 				<img src={pole.img} alt={pole.titre} loading="lazy" />
 			</figure>
 
-			<span class="imm__watermark" aria-hidden="true">{pole.num}</span>
+			<span class="imm__watermark" aria-hidden="true">0{num}</span>
 
 			<div class="imm__body">
 				<h2 class="pole__title pole__title--light">
@@ -31,13 +31,13 @@
 		</div>
 	</section>
 
-<!-- ╔═══════════════════════════════════════════╗
+	<!-- ╔═══════════════════════════════════════════╗
      ║  LAYOUT: CLASSIC                          ║
      ║  Split 50/50 image + texte côte à côte    ║
      ╚═══════════════════════════════════════════╝ -->
 {:else if layout === 'classic'}
 	<section class="pole classic" class:flip {id}>
-		<span class="pole__num">{pole.num} - Un pôle du lieu</span>
+		<span class="pole__num">0{num} - Un pôle du lieu</span>
 
 		<div class="cls__grid">
 			<figure class="cls__photo">
@@ -55,13 +55,13 @@
 		</div>
 	</section>
 
-<!-- ╔═══════════════════════════════════════════╗
+	<!-- ╔═══════════════════════════════════════════╗
      ║  LAYOUT: EDITORIAL                        ║
      ║  Image cadrée + bloc texte en overlap      ║
      ╚═══════════════════════════════════════════╝ -->
 {:else}
 	<section class="pole editorial" class:flip {id}>
-		<span class="pole__num">{pole.num} - Un pôle du lieu</span>
+		<span class="pole__num">0{num} - Un pôle du lieu</span>
 
 		<div class="edi__inner">
 			<figure class="edi__photo">
@@ -70,7 +70,7 @@
 			</figure>
 
 			<div class="edi__body">
-				<span class="edi__idx" aria-hidden="true">{pole.num}</span>
+				<span class="edi__idx" aria-hidden="true">0{num}</span>
 				<h2 class="pole__title">
 					<span class="sur">{pole.sur}</span>
 					<em class="it">{pole.titre}</em>

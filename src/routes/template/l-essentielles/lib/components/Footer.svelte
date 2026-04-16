@@ -1,5 +1,8 @@
 <script>
-	import { salon, nav } from '../data.js';
+	import { salon, nav, groupHoraires } from '../data.js';
+
+	let { horaires = null } = $props();
+	const horairesList = groupHoraires(horaires ?? salon.hours);
 </script>
 
 <footer>
@@ -25,9 +28,9 @@
 
 		<div class="footer-hours">
 			<p class="footer-heading">Horaires</p>
-			<p>{salon.hours.weekdays.label}: <span>{salon.hours.weekdays.time}</span></p>
-			<p>{salon.hours.saturday.label}: <span>{salon.hours.saturday.time}</span></p>
-			<p>{salon.hours.sunday.label}: <span>{salon.hours.sunday.time}</span></p>
+			{#each horairesList as { label, h }}
+				<p>{label}: <span>{h}</span></p>
+			{/each}
 		</div>
 	</div>
 
@@ -124,6 +127,7 @@
 			span {
 				color: #faf8f5;
 			}
+
 		}
 	}
 

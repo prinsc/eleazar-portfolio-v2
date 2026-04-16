@@ -99,3 +99,88 @@ Chaque template a son propre `CLAUDE.md` qui décrit le contexte client (voir le
 2. Créer `src/routes/template/<nom>/CLAUDE.md` avec le brief client
 3. Ajouter l'entrée dans l'index [src/routes/template/+page.svelte](./+page.svelte) (tableau `templates`)
 4. `npm run dev` et visiter `/template/<nom>` pour vérifier
+
+
+
+## Guide — Connexion à l'API KLTK Studio pour le remplissage des informations des templates
+Base URL
+
+https://admin.kltk.be/api
+Authentification
+Chaque requête doit inclure ta clé API dans le header Authorization :
+
+
+Authorization: Bearer kltk_VOTRE_CLE_ICI
+(La clé est disponible dans le panel admin → ton organisation → section Clé API.). Ici, la clé se trouve déjà dans le .env
+Important : stocke la clé dans une variable d'environnement serveur (.env), jamais dans du code client exposé au navigateur.
+
+Format d'une requête
+
+GET https://admin.kltk.be/api/{slug}/{section}
+{slug} → l'identifiant de ton organisation (ex: cafe-des-delices)
+{section} → le nom de la section à récupérer
+Sections disponibles
+Sections simples — retournent { data, updated_at }
+Section	Contenu
+infos	Nom, adresse, contact, équipements
+horaires	Ouverture par jour, services midi/soir
+horaires-cuisine	Horaires de prise de commande
+alerte	Message d'alerte actif
+fermetures	Dates de fermetures exceptionnelles
+seo	Titre, meta, OG image
+schema_org	Données structurées
+cta	Boutons réservation / commande
+plat_du_jour	Plat du jour (texte ou image)
+socials	Réseaux sociaux
+avis	Avis clients
+Sections structurées — retournent un tableau ou un objet dédié
+Section	Structure retournée
+carte	{ categories: [...], items: [...] }
+menus	[{ id, name, price, data }]
+galerie	[{ id, src, alt, label, tall, order }]
+events	[{ id, title, date, description }] (actifs uniquement)
+news	[{ id, title, date, summary, content, image }] (actives uniquement)
+blog	[{ id, title, slug, category, author, date, summary, image }] (publiés uniquement)
+Exemple SvelteKit — +page.server.ts
+
+// src/routes/+page.server.ts
+const API_URL = 'https://admin.kltk.be/api'
+const API_KEY = import.meta.env.VITE_KLTK_API_KEY  // dans .env : VITE_KLTK_API_KEY=kltk_...
+const ORG_SLUG = 'cafe-des-delices'
+
+async function fetchSection(section: string) {
+  const res = await fetch(`${API_URL}/${ORG_SLUG}/${section}`, {
+    headers: { Authorization: `Bearer ${API_KEY}` }
+  })
+  if (!res.ok) return null
+  return res.json()
+}
+
+export const load = async () => {
+  const [infos, horaires, carte] = await Promise.all([
+    fetchSection('infos'),
+    fetchSection('horaires'),
+    fetchSection('carte')
+  ])
+  return { infos, horaires, carte }
+}
+Codes d'erreur
+Code	Raison
+401	Clé API manquante ou invalide
+403	Section désactivée pour cette organisation
+404	Organisation introuvable
+Mise en cache recommandée
+Les données du studio changent rarement en temps réel. Recommandé :
+
+
+// SvelteKit — cache 5 minutes côté CDN
+return new Response(JSON.stringify(data), {
+  headers: { 'Cache-Control': 'public, max-age=300, stale-while-revalidate=60' }
+})
+Ou avec fetch natif de SvelteKit :
+
+
+await fetch(url, {
+  headers: { Authorization: `Bearer ${API_KEY}` },
+  next: { revalidate: 300 }  // Next.js
+})

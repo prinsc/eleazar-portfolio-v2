@@ -1,6 +1,33 @@
 // L'essenti'elles - salon data
 // All content centralized here for easy client updates
 
+/**
+ * Regroupe les jours consécutifs ayant le même horaire.
+ * [{j, h}] → [{label, h}]
+ * Ex: Lundi–Vendredi 10h-19h, Samedi 9h-20h, Dimanche Fermé
+ */
+export function groupHoraires(horaires) {
+	if (!horaires?.length) return [];
+
+	const groups = [];
+	let current = { jours: [horaires[0].j], h: horaires[0].h };
+
+	for (let i = 1; i < horaires.length; i++) {
+		if (horaires[i].h === current.h) {
+			current.jours.push(horaires[i].j);
+		} else {
+			groups.push(current);
+			current = { jours: [horaires[i].j], h: horaires[i].h };
+		}
+	}
+	groups.push(current);
+
+	return groups.map(({ jours, h }) => ({
+		label: jours.length === 1 ? jours[0] : `${jours[0]} – ${jours[jours.length - 1]}`,
+		h
+	}));
+}
+
 export const salon = {
 	name: "L'essenti'elles",
 	tagline: "Un espace dédié à la beauté et au bien-être",
@@ -12,11 +39,15 @@ export const salon = {
 		city: '7822 Ath',
 		country: 'Belgique'
 	},
-	hours: {
-		weekdays: { label: 'Lundi – Vendredi', time: '10h – 19h' },
-		saturday: { label: 'Samedi', time: '9h – 20h' },
-		sunday: { label: 'Dimanche', time: 'Fermé' }
-	},
+	hours: [
+		{ j: 'Lundi', h: '10h – 19h' },
+		{ j: 'Mardi', h: '10h – 19h' },
+		{ j: 'Mercredi', h: '10h – 19h' },
+		{ j: 'Jeudi', h: '10h – 19h' },
+		{ j: 'Vendredi', h: '10h – 19h' },
+		{ j: 'Samedi', h: '9h – 20h' },
+		{ j: 'Dimanche', h: 'Fermé' }
+	],
 	appointment: 'Uniquement sur rendez-vous'
 };
 

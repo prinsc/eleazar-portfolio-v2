@@ -1,8 +1,29 @@
 <script>
 	import { onMount } from 'svelte';
-	import { infos, horaires, cuisine } from './data.js';
+	import { infos, horaires as horairesStatic, cuisine } from './data.js';
 	import Status from './Status.svelte';
 	import { PUBLIC_MAPBOX_TOKEN } from '$env/static/public';
+
+	let { horairesAPI = null } = $props();
+
+	// Normalise la réponse API vers le format { j, h }[]
+	// L'API retourne typiquement un objet par jour ou un tableau — on gère les deux
+	function normaliseHoraires(raw) {
+		if (!raw) return null;
+		// Si c'est déjà un tableau { j, h }
+		if (Array.isArray(raw) && raw[0]?.j) return raw;
+		// Si c'est un tableau avec { jour, heures } ou { day, hours }
+		if (Array.isArray(raw)) {
+			return raw.map((r) => ({
+				j: r.j ?? r.jour ?? r.day ?? '',
+				h: r.h ?? r.heures ?? r.hours ?? ''
+			}));
+		}
+		// Si c'est un objet { lundi: '...', mardi: '...' }
+		return Object.entries(raw).map(([k, v]) => ({ j: k, h: v }));
+	}
+
+	const horaires = $derived(normaliseHoraires(horairesAPI) ?? horairesStatic);
 
 	let mapContainer;
 	let mapLoaded = $state(false);

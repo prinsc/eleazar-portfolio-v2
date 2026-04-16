@@ -81,7 +81,15 @@
 		{#if !showAll && galerie.length > MOBILE_INITIAL}
 			<button class="show-more" onclick={() => (showAll = true)}>
 				<span>Voir les {galerie.length - MOBILE_INITIAL} autres</span>
-				<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+				<svg
+					viewBox="0 0 24 24"
+					width="14"
+					height="14"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="1.5"
+					aria-hidden="true"
+				>
 					<path d="M12 5v14M6 13l6 6 6-6" />
 				</svg>
 			</button>

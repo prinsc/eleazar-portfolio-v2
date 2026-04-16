@@ -4,7 +4,7 @@
 	import Footer from './lib/components/Footer.svelte';
 	import { onMount } from 'svelte';
 
-	let { children } = $props();
+	let { children, data } = $props();
 	let loaded = $state(false);
 
 	onMount(async () => {
@@ -31,7 +31,7 @@
 	<main>
 		{@render children()}
 	</main>
-	<Footer />
+	<Footer horaires={data.horaires} />
 </div>
 
 <style lang="scss">
