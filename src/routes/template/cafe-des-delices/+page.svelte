@@ -12,6 +12,7 @@
 	import { poles } from './lib/data.js';
 
 	let { data } = $props();
+	console.log('Data reçue du load:', data);
 </script>
 
 <svelte:head>
