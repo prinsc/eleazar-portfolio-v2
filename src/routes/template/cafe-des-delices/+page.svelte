@@ -12,6 +12,7 @@
 	import { poles } from './lib/data.js';
 
 	let { data } = $props();
+	console.log(data);
 </script>
 
 <svelte:head>
@@ -36,7 +37,7 @@
 
 <MenusPreview />
 
-<Gallery />
+<Gallery galerie={data.galerie} />
 
 <Avis />
 

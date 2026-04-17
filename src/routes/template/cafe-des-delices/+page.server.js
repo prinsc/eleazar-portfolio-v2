@@ -1,6 +1,7 @@
 import { CAFE_DELICE, CF_SECRET } from '$env/static/private';
 
 const API_URL = 'https://admin.kltk.be/api';
+// const API_URL = 'http://localhost:5174/api';
 const ORG_SLUG = 'le-cafe-des-delices';
 
 async function fetchSection(section, key) {

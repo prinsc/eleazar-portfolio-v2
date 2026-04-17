@@ -1,20 +1,14 @@
 <script>
-	import { galerie } from './data.js';
+	let { galerie = [] } = $props();
 
-	// On mobile, show only first N photos to avoid endless scroll
 	const MOBILE_INITIAL = 6;
 	let showAll = $state(false);
 
-	// Distribute photos into columns, balancing total height.
-	// tall ~ ratio 3/4.5 ≈ 0.67 → height unit ~1.5
-	// normal ~ ratio 4/3 ≈ 1.33 → height unit ~0.75
-	// Place each photo in the shortest column.
 	function distribute(items, numCols) {
 		const result = Array.from({ length: numCols }, () => []);
 		const heights = Array(numCols).fill(0);
 		items.forEach((g, i) => {
 			const h = g.tall ? 1.5 : 0.75;
-			// Find shortest column
 			let minIdx = 0;
 			for (let c = 1; c < numCols; c++) {
 				if (heights[c] < heights[minIdx]) minIdx = c;
@@ -25,8 +19,8 @@
 		return result;
 	}
 
-	const cols3 = distribute(galerie, 3);
-	const cols2 = distribute(galerie, 2);
+	const cols3 = $derived(distribute(galerie, 3));
+	const cols2 = $derived(distribute(galerie, 2));
 </script>
 
 <section class="gal">
