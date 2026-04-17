@@ -10,14 +10,12 @@ async function fetchSection(section, key) {
 			'x-cf-secret': CF_SECRET
 		}
 	});
-	console.log(res)
 	if (!res.ok) return null;
 	return res.json();
 }
 
 export const load = async () => {
 	const data = await fetchSection('horaires,poles,galerie', CAFE_DELICE);
-	console.log('Données récupérées du CMS:', data);
 	return {
 		horaires: data?.horaires?.data ?? null,
 		poles: data?.poles?.data ?? null,
