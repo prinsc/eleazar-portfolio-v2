@@ -7,7 +7,7 @@ async function fetchSection(section, key) {
 	const res = await fetch(`${API_URL}/${ORG_SLUG}/?sections=${section}`, {
 		headers: {
 			Authorization: `Bearer ${key}`,
-			'X-CF-Secret': CF_SECRET
+			'x-cf-secret': CF_SECRET
 		}
 	});
 	console.log(res)
