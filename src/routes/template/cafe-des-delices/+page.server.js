@@ -1,11 +1,14 @@
-import { CAFE_DELICE } from '$env/static/private';
+import { CAFE_DELICE, CF_SECRET } from '$env/static/private';
 
 const API_URL = 'https://admin.kltk.be/api';
 const ORG_SLUG = 'le-cafe-des-delices';
 
 async function fetchSection(section, key) {
 	const res = await fetch(`${API_URL}/${ORG_SLUG}/?sections=${section}`, {
-		headers: { Authorization: `Bearer ${key}` }
+		headers: {
+			Authorization: `Bearer ${key}`,
+			'X-CF-Secret': CF_SECRET
+		}
 	});
 	console.log(res)
 	if (!res.ok) return null;
