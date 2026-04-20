@@ -3,6 +3,7 @@
 
 export const infos = {
 	nom: 'Le Café des Délices',
+	description: 'Grillades au feu de bois et bières belges d\u2019exception, terrasse sur la Grand Place d\u2019Ath. Un lieu, deux ambiances.',
 	ville: 'Ath',
 	pays: 'Belgique',
 	adresse: 'Grand Place d\u2019Ath 8',

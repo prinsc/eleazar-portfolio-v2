@@ -16,10 +16,8 @@ async function fetchSection(section, key) {
 }
 
 export const load = async () => {
-	const data = await fetchSection('horaires,poles,galerie', CAFE_DELICE);
+	// const data = await fetchSection('horaires,poles,galerie,infos', CAFE_DELICE);
 	return {
-		horaires: data?.horaires?.data ?? null,
-		poles: data?.poles?.data ?? null,
-		galerie: data?.galerie ?? null
+		streamed: fetchSection('horaires,poles,galerie,infos', CAFE_DELICE)
 	};
 };

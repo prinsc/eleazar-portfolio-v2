@@ -1,7 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
 	import { heroImage, platDuJour } from './data.js';
-
 	const jour = new Date().toLocaleDateString('fr-BE', {
 		weekday: 'long',
 		day: 'numeric',
@@ -17,8 +16,13 @@
 	let ledeEl;
 	let footerEl;
 
+	let { infos } = $props();
+
 	onMount(async () => {
 		const { gsap } = await import('gsap');
+
+		// Révèle le hero avant tout — évite le flash du DOM visible avant les gsap.set
+		gsap.set(heroEl, { visibility: 'visible' });
 
 		// Etat initial
 		gsap.set(eyebrowRule, { scaleX: 0, transformOrigin: 'left center' });
@@ -68,7 +72,7 @@
 					y: 0,
 					duration: 1
 				},
-				'-=0.8'
+				'-=2'
 			)
 			.to(
 				footerEl.children,
@@ -104,9 +108,9 @@
 		<div class="hero__left">
 			<span class="hero__eyebrow">
 				<span class="rule" bind:this={eyebrowRule}></span>
-				<span class="eb-text" bind:this={eyebrowText}
-					>Restaurant · Grand Place d'Ath 8 · Belgique</span
-				>
+				<span class="eb-text" bind:this={eyebrowText}>
+					Restaurant · Grand Place d'Ath 8 · Belgique
+				</span>
 			</span>
 
 			<h1 class="hero__title">
@@ -119,9 +123,7 @@
 
 			<div class="hero__lede" bind:this={ledeEl}>
 				<p>
-					Grillades à la flamme, bières belges d'exception, terrasse au cœur de la Grand Place. Le
-					même lieu depuis toujours, servi avec la même attention - qu'il soit 13 heures un mardi
-					midi ou 21 heures un samedi soir.
+					{infos.description}
 				</p>
 				<a class="more" href="#grilles">
 					<span>Voir les deux faces du lieu</span>
@@ -215,6 +217,7 @@
 	.hero {
 		padding: 3rem 1.25rem 2rem;
 		position: relative;
+		visibility: hidden; /* GSAP révèle après avoir appliqué les états initiaux */
 
 		@include breakpoint('medium') {
 			padding: 4rem 2rem 3rem;
