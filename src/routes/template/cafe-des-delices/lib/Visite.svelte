@@ -10,17 +10,34 @@
 	// L'API retourne typiquement un objet par jour ou un tableau — on gère les deux
 	function normaliseHoraires(raw) {
 		if (!raw) return null;
-		// Si c'est déjà un tableau { j, h }
-		if (Array.isArray(raw) && raw[0]?.j) return raw;
-		// Si c'est un tableau avec { jour, heures } ou { day, hours }
+
 		if (Array.isArray(raw)) {
+			// Format API : { j, ferme, periodes: [{ debut, fin }] }
+			if (raw[0]?.periodes !== undefined) {
+				return raw.map((r) => ({
+					j: r.j,
+					ferme: r.ferme ?? false,
+					h: r.ferme ? 'Fermé' : r.periodes.map((p) => `${p.debut} – ${p.fin}`).join(' / ')
+				}));
+			}
+
+			// Format déjà normalisé : { j, h }
+			if (raw[0]?.h !== undefined) return raw;
+
+			// Format intermédiaire : { jour/day, heures/hours }
 			return raw.map((r) => ({
 				j: r.j ?? r.jour ?? r.day ?? '',
+				ferme: false,
 				h: r.h ?? r.heures ?? r.hours ?? ''
 			}));
 		}
-		// Si c'est un objet { lundi: '...', mardi: '...' }
-		return Object.entries(raw).map(([k, v]) => ({ j: k, h: v }));
+
+		// Format objet : { lundi: '...', mardi: '...' }
+		return Object.entries(raw).map(([k, v]) => ({
+			j: k,
+			ferme: false,
+			h: v
+		}));
 	}
 
 	const horaires = $derived(normaliseHoraires(horairesAPI) ?? horairesStatic);
@@ -36,7 +53,7 @@
 
 		// Coordinates: Grand Place d'Ath, Belgium
 		const athCoords = [3.776396, 50.630975];
-// mapbox://styles/eleazarkltk/cmnditln3001901sd6avp4jyj
+		// mapbox://styles/eleazarkltk/cmnditln3001901sd6avp4jyj
 		const map = new mapboxgl.Map({
 			container: mapContainer,
 			// Warm monochrome style matching the cafe's cream/slate palette
@@ -142,11 +159,10 @@
 
 		<div class="col col--hours">
 			<Status />
-
 			<span class="label">Horaires du lieu</span>
 			<ul class="hours">
 				{#each horaires as h}
-					<li>
+					<li class:is-closed={h.ferme}>
 						<span>{h.j}</span>
 						<span class="dots" aria-hidden="true"></span>
 						<span>{h.h}</span>
@@ -299,6 +315,9 @@
 		margin: 0 0 2rem;
 		padding: 0;
 		border-top: 1px solid var(--rule);
+	}
+	.hours li.is-closed {
+		opacity: 0.4;
 	}
 	.hours li {
 		display: grid;
