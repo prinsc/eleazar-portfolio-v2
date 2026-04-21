@@ -1,7 +1,7 @@
 <script>
-	import { infos, socials } from './data.js';
+	let { infos = null, socials = [] } = $props();
 
-	const activeSocials = socials.filter((s) => s.actif);
+	const activeSocials = $derived((socials ?? []).filter((s) => s.actif));
 
 	const icons = {
 		facebook: 'M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z',
@@ -20,16 +20,16 @@
 		<div class="col">
 			<span class="label">Adresse</span>
 			<p>
-				{infos.nom}<br />
-				{infos.adresse}<br />
-				{infos.ville}, {infos.pays}
+				{infos?.nom ?? ''}<br />
+				{infos?.adresse ?? ''}<br />
+				{infos?.ville ?? ''}{infos?.pays ? `, ${infos.pays}` : ''}
 			</p>
 		</div>
 		<div class="col">
 			<span class="label">Contact</span>
 			<p>
-				<a href="mailto:{infos.email}">{infos.email}</a><br />
-				<a href="tel:{infos.telephone}">{infos.telephone}</a>
+				{#if infos?.email}<a href="mailto:{infos.email}">{infos.email}</a><br />{/if}
+				{#if infos?.telephone}<a href="tel:{infos.telephone}">{infos.telephone}</a>{/if}
 			</p>
 		</div>
 		<div class="col">
@@ -37,6 +37,10 @@
 			<p>
 				<a href="/template/cafe-des-delices">Maison</a><br />
 				<a href="/template/cafe-des-delices/menu">Carte</a><br />
+				<a href="/template/cafe-des-delices/galerie">Galerie</a><br />
+				<a href="/template/cafe-des-delices/events">Événements</a><br />
+				<a href="/template/cafe-des-delices/actualites">Actualités</a><br />
+				<a href="/template/cafe-des-delices/blog">Blog</a><br />
 				<a href="/template/cafe-des-delices/reservation">Réserver</a>
 			</p>
 		</div>
@@ -78,7 +82,11 @@
 	</div>
 
 	<div class="footer__meta">
-		<span>© {infos.nom} - {infos.ville}, {infos.pays}</span>
+		<span
+			>© {infos?.nom ?? ''}{infos?.ville ? ` - ${infos.ville}` : ''}{infos?.pays
+				? `, ${infos.pays}`
+				: ''}</span
+		>
 		<span> Tous droits réservés</span>
 
 		<span>
@@ -92,7 +100,7 @@
 <style>
 	.footer {
 		padding: 5rem 2rem 2rem;
-		border-top: 1px solid var(--slate);
+		border-top: 1px solid var(--rule);
 		overflow: hidden;
 		background: var(--cream);
 	}

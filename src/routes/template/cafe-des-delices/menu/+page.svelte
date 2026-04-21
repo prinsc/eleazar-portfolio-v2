@@ -3,10 +3,41 @@
 	// Tab-based navigation: content swaps with crossfade + staggered reveal
 	import { onMount, tick } from 'svelte';
 	import MenuCard from '../lib/MenuCard.svelte';
-	import { menus, carte, menuSections, cuisine } from '../lib/data.js';
+	import Skeleton from '../lib/Skeleton.svelte';
 
-	// "formules" is a special first tab, then menuSections
-	const allTabs = [{ id: 'formules', label: 'Formules' }, ...menuSections];
+	let { data } = $props();
+	// carte.categories[i] = { id, name, note, sort_order, subcategories: [...], items: [...] }
+	// Cas 1 : cat.items.length > 0  → afficher items directement
+	// Cas 2 : cat.subcategories.length > 0 → afficher chaque sous-catégorie avec ses items
+	const categories = $derived(
+		[...(data.carte?.categories ?? [])].sort((a, b) => (a.sort_order ?? 0) - (b.sort_order ?? 0))
+	);
+
+	const menuSections = $derived(
+		categories.map((cat) => ({
+			id: cat.id,
+			label: cat.name
+		}))
+	);
+
+	function normaliseMenu(m, i) {
+		if (m.nom !== undefined) return m;
+		return {
+			num: String(i + 1).padStart(2, '0'),
+			nom: m.name ?? '',
+			prix: m.price ?? '',
+			sections: m.data?.sections ?? m.sections ?? []
+		};
+	}
+	const menus = $derived(data.menus ? data.menus.map(normaliseMenu) : null);
+	const cuisine = $derived(data.cuisine);
+
+	const allTabs = $derived([{ id: 'formules', label: 'Formules' }, ...menuSections]);
+
+	// Retourne la catégorie active avec ses items/sous-cats prêts à afficher
+	function getActiveCategory() {
+		return categories.find((c) => c.id === activeTab) ?? null;
+	}
 
 	let activeTab = $state('formules');
 	let contentEl;
@@ -85,14 +116,7 @@
 		}
 	}
 
-	// Get categories for active tab
-	function getActiveCategories() {
-		const section = menuSections.find((s) => s.id === activeTab);
-		if (!section) return [];
-		return section.categories
-			.map((name) => carte.find((c) => c.categorie === name))
-			.filter(Boolean);
-	}
+	const apiReady = $derived(data.menus !== undefined);
 </script>
 
 <svelte:head>
@@ -103,127 +127,162 @@
 	/>
 </svelte:head>
 
-<!-- ─── Hero ─── -->
-<section class="hero">
-	<span class="eyebrow">
-		<span class="rule-line"></span>
-		Carte du moment
-	</span>
+{#if !apiReady}
+	<Skeleton variant="menu" />
+{:else}
+	<!-- ─── Hero ─── -->
+	<section class="hero">
+		<span class="eyebrow">
+			<span class="rule-line"></span>
+			Carte du moment
+		</span>
 
-	<h1 class="title">
-		<span class="line">La</span>
-		<span class="huge"><em>Carte</em></span>
-	</h1>
+		<h1 class="title">
+			<span class="line">La</span>
+			<span class="huge"><em>Carte</em></span>
+		</h1>
 
-	<p class="lede">
-		Tout est préparé sur place, à la commande. Ce qui n'est plus frais n'est plus servi. Si vous
-		avez une allergie, une exigence, une curiosité - dites-le-nous, nous trouverons.
-	</p>
+		<p class="lede">
+			Tout est préparé sur place, à la commande. Ce qui n'est plus frais n'est plus servi. Si vous
+			avez une allergie, une exigence, une curiosité - dites-le-nous, nous trouverons.
+		</p>
 
-	<div class="cuisine-times">
-		<span class="cuisine-label">Service en cuisine</span>
-		<span class="cuisine-hours">Midi · <strong>{cuisine.midi}</strong></span>
-		<span class="cuisine-sep" aria-hidden="true">/</span>
-		<span class="cuisine-hours">Soir · <strong>{cuisine.soir}</strong></span>
-	</div>
-</section>
-
-<!-- ─── Tabs ─── -->
-<nav class="tabs" aria-label="Sections de la carte">
-	<div class="tabs__track">
-		{#each allTabs as tab}
-			<button
-				class="tabs__btn"
-				class:active={activeTab === tab.id}
-				onclick={() => switchTab(tab.id)}
-			>
-				<span class="tabs__label">{tab.label}</span>
-			</button>
-		{/each}
-	</div>
-</nav>
-
-<!-- ─── Tab content ─── -->
-<section class="tab-content" bind:this={contentEl}>
-	<div class="tab-inner">
-		{#if activeTab === 'formules'}
-			<!-- Formules tab -->
-			<div class="formules-header anim-item">
-				<span class="num">00 - Formules</span>
-				<h2 class="formules-title">Nos Formules</h2>
-				<p class="formules-sub">Du lundi au vendredi, uniquement les midis</p>
+		{#if cuisine?.midi || cuisine?.soir}
+			<div class="cuisine-times">
+				<span class="cuisine-label">Service en cuisine</span>
+				{#if cuisine?.midi}<span class="cuisine-hours">Midi · <strong>{cuisine.midi}</strong></span
+					>{/if}
+				{#if cuisine?.midi && cuisine?.soir}<span class="cuisine-sep" aria-hidden="true">/</span
+					>{/if}
+				{#if cuisine?.soir}<span class="cuisine-hours">Soir · <strong>{cuisine.soir}</strong></span
+					>{/if}
 			</div>
+		{/if}
+	</section>
 
-			<div class="lunch-card anim-item">
-				<div class="lunch-card__left">
-					<span class="lunch-card__tag">Lunch</span>
-					<span class="lunch-card__price">18,50<span class="cur">€</span></span>
-				</div>
-				<div class="lunch-card__right">
-					<p>Entrée + Plat + Boisson chaude (café ou thé)</p>
-				</div>
-			</div>
+	<!-- ─── Tabs ─── -->
+	<nav class="tabs" aria-label="Sections de la carte">
+		<div class="tabs__track">
+			{#each allTabs as tab}
+				<button
+					class="tabs__btn"
+					class:active={activeTab === tab.id}
+					onclick={() => switchTab(tab.id)}
+				>
+					<span class="tabs__label">{tab.label}</span>
+				</button>
+			{/each}
+		</div>
+	</nav>
 
-			<div class="formules__grid">
-				{#each menus as m, i}
-					<div class="anim-item">
-						<MenuCard menu={m} />
+	<!-- ─── Tab content ─── -->
+	<section class="tab-content" bind:this={contentEl}>
+		<div class="tab-inner">
+			{#if activeTab === 'formules'}
+				<!-- Formules tab -->
+				<div class="formules-header anim-item">
+					<span class="num">00 - Formules</span>
+					<h2 class="formules-title">Nos Formules</h2>
+					<p class="formules-sub">Du lundi au vendredi, uniquement les midis</p>
+				</div>
+
+				<div class="lunch-card anim-item">
+					<div class="lunch-card__left">
+						<span class="lunch-card__tag">Lunch</span>
+						<span class="lunch-card__price">18,50<span class="cur">€</span></span>
 					</div>
-				{/each}
-			</div>
-		{:else}
-			<!-- Category tab -->
-			{@const categories = getActiveCategories()}
-			{#each categories as cat, cIdx}
-				<div class="category anim-item">
-					<div class="category__head">
-						<h2 class="category__title">{cat.categorie}</h2>
-						{#if cat.note}
-							<p class="category__note">{cat.note}</p>
+					<div class="lunch-card__right">
+						<p>Entrée + Plat + Boisson chaude (café ou thé)</p>
+					</div>
+				</div>
+
+				{#if menus}
+					<div class="formules__grid">
+						{#each menus as m, i}
+							<div class="anim-item">
+								<MenuCard menu={m} />
+							</div>
+						{/each}
+					</div>
+				{/if}
+			{:else}
+				<!-- Category tab -->
+				{@const cat = getActiveCategory()}
+				{#if cat}
+					<div class="category-wrap">
+						<div class="category__head anim-item">
+							<h2 class="category__title">{cat.name}</h2>
+							{#if cat.note}
+								<p class="category__note">{cat.note}</p>
+							{/if}
+						</div>
+
+						{#if cat.items && cat.items.length > 0}
+							<!-- Items directs (pas de sous-catégories) -->
+							<ul class="items">
+								{#each cat.items as item}
+									<li class="item anim-item">
+										<div class="item__top">
+											<span class="item__name">{item.name ?? item.nom}</span>
+											<span class="item__dots" aria-hidden="true"></span>
+											<span class="item__price">{item.price ?? item.prix}</span>
+										</div>
+										{#if item.description ?? item.desc}
+											<p class="item__desc">{item.description ?? item.desc}</p>
+										{/if}
+									</li>
+								{/each}
+							</ul>
+						{:else if cat.subcategories && cat.subcategories.length > 0}
+							<!-- Sous-catégories -->
+							{#each [...cat.subcategories].sort((a, b) => (a.sort_order ?? 0) - (b.sort_order ?? 0)) as sub}
+								<div class="subcategory anim-item">
+									<h3 class="subcategory__title">{sub.name}</h3>
+									<ul class="items">
+										{#each sub.items ?? [] as item}
+											<li class="item">
+												<div class="item__top">
+													<span class="item__name">{item.name ?? item.nom}</span>
+													<span class="item__dots" aria-hidden="true"></span>
+													<span class="item__price">{item.price ?? item.prix}</span>
+												</div>
+												{#if item.description ?? item.desc}
+													<p class="item__desc">{item.description ?? item.desc}</p>
+												{/if}
+											</li>
+										{/each}
+									</ul>
+								</div>
+							{/each}
 						{/if}
 					</div>
+				{/if}
+			{/if}
+		</div>
+	</section>
 
-					<ul class="items">
-						{#each cat.items as item}
-							<li class="item anim-item">
-								<div class="item__top">
-									<span class="item__name">{item.nom}</span>
-									<span class="item__dots" aria-hidden="true"></span>
-									<span class="item__price">{item.prix}</span>
-								</div>
-								{#if item.desc}
-									<p class="item__desc">{item.desc}</p>
-								{/if}
-							</li>
-						{/each}
-					</ul>
-				</div>
-			{/each}
-		{/if}
-	</div>
-</section>
-
-<!-- ─── CTA bottom ─── -->
-<section class="cta">
-	<div class="cta__inner">
-		<p class="cta__text">
-			<em>Une faim ?</em> Nos cuisines sont ouvertes de 12h00 à 14h30 et de 18h00 à 22h00.
-		</p>
-		<a class="cta__link" href="/template/cafe-des-delices/reservation">
-			<span>Réserver une table</span>
-			<svg
-				viewBox="0 0 24 24"
-				width="14"
-				height="14"
-				fill="none"
-				stroke="currentColor"
-				stroke-width="1.5"
-			>
-				<path d="M5 12h14M13 6l6 6-6 6" />
-			</svg>
-		</a>
-	</div>
-</section>
+	<!-- ─── CTA bottom ─── -->
+	<section class="cta" id="cta-bottom">
+		<div class="cta__inner">
+			<p class="cta__text">
+				<em>Une faim ?</em> Nos cuisines sont ouvertes de 12h00 à 14h30 et de 18h00 à 22h00.
+			</p>
+			<a class="cta__link" href="/template/cafe-des-delices/reservation">
+				<span>Réserver une table</span>
+				<svg
+					viewBox="0 0 24 24"
+					width="14"
+					height="14"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="1.5"
+				>
+					<path d="M5 12h14M13 6l6 6-6 6" />
+				</svg>
+			</a>
+		</div>
+	</section>
+{/if}
 
 <style lang="scss">
 	@use '../lib/styles/mixins' as *;
@@ -331,26 +390,21 @@
 		-webkit-backdrop-filter: blur(12px);
 	}
 	.tabs__track {
-		max-width: 1400px;
+		max-width: 1000px;
 		margin: 0 auto;
 		display: flex;
+		flex-wrap: wrap;
 		gap: 0;
-		overflow-x: auto;
-		scrollbar-width: none;
-		-ms-overflow-style: none;
 		padding: 0 1rem;
+		justify-content: center;
 
 		@include breakpoint('medium') {
 			padding: 0 2rem;
-			justify-content: center;
 		}
-	}
-	.tabs__track::-webkit-scrollbar {
-		display: none;
 	}
 	.tabs__btn {
 		flex-shrink: 0;
-		padding: 1.1rem 1.3rem;
+		padding: 0.85rem 1.1rem;
 		background: none;
 		border: none;
 		cursor: pointer;
@@ -492,7 +546,7 @@
 	}
 
 	/* ── Category blocks ── */
-	.category {
+	.category-wrap {
 		margin-bottom: 3.5rem;
 
 		&:last-child {
@@ -519,6 +573,23 @@
 		font-style: italic;
 		color: var(--slate-soft);
 		line-height: 1.5;
+	}
+
+	/* ── Subcategory blocks ── */
+	.subcategory {
+		margin-bottom: 2.5rem;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+	.subcategory__title {
+		margin: 0 0 0.75rem;
+		font-family: var(--f-mono);
+		font-size: 10px;
+		letter-spacing: 0.2em;
+		text-transform: uppercase;
+		color: var(--slate-soft);
 	}
 
 	/* ── Menu items ── */

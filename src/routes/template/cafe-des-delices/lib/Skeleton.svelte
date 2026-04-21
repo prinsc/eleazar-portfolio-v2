@@ -1,3 +1,9 @@
+<script>
+	// Composant Skeleton multi-variantes.
+	// Usage : <Skeleton variant="hero" /> ou <Skeleton variant="menu" />, etc.
+	let { variant = 'home' } = $props();
+</script>
+
 <style lang="scss">
 	@use './styles/mixins' as *;
 
@@ -23,7 +29,7 @@
 		display: block;
 	}
 
-	/* ── HERO ── */
+	/* ── HERO home ── */
 	.hero-sk {
 		padding: 3rem 1.25rem 2rem;
 
@@ -116,7 +122,7 @@
 		}
 	}
 
-	/* ── GALLERY ── */
+	/* ── GALLERY home ── */
 	.gallery-sk {
 		padding: 5rem 1.25rem;
 		border-top: 1px solid #e8e0d0;
@@ -140,75 +146,403 @@
 		background-size: 600px 100%;
 		background-repeat: no-repeat;
 	}
+
+	/* ── Generic section header (hero pages secondaires) ── */
+	.sec-hero-sk {
+		padding: 4rem 1.25rem 2.5rem;
+		border-bottom: 1px solid #e8e0d0;
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+
+		@include breakpoint('medium') {
+			padding: 5rem 2rem 3rem;
+		}
+	}
+
+	/* ── List items (news/events/blog list) ── */
+	.list-sk {
+		padding: 0 1.25rem 5rem;
+
+		@include breakpoint('medium') {
+			padding: 0 2rem 6rem;
+		}
+	}
+
+	.list-sk__item {
+		padding: 2.5rem 0;
+		border-bottom: 1px solid #e8e0d0;
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 1rem;
+
+		&:first-child { border-top: 1px solid #e8e0d0; }
+
+		@include breakpoint('large') {
+			grid-template-columns: 280px 1fr;
+			gap: 3rem;
+		}
+	}
+
+	.list-sk__img {
+		aspect-ratio: 4 / 3;
+		background: #d5ccc0;
+		background-image: var(--sk-shine);
+		background-size: 600px 100%;
+		animation: shimmer 1.6s ease-in-out infinite;
+	}
+
+	.list-sk__body {
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+	}
+
+	/* ── Menu page ── */
+	.menu-sk__hero {
+		padding: 5rem 1.25rem 3rem;
+		max-width: 1400px;
+		margin: 0 auto;
+
+		@include breakpoint('medium') {
+			padding: 5rem 2rem 3rem;
+		}
+	}
+
+	.menu-sk__tabs {
+		display: flex;
+		gap: 1rem;
+		padding: 1rem;
+		border-top: 1px solid #e8e0d0;
+		border-bottom: 1px solid #e8e0d0;
+		overflow-x: auto;
+		justify-content: center;
+	}
+
+	.menu-sk__content {
+		max-width: 1000px;
+		margin: 0 auto;
+		padding: 3rem 1.25rem 5rem;
+
+		@include breakpoint('medium') {
+			padding: 4rem 2rem 6rem;
+		}
+	}
+
+	.menu-sk__formule {
+		border: 1px solid #d5ccc0;
+		padding: 2rem;
+		margin-bottom: 2rem;
+	}
+
+	.menu-sk__cards {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 2rem;
+
+		@include breakpoint('medium') {
+			grid-template-columns: 1fr 1fr;
+		}
+	}
+
+	.menu-sk__card {
+		border: 1px solid #d5ccc0;
+		padding: 2.5rem;
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+	}
+
+	/* ── Reservation page ── */
+	.resa-sk {
+		background: #1a1612;
+		padding: 4rem 1.25rem 5rem;
+
+		@include breakpoint('medium') {
+			padding: 5rem 2rem 6rem;
+		}
+	}
+
+	.resa-sk__form {
+		max-width: 1200px;
+		margin: 0 auto;
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 3rem;
+
+		@include breakpoint('large') {
+			grid-template-columns: 1fr 320px;
+			gap: 5rem;
+		}
+	}
+
+	.resa-sk__group {
+		margin-bottom: 2.5rem;
+	}
+
+	.resa-sk__row {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 1rem;
+		margin-bottom: 1rem;
+
+		@include breakpoint('xsmall') {
+			grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+		}
+	}
+
+	.resa-sk__field {
+		background: rgba(241, 234, 216, 0.06);
+		height: 48px;
+	}
+
+	.sk--dark {
+		--sk-bg: rgba(241, 234, 216, 0.08);
+		--sk-shine: linear-gradient(
+			90deg,
+			rgba(241, 234, 216, 0) 0%,
+			rgba(241, 234, 216, 0.15) 50%,
+			rgba(241, 234, 216, 0) 100%
+		);
+	}
+
+	/* ── Gallery page ── */
+	.gal-page-sk {
+		padding: 1.5rem;
+		display: grid;
+		gap: 1rem;
+		grid-template-columns: repeat(4, 1fr);
+
+		@include breakpoint('large') {
+			grid-template-columns: repeat(8, 1fr);
+		}
+	}
+
+	.gal-page-sk__cell {
+		aspect-ratio: 3 / 4;
+		background: #d5ccc0;
+		background-image: var(--sk-shine);
+		background-size: 600px 100%;
+		animation: shimmer 1.6s ease-in-out infinite;
+	}
 </style>
 
-<!-- ── HERO SKELETON ── -->
-<section class="hero-sk">
-	<div class="hero-sk__grid">
-		<div class="hero-sk__left">
-			<div class="hero-sk__eyebrow">
-				<span class="sk" style="width:36px;height:1px;"></span>
-				<span class="sk" style="width:220px;height:11px;"></span>
-			</div>
-			<div style="display:flex;flex-direction:column;gap:0.5rem;margin-top:1rem;">
-				<span class="sk" style="width:45%;height:clamp(2.8rem,9vw,6rem);"></span>
-				<span class="sk" style="width:30%;height:clamp(2.8rem,9vw,6rem);margin-left:clamp(2.5rem,10vw,7rem);"></span>
-				<span class="sk" style="width:100%;height:clamp(4rem,16vw,13rem);"></span>
-			</div>
-			<div style="display:flex;flex-direction:column;gap:0.75rem;max-width:32rem;">
-				<span class="sk" style="width:100%;height:14px;"></span>
-				<span class="sk" style="width:100%;height:14px;"></span>
-				<span class="sk" style="width:70%;height:14px;"></span>
-				<span class="sk" style="width:130px;height:11px;margin-top:0.5rem;"></span>
-			</div>
-		</div>
-		<div class="hero-sk__right">
-			<span class="sk" style="width:100%;aspect-ratio:4/5;display:block;flex:1;"></span>
-			<div style="background:#d5ccc0;padding:1.25rem;display:flex;flex-direction:column;gap:0.5rem;">
-				<div style="display:flex;justify-content:space-between;padding-bottom:0.65rem;border-bottom:1px solid rgba(0,0,0,0.08);">
-					<span class="sk" style="width:80px;height:10px;background:#c0b8ac;"></span>
-					<span class="sk" style="width:100px;height:10px;background:#c0b8ac;"></span>
+{#if variant === 'home'}
+	<!-- HERO home -->
+	<section class="hero-sk">
+		<div class="hero-sk__grid">
+			<div class="hero-sk__left">
+				<div class="hero-sk__eyebrow">
+					<span class="sk" style="width:36px;height:1px;"></span>
+					<span class="sk" style="width:220px;height:11px;"></span>
 				</div>
-				<span class="sk" style="width:60%;height:18px;background:#c0b8ac;"></span>
-				<span class="sk" style="width:100%;height:12px;background:#c0b8ac;"></span>
-				<span class="sk" style="width:80%;height:12px;background:#c0b8ac;"></span>
+				<div style="display:flex;flex-direction:column;gap:0.5rem;margin-top:1rem;">
+					<span class="sk" style="width:45%;height:clamp(2.8rem,9vw,6rem);"></span>
+					<span class="sk" style="width:30%;height:clamp(2.8rem,9vw,6rem);margin-left:clamp(2.5rem,10vw,7rem);"></span>
+					<span class="sk" style="width:100%;height:clamp(4rem,16vw,13rem);"></span>
+				</div>
+				<div style="display:flex;flex-direction:column;gap:0.75rem;max-width:32rem;">
+					<span class="sk" style="width:100%;height:14px;"></span>
+					<span class="sk" style="width:100%;height:14px;"></span>
+					<span class="sk" style="width:70%;height:14px;"></span>
+					<span class="sk" style="width:130px;height:11px;margin-top:0.5rem;"></span>
+				</div>
+			</div>
+			<div class="hero-sk__right">
+				<span class="sk" style="width:100%;aspect-ratio:4/5;display:block;flex:1;"></span>
+				<div style="background:#d5ccc0;padding:1.25rem;display:flex;flex-direction:column;gap:0.5rem;">
+					<div style="display:flex;justify-content:space-between;padding-bottom:0.65rem;border-bottom:1px solid rgba(0,0,0,0.08);">
+						<span class="sk" style="width:80px;height:10px;background:#c0b8ac;"></span>
+						<span class="sk" style="width:100px;height:10px;background:#c0b8ac;"></span>
+					</div>
+					<span class="sk" style="width:60%;height:18px;background:#c0b8ac;"></span>
+					<span class="sk" style="width:100%;height:12px;background:#c0b8ac;"></span>
+					<span class="sk" style="width:80%;height:12px;background:#c0b8ac;"></span>
+				</div>
 			</div>
 		</div>
-	</div>
-	<div class="hero-sk__footer">
-		{#each [1,2,3,4] as _}
-			<div class="hero-sk__footer-item">
-				<span class="sk" style="width:60px;height:10px;"></span>
-				<span class="sk" style="width:90px;height:14px;"></span>
-			</div>
-		{/each}
-	</div>
-</section>
-
-<!-- ── POLES SKELETON (3 blocs) ── -->
-{#each [1,2,3] as _}
-	<section class="pole-sk">
-		<div class="pole-sk__img"></div>
-		<div class="pole-sk__body">
-			<span class="sk" style="width:80px;height:10px;background:rgba(255,255,255,0.2);"></span>
-			<span class="sk" style="width:50%;height:clamp(2.5rem,6vw,5rem);background:rgba(255,255,255,0.15);"></span>
-			<span class="sk" style="width:65%;height:clamp(3rem,8vw,7rem);background:rgba(255,255,255,0.1);"></span>
-			<span class="sk" style="width:100%;height:14px;background:rgba(255,255,255,0.1);"></span>
-			<span class="sk" style="width:80%;height:14px;background:rgba(255,255,255,0.1);"></span>
-			<span class="sk" style="width:120px;height:36px;background:rgba(255,255,255,0.1);border-radius:999px;margin-top:0.5rem;"></span>
+		<div class="hero-sk__footer">
+			{#each [1,2,3,4] as _}
+				<div class="hero-sk__footer-item">
+					<span class="sk" style="width:60px;height:10px;"></span>
+					<span class="sk" style="width:90px;height:14px;"></span>
+				</div>
+			{/each}
 		</div>
 	</section>
-{/each}
 
-<!-- ── GALLERY SKELETON ── -->
-<section class="gallery-sk">
-	<div style="display:flex;flex-direction:column;gap:0.5rem;margin-bottom:1rem;">
-		<span class="sk" style="width:140px;height:10px;"></span>
-		<span class="sk" style="width:300px;height:clamp(2rem,5vw,4rem);"></span>
-	</div>
-	<div class="gallery-sk__grid">
-		{#each [1,2,3,4,5,6] as i}
-			<div class="gallery-sk__cell" style="aspect-ratio:{i % 3 === 0 ? '3/4' : '4/3'};"></div>
+	<!-- POLES -->
+	{#each [1,2,3] as _}
+		<section class="pole-sk">
+			<div class="pole-sk__img"></div>
+			<div class="pole-sk__body">
+				<span class="sk" style="width:80px;height:10px;background:rgba(255,255,255,0.2);"></span>
+				<span class="sk" style="width:50%;height:clamp(2.5rem,6vw,5rem);background:rgba(255,255,255,0.15);"></span>
+				<span class="sk" style="width:65%;height:clamp(3rem,8vw,7rem);background:rgba(255,255,255,0.1);"></span>
+				<span class="sk" style="width:100%;height:14px;background:rgba(255,255,255,0.1);"></span>
+				<span class="sk" style="width:80%;height:14px;background:rgba(255,255,255,0.1);"></span>
+				<span class="sk" style="width:120px;height:36px;background:rgba(255,255,255,0.1);border-radius:999px;margin-top:0.5rem;"></span>
+			</div>
+		</section>
+	{/each}
+
+	<!-- GALLERY -->
+	<section class="gallery-sk">
+		<div style="display:flex;flex-direction:column;gap:0.5rem;margin-bottom:1rem;">
+			<span class="sk" style="width:140px;height:10px;"></span>
+			<span class="sk" style="width:300px;height:clamp(2rem,5vw,4rem);"></span>
+		</div>
+		<div class="gallery-sk__grid">
+			{#each [1,2,3,4,5,6] as i}
+				<div class="gallery-sk__cell" style="aspect-ratio:{i % 3 === 0 ? '3/4' : '4/3'};"></div>
+			{/each}
+		</div>
+	</section>
+
+{:else if variant === 'hero-only'}
+	<section class="hero-sk">
+		<div class="hero-sk__grid">
+			<div class="hero-sk__left">
+				<div class="hero-sk__eyebrow">
+					<span class="sk" style="width:36px;height:1px;"></span>
+					<span class="sk" style="width:220px;height:11px;"></span>
+				</div>
+				<div style="display:flex;flex-direction:column;gap:0.5rem;margin-top:1rem;">
+					<span class="sk" style="width:45%;height:clamp(2.8rem,9vw,6rem);"></span>
+					<span class="sk" style="width:30%;height:clamp(2.8rem,9vw,6rem);margin-left:clamp(2.5rem,10vw,7rem);"></span>
+					<span class="sk" style="width:100%;height:clamp(4rem,16vw,13rem);"></span>
+				</div>
+			</div>
+			<div class="hero-sk__right">
+				<span class="sk" style="width:100%;aspect-ratio:4/5;display:block;flex:1;"></span>
+			</div>
+		</div>
+	</section>
+
+{:else if variant === 'section-hero'}
+	<!-- Hero compact pour pages secondaires (events, actualites, blog, galerie) -->
+	<header class="sec-hero-sk">
+		<span class="sk" style="width:80px;height:10px;"></span>
+		<span class="sk" style="width:240px;height:clamp(2rem,5vw,4rem);"></span>
+		<span class="sk" style="width:120px;height:10px;margin-top:1rem;"></span>
+	</header>
+
+{:else if variant === 'list'}
+	<!-- Hero + 4 items liste (events/actualites/blog) -->
+	<header class="sec-hero-sk">
+		<span class="sk" style="width:80px;height:10px;"></span>
+		<span class="sk" style="width:240px;height:clamp(2rem,5vw,4rem);"></span>
+		<span class="sk" style="width:120px;height:10px;margin-top:1rem;"></span>
+	</header>
+	<div class="list-sk">
+		{#each [1,2,3,4] as _}
+			<article class="list-sk__item">
+				<div class="list-sk__img"></div>
+				<div class="list-sk__body">
+					<span class="sk" style="width:110px;height:10px;"></span>
+					<span class="sk" style="width:80%;height:24px;"></span>
+					<span class="sk" style="width:100%;height:12px;"></span>
+					<span class="sk" style="width:90%;height:12px;"></span>
+					<span class="sk" style="width:70%;height:12px;"></span>
+				</div>
+			</article>
 		{/each}
 	</div>
-</section>
+
+{:else if variant === 'menu'}
+	<section class="menu-sk__hero">
+		<span class="sk" style="width:160px;height:11px;margin-bottom:3rem;"></span>
+		<span class="sk" style="display:block;width:30%;height:clamp(2.5rem,8vw,6rem);margin-bottom:0.5rem;"></span>
+		<span class="sk" style="display:block;width:60%;height:clamp(5rem,20vw,18rem);"></span>
+		<div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid #e8e0d0;display:flex;gap:1rem;">
+			<span class="sk" style="width:140px;height:12px;"></span>
+			<span class="sk" style="width:140px;height:12px;"></span>
+		</div>
+	</section>
+	<nav class="menu-sk__tabs">
+		{#each [1,2,3,4,5] as _}
+			<span class="sk" style="width:80px;height:12px;flex-shrink:0;"></span>
+		{/each}
+	</nav>
+	<section class="menu-sk__content">
+		<div class="menu-sk__formule">
+			<span class="sk" style="width:140px;height:10px;margin-bottom:1rem;"></span>
+			<span class="sk" style="width:50%;height:26px;"></span>
+		</div>
+		<div class="menu-sk__cards">
+			{#each [1,2] as _}
+				<div class="menu-sk__card">
+					<span class="sk" style="width:80px;height:10px;"></span>
+					<span class="sk" style="width:60%;height:28px;"></span>
+					<span class="sk" style="width:80px;height:32px;"></span>
+					<span class="sk" style="width:100%;height:12px;margin-top:1rem;"></span>
+					<span class="sk" style="width:90%;height:12px;"></span>
+					<span class="sk" style="width:80%;height:12px;"></span>
+				</div>
+			{/each}
+		</div>
+	</section>
+
+{:else if variant === 'reservation'}
+	<section class="menu-sk__hero">
+		<span class="sk" style="width:160px;height:11px;margin-bottom:3rem;"></span>
+		<span class="sk" style="display:block;width:25%;height:clamp(2.5rem,8vw,6rem);margin-bottom:0.5rem;"></span>
+		<span class="sk" style="display:block;width:55%;height:clamp(5rem,20vw,18rem);"></span>
+		<span class="sk" style="display:block;width:60%;height:14px;margin-top:2rem;"></span>
+	</section>
+	<section class="resa-sk">
+		<div class="resa-sk__form">
+			<div>
+				{#each [1,2,3] as _}
+					<div class="resa-sk__group">
+						<span class="sk sk--dark" style="width:80px;height:10px;margin-bottom:1.25rem;"></span>
+						<div class="resa-sk__row">
+							<span class="sk sk--dark resa-sk__field"></span>
+							<span class="sk sk--dark resa-sk__field"></span>
+						</div>
+						<div class="resa-sk__row">
+							<span class="sk sk--dark resa-sk__field"></span>
+						</div>
+					</div>
+				{/each}
+				<span class="sk sk--dark" style="width:240px;height:48px;margin-top:1rem;"></span>
+			</div>
+			<aside>
+				{#each [1,2,3] as _}
+					<div style="margin-bottom:2rem;">
+						<span class="sk sk--dark" style="width:100px;height:10px;margin-bottom:0.6rem;"></span>
+						<span class="sk sk--dark" style="width:180px;height:14px;"></span>
+					</div>
+				{/each}
+			</aside>
+		</div>
+	</section>
+
+{:else if variant === 'gallery'}
+	<header class="sec-hero-sk">
+		<span class="sk" style="width:80px;height:10px;"></span>
+		<span class="sk" style="width:320px;height:clamp(2rem,5vw,4rem);"></span>
+		<span class="sk" style="width:120px;height:10px;margin-top:1rem;"></span>
+	</header>
+	<div class="gal-page-sk">
+		{#each Array(16) as _}
+			<div class="gal-page-sk__cell"></div>
+		{/each}
+	</div>
+
+{:else if variant === 'post'}
+	<!-- Article blog [slug] -->
+	<article style="max-width:800px;margin:0 auto;padding:4rem 1.25rem 6rem;">
+		<span class="sk" style="width:60px;height:10px;margin-bottom:2.5rem;"></span>
+		<div style="display:flex;gap:1rem;margin-bottom:1rem;">
+			<span class="sk" style="width:80px;height:18px;"></span>
+			<span class="sk" style="width:120px;height:12px;"></span>
+		</div>
+		<span class="sk" style="width:90%;height:clamp(2rem,5vw,3.5rem);margin-bottom:1rem;"></span>
+		<span class="sk" style="width:80%;height:18px;margin-bottom:3rem;"></span>
+		<span class="sk" style="width:100%;aspect-ratio:16/7;display:block;margin-bottom:3rem;"></span>
+		{#each [1,2,3,4] as _}
+			<span class="sk" style="width:100%;height:14px;margin-bottom:0.75rem;"></span>
+		{/each}
+	</article>
+{/if}

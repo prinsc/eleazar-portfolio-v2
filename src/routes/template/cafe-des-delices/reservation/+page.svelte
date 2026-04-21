@@ -1,7 +1,13 @@
 <script>
 	// Page Réservation - Le Café des Délices
 	import { onMount, tick } from 'svelte';
-	import { infos, horaires, cuisine } from '../lib/data.js';
+	import Skeleton from '../lib/Skeleton.svelte';
+
+	let { data } = $props();
+
+	const infos = $derived(data.infos);
+	const cuisine = $derived(data.cuisine);
+	const apiReady = $derived(data.infos !== undefined);
 
 	let gsapLib = $state(null);
 	let formEl;
@@ -121,6 +127,9 @@
 	/>
 </svelte:head>
 
+{#if !apiReady}
+	<Skeleton variant="reservation" />
+{:else}
 <!-- ─── Hero ─── -->
 <section class="hero">
 	<span class="eyebrow anim-item">
@@ -267,29 +276,35 @@
 
 			<!-- Right: info sidebar -->
 			<aside class="form__aside anim-item">
+				{#if cuisine?.midi || cuisine?.soir}
 				<div class="aside-block">
 					<span class="aside-label">Service en cuisine</span>
 					<p>
-						Midi · <strong>{cuisine.midi}</strong><br />
-						Soir · <strong>{cuisine.soir}</strong>
+						{#if cuisine?.midi}Midi · <strong>{cuisine.midi}</strong><br />{/if}
+						{#if cuisine?.soir}Soir · <strong>{cuisine.soir}</strong>{/if}
 					</p>
 				</div>
+				{/if}
 
+				{#if infos?.telephone || infos?.email}
 				<div class="aside-block">
 					<span class="aside-label">Nous contacter</span>
 					<p>
-						<a href="tel:{infos.telephone}">{infos.telephone}</a><br />
-						<a href="mailto:{infos.email}">{infos.email}</a>
+						{#if infos?.telephone}<a href="tel:{infos.telephone}">{infos.telephone}</a><br />{/if}
+						{#if infos?.email}<a href="mailto:{infos.email}">{infos.email}</a>{/if}
 					</p>
 				</div>
+				{/if}
 
+				{#if infos?.adresse}
 				<div class="aside-block">
 					<span class="aside-label">Adresse</span>
 					<p>
 						{infos.adresse}<br />
-						{infos.ville}, {infos.pays}
+						{infos?.ville ?? ''}{infos?.pays ? `, ${infos.pays}` : ''}
 					</p>
 				</div>
+				{/if}
 
 				<div class="aside-note">
 					<p>
@@ -349,8 +364,10 @@
 
 			<p class="confirm__text anim-item">
 				Un email de confirmation sera envoyé à <strong>{email}</strong>.<br />
-				Pour toute modification, contactez-nous au
-				<a href="tel:{infos.telephone}">{infos.telephone}</a>.
+				{#if infos?.telephone}
+					Pour toute modification, contactez-nous au
+					<a href="tel:{infos.telephone}">{infos.telephone}</a>.
+				{/if}
 			</p>
 
 			<div class="confirm__actions anim-item">
@@ -383,6 +400,7 @@
 			</div>
 		</div>
 	</section>
+{/if}
 {/if}
 
 <style lang="scss">

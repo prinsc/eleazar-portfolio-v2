@@ -1,10 +1,9 @@
 <script>
 	import { onMount } from 'svelte';
-	import { infos, horaires as horairesStatic, cuisine } from './data.js';
 	import Status from './Status.svelte';
 	import { PUBLIC_MAPBOX_TOKEN } from '$env/static/public';
 
-	let { horairesAPI = null } = $props();
+	let { horairesAPI = null, infos = null, cuisine = null } = $props();
 
 	// Normalise la réponse API vers le format { j, h }[]
 	// L'API retourne typiquement un objet par jour ou un tableau — on gère les deux
@@ -40,7 +39,7 @@
 		}));
 	}
 
-	const horaires = $derived(normaliseHoraires(horairesAPI) ?? horairesStatic);
+	const horaires = $derived(normaliseHoraires(horairesAPI) ?? []);
 
 	let mapContainer;
 	let mapLoaded = $state(false);
@@ -147,13 +146,13 @@
 				là.
 			</h2>
 			<p class="addr">
-				{infos.nom}<br />
-				{infos.adresse}<br />
-				{infos.ville}, {infos.pays}
+				{infos?.nom ?? ''}<br />
+				{infos?.adresse ?? ''}<br />
+				{infos?.ville ?? ''}{infos?.pays ? `, ${infos.pays}` : ''}
 			</p>
 			<div class="contact">
-				<a href="mailto:{infos.email}">{infos.email}</a>
-				<a href="tel:{infos.telephone}">{infos.telephone}</a>
+				{#if infos?.email}<a href="mailto:{infos.email}">{infos.email}</a>{/if}
+				{#if infos?.telephone}<a href="tel:{infos.telephone}">{infos.telephone}</a>{/if}
 			</div>
 		</div>
 
@@ -170,13 +169,15 @@
 				{/each}
 			</ul>
 
+			{#if cuisine?.midi || cuisine?.soir}
 			<div class="kitchen">
 				<span class="label">Service en cuisine</span>
 				<p>
-					Midi · <strong>{cuisine.midi}</strong><br />
-					Soir · <strong>{cuisine.soir}</strong>
+					{#if cuisine?.midi}Midi · <strong>{cuisine.midi}</strong><br />{/if}
+					{#if cuisine?.soir}Soir · <strong>{cuisine.soir}</strong>{/if}
 				</p>
 			</div>
+			{/if}
 		</div>
 
 		<div class="col col--map">
@@ -198,7 +199,7 @@
 					</div>
 				{/if}
 			</div>
-			<span class="map__cap">{infos.adresse} - {infos.ville}</span>
+			<span class="map__cap">{infos?.adresse ?? ''}{infos?.ville ? ` - ${infos.ville}` : ''}</span>
 
 			<a class="reserv" href="/template/cafe-des-delices/reservation">
 				<span>Réserver une table</span>

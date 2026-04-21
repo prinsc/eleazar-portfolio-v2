@@ -1,6 +1,21 @@
 <script>
-	import { menus } from './data.js';
 	import MenuCard from './MenuCard.svelte';
+
+	let { menus = [] } = $props();
+
+	// L'API retourne { id, name, price, data: { sections: [...] } }
+	// MenuCard attend { num, nom, prix, sections: [{ titre, choix }] }
+	function normaliseMenu(m, i) {
+		if (m.nom !== undefined) return m;
+		return {
+			num:      String(i + 1).padStart(2, '0'),
+			nom:      m.name ?? m.nom ?? '',
+			prix:     m.price ?? m.prix ?? '',
+			sections: m.data?.sections ?? m.sections ?? []
+		};
+	}
+
+	const menusData = $derived((menus ?? []).map(normaliseMenu));
 </script>
 
 <section class="menus" id="menus">
@@ -18,7 +33,7 @@
 	</header>
 
 	<div class="menus__grid">
-		{#each menus as m}
+		{#each menusData as m}
 			<MenuCard menu={m} />
 		{/each}
 	</div>

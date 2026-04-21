@@ -1,6 +1,5 @@
 <script>
 	import { onMount } from 'svelte';
-	import { heroImage, platDuJour } from './data.js';
 	const jour = new Date().toLocaleDateString('fr-BE', {
 		weekday: 'long',
 		day: 'numeric',
@@ -16,7 +15,79 @@
 	let ledeEl;
 	let footerEl;
 
-	let { infos } = $props();
+	let {
+		restaurant_parametres = null,
+		infos = null,
+		platDuJour = null,
+		heroImage = null,
+		horaires = null
+	} = $props();
+	const pdj = $derived(platDuJour);
+
+	const ABBR = {
+		Lundi: 'Lun',
+		Mardi: 'Mar',
+		Mercredi: 'Mer',
+		Jeudi: 'Jeu',
+		Vendredi: 'Ven',
+		Samedi: 'Sam',
+		Dimanche: 'Dim'
+	};
+
+	function fmtTime(t) {
+		// "10:00" or "10h00" or "10:30" → "10h" or "10h30"
+		const s = String(t).replace(':', 'h');
+		return s.endsWith('h00') ? s.slice(0, -2) : s;
+	}
+
+	function fmtPeriodes(periodes) {
+		return periodes.map((p) => `${fmtTime(p.debut)}–${fmtTime(p.fin)}`).join(' & ');
+	}
+
+	function periodesKey(periodes) {
+		return periodes.map((p) => `${p.debut}-${p.fin}`).join('|');
+	}
+
+	function buildHorairesLabel(raw) {
+		if (!raw || !Array.isArray(raw) || raw.length === 0) return null;
+
+		const open = raw.filter((d) => !d.ferme && d.periodes?.length);
+		if (open.length === 0) return 'Fermé';
+
+		// Trouve le schedule majoritaire
+		const freq = {};
+		for (const d of open) {
+			const k = periodesKey(d.periodes);
+			freq[k] = freq[k] ?? { count: 0, periodes: d.periodes };
+			freq[k].count++;
+		}
+		const majority = Object.values(freq).sort((a, b) => b.count - a.count)[0];
+
+		// Exceptions = jours qui dévient du majoritaire
+		const exceptions = open.filter(
+			(d) => periodesKey(d.periodes) !== periodesKey(majority.periodes)
+		);
+
+		const allOpen = open.length === raw.length;
+		const base = fmtPeriodes(majority.periodes);
+		const prefix = allOpen ? 'Tous les jours ' : '';
+
+		if (exceptions.length === 0) {
+			return `${prefix}${base}`;
+		}
+
+		const excStr = exceptions
+			.map((d) => `${ABBR[d.j] ?? d.j} dès ${fmtTime(d.periodes[0].debut)}`)
+			.join(', ');
+		return `${prefix}${base} (${excStr})`;
+	}
+
+	const horairesLabel = $derived(buildHorairesLabel(horaires));
+	const imgSrc = $derived(
+		heroImage ??
+			infos?.heroImage ??
+			'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1800&q=85'
+	);
 
 	onMount(async () => {
 		const { gsap } = await import('gsap');
@@ -109,7 +180,8 @@
 			<span class="hero__eyebrow">
 				<span class="rule" bind:this={eyebrowRule}></span>
 				<span class="eb-text" bind:this={eyebrowText}>
-					Restaurant · Grand Place d'Ath 8 · Belgique
+					Restaurant · {infos?.adresseComplete}
+					{infos?.pays}
 				</span>
 			</span>
 
@@ -123,7 +195,7 @@
 
 			<div class="hero__lede" bind:this={ledeEl}>
 				<p>
-					{infos.description}
+					{infos?.description ?? ''}
 				</p>
 				<a class="more" href="#grilles">
 					<span>Voir les deux faces du lieu</span>
@@ -145,64 +217,70 @@
 		<div class="hero__right">
 			<figure class="hero__photo" bind:this={photoEl}>
 				<!-- Image à remplacer par le client -->
-				<img src={heroImage} alt="Grillade en cuisine" loading="eager" bind:this={photoImgEl} />
+				<img src={imgSrc} alt="Grillade en cuisine" loading="eager" bind:this={photoImgEl} />
 				<figcaption>
 					<span class="num">N<sup>o</sup> 01</span>
 					<span class="cap">À la flamme</span>
 				</figcaption>
 			</figure>
 
-			<div class="pdj">
-				<div class="pdj__header">
-					<span class="pdj__tag">Plat du jour</span>
-					<time class="pdj__date">{jour}</time>
-				</div>
+			{#if pdj}
+				<div class="pdj">
+					<div class="pdj__header">
+						<span class="pdj__tag">Plat du jour</span>
+						<time class="pdj__date">{jour}</time>
+					</div>
 
-				{#if platDuJour.type === 'image'}
-					<div class="pdj__content pdj__content--img">
-						<figure class="pdj__fig">
-							<img src={platDuJour.image} alt={platDuJour.imageAlt} loading="lazy" />
-						</figure>
-						<div class="pdj__info">
-							<span class="pdj__nom">{platDuJour.nom}</span>
-							{#if platDuJour.prix}
-								<span class="pdj__prix">{platDuJour.prix} &euro;</span>
+					{#if pdj.type === 'image'}
+						<div class="pdj__content pdj__content--img">
+							<figure class="pdj__fig">
+								<img src={pdj.image} alt={pdj.imageAlt} loading="lazy" />
+							</figure>
+							<div class="pdj__info">
+								<span class="pdj__nom">{pdj.nom}</span>
+								{#if pdj.prix}
+									<span class="pdj__prix">{pdj.prix} &euro;</span>
+								{/if}
+							</div>
+						</div>
+					{:else}
+						<div class="pdj__content pdj__content--txt">
+							<div class="pdj__main">
+								<span class="pdj__nom">{pdj.nom}</span>
+								{#if pdj.badge}
+									<span class="pdj__badge">{pdj.badge}</span>
+								{/if}
+							</div>
+							<p class="pdj__desc">{pdj.description}</p>
+							{#if pdj.accompagnement}
+								<p class="pdj__acc">{pdj.accompagnement}</p>
+							{/if}
+							{#if pdj.prix}
+								<span class="pdj__prix">{pdj.prix} &euro;</span>
 							{/if}
 						</div>
-					</div>
-				{:else}
-					<div class="pdj__content pdj__content--txt">
-						<div class="pdj__main">
-							<span class="pdj__nom">{platDuJour.nom}</span>
-							{#if platDuJour.badge}
-								<span class="pdj__badge">{platDuJour.badge}</span>
-							{/if}
-						</div>
-						<p class="pdj__desc">{platDuJour.description}</p>
-						{#if platDuJour.accompagnement}
-							<p class="pdj__acc">{platDuJour.accompagnement}</p>
-						{/if}
-						{#if platDuJour.prix}
-							<span class="pdj__prix">{platDuJour.prix} &euro;</span>
-						{/if}
-					</div>
-				{/if}
-			</div>
+					{/if}
+				</div>
+			{/if}
 		</div>
 	</div>
 
 	<div class="hero__footer" bind:this={footerEl}>
 		<span class="item">
 			<span class="label">Adresse</span>
-			Grand Place, Ath
+			{infos?.adresseComplete}<br />
+			{infos?.pays}
 		</span>
 		<span class="item">
 			<span class="label">Ouvert</span>
-			Tous les jours
+			{horairesLabel ?? '—'}
 		</span>
 		<span class="item">
 			<span class="label">Spécialités</span>
-			Grillades · Bières
+			{#each restaurant_parametres?.specialites ?? [] as s, index}
+				{index > 0 ? ' • ' : ''}
+				{s}
+			{/each}
 		</span>
 		<span class="item item--right">
 			<span class="label">Faites défiler</span>

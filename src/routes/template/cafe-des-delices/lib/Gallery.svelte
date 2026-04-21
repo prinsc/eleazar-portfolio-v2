@@ -41,10 +41,10 @@
 				{#each col as g}
 					<figure class="tile" class:tile--tall={g.tall}>
 						<!-- Image à remplacer par le client -->
-						<img src={g.src} alt={g.alt} loading="lazy" />
+						<img src={g.src} alt={g.alt || g.label || 'Photo Café des Délices'} loading="lazy" />
 						<figcaption>
 							<span class="num">{String(g.idx + 1).padStart(2, '0')}</span>
-							<span class="lbl">{g.label}</span>
+							{#if g.label}<span class="lbl">{g.label}</span>{/if}
 						</figcaption>
 					</figure>
 				{/each}
@@ -62,10 +62,10 @@
 						class:tile--tall={g.tall}
 						class:tile--hidden={!showAll && g.idx >= MOBILE_INITIAL}
 					>
-						<img src={g.src} alt={g.alt} loading="lazy" />
+						<img src={g.src} alt={g.alt || g.label || 'Photo Café des Délices'} loading="lazy" />
 						<figcaption>
 							<span class="num">{String(g.idx + 1).padStart(2, '0')}</span>
-							<span class="lbl">{g.label}</span>
+							{#if g.label}<span class="lbl">{g.label}</span>{/if}
 						</figcaption>
 					</figure>
 				{/each}
@@ -88,6 +88,15 @@
 				</svg>
 			</button>
 		{/if}
+	</div>
+
+	<div class="gal__cta-row">
+		<a href="/template/cafe-des-delices/galerie" class="gal__cta">
+			Voir toute la galerie
+			<svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+				<path d="M5 12h14M13 6l6 6-6 6" />
+			</svg>
+		</a>
 	</div>
 </section>
 
@@ -269,5 +278,32 @@
 	.show-more:hover {
 		background: var(--slate);
 		color: var(--cream);
+	}
+
+	.gal__cta-row {
+		display: flex;
+		justify-content: center;
+		margin-top: 3rem;
+	}
+
+	.gal__cta {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.6em;
+		font-family: var(--f-mono);
+		font-size: 11px;
+		letter-spacing: 0.2em;
+		text-transform: uppercase;
+		text-decoration: none;
+		color: var(--slate);
+		padding-bottom: 0.4em;
+		border-bottom: 1px solid var(--slate);
+		transition: gap 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+
+		&:hover {
+			gap: 1em;
+			color: var(--ember);
+			border-color: var(--ember);
+		}
 	}
 </style>

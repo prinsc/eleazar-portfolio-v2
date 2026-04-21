@@ -1,6 +1,8 @@
 <script>
-	import { avis } from './data.js';
 	import emblaCarouselSvelte from 'embla-carousel-svelte';
+
+	let { avis = [] } = $props();
+	const avisData = $derived(avis ?? []);
 
 	let emblaApi;
 	let canScrollPrev = $state(false);
@@ -34,7 +36,9 @@
 	};
 
 	// Note moyenne
-	const moyenne = (avis.reduce((s, a) => s + a.note, 0) / avis.length).toFixed(1);
+	const moyenne = $derived(
+		avisData.length ? (avisData.reduce((s, a) => s + a.note, 0) / avisData.length).toFixed(1) : '5.0'
+	);
 </script>
 
 <section class="avis" id="avis">
@@ -63,14 +67,14 @@
 				{/each}
 				<span class="avg">{moyenne}</span>
 			</div>
-			<span class="count">{avis.length} avis Google</span>
+			<span class="count">{avisData.length} avis Google</span>
 		</div>
 	</div>
 
 	<div class="avis__carousel">
 		<div class="embla" use:emblaCarouselSvelte={{ options: emblaOptions }} onemblaInit={onInit}>
 			<div class="embla__container">
-				{#each avis as a}
+				{#each avisData as a}
 					<div class="embla__slide">
 						<article class="card">
 							<div class="card__top">

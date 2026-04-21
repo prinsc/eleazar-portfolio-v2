@@ -5,7 +5,8 @@
 	import Footer from './lib/Footer.svelte';
 	import Grain from './lib/Grain.svelte';
 
-	let { children } = $props();
+	let { data, children } = $props();
+	const sections = $derived(data?.sections ?? {});
 </script>
 
 <svelte:head>
@@ -20,11 +21,11 @@
 <Grain />
 
 <div class="app">
-	<Nav />
+	<Nav {sections} />
 	<main>
 		{@render children()}
 	</main>
-	<Footer />
+	<Footer infos={data?.infos} socials={data?.socials} />
 </div>
 
 <style>

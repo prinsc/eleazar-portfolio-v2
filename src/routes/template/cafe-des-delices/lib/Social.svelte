@@ -1,5 +1,6 @@
 <script>
-	import { socials } from './data.js';
+	let { socials = [] } = $props();
+	const socialsData = $derived(socials ?? []);
 
 	const iconPaths = {
 		facebook: 'M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z',
@@ -8,7 +9,7 @@
 		tripadvisor: 'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14a2 2 0 110-4 2 2 0 010 4zm4 0a2 2 0 110-4 2 2 0 010 4z'
 	};
 
-	const activeSocials = $derived(socials.filter(s => s.actif));
+	const activeSocials = $derived(socialsData.filter(s => s.actif));
 </script>
 
 <section class="social" id="social">

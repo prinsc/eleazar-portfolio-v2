@@ -1,11 +1,15 @@
-import { CAFE_DELICE, CF_SECRET } from '$env/static/private';
+import { CAFE_DELICE, CF_SECRET, API_URL } from '$env/static/private';
 
-const API_URL = 'https://admin.kltk.be/api';
-// const API_URL = 'http://localhost:5174/api';
 const ORG_SLUG = 'le-cafe-des-delices';
 
-async function fetchSection(section, key) {
-	const res = await fetch(`${API_URL}/${ORG_SLUG}/?sections=${section}`, {
+const ALL_SECTIONS = [
+	'infos', 'horaires', 'horaires-cuisine', 'alerte', 'fermetures',
+	'seo', 'cta', 'plat_du_jour', 'socials', 'avis', 'poles',
+	'carte', 'menus', 'galerie', 'events', 'news', 'blog','restaurant_parametres'
+].join(',');
+
+async function fetchAll(key) {
+	const res = await fetch(`${API_URL}/${ORG_SLUG}?sections=${ALL_SECTIONS}`, {
 		headers: {
 			Authorization: `Bearer ${key}`,
 			'x-cf-secret': CF_SECRET
@@ -16,8 +20,7 @@ async function fetchSection(section, key) {
 }
 
 export const load = async () => {
-	// const data = await fetchSection('horaires,poles,galerie,infos', CAFE_DELICE);
 	return {
-		streamed: fetchSection('horaires,poles,galerie,infos', CAFE_DELICE)
+		streamed: fetchAll(CAFE_DELICE)
 	};
 };

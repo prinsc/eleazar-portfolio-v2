@@ -16,7 +16,7 @@ Ces règles sont spécifiques à ce template mais devraient s'appliquer à tous 
 - Y placer tous les composants Svelte réutilisables (Nav, Footer, Hero, MenuItem, SectionHeader, etc.)
 - **Ne JAMAIS importer depuis `$lib/`** (le `$lib` du projet kltk principal)
 - Import relatif : `import Nav from './lib/Nav.svelte'` dans `+page.svelte`
-- Pareil pour les données : `./lib/data.js` plutôt que des tableaux inline dans chaque page
+- Données : **plus de `data.js`**. Les pages utilisent l'API KLTK Studio via `+page.server.js` et affichent le composant `Skeleton` en attendant. Voir [lib/Skeleton.svelte](./lib/Skeleton.svelte).
 
 ### 2. Pages multiples autorisées (et encouragées)
 

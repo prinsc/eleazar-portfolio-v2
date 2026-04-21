@@ -1,7 +1,6 @@
 <script>
 	// Accueil - Le Café des Délices (Ath)
-	// Cette page assemble des composants du dossier ./lib/
-	// Tout est autonome et local au template.
+	import Alert from './lib/Alert.svelte';
 	import Hero from './lib/Hero.svelte';
 	import Pole from './lib/Pole.svelte';
 	import MenusPreview from './lib/MenusPreview.svelte';
@@ -9,90 +8,107 @@
 	import Avis from './lib/Avis.svelte';
 	import Social from './lib/Social.svelte';
 	import Visite from './lib/Visite.svelte';
-	import { poles as polesStatic, galerie as galerieStatic, infos as infosStatic } from './lib/data.js';
+	import EventsPreview from './lib/EventsPreview.svelte';
+	import NewsPreview from './lib/NewsPreview.svelte';
+	import Skeleton from './lib/Skeleton.svelte';
 
 	let { data } = $props();
 
-	// Normalise la réponse API : supporte { sections: { infos: { data } } } ou objet plat
+	let resolved = $state(null);
+	let failed = $state(false);
+
+	data.streamed
+		?.then((raw) => {
+			resolved = normalise(raw);
+		})
+		.catch(() => {
+			failed = true;
+		});
+
 	function normalise(raw) {
 		if (!raw) return {};
-		const sections = raw.sections ?? raw;
 		return {
-			infos:    sections.infos?.data    ?? sections.infos    ?? null,
-			poles:    sections.poles?.data    ?? sections.poles    ?? null,
-			galerie:  sections.galerie?.data  ?? sections.galerie  ?? null,
-			horaires: sections.horaires?.data ?? sections.horaires ?? null,
+			infos: raw.infos?.data ?? raw.infos ?? null,
+			poles: raw.poles?.data ?? raw.poles ?? null,
+			galerie: Array.isArray(raw.galerie) ? raw.galerie : null,
+			horaires: raw.horaires?.data ?? raw.horaires ?? null,
+			cuisine: raw['horaires-cuisine']?.data ?? raw['horaires-cuisine'] ?? null,
+			alerte: raw.alerte?.data ?? raw.alerte ?? null,
+			fermetures: raw.fermetures?.data ?? raw.fermetures ?? null,
+			cta: raw.cta?.data ?? raw.cta ?? null,
+			plat_du_jour: raw.plat_du_jour?.data ?? raw.plat_du_jour ?? null,
+			socials: raw.socials?.data ?? raw.socials ?? null,
+			avis: raw.avis?.data ?? raw.avis ?? null,
+			menus: Array.isArray(raw.menus) ? raw.menus : null,
+			carte: raw.carte ?? null,
+			events: Array.isArray(raw.events) ? raw.events : null,
+			news: Array.isArray(raw.news) ? raw.news : null,
+			blog: Array.isArray(raw.blog) ? raw.blog : null,
+			seo: raw.seo?.data ?? raw.seo ?? null,
+			restaurant_parametres: raw.restaurant_parametres?.data ?? raw.restaurant_parametres ?? null
 		};
 	}
+	const d = $derived(resolved ?? {});
 </script>
 
 <svelte:head>
-	<title>Le Café des Délices - Grand Place 8, 7800 Ath</title>
-	<meta
-		name="description"
-		content="Restaurant Le Café des Délices à Ath. Grillades, bières belges d'exception, terrasse sur la Grand Place."
-	/>
+	<title>{d.seo?.titleDefault ?? 'Le Café des Délices - Restaurant & Brasserie à Ath'}</title>
+	<meta name="description" content={d.seo?.description ?? ''} />
 </svelte:head>
 
-<!--
-	Hero s'affiche IMMÉDIATEMENT avec données locales.
-	Il gère lui-même sa visibilité via CSS + GSAP (visibility: hidden → visible)
-	pour éviter tout flash avant que les animations soient prêtes.
--->
-<Hero infos={infosStatic} />
+{#if !resolved && !failed}
+	<Skeleton variant="home" />
+{:else if failed}
+	<Skeleton variant="home" />
+{:else}
+	<Alert alerte={d.alerte} />
 
-<!--
-	Le reste de la page attend les données API.
-	Pendant ce temps : fond cream, le hero anime déjà.
-	En cas d'erreur : fallback sur données locales.
--->
-{#await data.streamed}
-	<!-- Sections sous le fold — vide pendant le chargement (invisible sous le hero) -->
-
-{:then apiData}
-	{@const d = normalise(apiData)}
-	{@const poles   = d.poles   ?? polesStatic}
-	{@const galerie = d.galerie ?? galerieStatic}
-
-	{#each poles as pole, index}
-		<Pole
-			{pole}
-			id={pole.titre.toLowerCase().replace(/\s+/g, '-')}
-			layout={pole.layout}
-			flip={pole.flip}
-			num={index + 1}
+	{#if d.infos}
+		<Hero
+			infos={d.infos}
+			platDuJour={d.plat_du_jour}
+			horaires={d.horaires}
+			restaurant_parametres={d.restaurant_parametres}
 		/>
-	{/each}
+	{:else}
+		<Skeleton variant="hero-only" />
+	{/if}
 
-	<MenusPreview />
+	{#if d.poles}
+		{#each d.poles as pole, index}
+			<Pole
+				{pole}
+				id={pole.titre?.toLowerCase().replace(/\s+/g, '-')}
+				layout={pole.layout}
+				flip={pole.flip}
+				num={index + 1}
+			/>
+		{/each}
+	{/if}
 
-	<Gallery {galerie} />
+	{#if d.menus}
+		<MenusPreview menus={d.menus} />
+	{/if}
 
-	<Avis />
+	{#if d.events && d.events.length > 0}
+		<EventsPreview events={d.events} />
+	{/if}
 
-	<Social />
+	{#if d.galerie}
+		<Gallery galerie={d.galerie} />
+	{/if}
 
-	<Visite horairesAPI={d.horaires} />
+	{#if d.news && d.news.length > 0}
+		<NewsPreview news={d.news} />
+	{/if}
 
-{:catch}
-	<!-- Erreur API : fallback statique complet -->
-	{#each polesStatic as pole, index}
-		<Pole
-			{pole}
-			id={pole.titre.toLowerCase().replace(/\s+/g, '-')}
-			layout={pole.layout}
-			flip={pole.flip}
-			num={index + 1}
-		/>
-	{/each}
+	{#if d.avis}
+		<Avis avis={d.avis} />
+	{/if}
 
-	<MenusPreview />
+	{#if d.socials}
+		<Social socials={d.socials} />
+	{/if}
 
-	<Gallery galerie={galerieStatic} />
-
-	<Avis />
-
-	<Social />
-
-	<Visite />
-{/await}
+	<Visite horairesAPI={d.horaires} infos={d.infos} cuisine={d.cuisine} />
+{/if}
