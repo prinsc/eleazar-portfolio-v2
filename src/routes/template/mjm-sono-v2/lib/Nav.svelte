@@ -1,42 +1,28 @@
 <script>
 	import { onMount } from 'svelte';
 
-	const base = '/template/mjm-sono-v2';
+	const base = '/template/mjm-sono';
 
 	const links = [
-		{ href: '#prestations', label: 'PRESTATIONS', ch: 'CH·01' },
-		{ href: '#telechargements', label: 'PRESS·KIT', ch: 'CH·02' },
-		{ href: '#tonnelle', label: 'TONNELLE', ch: 'CH·03' },
-		{ href: '#chambre', label: 'HÔTE', ch: 'CH·04' },
-		{ href: '#confiance', label: 'CLIENTS', ch: 'CH·05' },
-		{ href: '#contact', label: 'CONTACT', ch: 'CH·06' }
+		{ href: '#prestations', label: 'Prestations', num: '01' },
+		{ href: '#telechargements', label: 'Téléchargements', num: '02' },
+		{ href: '#tonnelle', label: 'Tonnelle', num: '03' },
+		{ href: '#chambre', label: 'Chambre d\'hôte', num: '04' },
+		{ href: '#confiance', label: 'Confiance', num: '05' },
+		{ href: '#contact', label: 'Contact', num: '06' }
 	];
 
 	let menuOpen = $state(false);
 	let scrolled = $state(false);
-	let now = $state('00:00:00');
 
 	function toggleMenu() { menuOpen = !menuOpen; }
 	function closeMenu() { menuOpen = false; }
 
-	function tick() {
-		const d = new Date();
-		const h = String(d.getHours()).padStart(2, '0');
-		const m = String(d.getMinutes()).padStart(2, '0');
-		const s = String(d.getSeconds()).padStart(2, '0');
-		now = `${h}:${m}:${s}`;
-	}
-
 	onMount(() => {
-		tick();
-		const id = setInterval(tick, 1000);
 		const onScroll = () => { scrolled = window.scrollY > 40; };
 		onScroll();
 		window.addEventListener('scroll', onScroll, { passive: true });
-		return () => {
-			clearInterval(id);
-			window.removeEventListener('scroll', onScroll);
-		};
+		return () => window.removeEventListener('scroll', onScroll);
 	});
 
 	$effect(() => {
@@ -46,370 +32,334 @@
 	});
 </script>
 
-<!-- Rail supérieur type bandeau LCD régie -->
-<header class="rail" class:rail--hide={scrolled}>
-	<span class="rail__slot">
-		<span class="rail__dot rail__dot--green"></span>
-		<span class="rail__txt">ON AIR · DISPO</span>
+<header class="topbar" class:topbar--solid={scrolled}>
+	<span class="topbar__left">Ostiches · Belgique · Depuis 30 ans</span>
+	<span class="topbar__center">
+		<span class="dot"></span>
+		<span>Disponible pour votre événement</span>
 	</span>
-	<span class="rail__slot rail__slot--center">
-		<span class="rail__tc">[TC {now}]</span>
-		<span class="rail__sep">//</span>
-		<span class="rail__txt">OSTICHES · BE · 50.6617°N 3.6924°E</span>
-	</span>
-	<span class="rail__slot rail__slot--end">
-		<span class="rail__txt">GSM · +32 475 30 73 33</span>
-	</span>
+	<span class="topbar__right">GSM · +32 475 30 73 33</span>
 </header>
 
 <nav class="nav" class:nav--scrolled={scrolled} class:nav--open={menuOpen}>
-	<!-- Brand = module rack carré -->
-	<a class="mark" href={base} aria-label="MJM Sonorisation">
-		<span class="mark__grid">
-			<span class="mark__letter">M</span>
-			<span class="mark__letter">J</span>
-			<span class="mark__letter">M</span>
-			<span class="mark__dot"></span>
-		</span>
-		<span class="mark__meta">
-			<span>SONO/YOHAN</span>
-			<span class="mark__meta-sub">v.30 · EST·1995</span>
-		</span>
+	<a class="brand" href={base}>
+		<span class="brand__mark">MJM</span>
+		<span class="brand__sep"></span>
+		<span class="brand__sub">Sonorisation <em>&amp; Yohan</em></span>
 	</a>
 
-	<!-- Index numéroté style patch bay -->
-	<ul class="index">
+	<ul class="links">
 		{#each links as l}
 			<li>
 				<a href={l.href}>
-					<span class="index__ch">{l.ch}</span>
-					<span class="index__label">{l.label}</span>
+					<span class="links__num">{l.num}</span>
+					<span class="links__txt">{l.label}</span>
 				</a>
 			</li>
 		{/each}
 	</ul>
 
-	<div class="end">
-		<a class="quote" href="#contact">
-			<span class="quote__led"></span>
-			<span>DEVIS</span>
-			<span class="quote__sq"></span>
+	<div class="nav__right">
+		<a class="cta" href="#contact" aria-label="Demander un devis">
+			<span>Devis</span>
+			<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+				<path d="M5 12h14M13 6l6 6-6 6" />
+			</svg>
 		</a>
 		<button
 			class="burger"
 			class:open={menuOpen}
 			onclick={toggleMenu}
-			aria-label={menuOpen ? 'Fermer' : 'Menu'}
+			aria-label={menuOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
 			aria-expanded={menuOpen}
 		>
-			<span></span><span></span><span></span>
+			<span></span>
+			<span></span>
 		</button>
 	</div>
 </nav>
 
-<div class="sheet" class:sheet--open={menuOpen} aria-hidden={!menuOpen}>
-	<div class="sheet__grid">
-		<div class="sheet__side">
-			<span class="sheet__k">INDEX</span>
-			<span class="sheet__v">{String(links.length).padStart(2, '0')} CH</span>
-			<span class="sheet__rule"></span>
-			<span class="sheet__k">TC</span>
-			<span class="sheet__v sheet__v--mono">{now}</span>
-			<span class="sheet__rule"></span>
-			<span class="sheet__k">STATUS</span>
-			<span class="sheet__v sheet__v--on">ON AIR</span>
-		</div>
+<div class="fullmenu" class:fullmenu--open={menuOpen} aria-hidden={!menuOpen}>
+	<div class="fullmenu__deco" aria-hidden="true">
+		<span class="fullmenu__label">Menu</span>
+		<div class="fullmenu__rule"></div>
+		<span class="fullmenu__label">MJM / 01</span>
+	</div>
 
-		<ul class="sheet__list">
+	<nav class="fullmenu__nav" aria-label="Navigation principale">
+		<ul class="fullmenu__list">
 			{#each links as l, i}
-				<li class="sheet__item" style="--i: {i}">
-					<a href={l.href} class="sheet__link" onclick={closeMenu}>
-						<span class="sheet__ch">{l.ch}</span>
-						<span class="sheet__text">{l.label}</span>
-						<span class="sheet__arrow">→</span>
+				<li class="fullmenu__item" style="--i: {i}">
+					<a href={l.href} class="fullmenu__link" onclick={closeMenu}>
+						<span class="fullmenu__num">{l.num}</span>
+						<span class="fullmenu__text">{l.label}</span>
 					</a>
 				</li>
 			{/each}
 		</ul>
-	</div>
 
-	<div class="sheet__foot">
-		<span>337 ROUTE DE FLOBECQ · 7804 OSTICHES</span>
-		<a href="#contact" class="sheet__cta" onclick={closeMenu}>
-			<span>DEMANDER UN DEVIS</span>
-			<span class="sheet__cta-sq"></span>
+		<a class="fullmenu__cta" href="#contact" onclick={closeMenu}>
+			<span>Demander un devis</span>
+			<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+				<path d="M5 12h14M13 6l6 6-6 6" />
+			</svg>
 		</a>
+	</nav>
+
+	<div class="fullmenu__footer">
+		<p>337, route de Flobecq · 7804 Ostiches</p>
+		<p>contact@mjmsono.be · +32 475 30 73 33</p>
 	</div>
 </div>
 
 <style lang="scss">
 	@use './styles/mixins' as *;
 
-	/* ========== RAIL LCD supérieur ========== */
-	.rail {
+	.topbar {
 		display: none;
-		padding: 0.55rem 1.25rem;
+		padding: 0.7rem 1.5rem;
 		font-family: var(--f-mono);
 		font-size: 10px;
-		letter-spacing: 0.15em;
+		letter-spacing: 0.18em;
 		text-transform: uppercase;
-		color: var(--ink-dim);
+		color: var(--bone-soft);
 		position: fixed;
 		top: 0; left: 0; right: 0;
 		z-index: 50;
-		background: var(--panel);
-		border-bottom: 1px solid var(--rule-hot);
-		transition: transform 0.4s ease, opacity 0.4s ease;
+		background: var(--void);
+		border-bottom: 1px solid var(--rule);
+		transition: opacity 0.4s ease, transform 0.4s ease;
 
 		@include breakpoint('medium') {
 			display: grid;
-			grid-template-columns: 1fr 2fr 1fr;
+			grid-template-columns: 1fr auto 1fr;
 			align-items: center;
 			gap: 1rem;
 		}
 
-		&--hide {
-			transform: translateY(-100%);
+		&--solid {
 			opacity: 0;
+			transform: translateY(-100%);
 			pointer-events: none;
 		}
 	}
-	.rail__slot {
+	.topbar__left { justify-self: start; }
+	.topbar__center {
 		display: inline-flex;
 		align-items: center;
-		gap: 0.7em;
-		&--center { justify-self: center; color: var(--ink); }
-		&--end { justify-self: end; }
+		gap: 0.65em;
+		justify-self: center;
+		color: var(--bone);
 	}
-	.rail__dot {
-		width: 8px; height: 8px;
-		display: inline-block;
-		&--green {
-			background: var(--led);
-			box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.2), 0 0 12px rgba(34, 197, 94, 0.55);
-			animation: pulseLed 1.8s ease-in-out infinite;
-		}
+	.topbar__right { justify-self: end; }
+	.dot {
+		width: 6px;
+		height: 6px;
+		border-radius: 50%;
+		background: var(--gold);
+		box-shadow: 0 0 0 3px rgba(201, 169, 107, 0.18);
+		animation: pulse 2.4s ease-in-out infinite;
 	}
-	@keyframes pulseLed {
+	@keyframes pulse {
 		0%, 100% { opacity: 1; }
 		50% { opacity: 0.4; }
 	}
-	.rail__tc { color: var(--signal); letter-spacing: 0.08em; }
-	.rail__sep { color: var(--ink-mute); }
 
-	/* ========== NAV principale ========== */
 	.nav {
 		display: grid;
 		grid-template-columns: auto 1fr auto;
-		align-items: stretch;
-		padding: 0;
-		background: rgba(10, 10, 11, 0.68);
-		backdrop-filter: saturate(160%) blur(16px);
-		-webkit-backdrop-filter: saturate(160%) blur(16px);
+		align-items: center;
+		padding: 1rem 1.25rem;
+		background: transparent;
 		position: fixed;
 		top: 0;
-		left: 0; right: 0;
+		left: 0;
+		right: 0;
 		z-index: 60;
-		border-bottom: 1px solid var(--rule);
-		transition: top 0.4s ease, background 0.45s ease, border-color 0.4s ease;
+		transition: background 0.45s ease, backdrop-filter 0.45s ease, border-color 0.45s ease, padding 0.35s ease, top 0.4s ease;
+		border-bottom: 1px solid transparent;
 
 		@include breakpoint('medium') {
 			top: 34px;
+			padding: 1.25rem 2rem;
 		}
 
 		&--scrolled {
 			top: 0;
-			background: rgba(10, 10, 11, 0.92);
-			border-bottom-color: var(--rule-hot);
+			background: rgba(11, 11, 12, 0.82);
+			backdrop-filter: saturate(140%) blur(14px);
+			-webkit-backdrop-filter: saturate(140%) blur(14px);
+			border-bottom-color: var(--rule);
+			padding: 0.85rem 1.25rem;
+
+			@include breakpoint('medium') {
+				padding: 0.95rem 2rem;
+			}
 		}
 	}
 
-	/* Brand mark = module carré */
-	.mark {
+	.brand {
 		display: inline-flex;
 		align-items: center;
-		gap: 0.85rem;
+		gap: 0.75rem;
 		text-decoration: none;
-		color: var(--ink);
-		padding: 0.75rem 1.25rem;
-		border-right: 1px solid var(--rule);
+		color: var(--bone);
 		position: relative;
 		z-index: 61;
-
-		@include breakpoint('medium') {
-			padding: 0.75rem 1.5rem;
-		}
 	}
-	.mark__grid {
-		display: grid;
-		grid-template-columns: repeat(2, 1fr);
-		grid-template-rows: repeat(2, 1fr);
-		gap: 1px;
-		width: 36px;
-		height: 36px;
-		background: var(--rule-hot);
-		padding: 1px;
-		background-clip: padding-box;
-	}
-	.mark__letter {
-		background: var(--signal);
-		color: var(--bg);
+	.brand__mark {
 		font-family: var(--f-display);
-		font-size: 10px;
-		display: flex;
-		align-items: center;
-		justify-content: center;
+		font-weight: 600;
+		font-size: 1.4rem;
+		letter-spacing: -0.02em;
 		line-height: 1;
 	}
-	.mark__letter:nth-child(3) { background: var(--ink); }
-	.mark__dot {
-		background: var(--led);
-		box-shadow: inset 0 0 4px rgba(34, 197, 94, 0.8);
+	.brand__sep {
+		width: 1px;
+		height: 24px;
+		background: var(--rule-strong);
 	}
-	.mark__meta {
-		display: none;
-		flex-direction: column;
-		gap: 0.15rem;
+	.brand__sub {
 		font-family: var(--f-mono);
 		font-size: 10px;
-		letter-spacing: 0.14em;
-		line-height: 1.1;
-		color: var(--ink);
-
-		@include breakpoint('small') {
-			display: flex;
-		}
+		letter-spacing: 0.2em;
+		text-transform: uppercase;
+		color: var(--bone-soft);
+		line-height: 1.2;
+		max-width: 9ch;
 	}
-	.mark__meta-sub {
-		color: var(--signal);
-		font-size: 9px;
+	.brand__sub em {
+		color: var(--gold);
+		font-style: normal;
 	}
 
-	/* Index patch bay */
-	.index {
+	.links {
 		list-style: none;
+		display: none;
+		gap: 2rem;
 		margin: 0;
 		padding: 0;
-		display: none;
-		align-items: stretch;
-		justify-content: flex-end;
+		justify-content: center;
 
 		@include breakpoint('xlarge') {
 			display: flex;
 		}
 	}
-	.index li { display: flex; }
-	.index a {
+	.links a {
 		display: inline-flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: flex-start;
-		gap: 0.15rem;
-		padding: 0 1.1rem;
-		text-decoration: none;
-		border-left: 1px solid var(--rule);
-		transition: background 0.3s ease, color 0.3s ease;
-		position: relative;
-
-		&:hover {
-			background: var(--signal);
-			.index__ch { color: var(--bg); opacity: 0.8; }
-			.index__label { color: var(--bg); }
-		}
-	}
-	.index__ch {
+		align-items: baseline;
+		gap: 0.5em;
 		font-family: var(--f-mono);
-		font-size: 9px;
-		letter-spacing: 0.18em;
-		color: var(--signal);
-	}
-	.index__label {
-		font-family: var(--f-mono);
-		font-weight: 500;
 		font-size: 11px;
-		letter-spacing: 0.14em;
-		color: var(--ink);
+		letter-spacing: 0.18em;
+		text-transform: uppercase;
+		text-decoration: none;
+		color: var(--bone-soft);
+		padding: 0.3em 0;
+		transition: color 0.3s ease;
+		position: relative;
 	}
+	.links__num {
+		font-size: 9px;
+		color: var(--gold);
+		opacity: 0.6;
+	}
+	.links a::after {
+		content: '';
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		height: 1px;
+		background: var(--gold);
+		transform: scaleX(0);
+		transform-origin: left;
+		transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
+	}
+	.links a:hover { color: var(--bone); }
+	.links a:hover::after { transform: scaleX(1); }
 
-	/* End block */
-	.end {
+	.nav__right {
 		display: flex;
-		align-items: stretch;
-		border-left: 1px solid var(--rule);
+		align-items: center;
+		gap: 0.75rem;
+		justify-self: end;
 		position: relative;
 		z-index: 61;
 	}
-	.quote {
+
+	.cta {
 		display: inline-flex;
 		align-items: center;
 		gap: 0.6em;
-		padding: 0 1.25rem;
-		background: var(--signal);
-		color: var(--bg);
-		text-decoration: none;
+		padding: 0.7em 1.2em;
+		border: 1px solid var(--rule-strong);
+		border-radius: 0;
 		font-family: var(--f-mono);
 		font-size: 11px;
 		letter-spacing: 0.18em;
-		font-weight: 600;
-		transition: background 0.3s ease;
-
-		&:hover { background: var(--ink); }
+		text-transform: uppercase;
+		text-decoration: none;
+		color: var(--bone);
+		background: transparent;
+		transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
 	}
-	.quote__led {
-		width: 7px; height: 7px;
-		background: var(--bg);
-		border-radius: 50%;
-	}
-	.quote__sq {
-		width: 8px; height: 8px;
-		border: 1.5px solid var(--bg);
+	.cta:hover {
+		background: var(--gold);
+		color: var(--void);
+		border-color: var(--gold);
 	}
 
 	.burger {
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
-		gap: 5px;
-		width: 54px;
-		padding: 0 1rem;
+		gap: 6px;
+		width: 36px;
+		height: 36px;
+		padding: 4px;
 		background: none;
 		border: none;
-		border-left: 1px solid var(--rule);
 		cursor: pointer;
 
-		@include breakpoint('xlarge') { display: none; }
-
-		span {
-			display: block;
-			height: 2px;
-			background: var(--ink);
-			transform-origin: center;
-			transition: transform 0.35s ease, opacity 0.3s;
-
-			&:nth-child(1) { width: 100%; }
-			&:nth-child(2) { width: 70%; background: var(--signal); }
-			&:nth-child(3) { width: 100%; }
+		@include breakpoint('xlarge') {
+			display: none;
 		}
 	}
-	.burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-	.burger.open span:nth-child(2) { opacity: 0; }
-	.burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+	.burger span {
+		display: block;
+		height: 1px;
+		background: var(--bone);
+		transform-origin: center;
+		transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+	}
+	.burger.open span:nth-child(1) { transform: translateY(3.5px) rotate(45deg); }
+	.burger.open span:nth-child(2) { transform: translateY(-3.5px) rotate(-45deg); }
 
-	/* ========== SHEET (menu mobile plein écran) ========== */
-	.sheet {
+	.fullmenu {
 		position: fixed;
 		inset: 0;
 		z-index: 59;
-		background: var(--bg);
+		background: var(--void);
 		display: grid;
 		grid-template-rows: 1fr auto;
-		padding: 6rem 0 0;
+		grid-template-columns: 1fr;
+		padding: 6rem 1.5rem 2rem;
+		gap: 2rem;
+
 		pointer-events: none;
 		opacity: 0;
 		clip-path: inset(0 0 100% 0);
-		transition: opacity 0.4s ease, clip-path 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+		transition: opacity 0.5s ease, clip-path 0.55s cubic-bezier(0.16, 1, 0.3, 1);
 
-		@include breakpoint('xlarge') { display: none !important; }
+		@include breakpoint('xlarge') {
+			display: none !important;
+		}
+
+		@include breakpoint('medium') {
+			grid-template-columns: 200px 1fr;
+			padding: 7rem 3rem 3rem;
+		}
 
 		&--open {
 			pointer-events: auto;
@@ -417,121 +367,138 @@
 			clip-path: inset(0 0 0% 0);
 		}
 	}
-	.sheet__grid {
-		display: grid;
-		grid-template-columns: 1fr;
-		gap: 0;
+
+	.fullmenu__deco {
+		display: none;
 
 		@include breakpoint('medium') {
-			grid-template-columns: 220px 1fr;
+			display: flex;
+			flex-direction: column;
+			gap: 1.5rem;
+			padding-top: 0.5rem;
 		}
 	}
-	.sheet__side {
-		display: none;
-		padding: 1.25rem 1.5rem;
-		border-right: 1px solid var(--rule);
-		flex-direction: column;
-		gap: 0.5rem;
+	.fullmenu__label {
 		font-family: var(--f-mono);
 		font-size: 10px;
-		letter-spacing: 0.16em;
+		letter-spacing: 0.24em;
 		text-transform: uppercase;
-
-		@include breakpoint('medium') { display: flex; }
+		color: var(--bone-soft);
+		opacity: 0.5;
 	}
-	.sheet__k { color: var(--ink-mute); }
-	.sheet__v { color: var(--ink); font-size: 13px; }
-	.sheet__v--mono { color: var(--signal); }
-	.sheet__v--on {
-		color: var(--led);
-		&::before {
-			content: '●';
-			margin-right: 0.4em;
-			font-size: 10px;
-		}
-	}
-	.sheet__rule {
-		height: 1px;
+	.fullmenu__rule {
+		width: 1px;
+		flex: 1;
+		max-height: 160px;
 		background: var(--rule);
-		margin: 0.65rem 0;
 	}
 
-	.sheet__list {
+	.fullmenu__nav {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		gap: 2.5rem;
+	}
+
+	.fullmenu__list {
 		list-style: none;
 		margin: 0;
 		padding: 0;
+		display: flex;
+		flex-direction: column;
 	}
-	.sheet__item {
-		border-bottom: 1px solid var(--rule);
-		transform: translateY(20px);
-		opacity: 0;
-		transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
-		transition-delay: calc(var(--i) * 55ms + 100ms);
 
-		.sheet--open & {
+	.fullmenu__item {
+		border-bottom: 1px solid var(--rule);
+		overflow: hidden;
+
+		transform: translateY(24px);
+		opacity: 0;
+		transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.45s ease;
+		transition-delay: calc(var(--i) * 60ms + 80ms);
+
+		.fullmenu--open & {
 			transform: translateY(0);
 			opacity: 1;
 		}
 	}
-	.sheet__link {
-		display: grid;
-		grid-template-columns: auto 1fr auto;
-		align-items: center;
+
+	.fullmenu__link {
+		display: flex;
+		align-items: baseline;
 		gap: 1.25rem;
-		padding: 1.1rem 1.5rem;
+		padding: 1rem 0;
 		text-decoration: none;
-		color: var(--ink);
-		transition: background 0.3s ease, padding-left 0.3s ease;
+		color: var(--bone-soft);
+		transition: color 0.3s ease, gap 0.35s ease;
 
 		&:hover {
-			background: var(--panel);
-			padding-left: 2rem;
-			.sheet__arrow { color: var(--signal); transform: translateX(4px); }
+			color: var(--bone);
+			gap: 1.75rem;
 		}
 	}
-	.sheet__ch {
+
+	.fullmenu__num {
 		font-family: var(--f-mono);
 		font-size: 10px;
-		letter-spacing: 0.18em;
-		color: var(--signal);
-	}
-	.sheet__text {
-		font-family: var(--f-display);
-		font-size: clamp(1.75rem, 7vw, 3rem);
-		letter-spacing: -0.01em;
+		letter-spacing: 0.14em;
+		color: var(--gold);
+		flex-shrink: 0;
 		line-height: 1;
-	}
-	.sheet__arrow {
-		color: var(--ink-mute);
-		font-family: var(--f-mono);
-		font-size: 18px;
-		transition: color 0.3s, transform 0.3s;
+		position: relative;
+		top: -0.2em;
 	}
 
-	.sheet__foot {
-		display: flex;
-		justify-content: space-between;
+	.fullmenu__text {
+		font-family: var(--f-display);
+		font-size: clamp(2rem, 8vw, 3.5rem);
+		font-weight: 300;
+		letter-spacing: -0.02em;
+		line-height: 1;
+	}
+
+	.fullmenu__cta {
+		display: inline-flex;
 		align-items: center;
-		padding: 1.1rem 1.5rem;
-		border-top: 1px solid var(--rule-hot);
-		gap: 1rem;
+		gap: 0.75em;
+		padding: 1em 2em;
+		border: 1px solid var(--gold);
+		font-family: var(--f-mono);
+		font-size: 11px;
+		letter-spacing: 0.18em;
+		text-transform: uppercase;
+		text-decoration: none;
+		color: var(--gold);
+		align-self: flex-start;
+		transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+
+		transform: translateY(16px);
+		opacity: 0;
+		transition-delay: 0.45s;
+
+		.fullmenu--open & {
+			transform: translateY(0);
+			opacity: 1;
+		}
+
+		&:hover {
+			background: var(--gold);
+			color: var(--void);
+		}
+	}
+
+	.fullmenu__footer {
 		font-family: var(--f-mono);
 		font-size: 10px;
 		letter-spacing: 0.16em;
-		color: var(--ink-dim);
-	}
-	.sheet__cta {
-		display: inline-flex;
-		align-items: center;
-		gap: 0.6em;
-		padding: 0.7em 1em;
-		background: var(--signal);
-		color: var(--bg);
-		text-decoration: none;
-		font-weight: 600;
-	}
-	.sheet__cta-sq {
-		width: 8px; height: 8px;
-		border: 1.5px solid var(--bg);
+		text-transform: uppercase;
+		color: var(--bone-soft);
+		opacity: 0.5;
+		display: flex;
+		flex-direction: column;
+		gap: 0.35rem;
+		grid-column: 1 / -1;
+
+		p { margin: 0; }
 	}
 </style>

@@ -30,291 +30,269 @@
 		gsap.registerPlugin(ScrollTrigger);
 
 		gsap.from(titleEl, {
-			opacity: 0, y: 30, duration: 0.9, ease: 'power3.out',
-			scrollTrigger: { trigger: titleEl, start: 'top 85%' }
+			opacity: 0,
+			y: 40,
+			duration: 1,
+			ease: 'power3.out',
+			scrollTrigger: { trigger: titleEl, start: 'top 80%' }
 		});
+
 		rowEls.forEach((el, i) => {
 			if (!el) return;
 			gsap.from(el, {
-				opacity: 0, x: -30, duration: 0.6, delay: i * 0.05,
+				opacity: 0,
+				x: -24,
+				duration: 0.7,
+				delay: i * 0.05,
 				ease: 'power3.out',
-				scrollTrigger: { trigger: el, start: 'top 92%' }
+				scrollTrigger: { trigger: el, start: 'top 90%' }
 			});
 		});
 	});
 </script>
 
-<section class="ds" id="telechargements">
-	<!-- En-tête datasheet -->
-	<div class="ds__head" bind:this={titleEl}>
-		<div class="ds__head-l">
-			<span class="ds__tag">SECTION/02 — DATA SHEET</span>
-			<h2 class="ds__title">PRESS<span class="ds__amp">·</span>KIT</h2>
-			<p class="ds__sub">
-				Logos vectoriels et supports publicitaires. Téléchargement direct, format brut.
-			</p>
-		</div>
+<section class="telecharg" id="telechargements">
+	<div class="wrap">
+		<header class="head" bind:this={titleEl}>
+			<div>
+				<span class="eyebrow"><span class="rule"></span>Section 02 / Ressources</span>
+				<h2>Téléchargements</h2>
+				<p class="sub">Logos et supports publicitaires pour sponsoring &amp; partenaires.</p>
+			</div>
 
-		<!-- Tag-id type étiquette équipement -->
-		<div class="ds__tagid">
-			<div class="ds__tagid-row">
-				<span class="ds__tagid-k">MFG</span>
-				<span class="ds__tagid-v">MJM SONORISATION</span>
-			</div>
-			<div class="ds__tagid-row">
-				<span class="ds__tagid-k">SN</span>
-				<span class="ds__tagid-v">BE-0819776395</span>
-			</div>
-			<div class="ds__tagid-row">
-				<span class="ds__tagid-k">REV</span>
-				<span class="ds__tagid-v">2026.A</span>
-			</div>
-			<div class="ds__tagid-row">
-				<span class="ds__tagid-k">PWR</span>
-				<span class="ds__tagid-v ds__tagid-v--hot">230V · 50Hz</span>
-			</div>
-			<div class="ds__tagid-barcode" aria-hidden="true">
-				{#each Array(48) as _, i (i)}
-					<span style="width: {1 + (i % 3)}px"></span>
-				{/each}
-			</div>
-			<div class="ds__tagid-foot">UID · MJM-SONO-2026-OST-0001</div>
-		</div>
-	</div>
+			<aside class="logo-box" aria-label="Logo MJM Sonorisation">
+				<span class="logo-box__mark">MJM</span>
+				<span class="logo-box__sub">Sonorisation · Yohan</span>
+				<span class="logo-box__note">Logo officiel</span>
+			</aside>
+		</header>
 
-	<!-- Table type spec sheet -->
-	<div class="ds__table">
-		<div class="ds__th">
-			<span>#</span>
-			<span>FICHIER</span>
-			<span>FMT</span>
-			<span>TAILLE</span>
-			<span>ACTION</span>
-		</div>
-		{#each items as f, i (f.nom + i)}
-			{@const Icon = typeIcon(f.type)}
-			<div class="ds__tr" bind:this={rowEls[i]}>
-				<span class="ds__td ds__td--num">{String(i + 1).padStart(3, '0')}</span>
-				<span class="ds__td ds__td--name">
-					<span class="ds__td-ico"><Icon size={14} strokeWidth={1.5} /></span>
-					<span>{f.nom}</span>
-				</span>
-				<span class="ds__td ds__td--type">{f.type}</span>
-				<span class="ds__td ds__td--size">{f.taille ?? '—'}</span>
-				<a class="ds__td ds__td--act" href={f.href ?? '#'} aria-label="Télécharger {f.nom}">
-					<Download size={13} strokeWidth={1.6} />
-					<span>GET</span>
-				</a>
-			</div>
-		{/each}
-	</div>
-
-	<div class="ds__bottom">
-		<span>END OF DOCUMENT · {items.length} ENTRIES</span>
-		<span class="ds__bottom-sig">— Y/2026</span>
+		<ul class="list">
+			{#each items as f, i (f.nom + i)}
+				{@const Icon = typeIcon(f.type)}
+				<li class="row" bind:this={rowEls[i]}>
+					<span class="row__num">{String(i + 1).padStart(2, '0')}</span>
+					<span class="row__icon">
+						<Icon size={18} strokeWidth={1.4} />
+					</span>
+					<span class="row__name">{f.nom}</span>
+					<span class="row__type">{f.type}</span>
+					<span class="row__size">{f.taille ?? ''}</span>
+					<a class="row__action" href={f.href ?? '#'} aria-label="Télécharger {f.nom}">
+						<Download size={14} strokeWidth={1.6} />
+						<span>Télécharger</span>
+					</a>
+				</li>
+			{/each}
+		</ul>
 	</div>
 </section>
 
 <style lang="scss">
 	@use './styles/mixins' as *;
 
-	.ds {
-		padding: 5rem 1.25rem 6rem;
-		background: var(--panel);
-		border-bottom: 1px solid var(--rule-hot);
+	.telecharg {
+		padding: 6rem 1.25rem;
+		border-bottom: 1px solid var(--rule);
+		background: var(--coal);
 
 		@include breakpoint('medium') {
-			padding: 7rem 2rem;
+			padding: 8rem 2rem;
 		}
 	}
 
-	.ds__head {
+	.wrap {
+		max-width: 1400px;
+		margin: 0 auto;
+	}
+
+	.head {
 		display: grid;
 		grid-template-columns: 1fr;
 		gap: 2.5rem;
-		margin-bottom: 3rem;
+		margin-bottom: 4rem;
 		align-items: end;
 
-		@include breakpoint('large') {
-			grid-template-columns: 1fr 280px;
+		@include breakpoint('medium') {
+			grid-template-columns: 1fr auto;
 			gap: 3rem;
 		}
 	}
-	.ds__tag {
+
+	.eyebrow {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.9em;
 		font-family: var(--f-mono);
 		font-size: 11px;
-		letter-spacing: 0.22em;
-		color: var(--signal);
-	}
-	.ds__title {
-		margin: 1rem 0 0.75rem;
-		font-family: var(--f-display);
-		font-weight: 900;
-		font-size: clamp(2.5rem, 8vw, 6rem);
-		line-height: 0.9;
-		letter-spacing: -0.04em;
+		letter-spacing: 0.2em;
 		text-transform: uppercase;
-		color: var(--ink);
-	}
-	.ds__amp { color: var(--signal); }
-	.ds__sub {
-		margin: 0;
-		font-family: var(--f-body);
-		font-size: 1rem;
-		line-height: 1.5;
-		color: var(--ink-dim);
-		max-width: 32rem;
+		color: var(--bone-soft);
+
+		.rule { display: inline-block; width: 42px; height: 1px; background: var(--gold); }
 	}
 
-	/* Étiquette ID matériel */
-	.ds__tagid {
-		background: var(--bg);
-		border: 1px solid var(--rule-hot);
-		padding: 1rem 1.1rem;
+	h2 {
+		font-family: var(--f-display);
+		font-weight: 300;
+		font-size: clamp(2.5rem, 7vw, 5.5rem);
+		line-height: 0.95;
+		letter-spacing: -0.035em;
+		margin: 1.25rem 0 0.75rem;
+		color: var(--bone);
+	}
+
+	.sub {
+		margin: 0;
+		font-family: var(--f-display);
+		font-style: italic;
+		font-size: clamp(1rem, 1.5vw, 1.2rem);
+		color: var(--bone-soft);
+	}
+
+	.logo-box {
+		width: 180px;
+		height: 180px;
+		background: var(--graphite);
+		border: 1px solid var(--rule-strong);
 		display: flex;
 		flex-direction: column;
-		gap: 0.45rem;
-		font-family: var(--f-mono);
-		font-size: 10px;
-		letter-spacing: 0.12em;
+		align-items: center;
+		justify-content: center;
+		gap: 0.35rem;
 		position: relative;
+		padding: 1rem;
 
-		&::before {
-			content: 'EQUIPMENT TAG';
+		&::after {
+			content: '';
 			position: absolute;
-			top: -8px;
-			left: 12px;
-			background: var(--panel);
-			padding: 0 0.5rem;
-			color: var(--signal);
+			inset: 8px;
+			border: 1px solid var(--rule);
+			pointer-events: none;
+		}
+
+		&__mark {
+			font-family: var(--f-display);
+			font-weight: 600;
+			font-size: 2.5rem;
+			line-height: 1;
+			color: var(--gold);
+			letter-spacing: -0.02em;
+		}
+
+		&__sub {
+			font-family: var(--f-mono);
 			font-size: 9px;
 			letter-spacing: 0.22em;
+			text-transform: uppercase;
+			color: var(--bone);
+			text-align: center;
+		}
+
+		&__note {
+			position: absolute;
+			bottom: 0.6rem;
+			font-family: var(--f-mono);
+			font-size: 8px;
+			letter-spacing: 0.2em;
+			text-transform: uppercase;
+			color: var(--bone-soft);
+			opacity: 0.5;
 		}
 	}
-	.ds__tagid-row {
-		display: grid;
-		grid-template-columns: 50px 1fr;
-		gap: 0.75rem;
-	}
-	.ds__tagid-k { color: var(--ink-mute); }
-	.ds__tagid-v { color: var(--ink); }
-	.ds__tagid-v--hot { color: var(--signal); }
-	.ds__tagid-barcode {
-		display: flex;
-		gap: 1px;
-		align-items: stretch;
-		height: 32px;
-		margin-top: 0.6rem;
-		padding-top: 0.6rem;
-		border-top: 1px dashed var(--rule);
 
-		span {
-			background: var(--ink);
-			min-width: 1px;
-		}
-		span:nth-child(3n) { background: transparent; }
-		span:nth-child(5n) { background: transparent; }
-	}
-	.ds__tagid-foot {
-		margin-top: 0.4rem;
-		font-size: 9px;
-		color: var(--ink-mute);
-		text-align: center;
-		letter-spacing: 0.18em;
+	.list {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		border-top: 1px solid var(--rule);
 	}
 
-	/* TABLE */
-	.ds__table {
-		border: 1px solid var(--rule-hot);
-		background: var(--bg);
-	}
-	.ds__th, .ds__tr {
+	.row {
 		display: grid;
-		grid-template-columns: 50px 1fr 60px 80px 90px;
+		grid-template-columns: auto auto 1fr auto;
 		align-items: center;
-		gap: 0.75rem;
-		padding: 0.85rem 1rem;
+		gap: 1rem;
+		padding: 1.25rem 0;
 		border-bottom: 1px solid var(--rule);
+		transition: background 0.3s ease, padding 0.35s ease;
 
 		@include breakpoint('medium') {
-			grid-template-columns: 70px 1fr 80px 100px 110px;
+			grid-template-columns: 50px 40px 1fr 80px 100px 180px;
 			gap: 1.5rem;
-			padding: 1rem 1.5rem;
+			padding: 1.5rem 1rem;
 		}
-	}
-	.ds__th {
-		background: var(--panel-2);
-		font-family: var(--f-mono);
-		font-size: 9px;
-		letter-spacing: 0.2em;
-		color: var(--signal);
-		text-transform: uppercase;
-		border-bottom: 1px solid var(--rule-hot);
-	}
-	.ds__tr {
-		transition: background 0.25s ease;
+
 		&:hover {
-			background: var(--panel);
-			.ds__td--name { color: var(--signal); }
-			.ds__td--act { background: var(--signal); color: var(--bg); border-color: var(--signal); }
-			.ds__td-ico { color: var(--signal); }
+			background: var(--graphite);
+			padding-left: 1.5rem;
+
+			.row__name { color: var(--gold); }
+			.row__action {
+				background: var(--gold);
+				color: var(--void);
+				border-color: var(--gold);
+			}
 		}
-		&:last-child { border-bottom: none; }
 	}
-	.ds__td {
-		font-family: var(--f-body);
-		font-size: 0.9rem;
-		color: var(--ink);
-		display: flex;
-		align-items: center;
-	}
-	.ds__td--num {
+
+	.row__num {
 		font-family: var(--f-mono);
-		font-size: 11px;
-		color: var(--ink-mute);
+		font-size: 10px;
+		letter-spacing: 0.2em;
+		color: var(--bone-soft);
 	}
-	.ds__td--name {
-		gap: 0.7rem;
-		font-weight: 500;
-		transition: color 0.25s ease;
-		min-width: 0;
-		span:last-child {
-			overflow: hidden;
-			text-overflow: ellipsis;
-			white-space: nowrap;
+
+	.row__icon {
+		color: var(--gold);
+		display: inline-flex;
+	}
+
+	.row__name {
+		font-family: var(--f-display);
+		font-size: 1.05rem;
+		color: var(--bone);
+		transition: color 0.3s ease;
+		grid-column: 1 / -1;
+
+		@include breakpoint('medium') {
+			grid-column: auto;
 		}
 	}
-	.ds__td-ico { color: var(--ink-dim); transition: color 0.25s ease; flex-shrink: 0; }
-	.ds__td--type, .ds__td--size {
+
+	.row__type,
+	.row__size {
 		font-family: var(--f-mono);
 		font-size: 10px;
 		letter-spacing: 0.16em;
-		color: var(--ink-dim);
-	}
-	.ds__td--act {
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		gap: 0.4em;
-		padding: 0.5em 0.7em;
-		border: 1px solid var(--rule-hot);
-		font-family: var(--f-mono);
-		font-size: 10px;
-		letter-spacing: 0.2em;
-		text-decoration: none;
-		color: var(--ink);
-		font-weight: 600;
-		transition: all 0.25s ease;
+		text-transform: uppercase;
+		color: var(--bone-soft);
+		display: none;
+
+		@include breakpoint('medium') {
+			display: inline;
+		}
 	}
 
-	.ds__bottom {
-		display: flex;
-		justify-content: space-between;
-		margin-top: 1rem;
+	.row__action {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.6em;
+		padding: 0.7em 1em;
+		border: 1px solid var(--rule-strong);
 		font-family: var(--f-mono);
-		font-size: 9px;
-		letter-spacing: 0.22em;
-		color: var(--ink-mute);
+		font-size: 10px;
+		letter-spacing: 0.18em;
+		text-transform: uppercase;
+		text-decoration: none;
+		color: var(--bone);
+		transition: all 0.3s ease;
+		grid-column: 1 / -1;
+		justify-self: start;
+
+		@include breakpoint('medium') {
+			grid-column: auto;
+			justify-self: end;
+		}
 	}
-	.ds__bottom-sig { color: var(--signal); }
 </style>

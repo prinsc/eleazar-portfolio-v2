@@ -2,7 +2,7 @@
 	import { onMount } from 'svelte';
 	import { Phone, Mail, Instagram, Facebook, MapPin, Send, Check } from 'lucide-svelte';
 
-	let { infos = null, socials = null, cta = null, form: formAction = null } = $props();
+	let { infos = null, socials = null, cta = null } = $props();
 
 	const adresse = $derived(infos?.adresseComplete ?? '337, route de Flobecq — 7804 Ostiches');
 	const numeroEntreprise = $derived(infos?.numeroEntreprise ?? 'BE 0819.776.395');
@@ -11,7 +11,6 @@
 
 	const socialsList = $derived(socials?.filter((s) => s.actif) ?? []);
 
-	// Form state
 	let nom = $state('');
 	let mail = $state('');
 	let tel = $state('');
@@ -22,24 +21,23 @@
 	let success = $state(false);
 	let error = $state('');
 
-	const types = ['Mariage', 'Anniversaire', 'Soirée', 'Événement d\'entreprise', 'Défilé', 'Exposition', 'Autre'];
+	const types = ['Mariage', 'Anniversaire', 'Soirée', "Événement d'entreprise", 'Défilé', 'Exposition', 'Autre'];
 
 	async function handleSubmit(e) {
 		e.preventDefault();
 		error = '';
 		if (!nom || !mail || !message) {
-			error = 'Merci de compléter les champs requis.';
+			error = 'COMPLÉTER LES CHAMPS REQUIS [*]';
 			return;
 		}
 		submitting = true;
-		// Mock : soumission factice — l'action `+page.server.js` renverra succès
 		await new Promise((r) => setTimeout(r, 700));
 		submitting = false;
 		success = true;
 	}
 
 	let titleEl;
-	let infoEl;
+	let panelEl;
 	let formEl;
 
 	onMount(async () => {
@@ -48,362 +46,487 @@
 		gsap.registerPlugin(ScrollTrigger);
 
 		gsap.from(titleEl, {
-			opacity: 0,
-			y: 40,
-			duration: 1,
-			ease: 'power3.out',
-			scrollTrigger: { trigger: titleEl, start: 'top 80%' }
+			opacity: 0, y: 30, duration: 1, ease: 'power3.out',
+			scrollTrigger: { trigger: titleEl, start: 'top 85%' }
 		});
-		gsap.from(infoEl, {
-			opacity: 0,
-			y: 30,
-			duration: 0.9,
-			delay: 0.15,
-			ease: 'power3.out',
-			scrollTrigger: { trigger: infoEl, start: 'top 85%' }
+		gsap.from(panelEl, {
+			opacity: 0, x: -30, duration: 0.9, delay: 0.1, ease: 'power3.out',
+			scrollTrigger: { trigger: panelEl, start: 'top 88%' }
 		});
 		gsap.from(formEl, {
-			opacity: 0,
-			y: 30,
-			duration: 0.9,
-			delay: 0.25,
-			ease: 'power3.out',
-			scrollTrigger: { trigger: formEl, start: 'top 85%' }
+			opacity: 0, x: 30, duration: 0.9, delay: 0.2, ease: 'power3.out',
+			scrollTrigger: { trigger: formEl, start: 'top 88%' }
 		});
 	});
 
-	function phoneHref(t) {
-		return 'tel:' + String(t).replace(/\s/g, '');
-	}
+	function phoneHref(t) { return 'tel:' + String(t).replace(/\s/g, ''); }
 </script>
 
-<section class="contact" id="contact">
-	<div class="wrap">
-		<header class="head" bind:this={titleEl}>
-			<span class="eyebrow"><span class="rule"></span>Section 06 / Échanger</span>
-			<h2>
-				Contactez-<em>nous</em>
-			</h2>
-			<p class="sub">
-				Un événement, une idée ? Parlons-en. Réponse sous 24 à 48h.
-			</p>
-		</header>
+<section class="ct" id="contact">
+	<header class="ct__head" bind:this={titleEl}>
+		<div class="ct__head-meta">
+			<span class="ct__tag">SECTION/06 — INPUT.LINE</span>
+			<span class="ct__head-status">
+				<span class="ct__head-led"></span>
+				LIGNE OUVERTE
+			</span>
+		</div>
+		<h2 class="ct__title">
+			<span class="ct__title-pre">PRESS</span>
+			<span class="ct__title-main">RECORD</span>
+			<span class="ct__title-bracket">[</span>
+		</h2>
+		<p class="ct__sub">
+			Un événement, une idée — appuyez sur <span class="ct__sub-rec">●</span> et envoyez-nous votre brief.
+			Réponse sous 24 à 48h.
+		</p>
+	</header>
 
-		<div class="grid">
-			<aside class="info" bind:this={infoEl}>
-				<div class="info__block">
-					<span class="label">Adresse</span>
-					<p>
-						<MapPin size={14} strokeWidth={1.5} />
-						<span>{adresse}</span>
-					</p>
-					<p class="entreprise">N° entreprise · {numeroEntreprise}</p>
+	<div class="ct__grid">
+		<!-- Panel infos = patch panel -->
+		<aside class="panel" bind:this={panelEl}>
+			<div class="panel__top">
+				<span>OUTPUT · CONTACT</span>
+				<span class="panel__top-id">UID·MJM-Y-01</span>
+			</div>
+
+			<div class="panel__rows">
+				<div class="panel__row">
+					<span class="panel__k"><MapPin size={12} strokeWidth={1.5} /> ADR</span>
+					<span class="panel__v">{adresse}</span>
 				</div>
-
-				<div class="info__block">
-					<span class="label">Direct</span>
-					<a href={phoneHref(telephone)} class="contact-link">
-						<Phone size={14} strokeWidth={1.5} />
-						<span>{telephone}</span>
-					</a>
-					<a href="mailto:{email}" class="contact-link">
-						<Mail size={14} strokeWidth={1.5} />
-						<span>{email}</span>
-					</a>
+				<div class="panel__row">
+					<span class="panel__k">REG</span>
+					<span class="panel__v panel__v--mono">{numeroEntreprise}</span>
 				</div>
-
-				<div class="info__block">
-					<span class="label">Réseaux</span>
-					<div class="socials">
+				<div class="panel__sep"></div>
+				<a class="panel__row panel__row--link" href={phoneHref(telephone)}>
+					<span class="panel__k"><Phone size={12} strokeWidth={1.5} /> TEL</span>
+					<span class="panel__v">{telephone}</span>
+					<span class="panel__plug"></span>
+				</a>
+				<a class="panel__row panel__row--link" href="mailto:{email}">
+					<span class="panel__k"><Mail size={12} strokeWidth={1.5} /> MAIL</span>
+					<span class="panel__v">{email}</span>
+					<span class="panel__plug"></span>
+				</a>
+				<div class="panel__sep"></div>
+				<div class="panel__row panel__row--socials">
+					<span class="panel__k">SOC</span>
+					<div class="panel__socials">
 						{#each socialsList as s}
 							{#if s.id === 'facebook' || s.label?.toLowerCase().includes('facebook')}
 								<a href={s.url} target="_blank" rel="noopener" aria-label="Facebook">
-									<Facebook size={16} strokeWidth={1.5} />
+									<Facebook size={14} strokeWidth={1.5} />
 								</a>
 							{:else if s.id === 'instagram' || s.label?.toLowerCase().includes('instagram')}
 								<a href={s.url} target="_blank" rel="noopener" aria-label="Instagram">
-									<Instagram size={16} strokeWidth={1.5} />
+									<Instagram size={14} strokeWidth={1.5} />
 								</a>
-							{:else}
-								<a href={s.url} target="_blank" rel="noopener">{s.label}</a>
 							{/if}
 						{/each}
 						{#if socialsList.length === 0}
-							<a href="#" aria-label="Facebook"><Facebook size={16} strokeWidth={1.5} /></a>
-							<a href="#" aria-label="Instagram"><Instagram size={16} strokeWidth={1.5} /></a>
+							<a href="#" aria-label="Facebook"><Facebook size={14} strokeWidth={1.5} /></a>
+							<a href="#" aria-label="Instagram"><Instagram size={14} strokeWidth={1.5} /></a>
 						{/if}
 					</div>
 				</div>
+			</div>
 
-				<div class="info__sig">
-					<span class="info__sig-label">Votre interlocuteur</span>
-					<span class="info__sig-name">Yohan</span>
-					<span class="info__sig-role">Fondateur · 30 ans d'expérience</span>
+			<div class="panel__sig">
+				<div class="panel__sig-top">
+					<span class="panel__sig-k">SIGNATURE OPÉRATEUR</span>
+					<span class="panel__sig-rec">REC</span>
 				</div>
-			</aside>
+				<span class="panel__sig-name">YOHAN</span>
+				<span class="panel__sig-role">FONDATEUR · 30 ANS DE SCÈNE</span>
+			</div>
 
-			<form class="form" onsubmit={handleSubmit} bind:this={formEl} method="POST" action="?/contact" novalidate>
-				{#if success}
-					<div class="success" role="status">
-						<span class="success__icon"><Check size={32} strokeWidth={1.4} /></span>
-						<h3>Message envoyé</h3>
-						<p>Merci {nom || ''}. Yohan vous répond sous 24 à 48h.</p>
-					</div>
-				{:else}
-					<div class="row row--2">
-						<label class="field">
-							<span>Nom <em>*</em></span>
-							<input type="text" bind:value={nom} name="nom" required />
+			<!-- Faux waveform -->
+			<svg class="panel__wave" viewBox="0 0 200 30" aria-hidden="true">
+				{#each Array(40) as _, i (i)}
+					<rect
+						x={i * 5}
+						y={15 - (Math.sin(i * 0.6) * 8 + Math.cos(i * 1.2) * 4)}
+						width="2"
+						height={Math.abs(Math.sin(i * 0.6) * 8 + Math.cos(i * 1.2) * 4) * 2}
+						fill="currentColor"
+					/>
+				{/each}
+			</svg>
+		</aside>
+
+		<!-- Form = recording deck -->
+		<form class="deck" onsubmit={handleSubmit} bind:this={formEl} method="POST" action="?/contact" novalidate>
+			<div class="deck__top">
+				<span class="deck__top-rec">
+					<span class="deck__top-rec-dot"></span>
+					RECORDING SESSION
+				</span>
+				<span class="deck__top-id">FORM·INPUT/v2</span>
+			</div>
+
+			{#if success}
+				<div class="deck__success">
+					<span class="deck__success-icon"><Check size={28} strokeWidth={2} /></span>
+					<h3>SIGNAL REÇU</h3>
+					<p>Merci {nom || 'pour votre message'}. Yohan vous répond sous 24-48h.</p>
+				</div>
+			{:else}
+				<div class="deck__body">
+					<div class="deck__row deck__row--2">
+						<label class="deck__field">
+							<span class="deck__lbl">NOM <em>*</em></span>
+							<input type="text" bind:value={nom} name="nom" required autocomplete="name" />
 						</label>
-						<label class="field">
-							<span>Email <em>*</em></span>
-							<input type="email" bind:value={mail} name="email" required />
+						<label class="deck__field">
+							<span class="deck__lbl">EMAIL <em>*</em></span>
+							<input type="email" bind:value={mail} name="email" required autocomplete="email" />
 						</label>
 					</div>
 
-					<div class="row row--2">
-						<label class="field">
-							<span>Téléphone</span>
-							<input type="tel" bind:value={tel} name="telephone" />
+					<div class="deck__row deck__row--2">
+						<label class="deck__field">
+							<span class="deck__lbl">TÉL</span>
+							<input type="tel" bind:value={tel} name="telephone" autocomplete="tel" />
 						</label>
-						<label class="field">
-							<span>Date souhaitée</span>
+						<label class="deck__field">
+							<span class="deck__lbl">DATE</span>
 							<input type="date" bind:value={date} name="date" />
 						</label>
 					</div>
 
-					<label class="field">
-						<span>Type d'événement</span>
+					<label class="deck__field">
+						<span class="deck__lbl">TYPE D'ÉVÉNEMENT</span>
 						<select bind:value={typeEvt} name="type">
-							<option value="">Sélectionner…</option>
+							<option value="">-- SÉLECTIONNER --</option>
 							{#each types as t}
-								<option value={t}>{t}</option>
+								<option value={t}>{t.toUpperCase()}</option>
 							{/each}
 						</select>
 					</label>
 
-					<label class="field">
-						<span>Message <em>*</em></span>
-						<textarea bind:value={message} name="message" rows="5" required placeholder="Lieu, nombre d'invités, style d'ambiance…"></textarea>
+					<label class="deck__field">
+						<span class="deck__lbl">MESSAGE <em>*</em></span>
+						<textarea bind:value={message} name="message" rows="5" required placeholder="Lieu, nombre d'invités, style d'ambiance..."></textarea>
 					</label>
 
 					{#if error}
-						<p class="error">{error}</p>
+						<p class="deck__err"><span class="deck__err-led"></span>{error}</p>
 					{/if}
 
-					<button type="submit" class="submit" disabled={submitting}>
-						<span>{submitting ? 'Envoi…' : 'Envoyer'}</span>
-						<Send size={14} strokeWidth={1.6} />
-					</button>
-
-					<p class="note">
-						En envoyant ce formulaire, vous acceptez d'être recontacté par Yohan au sujet de votre demande.
-					</p>
-				{/if}
-			</form>
-		</div>
+					<div class="deck__transport">
+						<button type="submit" class="deck__send" disabled={submitting}>
+							<span class="deck__send-rec"></span>
+							<span>{submitting ? 'TRANSMISSION...' : 'TRANSMETTRE'}</span>
+							<Send size={14} strokeWidth={1.8} />
+						</button>
+						<p class="deck__note">
+							EN ENVOYANT, VOUS ACCEPTEZ D'ÊTRE RECONTACTÉ PAR YOHAN.
+						</p>
+					</div>
+				</div>
+			{/if}
+		</form>
 	</div>
 </section>
 
 <style lang="scss">
 	@use './styles/mixins' as *;
 
-	.contact {
-		padding: 6rem 1.25rem;
-		background: var(--coal);
-		border-bottom: 1px solid var(--rule);
+	.ct {
+		padding: 5rem 1.25rem 6rem;
+		background: var(--bg);
+		border-bottom: 1px solid var(--rule-hot);
+		position: relative;
 
 		@include breakpoint('medium') {
-			padding: 8rem 2rem;
+			padding: 7rem 2rem 8rem;
 		}
 	}
 
-	.wrap {
-		max-width: 1400px;
-		margin: 0 auto;
+	.ct__head {
+		max-width: 60rem;
+		margin: 0 0 3.5rem;
 	}
-
-	.head {
-		max-width: 50rem;
-		margin-bottom: 4rem;
-	}
-
-	.eyebrow {
-		display: inline-flex;
+	.ct__head-meta {
+		display: flex;
+		justify-content: space-between;
 		align-items: center;
-		gap: 0.9em;
+		gap: 1rem;
+		flex-wrap: wrap;
+		padding-bottom: 0.85rem;
+		border-bottom: 1px dashed var(--rule);
+		margin-bottom: 1.25rem;
+	}
+	.ct__tag {
 		font-family: var(--f-mono);
 		font-size: 11px;
-		letter-spacing: 0.2em;
-		text-transform: uppercase;
-		color: var(--bone-soft);
-
-		.rule { display: inline-block; width: 42px; height: 1px; background: var(--gold); }
+		letter-spacing: 0.22em;
+		color: var(--signal);
 	}
-
-	h2 {
-		font-family: var(--f-display);
-		font-weight: 300;
-		font-size: clamp(3rem, 9vw, 7rem);
-		line-height: 0.92;
-		letter-spacing: -0.04em;
-		margin: 1.25rem 0 1rem;
-		color: var(--bone);
-
-		em {
-			font-family: var(--f-display);
-			font-style: italic;
-			color: var(--gold);
-		}
-	}
-
-	.sub {
-		margin: 0;
-		font-family: var(--f-body);
-		font-size: 1rem;
-		color: var(--bone-soft);
-	}
-
-	.grid {
-		display: grid;
-		grid-template-columns: 1fr;
-		gap: 3rem;
-
-		@include breakpoint('large') {
-			grid-template-columns: 320px 1fr;
-			gap: 4rem;
-		}
-	}
-
-	/* ── INFO ── */
-	.info {
-		display: flex;
-		flex-direction: column;
-		gap: 2rem;
-	}
-
-	.info__block {
-		display: flex;
-		flex-direction: column;
-		gap: 0.5rem;
-		padding-bottom: 1.5rem;
-		border-bottom: 1px solid var(--rule);
-
-		p {
-			margin: 0;
-			display: flex;
-			align-items: center;
-			gap: 0.6rem;
-			font-family: var(--f-body);
-			font-size: 0.95rem;
-			color: var(--bone);
-
-			:global(svg) { color: var(--gold); flex-shrink: 0; }
-		}
-
-		.entreprise {
-			font-family: var(--f-mono);
-			font-size: 10px;
-			letter-spacing: 0.16em;
-			text-transform: uppercase;
-			color: var(--bone-soft);
-			padding-left: 1.4rem;
-		}
-	}
-
-	.label {
+	.ct__head-status {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.6em;
 		font-family: var(--f-mono);
 		font-size: 10px;
 		letter-spacing: 0.2em;
+		color: var(--led);
+	}
+	.ct__head-led {
+		width: 8px; height: 8px;
+		background: var(--led);
+		border-radius: 50%;
+		box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.2), 0 0 8px rgba(34, 197, 94, 0.5);
+		animation: ledPulse 1.5s ease-in-out infinite;
+	}
+	@keyframes ledPulse {
+		0%, 100% { opacity: 1; }
+		50% { opacity: 0.4; }
+	}
+	.ct__title {
+		margin: 0 0 1rem;
+		font-family: var(--f-display);
+		font-weight: 900;
+		font-size: clamp(2.75rem, 9vw, 7rem);
+		line-height: 0.85;
+		letter-spacing: -0.04em;
 		text-transform: uppercase;
-		color: var(--bone-soft);
-		margin-bottom: 0.25rem;
+		color: var(--ink);
+		display: flex;
+		align-items: baseline;
+		gap: 0.3em;
+		flex-wrap: wrap;
+	}
+	.ct__title-pre {
+		color: transparent;
+		-webkit-text-stroke: 1.5px var(--ink);
+	}
+	.ct__title-main { color: var(--signal); }
+	.ct__title-bracket {
+		color: var(--ink-mute);
+		font-family: var(--f-mono);
+		font-weight: 400;
+		font-size: 0.5em;
+	}
+	.ct__sub {
+		margin: 0;
+		font-family: var(--f-body);
+		font-size: 1rem;
+		color: var(--ink-dim);
+		max-width: 36rem;
+		line-height: 1.55;
+	}
+	.ct__sub-rec {
+		color: var(--signal);
+		font-size: 0.8em;
+		animation: ledPulse 1.4s ease-in-out infinite;
 	}
 
-	.contact-link {
+	/* GRID */
+	.ct__grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 1.5rem;
+
+		@include breakpoint('large') {
+			grid-template-columns: 360px 1fr;
+			gap: 2rem;
+		}
+	}
+
+	/* PANEL */
+	.panel {
+		background: var(--panel);
+		border: 1px solid var(--rule-hot);
+		display: flex;
+		flex-direction: column;
+		position: relative;
+	}
+	.panel__top {
+		display: flex;
+		justify-content: space-between;
+		padding: 0.7rem 1rem;
+		background: var(--panel-2);
+		border-bottom: 1px solid var(--rule-hot);
+		font-family: var(--f-mono);
+		font-size: 10px;
+		letter-spacing: 0.22em;
+		color: var(--signal);
+	}
+	.panel__top-id { color: var(--ink-mute); }
+
+	.panel__rows {
+		padding: 1rem 1rem;
+		display: flex;
+		flex-direction: column;
+	}
+	.panel__row {
+		display: grid;
+		grid-template-columns: 60px 1fr auto;
+		gap: 0.85rem;
+		align-items: center;
+		padding: 0.7rem 0;
+		text-decoration: none;
+		color: var(--ink);
+	}
+	.panel__row--link {
+		transition: color 0.25s ease;
+		&:hover {
+			color: var(--signal);
+			.panel__plug { background: var(--led); box-shadow: 0 0 6px var(--led); }
+		}
+	}
+	.panel__row--socials { grid-template-columns: 60px 1fr; }
+	.panel__k {
+		font-family: var(--f-mono);
+		font-size: 10px;
+		letter-spacing: 0.18em;
+		color: var(--signal);
 		display: inline-flex;
 		align-items: center;
-		gap: 0.6rem;
-		text-decoration: none;
-		color: var(--bone);
-		font-family: var(--f-body);
-		font-size: 0.95rem;
-		padding: 0.2rem 0;
-		transition: color 0.3s ease;
-
-		:global(svg) { color: var(--gold); flex-shrink: 0; }
-
-		&:hover { color: var(--gold); }
+		gap: 0.35em;
 	}
-
-	.socials {
+	.panel__v {
+		font-family: var(--f-body);
+		font-size: 0.9rem;
+	}
+	.panel__v--mono {
+		font-family: var(--f-mono);
+		font-size: 0.82rem;
+		letter-spacing: 0.06em;
+		color: var(--ink-dim);
+	}
+	.panel__plug {
+		width: 10px; height: 10px;
+		border-radius: 50%;
+		background: var(--ink-mute);
+		transition: all 0.3s ease;
+	}
+	.panel__sep {
+		height: 1px;
+		background: var(--rule);
+		margin: 0.3rem 0;
+	}
+	.panel__socials {
 		display: flex;
-		gap: 0.75rem;
-		margin-top: 0.25rem;
+		gap: 0.5rem;
 
 		a {
-			width: 40px;
-			height: 40px;
-			border: 1px solid var(--rule-strong);
+			width: 32px; height: 32px;
 			display: inline-flex;
 			align-items: center;
 			justify-content: center;
-			color: var(--bone);
+			border: 1px solid var(--rule-hot);
+			color: var(--ink);
 			text-decoration: none;
-			transition: all 0.3s ease;
+			transition: all 0.25s ease;
 
 			&:hover {
-				background: var(--gold);
-				color: var(--void);
-				border-color: var(--gold);
+				background: var(--signal);
+				color: var(--bg);
+				border-color: var(--signal);
 			}
 		}
 	}
 
-	.info__sig {
+	.panel__sig {
+		padding: 1rem;
+		background: var(--bg);
+		border-top: 1px solid var(--rule-hot);
 		display: flex;
 		flex-direction: column;
-		gap: 0.35rem;
-		padding: 1.5rem;
-		border: 1px solid var(--rule-strong);
-		background: var(--graphite);
-
-		&-label {
-			font-family: var(--f-mono);
-			font-size: 9px;
-			letter-spacing: 0.22em;
-			text-transform: uppercase;
-			color: var(--bone-soft);
-		}
-		&-name {
-			font-family: var(--f-display);
-			font-style: italic;
-			font-size: 2rem;
-			color: var(--gold);
-			line-height: 1;
-		}
-		&-role {
-			font-family: var(--f-body);
-			font-size: 0.82rem;
-			color: var(--bone-soft);
-		}
+		gap: 0.25rem;
+	}
+	.panel__sig-top {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+	.panel__sig-k {
+		font-family: var(--f-mono);
+		font-size: 9px;
+		letter-spacing: 0.22em;
+		color: var(--ink-mute);
+	}
+	.panel__sig-rec {
+		font-family: var(--f-mono);
+		font-size: 9px;
+		letter-spacing: 0.22em;
+		color: var(--bg);
+		background: var(--signal);
+		padding: 0.2em 0.45em;
+		font-weight: 600;
+	}
+	.panel__sig-name {
+		font-family: var(--f-display);
+		font-size: 2.2rem;
+		font-weight: 900;
+		color: var(--signal);
+		line-height: 1;
+		letter-spacing: -0.03em;
+		text-transform: uppercase;
+	}
+	.panel__sig-role {
+		font-family: var(--f-mono);
+		font-size: 9px;
+		letter-spacing: 0.18em;
+		color: var(--ink-dim);
 	}
 
-	/* ── FORM ── */
-	.form {
-		background: var(--void);
-		border: 1px solid var(--rule-strong);
-		padding: 1.75rem;
+	.panel__wave {
+		width: 100%;
+		height: 30px;
+		color: var(--signal);
+		opacity: 0.6;
+		border-top: 1px solid var(--rule-hot);
+		padding: 4px 0;
+	}
+
+	/* DECK */
+	.deck {
+		background: var(--panel);
+		border: 1px solid var(--rule-hot);
+		display: flex;
+		flex-direction: column;
+	}
+	.deck__top {
+		display: flex;
+		justify-content: space-between;
+		padding: 0.85rem 1.25rem;
+		background: var(--bg);
+		border-bottom: 1px solid var(--rule-hot);
+		font-family: var(--f-mono);
+		font-size: 10px;
+		letter-spacing: 0.22em;
+	}
+	.deck__top-rec {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5em;
+		color: var(--signal);
+	}
+	.deck__top-rec-dot {
+		width: 8px; height: 8px;
+		background: var(--signal);
+		border-radius: 50%;
+		animation: ledPulse 1.2s ease-in-out infinite;
+	}
+	.deck__top-id { color: var(--ink-mute); }
+
+	.deck__body {
+		padding: 1.5rem 1.25rem;
 		display: flex;
 		flex-direction: column;
 		gap: 1.25rem;
 
 		@include breakpoint('medium') {
-			padding: 2.5rem;
+			padding: 2rem;
 		}
 	}
 
-	.row {
+	.deck__row {
 		display: grid;
 		gap: 1.25rem;
 		grid-template-columns: 1fr;
@@ -413,149 +536,153 @@
 		}
 	}
 
-	.field {
+	.deck__field {
 		display: flex;
 		flex-direction: column;
-		gap: 0.45rem;
-
-		> span {
-			font-family: var(--f-mono);
-			font-size: 10px;
-			letter-spacing: 0.2em;
-			text-transform: uppercase;
-			color: var(--bone-soft);
-
-			em {
-				color: var(--gold);
-				font-style: normal;
-			}
-		}
-
-		input, select, textarea {
-			font-family: var(--f-body);
-			font-size: 0.95rem;
-			background: transparent;
-			border: none;
-			border-bottom: 1px solid var(--rule-strong);
-			padding: 0.7rem 0;
-			color: var(--bone);
-			outline: none;
-			transition: border-color 0.3s ease;
-			width: 100%;
-
-			&:focus {
-				border-bottom-color: var(--gold);
-			}
-
-			&::placeholder {
-				color: var(--bone-soft);
-				opacity: 0.5;
-			}
-		}
-
-		select {
-			appearance: none;
-			cursor: pointer;
-			background-image: linear-gradient(45deg, transparent 50%, var(--bone-soft) 50%),
-				linear-gradient(135deg, var(--bone-soft) 50%, transparent 50%);
-			background-position: calc(100% - 14px) 1rem, calc(100% - 9px) 1rem;
-			background-size: 5px 5px;
-			background-repeat: no-repeat;
-			padding-right: 2rem;
-
-			option {
-				background: var(--void);
-				color: var(--bone);
-			}
-		}
-
-		textarea {
-			resize: vertical;
-			min-height: 120px;
-			border-bottom: 1px solid var(--rule-strong);
-		}
+		gap: 0.4rem;
 	}
-
-	.error {
-		margin: 0;
+	.deck__lbl {
 		font-family: var(--f-mono);
-		font-size: 11px;
-		letter-spacing: 0.1em;
-		text-transform: uppercase;
-		color: #e89c70;
+		font-size: 10px;
+		letter-spacing: 0.22em;
+		color: var(--signal);
+		em { color: var(--led); font-style: normal; margin-left: 0.2em; }
 	}
 
-	.submit {
+	.deck__field input,
+	.deck__field select,
+	.deck__field textarea {
+		font-family: var(--f-body);
+		font-size: 0.95rem;
+		background: var(--bg);
+		border: 1px solid var(--rule-hot);
+		padding: 0.85rem 0.85rem;
+		color: var(--ink);
+		outline: none;
+		transition: border-color 0.25s ease, box-shadow 0.25s ease;
+		width: 100%;
+
+		&:focus {
+			border-color: var(--signal);
+			box-shadow: inset 0 0 0 1px var(--signal);
+		}
+
+		&::placeholder { color: var(--ink-mute); }
+	}
+
+	.deck__field select {
+		appearance: none;
+		cursor: pointer;
+		background-image:
+			linear-gradient(45deg, transparent 50%, var(--signal) 50%),
+			linear-gradient(135deg, var(--signal) 50%, transparent 50%);
+		background-position: calc(100% - 14px) center, calc(100% - 9px) center;
+		background-size: 5px 5px;
+		background-repeat: no-repeat;
+		padding-right: 2rem;
+
+		option { background: var(--bg); color: var(--ink); }
+	}
+
+	.deck__field textarea { resize: vertical; min-height: 130px; }
+
+	.deck__err {
+		margin: 0;
 		display: inline-flex;
 		align-items: center;
-		justify-content: center;
-		gap: 0.75em;
-		padding: 1.1em 1.8em;
-		background: var(--gold);
-		color: var(--void);
-		border: 1px solid var(--gold);
+		gap: 0.55em;
 		font-family: var(--f-mono);
 		font-size: 11px;
-		letter-spacing: 0.2em;
-		text-transform: uppercase;
+		letter-spacing: 0.16em;
+		color: var(--amber);
+		padding: 0.7em 0.85em;
+		border: 1px solid var(--amber);
+		background: rgba(245, 158, 11, 0.05);
+	}
+	.deck__err-led {
+		width: 8px; height: 8px;
+		background: var(--amber);
+		animation: ledPulse 0.8s ease-in-out infinite;
+	}
+
+	.deck__transport {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 0.85rem;
+		margin-top: 0.5rem;
+		padding-top: 1rem;
+		border-top: 1px dashed var(--rule);
+
+		@include breakpoint('small') {
+			grid-template-columns: auto 1fr;
+			align-items: center;
+			gap: 1.25rem;
+		}
+	}
+	.deck__send {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.65em;
+		padding: 0.95em 1.5em;
+		background: var(--signal);
+		color: var(--bg);
+		border: none;
+		font-family: var(--f-mono);
+		font-weight: 600;
+		font-size: 12px;
+		letter-spacing: 0.22em;
 		cursor: pointer;
-		align-self: flex-start;
 		transition: all 0.3s ease;
 
 		&:hover:not(:disabled) {
-			background: transparent;
-			color: var(--gold);
+			background: var(--ink);
+			.deck__send-rec { background: var(--signal); }
 		}
-
-		&:disabled {
-			opacity: 0.6;
-			cursor: wait;
-		}
+		&:disabled { opacity: 0.6; cursor: wait; }
 	}
-
-	.note {
+	.deck__send-rec {
+		width: 8px; height: 8px;
+		background: var(--bg);
+		border-radius: 50%;
+	}
+	.deck__note {
 		margin: 0;
 		font-family: var(--f-mono);
-		font-size: 10px;
-		line-height: 1.6;
-		letter-spacing: 0.08em;
-		color: var(--bone-soft);
-		opacity: 0.7;
+		font-size: 9px;
+		letter-spacing: 0.18em;
+		color: var(--ink-mute);
+		line-height: 1.5;
 	}
 
-	/* ── Success ── */
-	.success {
+	.deck__success {
+		padding: 4rem 2rem;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		text-align: center;
-		padding: 3rem 1rem;
-		gap: 0.5rem;
-
-		&__icon {
-			width: 72px;
-			height: 72px;
-			border: 1px solid var(--gold);
-			display: inline-flex;
-			align-items: center;
-			justify-content: center;
-			color: var(--gold);
-			border-radius: 50%;
-			margin-bottom: 1rem;
-		}
-
-		h3 {
-			margin: 0;
-			font-family: var(--f-display);
-			font-size: 2rem;
-			font-weight: 300;
-			color: var(--bone);
-		}
-
-		p {
-			margin: 0;
-			font-family: var(--f-body);
-			color: var(--bone-soft);
-		}
+		gap: 0.65rem;
+	}
+	.deck__success-icon {
+		width: 64px; height: 64px;
+		background: var(--led);
+		color: var(--bg);
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		margin-bottom: 1rem;
+		box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.2), 0 0 24px rgba(34, 197, 94, 0.5);
+	}
+	.deck__success h3 {
+		margin: 0;
+		font-family: var(--f-display);
+		font-size: 2.25rem;
+		text-transform: uppercase;
+		letter-spacing: -0.02em;
+		color: var(--ink);
+	}
+	.deck__success p {
+		margin: 0;
+		font-family: var(--f-body);
+		color: var(--ink-dim);
 	}
 </style>
