@@ -4,38 +4,27 @@
 
 	let { prestations = null } = $props();
 
-	// Fallback mock si l'API ne renvoie pas encore de prestations
 	const defaults = [
 		{ titre: 'Défilés', description: 'Sonorisation rythmée et lumière scénique pour mettre en valeur chaque passage.', icone: 'Shirt' },
 		{ titre: 'Expositions', description: 'Ambiance sonore maîtrisée, diffusion homogène pour accompagner la visite.', icone: 'Image' },
-		{ titre: 'Soirées privées', description: 'Du cocktail à la piste de danse — une progression musicale pensée pour vos invités.', icone: 'PartyPopper' },
-		{ titre: 'En salle & chapiteau', description: 'Matériel adapté à chaque configuration, intérieur comme extérieur.', icone: 'Tent' },
-		{ titre: 'Mariages', description: 'Cérémonie, vin d\'honneur, repas, soirée — une journée complète, une seule équipe.', icone: 'Heart' },
+		{ titre: 'Soirées privées', description: 'Du cocktail à la piste de danse — une progression musicale pensée.', icone: 'PartyPopper' },
+		{ titre: 'Salle & chapiteau', description: 'Matériel adapté à chaque configuration, intérieur comme extérieur.', icone: 'Tent' },
+		{ titre: 'Mariages', description: 'Cérémonie, vin d\'honneur, repas, soirée — une seule équipe, une journée.', icone: 'Heart' },
 		{ titre: 'Anniversaires', description: 'Des 18 ans à la fête en famille, on adapte l\'énergie à vos envies.', icone: 'Cake' },
-		{ titre: 'Événements d\'entreprise', description: 'Séminaires, soirées d\'entreprise, inaugurations — prestation sobre et pro.', icone: 'Briefcase' }
+		{ titre: 'Entreprise', description: 'Séminaires, soirées, inaugurations — prestation sobre et pro.', icone: 'Briefcase' },
+		{ titre: 'Sur mesure', description: 'Une demande spécifique ? On compose le set selon votre brief.', icone: 'Speaker' }
 	];
 
 	const items = $derived(
 		(prestations && prestations.length > 0 ? prestations : defaults).map((p, i) => ({
 			...p,
-			num: String(i + 1).padStart(2, '0')
+			ch: String(i + 1).padStart(2, '0'),
+			level: 60 + Math.floor(Math.random() * 35)
 		}))
 	);
 
-	const iconMap = {
-		Music: Music2,
-		Music2,
-		Speaker,
-		PartyPopper,
-		Tent,
-		Heart,
-		Cake,
-		Briefcase,
-		Shirt,
-		Image: ImageIcon
-	};
+	const iconMap = { Music: Music2, Music2, Speaker, PartyPopper, Tent, Heart, Cake, Briefcase, Shirt, Image: ImageIcon };
 
-	let sectionEl;
 	let titleEl;
 	let cardEls = $state([]);
 
@@ -45,52 +34,75 @@
 		gsap.registerPlugin(ScrollTrigger);
 
 		gsap.from(titleEl, {
-			opacity: 0,
-			y: 40,
-			duration: 1,
-			ease: 'power3.out',
-			scrollTrigger: { trigger: titleEl, start: 'top 80%' }
+			opacity: 0, y: 30, duration: 1, ease: 'power3.out',
+			scrollTrigger: { trigger: titleEl, start: 'top 85%' }
 		});
 
 		cardEls.forEach((el, i) => {
 			if (!el) return;
 			gsap.from(el, {
-				opacity: 0,
-				y: 60,
-				duration: 0.9,
-				delay: (i % 3) * 0.08,
-				ease: 'power3.out',
-				scrollTrigger: { trigger: el, start: 'top 88%' }
+				opacity: 0, y: 40, duration: 0.7,
+				delay: (i % 4) * 0.06, ease: 'power3.out',
+				scrollTrigger: { trigger: el, start: 'top 90%' }
 			});
+			// fader animation au scroll
+			const fader = el.querySelector('.ch__fader-knob');
+			const level = el.dataset.level;
+			if (fader && level) {
+				gsap.from(fader, {
+					bottom: '0%',
+					duration: 1.2,
+					ease: 'power2.out',
+					scrollTrigger: { trigger: el, start: 'top 85%' }
+				});
+			}
 		});
 	});
 </script>
 
-<section class="prestations" id="prestations" bind:this={sectionEl}>
+<section class="prestations" id="prestations">
 	<header class="head" bind:this={titleEl}>
-		<span class="eyebrow"><span class="rule"></span>Section 01 / Prestations</span>
-		<h2>
-			Nos <em>prestations</em>
-			<span class="head__sub">Son, lumière, animation — <span class="gold">clé en main</span>.</span>
+		<div class="head__top">
+			<span class="head__tag">SECTION/01 — RACK·OUT</span>
+			<span class="head__count">[ {String(items.length).padStart(2, '0')} CANAUX ACTIFS ]</span>
+		</div>
+		<h2 class="head__title">
+			NOS<br />
+			<span class="head__accent">PRESTATIONS</span>
 		</h2>
+		<p class="head__sub">
+			Chaque prestation est un canal séparé, mixé selon votre cahier des charges.
+			<span class="head__sig">— SON / LUMIÈRE / ANIMATION.</span>
+		</p>
 	</header>
 
-	<div class="grid">
+	<div class="rack">
 		{#each items as item, i (item.titre + i)}
 			{@const Icon = iconMap[item.icone] ?? Music2}
-			<article class="card" bind:this={cardEls[i]}>
-				<div class="card__top">
-					<span class="card__num">{item.num}</span>
-					<span class="card__icon">
-						<Icon size={22} strokeWidth={1.4} />
-					</span>
+			<article class="ch" bind:this={cardEls[i]} data-level={item.level}>
+				<div class="ch__head">
+					<span class="ch__num">{item.ch}</span>
+					<span class="ch__led"></span>
 				</div>
-				<h3 class="card__title">{item.titre}</h3>
-				<p class="card__desc">{item.description ?? ''}</p>
-				<div class="card__arrow" aria-hidden="true">
-					<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.3">
-						<path d="M5 12h14M13 6l6 6-6 6" />
-					</svg>
+				<div class="ch__icon">
+					<Icon size={20} strokeWidth={1.6} />
+				</div>
+				<h3 class="ch__title">{item.titre}</h3>
+				<p class="ch__desc">{item.description ?? ''}</p>
+
+				<!-- Mini fader visuel -->
+				<div class="ch__fader" aria-hidden="true">
+					<div class="ch__fader-track">
+						{#each Array(11) as _, j (j)}
+							<span class="ch__fader-tick"></span>
+						{/each}
+					</div>
+					<span class="ch__fader-knob" style="bottom: {item.level}%"></span>
+				</div>
+
+				<div class="ch__foot">
+					<span class="ch__lvl">{item.level} dB</span>
+					<span class="ch__on">CH·{item.ch}</span>
 				</div>
 			</article>
 		{/each}
@@ -101,168 +113,259 @@
 	@use './styles/mixins' as *;
 
 	.prestations {
-		padding: 6rem 1.25rem;
-		border-bottom: 1px solid var(--rule);
+		padding: 5rem 1.25rem 6rem;
+		background: var(--bg);
+		position: relative;
+		border-top: 1px solid var(--rule-hot);
+		border-bottom: 1px solid var(--rule-hot);
 
 		@include breakpoint('medium') {
-			padding: 8rem 2rem;
+			padding: 7rem 2rem 8rem;
+		}
+
+		&::before {
+			content: '';
+			position: absolute;
+			top: 0; left: 0; right: 0;
+			height: 1px;
+			background: linear-gradient(90deg, transparent, var(--signal) 50%, transparent);
+			opacity: 0.4;
 		}
 	}
 
 	.head {
-		max-width: 60rem;
+		max-width: 70rem;
 		margin: 0 0 4rem;
 
 		@include breakpoint('medium') {
 			margin: 0 0 5rem;
 		}
 	}
-
-	.eyebrow {
-		display: inline-flex;
+	.head__top {
+		display: flex;
+		justify-content: space-between;
 		align-items: center;
-		gap: 0.9em;
+		gap: 1rem;
+		margin-bottom: 1.5rem;
+		padding-bottom: 0.85rem;
+		border-bottom: 1px dashed var(--rule-hot);
+		flex-wrap: wrap;
+	}
+	.head__tag {
 		font-family: var(--f-mono);
 		font-size: 11px;
+		letter-spacing: 0.22em;
+		color: var(--signal);
+		font-weight: 500;
+	}
+	.head__count {
+		font-family: var(--f-mono);
+		font-size: 10px;
 		letter-spacing: 0.2em;
+		color: var(--ink-dim);
+	}
+	.head__title {
+		margin: 0;
+		font-family: var(--f-display);
+		font-weight: 900;
+		font-size: clamp(3rem, 11vw, 9rem);
+		line-height: 0.85;
+		letter-spacing: -0.04em;
 		text-transform: uppercase;
-		color: var(--bone-soft);
+		color: var(--ink);
+	}
+	.head__accent {
+		color: var(--signal);
+		display: inline-block;
+		position: relative;
 
-		.rule {
-			display: inline-block;
-			width: 42px;
-			height: 1px;
-			background: var(--gold);
+		&::after {
+			content: '';
+			position: absolute;
+			right: -0.15em;
+			top: 0.18em;
+			bottom: 0.2em;
+			width: 0.08em;
+			background: var(--signal);
+			animation: cursorBlink 1s steps(2) infinite;
 		}
 	}
-
-	h2 {
-		font-family: var(--f-display);
-		font-weight: 300;
-		font-size: clamp(2.5rem, 7vw, 5.5rem);
-		line-height: 0.95;
-		letter-spacing: -0.035em;
-		margin: 1.25rem 0 0;
-		color: var(--bone);
-
-		em {
-			font-family: var(--f-display);
-			font-style: italic;
-			color: var(--gold);
-			font-weight: 300;
-		}
+	@keyframes cursorBlink {
+		0%, 50% { opacity: 1; }
+		51%, 100% { opacity: 0; }
 	}
-
 	.head__sub {
-		display: block;
-		margin-top: 1.25rem;
-		font-family: var(--f-display);
-		font-size: clamp(1rem, 1.6vw, 1.25rem);
-		font-style: italic;
-		font-weight: 300;
-		color: var(--bone-soft);
+		margin: 1.5rem 0 0;
+		font-family: var(--f-body);
+		font-size: clamp(1rem, 1.6vw, 1.15rem);
 		line-height: 1.5;
-
-		.gold { color: var(--gold); }
+		color: var(--ink-dim);
+		max-width: 38rem;
+	}
+	.head__sig {
+		display: block;
+		margin-top: 0.5rem;
+		font-family: var(--f-mono);
+		font-size: 11px;
+		letter-spacing: 0.18em;
+		color: var(--signal);
 	}
 
-	.grid {
+	/* ===== RACK : grille de canaux verticaux type console ===== */
+	.rack {
 		display: grid;
-		grid-template-columns: 1fr;
+		grid-template-columns: repeat(2, 1fr);
 		gap: 1px;
-		background: var(--rule);
-		border: 1px solid var(--rule);
+		background: var(--rule-hot);
+		border: 1px solid var(--rule-hot);
+		padding: 1px;
 
-		@include breakpoint('medium') {
-			grid-template-columns: 1fr 1fr;
-		}
-
-		@include breakpoint('large') {
+		@include breakpoint('small') {
 			grid-template-columns: repeat(3, 1fr);
 		}
-	}
-
-	.card {
-		background: var(--void);
-		padding: 2.25rem 1.75rem;
-		display: flex;
-		flex-direction: column;
-		gap: 1rem;
-		position: relative;
-		cursor: pointer;
-		transition: background 0.4s ease;
 
 		@include breakpoint('medium') {
-			padding: 2.75rem 2rem;
-			min-height: 300px;
+			grid-template-columns: repeat(4, 1fr);
+		}
+	}
+
+	.ch {
+		background: var(--panel);
+		padding: 1.5rem 1.1rem 1.25rem;
+		display: grid;
+		grid-template-rows: auto auto auto 1fr auto auto;
+		gap: 0.85rem;
+		min-height: 380px;
+		position: relative;
+		transition: background 0.3s ease;
+
+		@include breakpoint('medium') {
+			min-height: 460px;
+			padding: 1.75rem 1.25rem 1.5rem;
+		}
+
+		&::before {
+			content: '';
+			position: absolute;
+			top: 0; left: 0; right: 0;
+			height: 3px;
+			background: var(--signal);
+			transform: scaleX(0);
+			transform-origin: left;
+			transition: transform 0.45s ease;
 		}
 
 		&:hover {
-			background: var(--graphite);
-
-			.card__arrow {
-				transform: translate(4px, -4px);
-				color: var(--gold);
-			}
-			.card__title {
-				color: var(--gold);
-			}
-			.card__icon {
-				border-color: var(--gold);
-				color: var(--gold);
+			background: var(--panel-2);
+			&::before { transform: scaleX(1); }
+			.ch__icon { color: var(--signal); border-color: var(--signal); }
+			.ch__title { color: var(--signal); }
+			.ch__led {
+				background: var(--led);
+				box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.2), 0 0 8px rgba(34, 197, 94, 0.6);
 			}
 		}
 	}
 
-	.card__top {
+	.ch__head {
 		display: flex;
 		justify-content: space-between;
-		align-items: flex-start;
-		margin-bottom: 1rem;
+		align-items: center;
 	}
-
-	.card__num {
+	.ch__num {
 		font-family: var(--f-mono);
-		font-size: 11px;
+		font-size: 10px;
 		letter-spacing: 0.2em;
-		color: var(--gold);
-		opacity: 0.8;
+		color: var(--ink-mute);
+	}
+	.ch__led {
+		width: 8px; height: 8px;
+		background: var(--ink-mute);
+		border-radius: 50%;
+		transition: all 0.3s ease;
 	}
 
-	.card__icon {
-		width: 44px;
-		height: 44px;
-		border: 1px solid var(--rule-strong);
+	.ch__icon {
+		width: 42px; height: 42px;
+		border: 1px solid var(--rule-hot);
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
-		color: var(--bone);
-		transition: all 0.35s ease;
+		color: var(--ink);
+		transition: all 0.3s ease;
 	}
 
-	.card__title {
+	.ch__title {
 		margin: 0;
 		font-family: var(--f-display);
-		font-weight: 400;
-		font-size: clamp(1.5rem, 2.5vw, 2rem);
-		line-height: 1.1;
+		font-weight: 900;
+		font-size: 1.35rem;
+		line-height: 0.95;
 		letter-spacing: -0.02em;
-		color: var(--bone);
-		transition: color 0.35s ease;
+		text-transform: uppercase;
+		color: var(--ink);
+		transition: color 0.3s ease;
 	}
 
-	.card__desc {
+	.ch__desc {
 		margin: 0;
 		font-family: var(--f-body);
-		font-size: 0.92rem;
-		line-height: 1.65;
-		color: var(--bone-soft);
-		flex: 1;
+		font-size: 0.85rem;
+		line-height: 1.5;
+		color: var(--ink-dim);
 	}
 
-	.card__arrow {
-		align-self: flex-end;
-		color: var(--bone-soft);
-		transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), color 0.3s ease;
+	/* Mini fader */
+	.ch__fader {
+		position: relative;
+		height: 80px;
+		width: 100%;
+		background: var(--bg);
+		border: 1px solid var(--rule);
+		padding: 4px;
 	}
+	.ch__fader-track {
+		position: absolute;
+		inset: 6px;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+	.ch__fader-tick {
+		height: 1px;
+		background: var(--rule-hot);
+		width: 100%;
+		&:nth-child(odd) { background: var(--ink-mute); width: 70%; }
+	}
+	.ch__fader-knob {
+		position: absolute;
+		left: 4px; right: 4px;
+		height: 14px;
+		background: var(--signal);
+		border-radius: 1px;
+		transition: bottom 0.3s ease;
+
+		&::before {
+			content: '';
+			position: absolute;
+			top: 50%;
+			left: 0; right: 0;
+			height: 1px;
+			background: var(--bg);
+			transform: translateY(-50%);
+		}
+	}
+
+	.ch__foot {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding-top: 0.65rem;
+		border-top: 1px dashed var(--rule);
+		font-family: var(--f-mono);
+		font-size: 9px;
+		letter-spacing: 0.18em;
+	}
+	.ch__lvl { color: var(--led); }
+	.ch__on { color: var(--ink-mute); }
 </style>
