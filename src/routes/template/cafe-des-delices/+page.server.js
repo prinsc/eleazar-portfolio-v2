@@ -5,7 +5,7 @@ const ORG_SLUG = 'le-cafe-des-delices';
 const ALL_SECTIONS = [
 	'infos', 'horaires', 'horaires-cuisine', 'alerte', 'fermetures',
 	'seo', 'cta', 'plat_du_jour', 'socials', 'avis', 'poles',
-	'carte', 'menus', 'galerie', 'events', 'news', 'blog','restaurant_parametres'
+	'carte', 'menus', 'galerie', 'events', 'news', 'blog', 'restaurant_parametres'
 ].join(',');
 
 async function fetchAll(key) {

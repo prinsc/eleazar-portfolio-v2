@@ -1,0 +1,22 @@
+$screen-xsmall: 450px;
+$screen-small: 576px;
+$screen-medium: 768px;
+$screen-large: 992px;
+$screen-xlarge: 1200px;
+$screen-xxlarge: 1400px;
+
+@mixin breakpoint($point) {
+	@if $point == xsmall { @media (min-width: $screen-xsmall) { @content; } }
+	@else if $point == small { @media (min-width: $screen-small) { @content; } }
+	@else if $point == medium { @media (min-width: $screen-medium) { @content; } }
+	@else if $point == large { @media (min-width: $screen-large) { @content; } }
+	@else if $point == xlarge { @media (min-width: $screen-xlarge) { @content; } }
+	@else if $point == xxlarge { @media (min-width: $screen-xxlarge) { @content; } }
+}
+
+@mixin clamp-lines($n) {
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-line-clamp: $n;
+	-webkit-box-orient: vertical;
+}
