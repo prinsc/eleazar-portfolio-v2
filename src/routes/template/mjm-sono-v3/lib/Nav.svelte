@@ -1,7 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
 
-	const base = '/template/mjm-sono-v2';
+	const base = '/template/mjm-sono-v3';
 
 	const links = [
 		{ href: '#prestations', label: 'PRESTATIONS', ch: 'CH·01' },
@@ -16,8 +16,12 @@
 	let scrolled = $state(false);
 	let now = $state('00:00:00');
 
-	function toggleMenu() { menuOpen = !menuOpen; }
-	function closeMenu() { menuOpen = false; }
+	function toggleMenu() {
+		menuOpen = !menuOpen;
+	}
+	function closeMenu() {
+		menuOpen = false;
+	}
 
 	function tick() {
 		const d = new Date();
@@ -30,7 +34,9 @@
 	onMount(() => {
 		tick();
 		const id = setInterval(tick, 1000);
-		const onScroll = () => { scrolled = window.scrollY > 40; };
+		const onScroll = () => {
+			scrolled = window.scrollY > 40;
+		};
 		onScroll();
 		window.addEventListener('scroll', onScroll, { passive: true });
 		return () => {
@@ -155,11 +161,15 @@
 		text-transform: uppercase;
 		color: var(--ink-dim);
 		position: fixed;
-		top: 0; left: 0; right: 0;
+		top: 0;
+		left: 0;
+		right: 0;
 		z-index: 50;
 		background: var(--panel);
 		border-bottom: 1px solid var(--rule-hot);
-		transition: transform 0.4s ease, opacity 0.4s ease;
+		transition:
+			transform 0.4s ease,
+			opacity 0.4s ease;
 
 		@include breakpoint('medium') {
 			display: grid;
@@ -178,24 +188,42 @@
 		display: inline-flex;
 		align-items: center;
 		gap: 0.7em;
-		&--center { justify-self: center; color: var(--ink); }
-		&--end { justify-self: end; }
+		&--center {
+			justify-self: center;
+			color: var(--ink);
+		}
+		&--end {
+			justify-self: end;
+		}
 	}
 	.rail__dot {
-		width: 8px; height: 8px;
+		width: 8px;
+		height: 8px;
 		display: inline-block;
 		&--green {
 			background: var(--led);
-			box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.2), 0 0 12px rgba(34, 197, 94, 0.55);
+			box-shadow:
+				0 0 0 2px rgba(34, 197, 94, 0.2),
+				0 0 12px rgba(34, 197, 94, 0.55);
 			animation: pulseLed 1.8s ease-in-out infinite;
 		}
 	}
 	@keyframes pulseLed {
-		0%, 100% { opacity: 1; }
-		50% { opacity: 0.4; }
+		0%,
+		100% {
+			opacity: 1;
+		}
+		50% {
+			opacity: 0.4;
+		}
 	}
-	.rail__tc { color: var(--signal); letter-spacing: 0.08em; }
-	.rail__sep { color: var(--ink-mute); }
+	.rail__tc {
+		color: var(--signal);
+		letter-spacing: 0.08em;
+	}
+	.rail__sep {
+		color: var(--ink-mute);
+	}
 
 	/* ========== NAV principale ========== */
 	.nav {
@@ -208,10 +236,14 @@
 		-webkit-backdrop-filter: saturate(160%) blur(16px);
 		position: fixed;
 		top: 0;
-		left: 0; right: 0;
+		left: 0;
+		right: 0;
 		z-index: 60;
 		border-bottom: 1px solid var(--rule);
-		transition: top 0.4s ease, background 0.45s ease, border-color 0.4s ease;
+		transition:
+			top 0.4s ease,
+			background 0.45s ease,
+			border-color 0.4s ease;
 
 		@include breakpoint('medium') {
 			top: 34px;
@@ -261,7 +293,9 @@
 		justify-content: center;
 		line-height: 1;
 	}
-	.mark__letter:nth-child(3) { background: var(--ink); }
+	.mark__letter:nth-child(3) {
+		background: var(--ink);
+	}
 	.mark__dot {
 		background: var(--led);
 		box-shadow: inset 0 0 4px rgba(34, 197, 94, 0.8);
@@ -298,7 +332,9 @@
 			display: flex;
 		}
 	}
-	.index li { display: flex; }
+	.index li {
+		display: flex;
+	}
 	.index a {
 		display: inline-flex;
 		flex-direction: column;
@@ -308,13 +344,20 @@
 		padding: 0 1.1rem;
 		text-decoration: none;
 		border-left: 1px solid var(--rule);
-		transition: background 0.3s ease, color 0.3s ease;
+		transition:
+			background 0.3s ease,
+			color 0.3s ease;
 		position: relative;
 
 		&:hover {
 			background: var(--signal);
-			.index__ch { color: var(--bg); opacity: 0.8; }
-			.index__label { color: var(--bg); }
+			.index__ch {
+				color: var(--bg);
+				opacity: 0.8;
+			}
+			.index__label {
+				color: var(--bg);
+			}
 		}
 	}
 	.index__ch {
@@ -353,15 +396,19 @@
 		font-weight: 600;
 		transition: background 0.3s ease;
 
-		&:hover { background: var(--ink); }
+		&:hover {
+			background: var(--ink);
+		}
 	}
 	.quote__led {
-		width: 7px; height: 7px;
+		width: 7px;
+		height: 7px;
 		background: var(--bg);
 		border-radius: 50%;
 	}
 	.quote__sq {
-		width: 8px; height: 8px;
+		width: 8px;
+		height: 8px;
 		border: 1.5px solid var(--bg);
 	}
 
@@ -377,23 +424,40 @@
 		border-left: 1px solid var(--rule);
 		cursor: pointer;
 
-		@include breakpoint('xlarge') { display: none; }
+		@include breakpoint('xlarge') {
+			display: none;
+		}
 
 		span {
 			display: block;
 			height: 2px;
 			background: var(--ink);
 			transform-origin: center;
-			transition: transform 0.35s ease, opacity 0.3s;
+			transition:
+				transform 0.35s ease,
+				opacity 0.3s;
 
-			&:nth-child(1) { width: 100%; }
-			&:nth-child(2) { width: 70%; background: var(--signal); }
-			&:nth-child(3) { width: 100%; }
+			&:nth-child(1) {
+				width: 100%;
+			}
+			&:nth-child(2) {
+				width: 70%;
+				background: var(--signal);
+			}
+			&:nth-child(3) {
+				width: 100%;
+			}
 		}
 	}
-	.burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-	.burger.open span:nth-child(2) { opacity: 0; }
-	.burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+	.burger.open span:nth-child(1) {
+		transform: translateY(7px) rotate(45deg);
+	}
+	.burger.open span:nth-child(2) {
+		opacity: 0;
+	}
+	.burger.open span:nth-child(3) {
+		transform: translateY(-7px) rotate(-45deg);
+	}
 
 	/* ========== SHEET (menu mobile plein écran) ========== */
 	.sheet {
@@ -407,9 +471,13 @@
 		pointer-events: none;
 		opacity: 0;
 		clip-path: inset(0 0 100% 0);
-		transition: opacity 0.4s ease, clip-path 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+		transition:
+			opacity 0.4s ease,
+			clip-path 0.55s cubic-bezier(0.16, 1, 0.3, 1);
 
-		@include breakpoint('xlarge') { display: none !important; }
+		@include breakpoint('xlarge') {
+			display: none !important;
+		}
 
 		&--open {
 			pointer-events: auto;
@@ -437,11 +505,20 @@
 		letter-spacing: 0.16em;
 		text-transform: uppercase;
 
-		@include breakpoint('medium') { display: flex; }
+		@include breakpoint('medium') {
+			display: flex;
+		}
 	}
-	.sheet__k { color: var(--ink-mute); }
-	.sheet__v { color: var(--ink); font-size: 13px; }
-	.sheet__v--mono { color: var(--signal); }
+	.sheet__k {
+		color: var(--ink-mute);
+	}
+	.sheet__v {
+		color: var(--ink);
+		font-size: 13px;
+	}
+	.sheet__v--mono {
+		color: var(--signal);
+	}
 	.sheet__v--on {
 		color: var(--led);
 		&::before {
@@ -465,7 +542,9 @@
 		border-bottom: 1px solid var(--rule);
 		transform: translateY(20px);
 		opacity: 0;
-		transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+		transition:
+			transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+			opacity 0.4s ease;
 		transition-delay: calc(var(--i) * 55ms + 100ms);
 
 		.sheet--open & {
@@ -481,12 +560,17 @@
 		padding: 1.1rem 1.5rem;
 		text-decoration: none;
 		color: var(--ink);
-		transition: background 0.3s ease, padding-left 0.3s ease;
+		transition:
+			background 0.3s ease,
+			padding-left 0.3s ease;
 
 		&:hover {
 			background: var(--panel);
 			padding-left: 2rem;
-			.sheet__arrow { color: var(--signal); transform: translateX(4px); }
+			.sheet__arrow {
+				color: var(--signal);
+				transform: translateX(4px);
+			}
 		}
 	}
 	.sheet__ch {
@@ -505,7 +589,9 @@
 		color: var(--ink-mute);
 		font-family: var(--f-mono);
 		font-size: 18px;
-		transition: color 0.3s, transform 0.3s;
+		transition:
+			color 0.3s,
+			transform 0.3s;
 	}
 
 	.sheet__foot {
@@ -531,7 +617,8 @@
 		font-weight: 600;
 	}
 	.sheet__cta-sq {
-		width: 8px; height: 8px;
+		width: 8px;
+		height: 8px;
 		border: 1.5px solid var(--bg);
 	}
 </style>
