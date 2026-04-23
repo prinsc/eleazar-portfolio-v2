@@ -31,17 +31,17 @@
 		padding: 0;
 	}
 	:global(body) {
-		/* Palette brutaliste chic — dark confiance */
-		--void: #0b0b0c;            /* fond principal, presque noir */
-		--coal: #131315;            /* bloc secondaire */
-		--graphite: #1d1d20;        /* cards / surfaces */
-		--bone: #ede6d6;            /* texte principal chaud */
-		--bone-soft: #a9a396;       /* texte secondaire */
+		/* Palette brutaliste chic - dark confiance */
+		--void: #0b0b0c; /* fond principal, presque noir */
+		--coal: #131315; /* bloc secondaire */
+		--graphite: #1d1d20; /* cards / surfaces */
+		--bone: #ede6d6; /* texte principal chaud */
+		--bone-soft: #a9a396; /* texte secondaire */
 		--rule: rgba(237, 230, 214, 0.12);
 		--rule-strong: rgba(237, 230, 214, 0.22);
-		--gold: #c9a96b;            /* accent or chaud discret */
-		--gold-deep: #8a6a2f;       /* ambre profond */
-		--signal: #e8c88a;          /* highlight, usage parcimonieux */
+		--gold: #c9a96b; /* accent or chaud discret */
+		--gold-deep: #8a6a2f; /* ambre profond */
+		--signal: #e8c88a; /* highlight, usage parcimonieux */
 
 		--f-display: 'Fraunces', 'Times New Roman', serif;
 		--f-body: 'Inter', system-ui, sans-serif;

@@ -142,7 +142,7 @@
 	<!-- Bas : infos -->
 	<div class="fullmenu__footer">
 		<p>Grand Place · Ath · Belgique</p>
-		<p>Cuisine 12h — 14h30 · 18h — 22h</p>
+		<p>Cuisine 12h - 14h30 · 18h - 22h</p>
 	</div>
 </div>
 
@@ -408,7 +408,7 @@
 		}
 	}
 
-	/* Colonne gauche déco — visible à partir de medium */
+	/* Colonne gauche déco - visible à partir de medium */
 	.fullmenu__deco {
 		display: none;
 

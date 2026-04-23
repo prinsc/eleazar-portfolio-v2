@@ -12,18 +12,17 @@
 	];
 
 	const paragraphes = [
-		"Avec MJM Sonorisation & Yohan, profitez d'une prise en charge complète : sonorisation, éclairage et animation, pour un événement clé en main.",
-		"Plus de 30 ans d'expérience, du matériel pro, et un interlocuteur unique — Yohan — du premier contact à la fin de soirée.",
-		"Je fais évoluer régulièrement mon équipement pour vous offrir un rendu fiable, adapté à votre salle et à votre public."
+		"Avec MJM Sonorisation, profitez d'une prise en charge complète : sonorisation, éclairage et animation, pour un événement clé en main.",
+		"Plus de 30 ans d'expérience, du matériel pro, et un interlocuteur unique - Yohan - du premier contact à la fin de soirée.",
+		'Je fais évoluer régulièrement mon équipement pour vous offrir un rendu fiable, adapté à votre salle et à votre public.'
 	];
 
 	const img1 = $derived(
-		heroImage ??
-			'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=1400&q=80'
-		/* IMAGE CLIENT — remplacer par photo réelle */
+		heroImage ?? 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=1400&q=80'
+		/* IMAGE CLIENT - remplacer par photo réelle */
 	);
 	const img2 = 'https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?w=1200&q=80';
-	/* IMAGE CLIENT — remplacer par photo réelle */
+	/* IMAGE CLIENT - remplacer par photo réelle */
 
 	let heroEl;
 	let titleEl;
@@ -64,12 +63,14 @@
 
 			<h1 class="hero__title" bind:this={titleEl}>
 				<span class="mask"><span class="line" bind:this={lineEls[0]}>MJM Sonorisation</span></span>
-				<span class="mask"><span class="line line--accent" bind:this={lineEls[1]}>&amp; Yohan</span></span>
+				<span class="mask"
+					><span class="line line--accent" bind:this={lineEls[1]}>&amp; Yohan</span></span
+				>
 			</h1>
 
 			<p class="hero__sub" bind:this={subEl}>
 				Donnez une autre dimension à vos événements.<br />
-				Son, lumière, ambiance — on s'occupe de tout.
+				Son, lumière, ambiance - on s'occupe de tout.
 			</p>
 		</header>
 
@@ -185,9 +186,18 @@
 		letter-spacing: -0.035em;
 		color: var(--text);
 	}
-	.mask { display: block; overflow: hidden; padding-bottom: 0.06em; }
-	.line { display: block; will-change: transform; }
-	.line--accent { color: var(--red); }
+	.mask {
+		display: block;
+		overflow: hidden;
+		padding-bottom: 0.06em;
+	}
+	.line {
+		display: block;
+		will-change: transform;
+	}
+	.line--accent {
+		color: var(--red);
+	}
 
 	.hero__sub {
 		margin: 0;
@@ -287,7 +297,9 @@
 		&--primary {
 			background: var(--red);
 			color: #fff;
-			&:hover { background: var(--red-deep); }
+			&:hover {
+				background: var(--red-deep);
+			}
 		}
 
 		&--ghost {
@@ -298,7 +310,9 @@
 				background: var(--surface);
 				border-color: var(--text-soft);
 			}
-			:global(svg) { color: var(--red); }
+			:global(svg) {
+				color: var(--red);
+			}
 		}
 	}
 
@@ -375,12 +389,23 @@
 			border-bottom: none;
 			padding: 1.5rem;
 
-			&:last-child { border-right: none; }
+			&:last-child {
+				border-right: none;
+			}
 		}
 
-		&:nth-child(2n) { border-right: none; }
-		&:nth-child(2n) { @include breakpoint('medium') { border-right: 1px solid var(--line); } }
-		&:last-child { border-right: none; border-bottom: none; }
+		&:nth-child(2n) {
+			border-right: none;
+		}
+		&:nth-child(2n) {
+			@include breakpoint('medium') {
+				border-right: 1px solid var(--line);
+			}
+		}
+		&:last-child {
+			border-right: none;
+			border-bottom: none;
+		}
 	}
 
 	.kpi__num {
@@ -405,7 +430,10 @@
 		font-size: 0.85rem;
 		color: var(--text);
 
-		:global(svg) { color: var(--red); flex-shrink: 0; }
+		:global(svg) {
+			color: var(--red);
+			flex-shrink: 0;
+		}
 
 		@include breakpoint('medium') {
 			grid-column: auto;

@@ -5,8 +5,8 @@
 	let { fichiers = null } = $props();
 
 	const defaults = [
-		{ nom: 'Logo MJM — fond transparent', type: 'PNG', taille: '2.1 MB', href: '#' },
-		{ nom: 'Logo MJM — version monochrome', type: 'PNG', taille: '1.3 MB', href: '#' },
+		{ nom: 'Logo MJM - fond transparent', type: 'PNG', taille: '2.1 MB', href: '#' },
+		{ nom: 'Logo MJM - version monochrome', type: 'PNG', taille: '1.3 MB', href: '#' },
 		{ nom: 'Dossier sponsoring 2026', type: 'PDF', taille: '4.7 MB', href: '#' },
 		{ nom: 'Charte graphique', type: 'PDF', taille: '3.2 MB', href: '#' },
 		{ nom: 'Kit visuel événements', type: 'ZIP', taille: '12.4 MB', href: '#' }
@@ -129,7 +129,12 @@
 		text-transform: uppercase;
 		color: var(--bone-soft);
 
-		.rule { display: inline-block; width: 42px; height: 1px; background: var(--gold); }
+		.rule {
+			display: inline-block;
+			width: 42px;
+			height: 1px;
+			background: var(--gold);
+		}
 	}
 
 	h2 {
@@ -215,7 +220,9 @@
 		gap: 1rem;
 		padding: 1.25rem 0;
 		border-bottom: 1px solid var(--rule);
-		transition: background 0.3s ease, padding 0.35s ease;
+		transition:
+			background 0.3s ease,
+			padding 0.35s ease;
 
 		@include breakpoint('medium') {
 			grid-template-columns: 50px 40px 1fr 80px 100px 180px;
@@ -227,7 +234,9 @@
 			background: var(--graphite);
 			padding-left: 1.5rem;
 
-			.row__name { color: var(--gold); }
+			.row__name {
+				color: var(--gold);
+			}
 			.row__action {
 				background: var(--gold);
 				color: var(--void);

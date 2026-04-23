@@ -1,24 +1,76 @@
 <script>
 	import { onMount } from 'svelte';
-	import { Music2, Shirt, Image as ImageIcon, PartyPopper, Tent, Heart, Cake, Briefcase, Speaker } from 'lucide-svelte';
+	import {
+		Music2,
+		Shirt,
+		Image as ImageIcon,
+		PartyPopper,
+		Tent,
+		Heart,
+		Cake,
+		Briefcase,
+		Speaker
+	} from 'lucide-svelte';
 
 	let { prestations = null } = $props();
 
 	const defaults = [
-		{ titre: 'Mariages', description: "Cérémonie, vin d'honneur, repas, soirée — tout le parcours sonore sur une seule prestation.", icone: 'Heart' },
-		{ titre: 'Anniversaires', description: "18 ans, 50 ans, fête de famille — on adapte l'ambiance à l'âge et à l'énergie de la salle.", icone: 'Cake' },
-		{ titre: 'Soirées privées', description: 'Du cocktail à la piste de danse, une progression musicale pensée pour vos invités.', icone: 'PartyPopper' },
-		{ titre: "Événements d'entreprise", description: "Séminaires, inaugurations, fêtes du personnel — prestation sobre et pro.", icone: 'Briefcase' },
-		{ titre: 'Défilés', description: "Sonorisation rythmée pour mettre en valeur chaque passage, en salle ou en plein air.", icone: 'Shirt' },
-		{ titre: 'Expositions', description: "Diffusion homogène, ambiance sonore discrète pour accompagner la visite.", icone: 'ImageIcon' },
-		{ titre: 'Salle & chapiteau', description: "Matériel adapté à chaque configuration, intérieur comme extérieur, petit ou grand volume.", icone: 'Tent' }
+		{
+			titre: 'Mariages',
+			description:
+				"Cérémonie, vin d'honneur, repas, soirée - tout le parcours sonore sur une seule prestation.",
+			icone: 'Heart'
+		},
+		{
+			titre: 'Anniversaires',
+			description:
+				"18 ans, 50 ans, fête de famille - on adapte l'ambiance à l'âge et à l'énergie de la salle.",
+			icone: 'Cake'
+		},
+		{
+			titre: 'Soirées privées',
+			description:
+				'Du cocktail à la piste de danse, une progression musicale pensée pour vos invités.',
+			icone: 'PartyPopper'
+		},
+		{
+			titre: "Événements d'entreprise",
+			description: 'Séminaires, inaugurations, fêtes du personnel - prestation sobre et pro.',
+			icone: 'Briefcase'
+		},
+		{
+			titre: 'Défilés',
+			description:
+				'Sonorisation rythmée pour mettre en valeur chaque passage, en salle ou en plein air.',
+			icone: 'Shirt'
+		},
+		{
+			titre: 'Expositions',
+			description: 'Diffusion homogène, ambiance sonore discrète pour accompagner la visite.',
+			icone: 'ImageIcon'
+		},
+		{
+			titre: 'Salle & chapiteau',
+			description:
+				'Matériel adapté à chaque configuration, intérieur comme extérieur, petit ou grand volume.',
+			icone: 'Tent'
+		}
 	];
 
 	const items = $derived(prestations && prestations.length > 0 ? prestations : defaults);
 
 	const iconMap = {
-		Music: Music2, Music2, Speaker, PartyPopper, Tent, Heart, Cake, Briefcase, Shirt,
-		Image: ImageIcon, ImageIcon
+		Music: Music2,
+		Music2,
+		Speaker,
+		PartyPopper,
+		Tent,
+		Heart,
+		Cake,
+		Briefcase,
+		Shirt,
+		Image: ImageIcon,
+		ImageIcon
 	};
 
 	let titleEl;
@@ -30,14 +82,21 @@
 		gsap.registerPlugin(ScrollTrigger);
 
 		gsap.from(titleEl, {
-			opacity: 0, y: 24, duration: 0.7, ease: 'power2.out',
+			opacity: 0,
+			y: 24,
+			duration: 0.7,
+			ease: 'power2.out',
 			scrollTrigger: { trigger: titleEl, start: 'top 82%' }
 		});
 
 		cardEls.forEach((el, i) => {
 			if (!el) return;
 			gsap.from(el, {
-				opacity: 0, y: 24, duration: 0.6, delay: (i % 3) * 0.07, ease: 'power2.out',
+				opacity: 0,
+				y: 24,
+				duration: 0.6,
+				delay: (i % 3) * 0.07,
+				ease: 'power2.out',
 				scrollTrigger: { trigger: el, start: 'top 90%' }
 			});
 		});
@@ -130,7 +189,10 @@
 		display: flex;
 		flex-direction: column;
 		gap: 0.75rem;
-		transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+		transition:
+			border-color 0.2s ease,
+			background 0.2s ease,
+			transform 0.2s ease;
 
 		&:hover {
 			background: var(--surface-2);

@@ -68,7 +68,8 @@
 			<span class="eyebrow"><span class="rule"></span>Section 04 / Hébergement</span>
 			<h2>Chambre <em>d'hôte</em></h2>
 			<p class="sub">
-				Un espace paisible à deux pas de l'activité. Idéal pour prolonger un événement ou séjourner à Ostiches.
+				Un espace paisible à deux pas de l'activité. Idéal pour prolonger un événement ou séjourner
+				à Ostiches.
 			</p>
 		</header>
 
@@ -76,8 +77,8 @@
 			<div class="gallery">
 				{#each photos as src, i (src + i)}
 					<figure class="cell" bind:this={photoEls[i]}>
-						<!-- IMAGE CLIENT — remplacer par photo chambre d'hôte réelle -->
-						<img src={src} alt="Chambre d'hôte {i + 1}" loading="lazy" />
+						<!-- IMAGE CLIENT - remplacer par photo chambre d'hôte réelle -->
+						<img {src} alt="Chambre d'hôte {i + 1}" loading="lazy" />
 						<figcaption>
 							<span>{String(i + 1).padStart(2, '0')}</span>
 						</figcaption>
@@ -95,12 +96,18 @@
 					<div class="card__body">
 						<h3>La Halte de Flobecq</h3>
 						<p class="card__desc">
-							Chambre d'hôte — ambiance contemporaine, cuisine partagée, jardin privatif.
+							Chambre d'hôte - ambiance contemporaine, cuisine partagée, jardin privatif.
 						</p>
 
 						<ul class="card__infos">
-							<li><MapPin size={14} strokeWidth={1.5} /><span>337, route de Flobecq · 7804 Ostiches</span></li>
-							<li><BedDouble size={14} strokeWidth={1.5} /><span>2 chambres · 4 personnes</span></li>
+							<li>
+								<MapPin size={14} strokeWidth={1.5} /><span
+									>337, route de Flobecq · 7804 Ostiches</span
+								>
+							</li>
+							<li>
+								<BedDouble size={14} strokeWidth={1.5} /><span>2 chambres · 4 personnes</span>
+							</li>
 							<li><Wifi size={14} strokeWidth={1.5} /><span>Wi-Fi fibre inclus</span></li>
 							<li><Coffee size={14} strokeWidth={1.5} /><span>Petit-déjeuner maison</span></li>
 						</ul>
@@ -166,7 +173,12 @@
 		text-transform: uppercase;
 		color: var(--bone-soft);
 
-		.rule { display: inline-block; width: 42px; height: 1px; background: var(--gold); }
+		.rule {
+			display: inline-block;
+			width: 42px;
+			height: 1px;
+			background: var(--gold);
+		}
 	}
 
 	h2 {
@@ -223,7 +235,9 @@
 			height: 100%;
 			object-fit: cover;
 			filter: grayscale(30%) contrast(1.08) brightness(0.92);
-			transition: transform 0.9s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.4s ease;
+			transition:
+				transform 0.9s cubic-bezier(0.2, 0.8, 0.2, 1),
+				filter 0.4s ease;
 		}
 		&:hover img {
 			transform: scale(1.05);

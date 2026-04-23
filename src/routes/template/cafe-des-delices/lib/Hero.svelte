@@ -92,7 +92,7 @@
 	onMount(async () => {
 		const { gsap } = await import('gsap');
 
-		// Révèle le hero avant tout — évite le flash du DOM visible avant les gsap.set
+		// Révèle le hero avant tout - évite le flash du DOM visible avant les gsap.set
 		gsap.set(heroEl, { visibility: 'visible' });
 
 		// Etat initial
@@ -273,7 +273,7 @@
 		</span>
 		<span class="item">
 			<span class="label">Ouvert</span>
-			{horairesLabel ?? '—'}
+			{horairesLabel ?? '-'}
 		</span>
 		<span class="item">
 			<span class="label">Spécialités</span>

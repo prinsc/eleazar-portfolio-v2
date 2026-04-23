@@ -102,7 +102,7 @@ Chaque template a son propre `CLAUDE.md` qui décrit le contexte client (voir le
 
 
 
-## Guide — Connexion à l'API KLTK Studio pour le remplissage des informations des templates
+## Guide - Connexion à l'API KLTK Studio pour le remplissage des informations des templates
 Base URL
 
 https://admin.kltk.be/api
@@ -120,7 +120,7 @@ GET https://admin.kltk.be/api/{slug}/{section}
 {slug} → l'identifiant de ton organisation (ex: cafe-des-delices)
 {section} → le nom de la section à récupérer
 Sections disponibles
-Sections simples — retournent { data, updated_at }
+Sections simples - retournent { data, updated_at }
 Section	Contenu
 infos	Nom, adresse, contact, équipements
 horaires	Ouverture par jour, services midi/soir
@@ -133,7 +133,7 @@ cta	Boutons réservation / commande
 plat_du_jour	Plat du jour (texte ou image)
 socials	Réseaux sociaux
 avis	Avis clients
-Sections structurées — retournent un tableau ou un objet dédié
+Sections structurées - retournent un tableau ou un objet dédié
 Section	Structure retournée
 carte	{ categories: [...], items: [...] }
 menus	[{ id, name, price, data }]
@@ -141,7 +141,7 @@ galerie	[{ id, src, alt, label, tall, order }]
 events	[{ id, title, date, description }] (actifs uniquement)
 news	[{ id, title, date, summary, content, image }] (actives uniquement)
 blog	[{ id, title, slug, category, author, date, summary, image }] (publiés uniquement)
-Exemple SvelteKit — +page.server.ts
+Exemple SvelteKit - +page.server.ts
 
 // src/routes/+page.server.ts
 const API_URL = 'https://admin.kltk.be/api'
@@ -173,7 +173,7 @@ Mise en cache recommandée
 Les données du studio changent rarement en temps réel. Recommandé :
 
 
-// SvelteKit — cache 5 minutes côté CDN
+// SvelteKit - cache 5 minutes côté CDN
 return new Response(JSON.stringify(data), {
   headers: { 'Cache-Control': 'public, max-age=300, stale-while-revalidate=60' }
 })

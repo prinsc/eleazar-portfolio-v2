@@ -55,7 +55,7 @@
 </script>
 
 <svelte:head>
-	<title>Blog — {infos?.nom ?? 'Le Café des Délices'}</title>
+	<title>Blog - {infos?.nom ?? 'Le Café des Délices'}</title>
 	<meta name="description" content="Articles et conseils du Café des Délices à Ath." />
 </svelte:head>
 
@@ -249,7 +249,7 @@
 		</div>
 	{:else}
 		<div class="blog-empty">
-			<span class="blog-empty__icon">—</span>
+			<span class="blog-empty__icon">-</span>
 			<p>Aucun article dans cette catégorie.</p>
 			<button class="blog-empty__reset" onclick={() => (activeCategory = 'Tout')}>
 				Voir tous les articles

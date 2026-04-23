@@ -7,12 +7,12 @@
 
 	function normaliseItem(n) {
 		return {
-			id:      n.id ?? Math.random(),
-			titre:   n.title ?? n.titre ?? '',
-			date:    n.date ?? '',
-			resume:  n.summary ?? n.resume ?? '',
+			id: n.id ?? Math.random(),
+			titre: n.title ?? n.titre ?? '',
+			date: n.date ?? '',
+			resume: n.summary ?? n.resume ?? '',
 			contenu: n.content ?? n.contenu ?? '',
-			image:   n.image ?? null
+			image: n.image ?? null
 		};
 	}
 
@@ -25,7 +25,9 @@
 	function formatDate(str) {
 		if (!str) return '';
 		return new Date(str).toLocaleDateString('fr-BE', {
-			day: 'numeric', month: 'long', year: 'numeric'
+			day: 'numeric',
+			month: 'long',
+			year: 'numeric'
 		});
 	}
 
@@ -37,79 +39,93 @@
 </script>
 
 <svelte:head>
-	<title>Actualités — {infos?.nom ?? 'Le Café des Délices'}</title>
+	<title>Actualités - {infos?.nom ?? 'Le Café des Délices'}</title>
 	<meta name="description" content="Les dernières nouvelles du Café des Délices à Ath." />
 </svelte:head>
 
 {#if !news}
 	<Skeleton variant="list" />
 {:else}
-<header class="news-hero">
-	<div class="news-hero__inner">
-		<span class="eyebrow">Actualités</span>
-		<h1 class="news-hero__title">
-			Ce qu'il<br /><em>se passe</em>
-		</h1>
-		<p class="news-hero__sub">
-			{news.length} article{news.length > 1 ? 's' : ''}
-		</p>
-	</div>
-	<a href="/template/cafe-des-delices" class="back">
-		<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5">
-			<path d="M19 12H5M11 6l-6 6 6 6" />
-		</svg>
-		Retour
-	</a>
-</header>
+	<header class="news-hero">
+		<div class="news-hero__inner">
+			<span class="eyebrow">Actualités</span>
+			<h1 class="news-hero__title">
+				Ce qu'il<br /><em>se passe</em>
+			</h1>
+			<p class="news-hero__sub">
+				{news.length} article{news.length > 1 ? 's' : ''}
+			</p>
+		</div>
+		<a href="/template/cafe-des-delices" class="back">
+			<svg
+				viewBox="0 0 24 24"
+				width="14"
+				height="14"
+				fill="none"
+				stroke="currentColor"
+				stroke-width="1.5"
+			>
+				<path d="M19 12H5M11 6l-6 6 6 6" />
+			</svg>
+			Retour
+		</a>
+	</header>
 
-{#if news.length > 0}
-<div class="news-list">
-	{#each news as item, i}
-		<article class="news-item" class:news-item--open={expanded === item.id}>
-			<!-- Image optionnelle -->
-			{#if item.image}
-				<figure class="news-item__fig">
-					<!-- Image à remplacer par le client -->
-					<img src={item.image} alt={item.titre} loading="lazy" />
-				</figure>
-			{/if}
+	{#if news.length > 0}
+		<div class="news-list">
+			{#each news as item, i}
+				<article class="news-item" class:news-item--open={expanded === item.id}>
+					<!-- Image optionnelle -->
+					{#if item.image}
+						<figure class="news-item__fig">
+							<!-- Image à remplacer par le client -->
+							<img src={item.image} alt={item.titre} loading="lazy" />
+						</figure>
+					{/if}
 
-			<!-- Contenu -->
-			<div class="news-item__body">
-				<div class="news-item__meta">
-					<time class="news-item__date">{formatDate(item.date)}</time>
-					<span class="news-item__num">{String(i + 1).padStart(2, '0')}</span>
-				</div>
+					<!-- Contenu -->
+					<div class="news-item__body">
+						<div class="news-item__meta">
+							<time class="news-item__date">{formatDate(item.date)}</time>
+							<span class="news-item__num">{String(i + 1).padStart(2, '0')}</span>
+						</div>
 
-				<h2 class="news-item__title">{item.titre}</h2>
-				<p class="news-item__resume">{item.resume}</p>
+						<h2 class="news-item__title">{item.titre}</h2>
+						<p class="news-item__resume">{item.resume}</p>
 
-				{#if item.contenu}
-					<div class="news-item__content" style:display={expanded === item.id ? 'block' : 'none'}>
-						<p>{item.contenu}</p>
+						{#if item.contenu}
+							<div
+								class="news-item__content"
+								style:display={expanded === item.id ? 'block' : 'none'}
+							>
+								<p>{item.contenu}</p>
+							</div>
+							<button class="news-item__toggle" onclick={() => toggle(item.id)}>
+								{expanded === item.id ? 'Réduire' : 'Lire la suite'}
+								<svg
+									viewBox="0 0 24 24"
+									width="12"
+									height="12"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="1.5"
+									style:transform={expanded === item.id ? 'rotate(180deg)' : 'none'}
+									style:transition="transform 0.3s ease"
+								>
+									<path d="M6 9l6 6 6-6" />
+								</svg>
+							</button>
+						{/if}
 					</div>
-					<button class="news-item__toggle" onclick={() => toggle(item.id)}>
-						{expanded === item.id ? 'Réduire' : 'Lire la suite'}
-						<svg
-							viewBox="0 0 24 24" width="12" height="12"
-							fill="none" stroke="currentColor" stroke-width="1.5"
-							style:transform={expanded === item.id ? 'rotate(180deg)' : 'none'}
-							style:transition="transform 0.3s ease"
-						>
-							<path d="M6 9l6 6 6-6" />
-						</svg>
-					</button>
-				{/if}
-			</div>
-		</article>
-	{/each}
-</div>
-{:else}
-<div class="news-empty">
-	<p>Aucune actualité pour le moment.</p>
-	<a href="/template/cafe-des-delices" class="news-empty__link">Retour à l'accueil →</a>
-</div>
-{/if}
+				</article>
+			{/each}
+		</div>
+	{:else}
+		<div class="news-empty">
+			<p>Aucune actualité pour le moment.</p>
+			<a href="/template/cafe-des-delices" class="news-empty__link">Retour à l'accueil →</a>
+		</div>
+	{/if}
 {/if}
 
 <style lang="scss">
@@ -178,14 +194,20 @@
 		white-space: nowrap;
 		align-self: flex-start;
 
-		@include breakpoint('medium') { align-self: flex-end; }
-		&:hover { color: var(--ember); }
+		@include breakpoint('medium') {
+			align-self: flex-end;
+		}
+		&:hover {
+			color: var(--ember);
+		}
 	}
 
 	.news-list {
 		padding: 0 1.25rem 5rem;
 
-		@include breakpoint('medium') { padding: 0 2rem 6rem; }
+		@include breakpoint('medium') {
+			padding: 0 2rem 6rem;
+		}
 	}
 
 	.news-item {
@@ -200,7 +222,9 @@
 			gap: 3rem;
 		}
 
-		&:first-child { border-top: 1px solid var(--rule); }
+		&:first-child {
+			border-top: 1px solid var(--rule);
+		}
 	}
 
 	.news-item__fig {
@@ -275,7 +299,9 @@
 		border-left: 2px solid var(--ember);
 		padding-left: 1.25rem;
 
-		p { margin: 0; }
+		p {
+			margin: 0;
+		}
 	}
 
 	.news-item__toggle {
@@ -294,7 +320,10 @@
 		color: var(--slate);
 		transition: color 0.2s ease;
 
-		&:hover { color: var(--ember); border-color: var(--ember); }
+		&:hover {
+			color: var(--ember);
+			border-color: var(--ember);
+		}
 	}
 
 	/* Vide */

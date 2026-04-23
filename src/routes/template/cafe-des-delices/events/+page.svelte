@@ -64,7 +64,7 @@
 </script>
 
 <svelte:head>
-	<title>Événements — {infos?.nom ?? 'Le Café des Délices'}</title>
+	<title>Événements - {infos?.nom ?? 'Le Café des Délices'}</title>
 	<meta name="description" content="Les prochains événements au Café des Délices à Ath." />
 </svelte:head>
 

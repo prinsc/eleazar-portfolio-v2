@@ -19,7 +19,7 @@
 	onMount(() => {
 		const tick = () => {
 			const d = new Date();
-			now = `${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')}:${String(d.getSeconds()).padStart(2,'0')}`;
+			now = `${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}:${String(d.getSeconds()).padStart(2, '0')}`;
 		};
 		tick();
 		const id = setInterval(tick, 1000);
@@ -36,9 +36,7 @@
 		<span class="ft__bar-slot">
 			<span class="ft__bar-tc">[ TC {now} ]</span>
 		</span>
-		<span class="ft__bar-slot ft__bar-slot--end">
-			GAIN — 30 ANS · OUTPUT — STABLE
-		</span>
+		<span class="ft__bar-slot ft__bar-slot--end"> GAIN - 30 ANS · OUTPUT - STABLE </span>
 	</div>
 
 	<!-- Mega-block typo MJM scénique avec waveform overlay -->
@@ -63,7 +61,7 @@
 		<div class="ft__col">
 			<span class="ft__k">[ ADR ]</span>
 			<p>
-				MJM SONORISATION & YOHAN<br />
+				MJM SONORISATION<br />
 				337 ROUTE DE FLOBECQ<br />
 				7804 OSTICHES · BE
 			</p>
@@ -71,8 +69,12 @@
 		<div class="ft__col">
 			<span class="ft__k">[ SIGNAL ]</span>
 			<p>
-				<a href="mailto:{infos?.email ?? 'contact@mjmsono.be'}">{infos?.email ?? 'contact@mjmsono.be'}</a><br />
-				<a href="tel:{(infos?.telephone ?? '+32475307333').replace(/\s/g, '')}">{infos?.telephone ?? '+32 475 30 73 33'}</a>
+				<a href="mailto:{infos?.email ?? 'contact@mjmsono.be'}"
+					>{infos?.email ?? 'contact@mjmsono.be'}</a
+				><br />
+				<a href="tel:{(infos?.telephone ?? '+32475307333').replace(/\s/g, '')}"
+					>{infos?.telephone ?? '+32 475 30 73 33'}</a
+				>
 			</p>
 		</div>
 		<div class="ft__col">
@@ -108,7 +110,7 @@
 
 	<!-- Bottom -->
 	<div class="ft__bot">
-		<span>© 2026 MJM SONORISATION & YOHAN — ALL RIGHTS RESERVED</span>
+		<span>© 2026 MJM SONORISATION - ALL RIGHTS RESERVED</span>
 		<span class="ft__bot-r">
 			BUILT BY <a href="https://kltk.be" target="_blank" rel="noopener">KLTK</a> · PRESS [Q] TO EXIT
 		</span>
@@ -148,23 +150,36 @@
 		align-items: center;
 		gap: 0.55em;
 	}
-	.ft__bar-slot--green { color: var(--led); }
+	.ft__bar-slot--green {
+		color: var(--led);
+	}
 	.ft__bar-slot--end {
 		justify-content: flex-end;
 		color: var(--signal);
 	}
-	.ft__bar-slot:nth-child(2) { justify-content: center; color: var(--signal); }
-	.ft__bar-tc { color: var(--signal); }
+	.ft__bar-slot:nth-child(2) {
+		justify-content: center;
+		color: var(--signal);
+	}
+	.ft__bar-tc {
+		color: var(--signal);
+	}
 	.ft__bar-led {
-		width: 8px; height: 8px;
+		width: 8px;
+		height: 8px;
 		background: var(--led);
 		border-radius: 50%;
 		box-shadow: 0 0 6px var(--led);
 		animation: ftLed 1.5s ease-in-out infinite;
 	}
 	@keyframes ftLed {
-		0%, 100% { opacity: 1; }
-		50% { opacity: 0.4; }
+		0%,
+		100% {
+			opacity: 1;
+		}
+		50% {
+			opacity: 0.4;
+		}
 	}
 
 	/* Mega block */
@@ -222,14 +237,22 @@
 		border-right: 1px solid var(--rule);
 		border-bottom: 1px solid var(--rule);
 
-		&:nth-child(2n) { border-right: none; }
-		&:nth-last-child(-n+2) { border-bottom: none; }
+		&:nth-child(2n) {
+			border-right: none;
+		}
+		&:nth-last-child(-n + 2) {
+			border-bottom: none;
+		}
 
 		@include breakpoint('medium') {
 			padding: 2rem;
 			border-bottom: none;
-			&:nth-child(2n) { border-right: 1px solid var(--rule); }
-			&:last-child { border-right: none; }
+			&:nth-child(2n) {
+				border-right: 1px solid var(--rule);
+			}
+			&:last-child {
+				border-right: none;
+			}
 		}
 
 		p {
@@ -244,7 +267,9 @@
 				color: var(--ink);
 				text-decoration: none;
 				transition: color 0.25s ease;
-				&:hover { color: var(--signal); }
+				&:hover {
+					color: var(--signal);
+				}
 			}
 		}
 	}
@@ -267,7 +292,8 @@
 		margin-top: 1rem;
 
 		a {
-			width: 32px; height: 32px;
+			width: 32px;
+			height: 32px;
 			display: inline-flex;
 			align-items: center;
 			justify-content: center;
@@ -304,8 +330,12 @@
 			color: var(--signal);
 			text-decoration: none;
 			border-bottom: 1px solid transparent;
-			&:hover { border-bottom-color: var(--signal); }
+			&:hover {
+				border-bottom-color: var(--signal);
+			}
 		}
 	}
-	.ft__bot-r { text-align: right; }
+	.ft__bot-r {
+		text-align: right;
+	}
 </style>

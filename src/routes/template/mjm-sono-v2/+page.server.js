@@ -27,7 +27,7 @@ export const actions = {
 	contact: async ({ request }) => {
 		const form = await request.formData();
 		const payload = Object.fromEntries(form);
-		// Démo — l'envoi réel sera branché plus tard.
+		// Démo - l'envoi réel sera branché plus tard.
 		return { success: true, payload };
 	}
 };

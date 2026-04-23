@@ -5,7 +5,8 @@
 	let { tonnelle = null } = $props();
 
 	const defaults = {
-		texte: "La Tonnelle, c'est l'espace élégant que nous installons et démontons pour vos événements en extérieur. Modulable, prête à accueillir vos invités — vous profitez, on gère.",
+		texte:
+			"La Tonnelle, c'est l'espace élégant que nous installons et démontons pour vos événements en extérieur. Modulable, prête à accueillir vos invités - vous profitez, on gère.",
 		photos: [
 			'https://images.unsplash.com/photo-1519741497674-611481863552?w=1400&q=85',
 			'https://images.unsplash.com/photo-1478146896981-b80fe463b330?w=1400&q=85',
@@ -22,7 +23,9 @@
 	};
 
 	const texte = $derived(tonnelle?.texte ?? defaults.texte);
-	const photos = $derived(tonnelle?.photos && tonnelle.photos.length > 0 ? tonnelle.photos : defaults.photos);
+	const photos = $derived(
+		tonnelle?.photos && tonnelle.photos.length > 0 ? tonnelle.photos : defaults.photos
+	);
 	const specs = defaults.specs;
 
 	let titleEl;
@@ -35,19 +38,27 @@
 		gsap.registerPlugin(ScrollTrigger);
 
 		gsap.from(titleEl, {
-			opacity: 0, y: 30, duration: 1, ease: 'power3.out',
+			opacity: 0,
+			y: 30,
+			duration: 1,
+			ease: 'power3.out',
 			scrollTrigger: { trigger: titleEl, start: 'top 85%' }
 		});
 		if (bigImgEl) {
 			gsap.from(bigImgEl, {
-				clipPath: 'inset(100% 0 0 0)', duration: 1.4, ease: 'expo.out',
+				clipPath: 'inset(100% 0 0 0)',
+				duration: 1.4,
+				ease: 'expo.out',
 				scrollTrigger: { trigger: bigImgEl, start: 'top 85%' }
 			});
 		}
 		stripImgEls.forEach((el, i) => {
 			if (!el) return;
 			gsap.from(el, {
-				opacity: 0, x: 40, duration: 0.7, delay: i * 0.08,
+				opacity: 0,
+				x: 40,
+				duration: 0.7,
+				delay: i * 0.08,
 				ease: 'power3.out',
 				scrollTrigger: { trigger: el, start: 'top 92%' }
 			});
@@ -59,7 +70,7 @@
 	<!-- Header -->
 	<header class="tn__head" bind:this={titleEl}>
 		<div class="tn__head-l">
-			<span class="tn__tag">SECTION/03 — OUTDOOR.MODULE</span>
+			<span class="tn__tag">SECTION/03 - OUTDOOR.MODULE</span>
 			<h2 class="tn__title">
 				LA<br />
 				<span class="tn__title-stroke">TONNELLE</span>
@@ -83,9 +94,14 @@
 	<!-- Hero photo + specs en split -->
 	<div class="tn__hero">
 		<figure class="tn__big">
-			<img bind:this={bigImgEl} src={photos[0]} alt="Tonnelle MJM — installation extérieure" loading="lazy" />
+			<img
+				bind:this={bigImgEl}
+				src={photos[0]}
+				alt="Tonnelle MJM - installation extérieure"
+				loading="lazy"
+			/>
 			<figcaption>
-				<span class="tn__big-cap">[ FRAME 01/05 — SETUP ]</span>
+				<span class="tn__big-cap">[ FRAME 01/05 - SETUP ]</span>
 				<span class="tn__big-coord">50.6617°N · 3.6924°E</span>
 			</figcaption>
 
@@ -118,8 +134,8 @@
 		<div class="tn__strip-rail"></div>
 		{#each photos.slice(1) as src, i (src + i)}
 			<figure class="tn__cell" bind:this={stripImgEls[i]}>
-				<!-- IMAGE CLIENT — photo tonnelle réelle -->
-				<img src={src} alt="Tonnelle frame {i + 2}" loading="lazy" />
+				<!-- IMAGE CLIENT - photo tonnelle réelle -->
+				<img {src} alt="Tonnelle frame {i + 2}" loading="lazy" />
 				<figcaption>FRAME 0{i + 2}/05</figcaption>
 			</figure>
 		{/each}
@@ -195,7 +211,8 @@
 		align-self: flex-start;
 	}
 	.tn__logo-grid {
-		width: 50px; height: 50px;
+		width: 50px;
+		height: 50px;
 		background: var(--signal);
 		display: flex;
 		align-items: center;
@@ -252,7 +269,9 @@
 
 		figcaption {
 			position: absolute;
-			top: 1rem; left: 1rem; right: 1rem;
+			top: 1rem;
+			left: 1rem;
+			right: 1rem;
 			display: flex;
 			justify-content: space-between;
 			font-family: var(--f-mono);
@@ -262,31 +281,44 @@
 			text-shadow: 0 1px 8px rgba(0, 0, 0, 0.7);
 		}
 	}
-	.tn__big-cap { color: var(--signal); }
-	.tn__big-coord { color: var(--ink); opacity: 0.85; }
+	.tn__big-cap {
+		color: var(--signal);
+	}
+	.tn__big-coord {
+		color: var(--ink);
+		opacity: 0.85;
+	}
 
 	/* Crosshair */
 	.tn__cross {
 		position: absolute;
 		inset: 0;
 		pointer-events: none;
-		span { position: absolute; }
+		span {
+			position: absolute;
+		}
 	}
 	.tn__cross-h {
-		top: 50%; left: 0; right: 0;
+		top: 50%;
+		left: 0;
+		right: 0;
 		height: 1px;
 		background: rgba(255, 107, 26, 0.35);
 		transform: translateY(-50%);
 	}
 	.tn__cross-v {
-		left: 50%; top: 0; bottom: 0;
+		left: 50%;
+		top: 0;
+		bottom: 0;
 		width: 1px;
 		background: rgba(255, 107, 26, 0.35);
 		transform: translateX(-50%);
 	}
 	.tn__cross-c {
-		top: 50%; left: 50%;
-		width: 14px; height: 14px;
+		top: 50%;
+		left: 50%;
+		width: 14px;
+		height: 14px;
 		border: 1px solid var(--signal);
 		transform: translate(-50%, -50%);
 	}
@@ -321,7 +353,9 @@
 		padding: 0.5rem 0;
 		border-bottom: 1px dashed var(--rule);
 
-		&:last-of-type { border-bottom: none; }
+		&:last-of-type {
+			border-bottom: none;
+		}
 	}
 	.tn__spec-k {
 		font-family: var(--f-mono);
@@ -355,7 +389,9 @@
 		letter-spacing: 0.16em;
 		color: var(--led);
 
-		:global(svg) { color: var(--led); }
+		:global(svg) {
+			color: var(--led);
+		}
 	}
 
 	/* STRIP photos */
@@ -375,7 +411,8 @@
 	.tn__strip-rail {
 		position: absolute;
 		top: -0.5rem;
-		left: 0; right: 0;
+		left: 0;
+		right: 0;
 		height: 1px;
 		background: linear-gradient(90deg, transparent, var(--signal), transparent);
 	}
@@ -388,10 +425,13 @@
 
 		img {
 			display: block;
-			width: 100%; height: 100%;
+			width: 100%;
+			height: 100%;
 			object-fit: cover;
 			filter: grayscale(40%) contrast(1.08) brightness(0.85);
-			transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.4s ease;
+			transition:
+				transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1),
+				filter 0.4s ease;
 		}
 		&:hover img {
 			transform: scale(1.06);
@@ -400,7 +440,8 @@
 
 		figcaption {
 			position: absolute;
-			bottom: 0.7rem; left: 0.7rem;
+			bottom: 0.7rem;
+			left: 0.7rem;
 			font-family: var(--f-mono);
 			font-size: 9px;
 			letter-spacing: 0.2em;

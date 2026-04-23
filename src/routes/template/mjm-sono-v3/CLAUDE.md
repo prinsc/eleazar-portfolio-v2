@@ -1,4 +1,4 @@
-Tu vas créer un site SvelteKit 5 complet pour "MJM Sonorisation & Yohan", un prestataire son/lumière/animation pour événements.
+Tu vas créer un site SvelteKit 5 complet pour "MJM Sonorisation", un prestataire son/lumière/animation pour événements.
 
 ---
 
@@ -8,15 +8,15 @@ Tu vas créer un site SvelteKit 5 complet pour "MJM Sonorisation & Yohan", un pr
 - **SCSS** pour tous les styles (pas de Tailwind, pas de CSS-in-JS)
 - **Lucide Svelte** pour toutes les icones (aucun emoji nulle part)
 - **TypeScript**
-- Les données dynamiques sont chargées via `+page.server.ts` avec des **données mock pour l'instant** — tu prépares la structure pour une API future mais tu ne l'implémentes pas et tu ne laisses aucun commentaire à ce sujet. Le code doit juste être prêt à recevoir des données depuis un load() server-side.
+- Les données dynamiques sont chargées via `+page.server.ts` avec des **données mock pour l'instant** - tu prépares la structure pour une API future mais tu ne l'implémentes pas et tu ne laisses aucun commentaire à ce sujet. Le code doit juste être prêt à recevoir des données depuis un load() server-side.
 
 ---
 
 ## DESIGN
 
-- Thème **sombre** exclusivement (fond très sombre, pas noir pur — plutôt #0d0d0d ou #111)
+- Thème **sombre** exclusivement (fond très sombre, pas noir pur - plutôt #0d0d0d ou #111)
 - **Aucun néon**, aucun effet glow criard
-- Ambiance : **sobre, premium, professionnel** — lumières chaudes (or/ambre discret), typographie propre
+- Ambiance : **sobre, premium, professionnel** - lumières chaudes (or/ambre discret), typographie propre
   (pour la typo, tu as Jakarta Sans, Okine, Nofex, Colfax,... Ce sont des typos un peu plus design que celle qu'on a partout)
 - Police principale : Inter ou similaire (Google Fonts)
 - Design **moderne et épuré** avec de l'espace, pas chargé
@@ -31,17 +31,17 @@ Tu vas créer un site SvelteKit 5 complet pour "MJM Sonorisation & Yohan", un pr
 Site one-page avec ancres + navigation fixe en haut.
 
 ### Navigation
-- Logo texte "MJM Sonorisation & Yohan" à gauche
+- Logo texte "MJM Sonorisation" à gauche
 - Liens : Accueil, Prestations, Tonnelle, Chambre d'hôte, Ils nous ont fait confiance, Contact
 - Menu burger sur mobile
 - Fond transparent qui devient sombre au scroll
 
 ---
 
-### SECTION 1 — Hero (Accueil)
+### SECTION 1 - Hero (Accueil)
 
 Contenu :
-- Titre principal : **"MJM Sonorisation & Yohan"**
+- Titre principal : **"MJM Sonorisation"**
 - Sous-titre : **"Donnez une autre dimension à vos événements"**
 - Accroche : "Son, lumière, ambiance… nous créons des expériences uniques."
 - 4 points forts avec icone Lucide (Check ou similaire) :
@@ -50,16 +50,16 @@ Contenu :
   - Une passion au service de votre événement
   - Une piste de danse toujours vivante
 - Paragraphes de présentation :
-  - "Avec MJM Sonorisation & Yohan, profitez d'une prise en charge complète : sonorisation, éclairage et animation, pour un événement clé en main."
+  - "Avec MJM Sonorisation, profitez d'une prise en charge complète : sonorisation, éclairage et animation, pour un événement clé en main."
   - "Forts de plus de 30 ans d'expérience, nous mettons à votre service du matériel professionnel et un savoir-faire reconnu, pour un rendu à la hauteur de vos attentes."
   - "Toujours à la pointe de la technologie, nous faisons évoluer nos équipements pour vous offrir le meilleur."
 - Call to action : "Une question ? Un projet ? Contactez-nous !" → bouton qui ancre vers #contact
-- Tagline finale : "MJM Sonorisation & Yohan — la signature de vos plus beaux événements."
-- **2 images placeholder** intégrées dans la mise en page (format paysage, style ambiance événement) — utilise des balises <img> avec src="/images/hero-1.jpg" et "/images/hero-2.jpg" et un attribut alt descriptif. Crée des placeholders visuels en SCSS si les images n'existent pas encore (fond sombre avec dimensions fixes).
+- Tagline finale : "MJM Sonorisation - la signature de vos plus beaux événements."
+- **2 images placeholder** intégrées dans la mise en page (format paysage, style ambiance événement) - utilise des balises <img> avec src="/images/hero-1.jpg" et "/images/hero-2.jpg" et un attribut alt descriptif. Crée des placeholders visuels en SCSS si les images n'existent pas encore (fond sombre avec dimensions fixes).
 
 ---
 
-### SECTION 2 — Prestations
+### SECTION 2 - Prestations
 
 Titre de section : "Nos Prestations"
 
@@ -78,25 +78,25 @@ Layout : grille responsive (2-3 colonnes desktop, 1 colonne mobile).
 
 ---
 
-### SECTION 3 — Téléchargements
+### SECTION 3 - Téléchargements
 
 Titre : "Téléchargements"
 Sous-titre : "Logos et supports publicitaires pour sponsoring"
 
 Afficher une liste de fichiers téléchargeables. Ces données viennent du `+page.server.ts` (mock). Chaque item a : nom du fichier, type (PNG / PDF / etc.), icone Lucide (Download), bouton de téléchargement.
 
-Pour l'instant les liens pointent vers "#" — structure prête pour de vrais fichiers.
+Pour l'instant les liens pointent vers "#" - structure prête pour de vrais fichiers.
 
 Ajoute un **logo placeholder** (carré gris avec texte "Logo MJM") représentant le logo de la société.
 
 ---
 
-### SECTION 4 — Tonnelle
+### SECTION 4 - Tonnelle
 
 Titre : "La Tonnelle"
 
 Contenu :
-- Bloc texte descriptif placeholder (2-3 phrases sur la tonnelle — invente quelque chose de cohérent et sobre, à remplacer plus tard)
+- Bloc texte descriptif placeholder (2-3 phrases sur la tonnelle - invente quelque chose de cohérent et sobre, à remplacer plus tard)
 - **Galerie photos** : 4 à 6 placeholders images (src="/images/tonnelle-1.jpg" etc.)
 - **Logo placeholder** de la Tonnelle
 
@@ -104,7 +104,7 @@ Données texte et photos viennent du `+page.server.ts` (mock).
 
 ---
 
-### SECTION 5 — Chambre d'hôte
+### SECTION 5 - Chambre d'hôte
 
 Titre : "Chambre d'hôte"
 
@@ -112,13 +112,13 @@ Contenu :
 - **Galerie photos** : 4 placeholders images (src="/images/chambre-1.jpg" etc.)
 - **Carte de visite placeholder** (bloc stylisé avec les infos fictives)
 - **Logo placeholder**
-- Section "Retrouvez-nous sur les plateformes" avec des boutons placeholder (liens vers "#") — icones Lucide pour les plateformes de réservation
+- Section "Retrouvez-nous sur les plateformes" avec des boutons placeholder (liens vers "#") - icones Lucide pour les plateformes de réservation
 
 Données viennent du `+page.server.ts` (mock).
 
 ---
 
-### SECTION 6 — Ils nous ont fait confiance
+### SECTION 6 - Ils nous ont fait confiance
 
 Titre : "Ils nous ont fait confiance"
 
@@ -128,17 +128,17 @@ Style : logos en niveaux de gris, légèrement opaques, qui passent en pleine op
 
 ---
 
-### SECTION 7 — Contact
+### SECTION 7 - Contact
 
 Titre : "Contactez-nous"
 
 **Informations de contact :**
-- Adresse : 337, route de Flobecq — 7804 Ostiches
+- Adresse : 337, route de Flobecq - 7804 Ostiches
 - Numéro d'entreprise : BE 0819.776.395
-- GSM : à afficher avec icone Lucide Phone — valeur placeholder "GSM : +32 XXX XX XX XX"
-- Mail : avec icone Lucide Mail — valeur placeholder "contact@mjmsono.be"
-- Instagram : icone Lucide Instagram — lien "#"
-- Facebook : icone Lucide Facebook — lien "#"
+- GSM : à afficher avec icone Lucide Phone - valeur placeholder "GSM : +32 XXX XX XX XX"
+- Mail : avec icone Lucide Mail - valeur placeholder "contact@mjmsono.be"
+- Instagram : icone Lucide Instagram - lien "#"
+- Facebook : icone Lucide Facebook - lien "#"
 - Signataire : **Yohan**
 
 **Formulaire de contact :**
@@ -152,14 +152,14 @@ Champs :
 - Bouton "Envoyer" avec icone Lucide Send
 
 Le formulaire utilise la validation native HTML5 + une validation côté client en Svelte 5 ($state pour les champs, gestion des erreurs).
-La soumission du formulaire pointe vers une action SvelteKit (`+page.server.ts`, action "contact") — l'action est **définie mais retourne juste un succès mock** pour l'instant.
+La soumission du formulaire pointe vers une action SvelteKit (`+page.server.ts`, action "contact") - l'action est **définie mais retourne juste un succès mock** pour l'instant.
 Afficher un message de succès après envoi.
 
 ---
 
 ### Footer
 
-- "MJM Sonorisation & Yohan — 337, route de Flobecq, 7804 Ostiches"
+- "MJM Sonorisation - 337, route de Flobecq, 7804 Ostiches"
 - "N° entreprise : BE 0819.776.395"
 - Icones réseaux sociaux (Instagram, Facebook) avec liens "#"
 - "Tous droits réservés © 2025"
@@ -201,7 +201,7 @@ src/
 - Lucide : importer uniquement les icones utilisées depuis `lucide-svelte`
 - Aucun `console.log` laissé dans le code
 - Code propre, commentaires en français uniquement sur les parties non évidentes
-- Toutes les images utilisent des chemins `/images/nom-image.jpg` — créer un dossier `static/images/` avec un fichier `README.md` indiquant quelles images sont attendues
+- Toutes les images utilisent des chemins `/images/nom-image.jpg` - créer un dossier `static/images/` avec un fichier `README.md` indiquant quelles images sont attendues
 
 
 ## Pour les informations : 

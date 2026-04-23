@@ -1,4 +1,4 @@
-<!-- Grain fin permanent — renforce texture brutaliste sobre -->
+<!-- Grain fin permanent - renforce texture brutaliste sobre -->
 <svg class="noise" aria-hidden="true">
 	<filter id="mjm-grain">
 		<feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch" />

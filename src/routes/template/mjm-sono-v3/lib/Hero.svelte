@@ -7,12 +7,12 @@
 	const points = [
 		'Prestation pro & soignée',
 		'Ambiance garantie début/fin',
-		'Passion au service de l\'événement',
+		"Passion au service de l'événement",
 		'Piste de danse toujours vivante'
 	];
 
 	const paragraphes = [
-		"Sonorisation, éclairage, animation — une prise en charge complète pour un événement clé en main.",
+		'Sonorisation, éclairage, animation - une prise en charge complète pour un événement clé en main.',
 		"30+ années d'expérience terrain. Matériel professionnel, savoir-faire reconnu."
 	];
 
@@ -26,9 +26,8 @@
 	let bigImgEl;
 
 	const img1 = $derived(
-		heroImage ??
-			'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=1800&q=85'
-		/* IMAGE CLIENT — photo ambiance scène */
+		heroImage ?? 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=1800&q=85'
+		/* IMAGE CLIENT - photo ambiance scène */
 	);
 
 	onMount(async () => {
@@ -93,7 +92,12 @@
 <section class="hero" id="top" bind:this={heroEl}>
 	<!-- BG photo pleine largeur, traitée -->
 	<div class="hero__bg">
-		<img bind:this={bigImgEl} src={img1} alt="Ambiance événement — régie son et lumière" loading="eager" />
+		<img
+			bind:this={bigImgEl}
+			src={img1}
+			alt="Ambiance événement - régie son et lumière"
+			loading="eager"
+		/>
 		<div class="hero__bg-tint"></div>
 		<div class="hero__bg-grid" aria-hidden="true"></div>
 	</div>
@@ -118,20 +122,27 @@
 			<span class="kicker__tag">INPUT·01</span>
 			<span class="kicker__sep">/</span>
 			<span class="kicker__txt">
-				SON · LUMIÈRE · ANIMATION — {infos?.ville ?? 'OSTICHES'}, {infos?.pays ?? 'BELGIQUE'}
+				SON · LUMIÈRE · ANIMATION - {infos?.ville ?? 'OSTICHES'}, {infos?.pays ?? 'BELGIQUE'}
 			</span>
 			<span class="kicker__peak">PEAK</span>
 		</div>
 
 		<h1 class="title">
-			<span class="title__mask"><span class="title__line" bind:this={titleLines[0]}>DONNEZ</span></span>
-			<span class="title__mask"><span class="title__line title__line--outline" bind:this={titleLines[1]}>UNE AUTRE</span></span>
+			<span class="title__mask"
+				><span class="title__line" bind:this={titleLines[0]}>DONNEZ</span></span
+			>
+			<span class="title__mask"
+				><span class="title__line title__line--outline" bind:this={titleLines[1]}>UNE AUTRE</span
+				></span
+			>
 			<span class="title__mask">
 				<span class="title__line title__line--accent" bind:this={titleLines[2]}>
 					<span class="title__slash">/</span>DIMENSION
 				</span>
 			</span>
-			<span class="title__mask"><span class="title__line" bind:this={titleLines[3]}>À VOS ÉVÉNEMENTS.</span></span>
+			<span class="title__mask"
+				><span class="title__line" bind:this={titleLines[3]}>À VOS ÉVÉNEMENTS.</span></span
+			>
 		</h1>
 
 		<div class="lede" bind:this={ledeEl}>
@@ -259,15 +270,36 @@
 		font-size: 18px;
 		z-index: 3;
 		line-height: 1;
-		&--tl { top: 5.5rem; left: 0.75rem; }
-		&--tr { top: 5.5rem; right: 0.75rem; }
-		&--bl { bottom: 0.75rem; left: 0.75rem; }
-		&--br { bottom: 0.75rem; right: 0.75rem; }
+		&--tl {
+			top: 5.5rem;
+			left: 0.75rem;
+		}
+		&--tr {
+			top: 5.5rem;
+			right: 0.75rem;
+		}
+		&--bl {
+			bottom: 0.75rem;
+			left: 0.75rem;
+		}
+		&--br {
+			bottom: 0.75rem;
+			right: 0.75rem;
+		}
 
 		@include breakpoint('medium') {
-			&--tl, &--tr { top: 6.5rem; }
-			&--tl, &--bl { left: 1.25rem; }
-			&--tr, &--br { right: 1.25rem; }
+			&--tl,
+			&--tr {
+				top: 6.5rem;
+			}
+			&--tl,
+			&--bl {
+				left: 1.25rem;
+			}
+			&--tr,
+			&--br {
+				right: 1.25rem;
+			}
 		}
 	}
 
@@ -291,7 +323,9 @@
 			white-space: nowrap;
 		}
 	}
-	.spine__sep { color: var(--signal); }
+	.spine__sep {
+		color: var(--signal);
+	}
 
 	/* ============ MAIN ============ */
 	.hero__main {
@@ -330,7 +364,8 @@
 		}
 	}
 	.kicker__sq {
-		width: 10px; height: 10px;
+		width: 10px;
+		height: 10px;
 		background: var(--signal);
 	}
 	.kicker__tag {
@@ -338,8 +373,12 @@
 		padding: 0.25em 0.55em;
 		border: 1px solid var(--signal);
 	}
-	.kicker__sep { color: var(--ink-mute); }
-	.kicker__txt { color: var(--ink); }
+	.kicker__sep {
+		color: var(--ink-mute);
+	}
+	.kicker__txt {
+		color: var(--ink);
+	}
 	.kicker__peak {
 		margin-left: auto;
 		padding: 0.25em 0.55em;
@@ -349,8 +388,14 @@
 		animation: peak 2s steps(2) infinite;
 	}
 	@keyframes peak {
-		0%, 60% { opacity: 1; }
-		70%, 100% { opacity: 0.3; }
+		0%,
+		60% {
+			opacity: 1;
+		}
+		70%,
+		100% {
+			opacity: 0.3;
+		}
 	}
 
 	/* TITRE */
@@ -442,7 +487,10 @@
 			padding: 0.4rem 0;
 			border-top: 1px solid var(--rule);
 
-			:global(svg) { color: var(--signal); flex-shrink: 0; }
+			:global(svg) {
+				color: var(--signal);
+				flex-shrink: 0;
+			}
 		}
 	}
 	.lede__cta {
@@ -460,15 +508,20 @@
 		text-transform: uppercase;
 		text-decoration: none;
 		align-self: flex-start;
-		transition: transform 0.3s ease, background 0.3s ease;
+		transition:
+			transform 0.3s ease,
+			background 0.3s ease;
 
 		&:hover {
 			background: var(--ink);
-			.lede__cta-arrow { transform: translateX(6px); }
+			.lede__cta-arrow {
+				transform: translateX(6px);
+			}
 		}
 	}
 	.lede__cta-bar {
-		width: 30px; height: 2px;
+		width: 30px;
+		height: 2px;
 		background: var(--bg);
 	}
 	.lede__cta-arrow {
@@ -497,7 +550,9 @@
 		letter-spacing: 0.1em;
 		color: var(--ink-mute);
 	}
-	.vu__scale-mid { color: var(--amber); }
+	.vu__scale-mid {
+		color: var(--amber);
+	}
 	.vu__bars {
 		display: grid;
 		grid-template-columns: repeat(22, 1fr);
@@ -511,7 +566,9 @@
 		width: 100%;
 		transform-origin: bottom;
 	}
-	.vu__bar--hot { background: var(--signal); }
+	.vu__bar--hot {
+		background: var(--signal);
+	}
 	.vu__label {
 		font-family: var(--f-mono);
 		font-size: 9px;
@@ -543,7 +600,9 @@
 		border-right: 1px solid var(--rule);
 		border-bottom: 1px solid var(--rule);
 
-		&:last-child { border-right: none; }
+		&:last-child {
+			border-right: none;
+		}
 
 		@include breakpoint('medium') {
 			padding: 1.25rem 1.5rem;
@@ -571,7 +630,10 @@
 		color: var(--signal);
 		font-variant-numeric: tabular-nums;
 	}
-	.strip__unit { font-size: 0.85rem; color: var(--ink-dim); }
+	.strip__unit {
+		font-size: 0.85rem;
+		color: var(--ink-dim);
+	}
 	.strip__u {
 		font-family: var(--f-mono);
 		font-size: 9px;
@@ -591,7 +653,14 @@
 		animation: scrollPulse 1.8s ease-in-out infinite;
 	}
 	@keyframes scrollPulse {
-		0%, 100% { transform: translateY(0); opacity: 1; }
-		50% { transform: translateY(4px); opacity: 0.5; }
+		0%,
+		100% {
+			transform: translateY(0);
+			opacity: 1;
+		}
+		50% {
+			transform: translateY(4px);
+			opacity: 0.5;
+		}
 	}
 </style>

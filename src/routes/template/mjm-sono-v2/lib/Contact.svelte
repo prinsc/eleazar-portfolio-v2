@@ -4,7 +4,7 @@
 
 	let { infos = null, socials = null, cta = null, form: formAction = null } = $props();
 
-	const adresse = $derived(infos?.adresseComplete ?? '337, route de Flobecq — 7804 Ostiches');
+	const adresse = $derived(infos?.adresseComplete ?? '337, route de Flobecq - 7804 Ostiches');
 	const numeroEntreprise = $derived(infos?.numeroEntreprise ?? 'BE 0819.776.395');
 	const telephone = $derived(infos?.telephone ?? cta?.principal?.valeur ?? '+32 475 30 73 33');
 	const email = $derived(infos?.email ?? cta?.secondaire?.valeur ?? 'contact@mjmsono.be');
@@ -22,7 +22,15 @@
 	let success = $state(false);
 	let error = $state('');
 
-	const types = ['Mariage', 'Anniversaire', 'Soirée', 'Événement d\'entreprise', 'Défilé', 'Exposition', 'Autre'];
+	const types = [
+		'Mariage',
+		'Anniversaire',
+		'Soirée',
+		"Événement d'entreprise",
+		'Défilé',
+		'Exposition',
+		'Autre'
+	];
 
 	async function handleSubmit(e) {
 		e.preventDefault();
@@ -32,7 +40,7 @@
 			return;
 		}
 		submitting = true;
-		// Mock : soumission factice — l'action `+page.server.js` renverra succès
+		// Mock : soumission factice - l'action `+page.server.js` renverra succès
 		await new Promise((r) => setTimeout(r, 700));
 		submitting = false;
 		success = true;
@@ -84,9 +92,7 @@
 			<h2>
 				Contactez-<em>nous</em>
 			</h2>
-			<p class="sub">
-				Un événement, une idée ? Parlons-en. Réponse sous 24 à 48h.
-			</p>
+			<p class="sub">Un événement, une idée ? Parlons-en. Réponse sous 24 à 48h.</p>
 		</header>
 
 		<div class="grid">
@@ -142,7 +148,14 @@
 				</div>
 			</aside>
 
-			<form class="form" onsubmit={handleSubmit} bind:this={formEl} method="POST" action="?/contact" novalidate>
+			<form
+				class="form"
+				onsubmit={handleSubmit}
+				bind:this={formEl}
+				method="POST"
+				action="?/contact"
+				novalidate
+			>
 				{#if success}
 					<div class="success" role="status">
 						<span class="success__icon"><Check size={32} strokeWidth={1.4} /></span>
@@ -184,7 +197,13 @@
 
 					<label class="field">
 						<span>Message <em>*</em></span>
-						<textarea bind:value={message} name="message" rows="5" required placeholder="Lieu, nombre d'invités, style d'ambiance…"></textarea>
+						<textarea
+							bind:value={message}
+							name="message"
+							rows="5"
+							required
+							placeholder="Lieu, nombre d'invités, style d'ambiance…"
+						></textarea>
 					</label>
 
 					{#if error}
@@ -197,7 +216,8 @@
 					</button>
 
 					<p class="note">
-						En envoyant ce formulaire, vous acceptez d'être recontacté par Yohan au sujet de votre demande.
+						En envoyant ce formulaire, vous acceptez d'être recontacté par Yohan au sujet de votre
+						demande.
 					</p>
 				{/if}
 			</form>
@@ -238,7 +258,12 @@
 		text-transform: uppercase;
 		color: var(--bone-soft);
 
-		.rule { display: inline-block; width: 42px; height: 1px; background: var(--gold); }
+		.rule {
+			display: inline-block;
+			width: 42px;
+			height: 1px;
+			background: var(--gold);
+		}
 	}
 
 	h2 {
@@ -298,7 +323,10 @@
 			font-size: 0.95rem;
 			color: var(--bone);
 
-			:global(svg) { color: var(--gold); flex-shrink: 0; }
+			:global(svg) {
+				color: var(--gold);
+				flex-shrink: 0;
+			}
 		}
 
 		.entreprise {
@@ -331,9 +359,14 @@
 		padding: 0.2rem 0;
 		transition: color 0.3s ease;
 
-		:global(svg) { color: var(--gold); flex-shrink: 0; }
+		:global(svg) {
+			color: var(--gold);
+			flex-shrink: 0;
+		}
 
-		&:hover { color: var(--gold); }
+		&:hover {
+			color: var(--gold);
+		}
 	}
 
 	.socials {
@@ -409,7 +442,9 @@
 		grid-template-columns: 1fr;
 
 		@include breakpoint('small') {
-			&--2 { grid-template-columns: 1fr 1fr; }
+			&--2 {
+				grid-template-columns: 1fr 1fr;
+			}
 		}
 	}
 
@@ -431,7 +466,9 @@
 			}
 		}
 
-		input, select, textarea {
+		input,
+		select,
+		textarea {
 			font-family: var(--f-body);
 			font-size: 0.95rem;
 			background: transparent;
@@ -456,9 +493,12 @@
 		select {
 			appearance: none;
 			cursor: pointer;
-			background-image: linear-gradient(45deg, transparent 50%, var(--bone-soft) 50%),
+			background-image:
+				linear-gradient(45deg, transparent 50%, var(--bone-soft) 50%),
 				linear-gradient(135deg, var(--bone-soft) 50%, transparent 50%);
-			background-position: calc(100% - 14px) 1rem, calc(100% - 9px) 1rem;
+			background-position:
+				calc(100% - 14px) 1rem,
+				calc(100% - 9px) 1rem;
 			background-size: 5px 5px;
 			background-repeat: no-repeat;
 			padding-right: 2rem;

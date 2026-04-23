@@ -10,7 +10,7 @@
 		atouts: [
 			'Montage et démontage inclus',
 			"Adapté à l'intérieur comme à l'extérieur",
-			'Modulable selon votre nombre d\'invités',
+			"Modulable selon votre nombre d'invités",
 			'Installation rapide et propre'
 		],
 		photos: [
@@ -23,7 +23,9 @@
 
 	const texte = $derived(tonnelle?.texte ?? defaults.texte);
 	const atouts = $derived(tonnelle?.atouts ?? defaults.atouts);
-	const photos = $derived(tonnelle?.photos && tonnelle.photos.length > 0 ? tonnelle.photos : defaults.photos);
+	const photos = $derived(
+		tonnelle?.photos && tonnelle.photos.length > 0 ? tonnelle.photos : defaults.photos
+	);
 
 	let titleEl;
 	let photoEls = $state([]);
@@ -34,14 +36,21 @@
 		gsap.registerPlugin(ScrollTrigger);
 
 		gsap.from(titleEl, {
-			opacity: 0, y: 24, duration: 0.7, ease: 'power2.out',
+			opacity: 0,
+			y: 24,
+			duration: 0.7,
+			ease: 'power2.out',
 			scrollTrigger: { trigger: titleEl, start: 'top 82%' }
 		});
 
 		photoEls.forEach((el, i) => {
 			if (!el) return;
 			gsap.from(el, {
-				opacity: 0, y: 24, duration: 0.6, delay: i * 0.07, ease: 'power2.out',
+				opacity: 0,
+				y: 24,
+				duration: 0.6,
+				delay: i * 0.07,
+				ease: 'power2.out',
 				scrollTrigger: { trigger: el, start: 'top 90%' }
 			});
 		});
@@ -76,8 +85,8 @@
 		<div class="gallery">
 			{#each photos as src, i (src + i)}
 				<figure class="cell" bind:this={photoEls[i]}>
-					<!-- IMAGE CLIENT — remplacer par photo tonnelle réelle -->
-					<img src={src} alt="Tonnelle {i + 1}" loading="lazy" />
+					<!-- IMAGE CLIENT - remplacer par photo tonnelle réelle -->
+					<img {src} alt="Tonnelle {i + 1}" loading="lazy" />
 				</figure>
 			{/each}
 		</div>
@@ -165,7 +174,10 @@
 			font-size: 0.9rem;
 			color: var(--text);
 
-			:global(svg) { color: var(--red); flex-shrink: 0; }
+			:global(svg) {
+				color: var(--red);
+				flex-shrink: 0;
+			}
 		}
 	}
 

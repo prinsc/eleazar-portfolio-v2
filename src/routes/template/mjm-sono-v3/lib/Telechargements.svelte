@@ -5,8 +5,8 @@
 	let { fichiers = null } = $props();
 
 	const defaults = [
-		{ nom: 'Logo MJM — fond transparent', type: 'PNG', taille: '2.1 MB', href: '#' },
-		{ nom: 'Logo MJM — version monochrome', type: 'PNG', taille: '1.3 MB', href: '#' },
+		{ nom: 'Logo MJM - fond transparent', type: 'PNG', taille: '2.1 MB', href: '#' },
+		{ nom: 'Logo MJM - version monochrome', type: 'PNG', taille: '1.3 MB', href: '#' },
 		{ nom: 'Dossier sponsoring 2026', type: 'PDF', taille: '4.7 MB', href: '#' },
 		{ nom: 'Charte graphique', type: 'PDF', taille: '3.2 MB', href: '#' },
 		{ nom: 'Kit visuel événements', type: 'ZIP', taille: '12.4 MB', href: '#' }
@@ -30,13 +30,19 @@
 		gsap.registerPlugin(ScrollTrigger);
 
 		gsap.from(titleEl, {
-			opacity: 0, y: 30, duration: 0.9, ease: 'power3.out',
+			opacity: 0,
+			y: 30,
+			duration: 0.9,
+			ease: 'power3.out',
 			scrollTrigger: { trigger: titleEl, start: 'top 85%' }
 		});
 		rowEls.forEach((el, i) => {
 			if (!el) return;
 			gsap.from(el, {
-				opacity: 0, x: -30, duration: 0.6, delay: i * 0.05,
+				opacity: 0,
+				x: -30,
+				duration: 0.6,
+				delay: i * 0.05,
 				ease: 'power3.out',
 				scrollTrigger: { trigger: el, start: 'top 92%' }
 			});
@@ -48,7 +54,7 @@
 	<!-- En-tête datasheet -->
 	<div class="ds__head" bind:this={titleEl}>
 		<div class="ds__head-l">
-			<span class="ds__tag">SECTION/02 — DATA SHEET</span>
+			<span class="ds__tag">SECTION/02 - DATA SHEET</span>
 			<h2 class="ds__title">PRESS<span class="ds__amp">·</span>KIT</h2>
 			<p class="ds__sub">
 				Logos vectoriels et supports publicitaires. Téléchargement direct, format brut.
@@ -100,7 +106,7 @@
 					<span>{f.nom}</span>
 				</span>
 				<span class="ds__td ds__td--type">{f.type}</span>
-				<span class="ds__td ds__td--size">{f.taille ?? '—'}</span>
+				<span class="ds__td ds__td--size">{f.taille ?? '-'}</span>
 				<a class="ds__td ds__td--act" href={f.href ?? '#'} aria-label="Télécharger {f.nom}">
 					<Download size={13} strokeWidth={1.6} />
 					<span>GET</span>
@@ -111,7 +117,7 @@
 
 	<div class="ds__bottom">
 		<span>END OF DOCUMENT · {items.length} ENTRIES</span>
-		<span class="ds__bottom-sig">— Y/2026</span>
+		<span class="ds__bottom-sig">- Y/2026</span>
 	</div>
 </section>
 
@@ -156,7 +162,9 @@
 		text-transform: uppercase;
 		color: var(--ink);
 	}
-	.ds__amp { color: var(--signal); }
+	.ds__amp {
+		color: var(--signal);
+	}
 	.ds__sub {
 		margin: 0;
 		font-family: var(--f-body);
@@ -196,9 +204,15 @@
 		grid-template-columns: 50px 1fr;
 		gap: 0.75rem;
 	}
-	.ds__tagid-k { color: var(--ink-mute); }
-	.ds__tagid-v { color: var(--ink); }
-	.ds__tagid-v--hot { color: var(--signal); }
+	.ds__tagid-k {
+		color: var(--ink-mute);
+	}
+	.ds__tagid-v {
+		color: var(--ink);
+	}
+	.ds__tagid-v--hot {
+		color: var(--signal);
+	}
 	.ds__tagid-barcode {
 		display: flex;
 		gap: 1px;
@@ -212,8 +226,12 @@
 			background: var(--ink);
 			min-width: 1px;
 		}
-		span:nth-child(3n) { background: transparent; }
-		span:nth-child(5n) { background: transparent; }
+		span:nth-child(3n) {
+			background: transparent;
+		}
+		span:nth-child(5n) {
+			background: transparent;
+		}
 	}
 	.ds__tagid-foot {
 		margin-top: 0.4rem;
@@ -228,7 +246,8 @@
 		border: 1px solid var(--rule-hot);
 		background: var(--bg);
 	}
-	.ds__th, .ds__tr {
+	.ds__th,
+	.ds__tr {
 		display: grid;
 		grid-template-columns: 50px 1fr 60px 80px 90px;
 		align-items: center;
@@ -255,11 +274,21 @@
 		transition: background 0.25s ease;
 		&:hover {
 			background: var(--panel);
-			.ds__td--name { color: var(--signal); }
-			.ds__td--act { background: var(--signal); color: var(--bg); border-color: var(--signal); }
-			.ds__td-ico { color: var(--signal); }
+			.ds__td--name {
+				color: var(--signal);
+			}
+			.ds__td--act {
+				background: var(--signal);
+				color: var(--bg);
+				border-color: var(--signal);
+			}
+			.ds__td-ico {
+				color: var(--signal);
+			}
 		}
-		&:last-child { border-bottom: none; }
+		&:last-child {
+			border-bottom: none;
+		}
 	}
 	.ds__td {
 		font-family: var(--f-body);
@@ -284,8 +313,13 @@
 			white-space: nowrap;
 		}
 	}
-	.ds__td-ico { color: var(--ink-dim); transition: color 0.25s ease; flex-shrink: 0; }
-	.ds__td--type, .ds__td--size {
+	.ds__td-ico {
+		color: var(--ink-dim);
+		transition: color 0.25s ease;
+		flex-shrink: 0;
+	}
+	.ds__td--type,
+	.ds__td--size {
 		font-family: var(--f-mono);
 		font-size: 10px;
 		letter-spacing: 0.16em;
@@ -316,5 +350,7 @@
 		letter-spacing: 0.22em;
 		color: var(--ink-mute);
 	}
-	.ds__bottom-sig { color: var(--signal); }
+	.ds__bottom-sig {
+		color: var(--signal);
+	}
 </style>

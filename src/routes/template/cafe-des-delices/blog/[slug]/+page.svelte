@@ -38,10 +38,10 @@
 
 <svelte:head>
 	{#if p}
-		<title>{p.title ?? p.titre} — {infos?.nom ?? 'Le Café des Délices'}</title>
+		<title>{p.title ?? p.titre} - {infos?.nom ?? 'Le Café des Délices'}</title>
 		<meta name="description" content={p.summary ?? p.resume ?? ''} />
 	{:else}
-		<title>Article introuvable — {infos?.nom ?? 'Le Café des Délices'}</title>
+		<title>Article introuvable - {infos?.nom ?? 'Le Café des Délices'}</title>
 	{/if}
 </svelte:head>
 
@@ -54,7 +54,6 @@
 	<div class="progress-bar" style="width: {readingProgress}%"></div>
 
 	<article class="post" bind:this={articleEl}>
-
 		<!-- HERO PLEIN ÉCRAN -->
 		<div class="post-hero">
 			{#if p.image}
@@ -65,7 +64,15 @@
 
 			<div class="post-hero__content">
 				<a href="/template/cafe-des-delices/blog" class="back-link">
-					<svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+					<svg
+						viewBox="0 0 24 24"
+						width="12"
+						height="12"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="1.5"
+						aria-hidden="true"
+					>
 						<path d="M19 12H5M11 6l-6 6 6 6" />
 					</svg>
 					Blog
@@ -132,9 +139,7 @@
 				</div>
 			</aside>
 		{/if}
-
 	</article>
-
 {:else}
 	<div class="post-notfound">
 		<div class="post-notfound__inner">
@@ -142,7 +147,15 @@
 			<h1>Article introuvable</h1>
 			<p>Cet article n'existe pas ou a été supprimé.</p>
 			<a href="/template/cafe-des-delices/blog" class="back-link back-link--dark">
-				<svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+				<svg
+					viewBox="0 0 24 24"
+					width="12"
+					height="12"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="1.5"
+					aria-hidden="true"
+				>
 					<path d="M19 12H5M11 6l-6 6 6 6" />
 				</svg>
 				Retour au blog
@@ -185,7 +198,9 @@
 
 		&--dark {
 			color: var(--slate-soft);
-			&:hover { color: var(--ember); }
+			&:hover {
+				color: var(--ember);
+			}
 		}
 	}
 
@@ -320,7 +335,9 @@
 
 		p {
 			margin: 0 0 1.6em;
-			&:last-child { margin-bottom: 0; }
+			&:last-child {
+				margin-bottom: 0;
+			}
 		}
 	}
 

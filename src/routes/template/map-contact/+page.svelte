@@ -7,142 +7,142 @@
 	let mapInstance = null;
 	let geojsonData = null;
 
-	// Filtres
 	let cutoffDate = $state('2026-01-01');
 	let showBlue = $state(true);
 	let showYellow = $state(true);
 	let showRed = $state(true);
+	let search = $state('');
 
-	const COLORS = {
-		blue: '#7c83fd',
-		yellow: '#f39c12',
-		red: '#e74c3c'
-	};
+	const COLORS = { blue: '#7c83fd', yellow: '#f39c12', red: '#e74c3c' };
+	const SKIP_KEYS = ['geo_point_2d', 'geo_shape', 'title', 'subtitle', 'urls'];
+
+	// ─── Helpers ───────────────────────────────────────────────────────────────
+
+	function normalize(str) {
+		return (str ?? '')
+			.toLowerCase()
+			.normalize('NFD')
+			.replace(/[\u0300-\u036f]/g, '')
+			.replace(/[^a-z0-9\s]/g, ' ')
+			.replace(/\s+/g, ' ')
+			.trim();
+	}
+
+	function parseUrls(raw) {
+		if (!raw || raw === '-') return [];
+		if (Array.isArray(raw)) return raw;
+		try {
+			return JSON.parse(raw);
+		} catch {
+			return [];
+		}
+	}
 
 	function getColor(props) {
-		const raw = props.urls;
-		if (!raw || raw === '-') return 'red';
-
-		let urls = raw;
-		if (typeof raw === 'string') {
-			try {
-				urls = JSON.parse(raw);
-			} catch {
-				return 'red';
-			}
-		}
-
-		if (!Array.isArray(urls) || urls.length === 0) return 'red';
+		const urls = parseUrls(props.urls);
+		if (!urls.length) return 'red';
 		return urls.some((u) => u.type === 'website') ? 'blue' : 'yellow';
 	}
 
+	const VISIBILITY = {
+		blue: () => showBlue,
+		yellow: () => showYellow,
+		red: () => showRed
+	};
+
 	function passesFilter(props) {
 		const raw = props.creation_datetime;
-		if (!raw) return false;
-		const cutoff = new Date(cutoffDate + 'T00:00:00');
-		return new Date(raw) > cutoff;
+		return raw && new Date(raw) > new Date(cutoffDate + 'T00:00:00');
 	}
 
-	function isColorVisible(colorKey) {
-		if (colorKey === 'blue') return showBlue;
-		if (colorKey === 'yellow') return showYellow;
-		if (colorKey === 'red') return showRed;
-		return true;
+	function matchesSearch(props) {
+		if (!search.trim()) return true;
+		const needle = normalize(search);
+		return normalize(props.title).includes(needle) || normalize(props.subtitle).includes(needle);
 	}
 
 	function buildPopupHTML(props) {
-		const SKIP_KEYS = ['geo_point_2d', 'geo_shape', 'title', 'subtitle', 'urls'];
+		const urls = parseUrls(props.urls);
 		const title = props.title ?? '-';
 		const subtitle = props.subtitle ?? '';
 
-		let urlsHtml = '<span style="color:#666">Aucune URL</span>';
-		const raw = props.urls;
-
-		if (raw && raw !== '-') {
-			let urls = raw;
-			if (typeof raw === 'string') {
-				try {
-					urls = JSON.parse(raw);
-				} catch {
-					urls = [];
-				}
-			}
-			if (Array.isArray(urls) && urls.length > 0) {
-				urlsHtml = urls
+		const urlsHtml = urls.length
+			? urls
 					.map((u) => {
-						const color = u.type === 'website' ? '#7c83fd' : '#f39c12';
-						const label = u.type ?? 'lien';
+						const color = COLORS[u.type === 'website' ? 'blue' : 'yellow'];
 						return `<a href="${u.url}" target="_blank"
-            style="display:inline-block; margin:3px 4px 3px 0; padding:4px 10px;
-                   background:${color}22; border:1px solid ${color}88;
-                   color:${color}; border-radius:20px; font-size:0.78rem;
-                   text-decoration:none; font-weight:600;">
-            🔗 ${label} ↗
-          </a>`;
+            style="display:inline-block;margin:3px 4px 3px 0;padding:4px 10px;
+                   background:${color}22;border:1px solid ${color}88;color:${color};
+                   border-radius:20px;font-size:0.78rem;text-decoration:none;font-weight:600;">
+            🔗 ${u.type ?? 'lien'} ↗</a>`;
 					})
-					.join('');
-			}
-		}
+					.join('')
+			: '<span style="color:#666">Aucune URL</span>';
 
 		const rows = Object.entries(props)
 			.filter(([k]) => !SKIP_KEYS.includes(k))
 			.map(([k, v]) => {
 				let display = v ?? '-';
-				if (typeof display === 'string' && display.startsWith('http')) {
+				if (typeof display === 'string' && display.startsWith('http'))
 					display = `<a href="${display}" target="_blank" style="color:#7c83fd">${display}</a>`;
-				}
 				return `<tr><td>${k}</td><td>${display}</td></tr>`;
 			})
 			.join('');
 
 		return `
       <div style="padding:10px 4px 6px;">
-        <div style="font-size:1rem; font-weight:700; color:#fff; margin-bottom:2px;">${title}</div>
-        <div style="font-size:0.82rem; color:#a0a0b0;">${subtitle}</div>
+        <div style="font-size:1rem;font-weight:700;color:#fff;margin-bottom:2px;">${title}</div>
+        <div style="font-size:0.82rem;color:#a0a0b0;">${subtitle}</div>
       </div>
-      <div style=" border:1px solid #2e3150;
-                  border-radius:8px; padding:10px; margin:8px 0;">
-        <div style="font-size:0.72rem; color:#7c83fd; font-weight:700;
-                    text-transform:uppercase; letter-spacing:0.05em; margin-bottom:8px;">
+      <div style="border:1px solid #2e3150;border-radius:8px;padding:10px;margin:8px 0;">
+        <div style="font-size:0.72rem;color:#7c83fd;font-weight:700;
+                    text-transform:uppercase;letter-spacing:0.05em;margin-bottom:8px;">
           🌐 Sites web & liens
         </div>
         ${urlsHtml}
       </div>
-      <table style="width:100%; border-collapse:collapse; font-size:0.8rem;">${rows}</table>
-    `;
+      <table style="width:100%;border-collapse:collapse;font-size:0.8rem;">${rows}</table>`;
 	}
 
-	function rebuildSource() {
-		if (!mapInstance || !geojsonData || !mapInstance.isStyleLoaded()) return;
+	// ─── Map data ──────────────────────────────────────────────────────────────
 
-		const filtered = {
-			type: 'FeatureCollection',
-			features: geojsonData.features
-				.filter((f) => {
-					const colorKey = getColor(f.properties);
-					return passesFilter(f.properties) && isColorVisible(colorKey);
-				})
-				.map((f) => ({
+	function buildFilteredGeoJSON() {
+		const features = geojsonData.features
+			.filter((f) => {
+				const colorKey = getColor(f.properties);
+				return passesFilter(f.properties) && VISIBILITY[colorKey]() && matchesSearch(f.properties);
+			})
+			.map((f) => {
+				const colorKey = getColor(f.properties);
+				return {
 					...f,
 					properties: {
 						...f.properties,
-						_color: COLORS[getColor(f.properties)],
+						_color: COLORS[colorKey],
 						_popup: buildPopupHTML(f.properties)
 					}
-				}))
-		};
+				};
+			});
 
-		count = `${filtered.features.length.toLocaleString('fr-BE')} points affichés`;
-
-		const source = mapInstance.getSource('contacts');
-		if (source) {
-			source.setData(filtered);
-		}
+		return { type: 'FeatureCollection', features };
 	}
 
-	// Reactive: re-render on filter change
+	function rebuildSource() {
+		if (!mapInstance?.isStyleLoaded() || !geojsonData) return;
+		const data = buildFilteredGeoJSON();
+		count = `${data.features.length.toLocaleString('fr-BE')} points affichés`;
+		mapInstance.getSource('contacts')?.setData(data);
+	}
+
+	// Debounce : attend 300ms après la dernière frappe avant de rebuilder
+	let debounceTimer = null;
+	function debouncedRebuild() {
+		clearTimeout(debounceTimer);
+		debounceTimer = setTimeout(rebuildSource, 300);
+	}
+
 	$effect(() => {
-		// Track all filter state
+		// Les filtres instantanés (toggles, date) → rebuild direct
 		cutoffDate;
 		showBlue;
 		showYellow;
@@ -150,28 +150,31 @@
 		rebuildSource();
 	});
 
+	$effect(() => {
+		// La recherche → rebuild debounced
+		search;
+		debouncedRebuild();
+	});
+
+	// ─── Lifecycle ─────────────────────────────────────────────────────────────
+
 	onMount(async () => {
 		const mapboxgl = (await import('mapbox-gl')).default;
 		await import('mapbox-gl/dist/mapbox-gl.css');
 
 		const res = await fetch('/assets/geojson/data.geojson');
-
 		if (!res.ok) {
-			console.error('Fetch échoué :', res.status, res.statusText);
 			count = 'Erreur chargement données';
 			return;
 		}
 
 		geojsonData = await res.json();
-		console.log('GeoJSON chargé :', geojsonData?.features?.length, 'features');
-
 		if (!geojsonData?.features) {
 			count = 'Données invalides';
 			return;
 		}
 
 		mapboxgl.accessToken = PUBLIC_MAPBOX_TOKEN;
-
 		mapInstance = new mapboxgl.Map({
 			container: mapEl,
 			style: 'mapbox://styles/mapbox/dark-v11',
@@ -179,32 +182,12 @@
 			zoom: 7
 		});
 
-		mapInstance.on('load', async () => {
+		mapInstance.on('load', () => {
 			try {
-				const filtered = {
-					type: 'FeatureCollection',
-					features: geojsonData.features
-						.filter((f) => {
-							const colorKey = getColor(f.properties);
-							return passesFilter(f.properties) && isColorVisible(colorKey);
-						})
-						.map((f) => ({
-							...f,
-							properties: {
-								...f.properties,
-								_color: COLORS[getColor(f.properties)],
-								_popup: buildPopupHTML(f.properties)
-							}
-						}))
-				};
+				const data = buildFilteredGeoJSON();
+				count = `${data.features.length.toLocaleString('fr-BE')} points affichés`;
 
-				count = `${filtered.features.length.toLocaleString('fr-BE')} points affichés`;
-
-				mapInstance.addSource('contacts', {
-					type: 'geojson',
-					data: filtered
-				});
-
+				mapInstance.addSource('contacts', { type: 'geojson', data });
 				mapInstance.addLayer({
 					id: 'contacts-points',
 					type: 'circle',
@@ -218,18 +201,17 @@
 					}
 				});
 
-				// Popup au clic
 				mapInstance.on('click', 'contacts-points', (e) => {
-					const props = e.features[0].properties;
-					const coordinates = e.features[0].geometry.coordinates.slice();
-
+					const {
+						properties: props,
+						geometry: { coordinates }
+					} = e.features[0];
 					new mapboxgl.Popup({ maxWidth: '420px' })
-						.setLngLat(coordinates)
+						.setLngLat(coordinates.slice())
 						.setHTML(props._popup)
 						.addTo(mapInstance);
 				});
 
-				// Curseur pointer au survol
 				mapInstance.on('mouseenter', 'contacts-points', () => {
 					mapInstance.getCanvas().style.cursor = 'pointer';
 				});
@@ -237,13 +219,13 @@
 					mapInstance.getCanvas().style.cursor = '';
 				});
 			} catch (err) {
-				console.error(err);
 				count = 'Erreur : ' + err.message;
 			}
 		});
 	});
 
 	onDestroy(() => {
+		clearTimeout(debounceTimer);
 		mapInstance?.remove();
 	});
 </script>
@@ -254,6 +236,13 @@
 		<div id="controls">
 			<label for="cutoff">Depuis le :</label>
 			<input type="date" id="cutoff" bind:value={cutoffDate} />
+			<div id="search-wrap">
+				<span id="search-icon">🔍</span>
+				<input type="text" id="search" placeholder="Rechercher..." bind:value={search} />
+				{#if search}
+					<button id="search-clear" onclick={() => (search = '')}>✕</button>
+				{/if}
+			</div>
 		</div>
 		<div id="status">
 			<span id="count-badge">{count}</span>
@@ -413,5 +402,53 @@
 	:global(.mapboxgl-popup-tip) {
 		border-top-color: #1a1d2e !important;
 		border-bottom-color: #1a1d2e !important;
+	}
+
+	#search-wrap {
+		position: relative;
+		display: flex;
+		align-items: center;
+	}
+
+	#search-icon {
+		position: absolute;
+		left: 8px;
+		font-size: 0.75rem;
+		pointer-events: none;
+	}
+
+	#search {
+		background: #0f1117;
+		color: #e0e0e0;
+		border: 1px solid #2e3150;
+		border-radius: 6px;
+		padding: 4px 28px 4px 26px;
+		font-size: 0.82rem;
+		width: 180px;
+		transition:
+			border-color 0.2s,
+			width 0.2s;
+	}
+
+	#search:focus {
+		outline: none;
+		border-color: #7c83fd88;
+		width: 240px;
+	}
+
+	#search-clear {
+		position: absolute;
+		right: 6px;
+		background: none;
+		border: none;
+		color: #a0a0b0;
+		cursor: pointer;
+		font-size: 0.7rem;
+		padding: 0;
+		line-height: 1;
+	}
+
+	#search-clear:hover {
+		color: #e0e0e0;
 	}
 </style>

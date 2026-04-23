@@ -55,7 +55,7 @@
 </script>
 
 <svelte:head>
-	<title>Galerie — {infos?.nom ?? 'Le Café des Délices'}</title>
+	<title>Galerie - {infos?.nom ?? 'Le Café des Délices'}</title>
 	<meta name="description" content="Découvrez l'ambiance du Café des Délices à Ath en images." />
 </svelte:head>
 
@@ -94,7 +94,7 @@
 		</div>
 	</section>
 
-	<!-- GRILLE MASONRY — colonnes auto ≤ 300px -->
+	<!-- GRILLE MASONRY - colonnes auto ≤ 300px -->
 	<div class="gal-grid" bind:clientWidth={containerWidth} style="--cols: {numCols}">
 		{#each cols as col}
 			<div class="gal-col">

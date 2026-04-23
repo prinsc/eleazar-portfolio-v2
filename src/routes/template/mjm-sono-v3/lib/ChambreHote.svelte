@@ -31,7 +31,10 @@
 		gsap.registerPlugin(ScrollTrigger);
 
 		gsap.from(titleEl, {
-			opacity: 0, y: 30, duration: 1, ease: 'power3.out',
+			opacity: 0,
+			y: 30,
+			duration: 1,
+			ease: 'power3.out',
 			scrollTrigger: { trigger: titleEl, start: 'top 85%' }
 		});
 
@@ -39,15 +42,22 @@
 			if (!el) return;
 			const rot = parseFloat(el.dataset.rot ?? 0);
 			gsap.from(el, {
-				opacity: 0, y: 50, rotation: rot - 8,
-				duration: 0.9, delay: i * 0.12, ease: 'power3.out',
+				opacity: 0,
+				y: 50,
+				rotation: rot - 8,
+				duration: 0.9,
+				delay: i * 0.12,
+				ease: 'power3.out',
 				scrollTrigger: { trigger: el, start: 'top 92%' }
 			});
 		});
 
 		if (cardEl) {
 			gsap.from(cardEl, {
-				opacity: 0, x: 40, duration: 1, ease: 'power3.out',
+				opacity: 0,
+				x: 40,
+				duration: 1,
+				ease: 'power3.out',
 				scrollTrigger: { trigger: cardEl, start: 'top 88%' }
 			});
 		}
@@ -59,7 +69,7 @@
 <section class="ch" id="chambre">
 	<header class="ch__head" bind:this={titleEl}>
 		<div class="ch__head-meta">
-			<span class="ch__tag">SECTION/04 — STAY.MODULE</span>
+			<span class="ch__tag">SECTION/04 - STAY.MODULE</span>
 			<span class="ch__co">37 RUE DE FLOBECQ · 7804 OST · BE</span>
 		</div>
 		<h2 class="ch__title">
@@ -67,7 +77,8 @@
 			<span class="ch__title-it">d'hôte<span class="ch__title-dot">.</span></span>
 		</h2>
 		<p class="ch__sub">
-			Un espace paisible à deux pas de l'activité. Idéal pour prolonger un événement ou simplement séjourner.
+			Un espace paisible à deux pas de l'activité. Idéal pour prolonger un événement ou simplement
+			séjourner.
 		</p>
 	</header>
 
@@ -81,9 +92,9 @@
 					data-rot={rotations[i] ?? 0}
 					style="--rot: {rotations[i] ?? 0}deg; --i: {i}"
 				>
-					<!-- IMAGE CLIENT — photo chambre d'hôte -->
+					<!-- IMAGE CLIENT - photo chambre d'hôte -->
 					<div class="ch__poly-img">
-						<img src={src} alt="Chambre d'hôte vue {i + 1}" loading="lazy" />
+						<img {src} alt="Chambre d'hôte vue {i + 1}" loading="lazy" />
 						<span class="ch__poly-corner">+</span>
 					</div>
 					<figcaption class="ch__poly-cap">
@@ -108,7 +119,8 @@
 
 				<h3 class="ch__card-title">La Halte de Flobecq</h3>
 				<p class="ch__card-desc">
-					Ambiance contemporaine, cuisine partagée, jardin privatif. À 30 min de Lille, 1h de Bruxelles.
+					Ambiance contemporaine, cuisine partagée, jardin privatif. À 30 min de Lille, 1h de
+					Bruxelles.
 				</p>
 
 				<dl class="ch__card-list">
@@ -133,7 +145,7 @@
 				<div class="ch__card-sig">
 					<span class="ch__card-sig-k">SIGNED BY</span>
 					<span class="ch__card-sig-v">YOHAN</span>
-					<span class="ch__card-sig-stamp">— EST.1995</span>
+					<span class="ch__card-sig-stamp">- EST.1995</span>
 				</div>
 			</div>
 
@@ -170,7 +182,9 @@
 		&::after {
 			content: '';
 			position: absolute;
-			bottom: 0; left: 0; right: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
 			height: 50%;
 			background: radial-gradient(ellipse at 80% 100%, rgba(255, 107, 26, 0.07), transparent 60%);
 			pointer-events: none;
@@ -195,8 +209,12 @@
 		padding-bottom: 0.85rem;
 		border-bottom: 1px dashed var(--rule);
 	}
-	.ch__tag { color: var(--signal); }
-	.ch__co { color: var(--ink-dim); }
+	.ch__tag {
+		color: var(--signal);
+	}
+	.ch__co {
+		color: var(--ink-dim);
+	}
 	.ch__title {
 		margin: 0 0 1rem;
 		font-family: var(--f-display);
@@ -215,7 +233,9 @@
 		color: var(--signal);
 		letter-spacing: -0.03em;
 	}
-	.ch__title-dot { color: var(--ink); }
+	.ch__title-dot {
+		color: var(--ink);
+	}
 	.ch__sub {
 		margin: 0;
 		font-family: var(--f-body);
@@ -258,7 +278,9 @@
 		background: var(--ink);
 		padding: 8px 8px 30px;
 		transform: rotate(var(--rot));
-		transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), z-index 0s 0.4s;
+		transition:
+			transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1),
+			z-index 0s 0.4s;
 		position: relative;
 		box-shadow:
 			0 4px 18px rgba(0, 0, 0, 0.45),
@@ -267,16 +289,26 @@
 		@include breakpoint('medium') {
 			padding: 10px 10px 38px;
 
-			&:nth-child(1) { transform: rotate(var(--rot)) translateY(0); }
-			&:nth-child(2) { transform: rotate(var(--rot)) translateY(20px); }
-			&:nth-child(3) { transform: rotate(var(--rot)) translateY(-10px); }
-			&:nth-child(4) { transform: rotate(var(--rot)) translateY(15px); }
+			&:nth-child(1) {
+				transform: rotate(var(--rot)) translateY(0);
+			}
+			&:nth-child(2) {
+				transform: rotate(var(--rot)) translateY(20px);
+			}
+			&:nth-child(3) {
+				transform: rotate(var(--rot)) translateY(-10px);
+			}
+			&:nth-child(4) {
+				transform: rotate(var(--rot)) translateY(15px);
+			}
 		}
 
 		&:hover {
 			transform: rotate(0deg) scale(1.04);
 			z-index: 5;
-			transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), z-index 0s 0s;
+			transition:
+				transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1),
+				z-index 0s 0s;
 		}
 	}
 	.ch__poly-img {
@@ -287,14 +319,16 @@
 
 		img {
 			display: block;
-			width: 100%; height: 100%;
+			width: 100%;
+			height: 100%;
 			object-fit: cover;
 			filter: contrast(0.95) saturate(0.85);
 		}
 	}
 	.ch__poly-corner {
 		position: absolute;
-		top: 6px; right: 6px;
+		top: 6px;
+		right: 6px;
 		font-family: var(--f-mono);
 		color: var(--signal);
 		background: rgba(10, 10, 11, 0.7);
@@ -311,7 +345,9 @@
 		color: var(--bg);
 		padding-top: 0.75rem;
 	}
-	.ch__poly-time { color: var(--signal-deep); }
+	.ch__poly-time {
+		color: var(--signal-deep);
+	}
 
 	/* CARD */
 	.ch__card {
@@ -334,14 +370,21 @@
 		letter-spacing: 0.22em;
 	}
 	.ch__card-band-led {
-		width: 8px; height: 8px;
+		width: 8px;
+		height: 8px;
 		background: var(--bg);
 		border-radius: 50%;
 		animation: blinkLed 1.4s steps(2) infinite;
 	}
 	@keyframes blinkLed {
-		0%, 50% { opacity: 1; }
-		51%, 100% { opacity: 0.2; }
+		0%,
+		50% {
+			opacity: 1;
+		}
+		51%,
+		100% {
+			opacity: 0.2;
+		}
 	}
 
 	.ch__card-body {
@@ -351,7 +394,8 @@
 		gap: 1rem;
 	}
 	.ch__card-logo {
-		width: 48px; height: 48px;
+		width: 48px;
+		height: 48px;
 		border: 1px solid var(--rule-hot);
 		display: flex;
 		align-items: center;
@@ -393,8 +437,15 @@
 		font-size: 0.88rem;
 		color: var(--ink);
 
-		dt, dd { margin: 0; }
-		dt { color: var(--signal); display: flex; align-items: center; }
+		dt,
+		dd {
+			margin: 0;
+		}
+		dt {
+			color: var(--signal);
+			display: flex;
+			align-items: center;
+		}
 	}
 	.ch__card-sig {
 		display: flex;

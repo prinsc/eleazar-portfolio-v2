@@ -1,18 +1,58 @@
 <script>
 	import { onMount } from 'svelte';
-	import { Music2, Speaker, PartyPopper, Tent, Heart, Cake, Briefcase, Shirt, Image as ImageIcon } from 'lucide-svelte';
+	import {
+		Music2,
+		Speaker,
+		PartyPopper,
+		Tent,
+		Heart,
+		Cake,
+		Briefcase,
+		Shirt,
+		Image as ImageIcon
+	} from 'lucide-svelte';
 
 	let { prestations = null } = $props();
 
 	// Fallback mock si l'API ne renvoie pas encore de prestations
 	const defaults = [
-		{ titre: 'Défilés', description: 'Sonorisation rythmée et lumière scénique pour mettre en valeur chaque passage.', icone: 'Shirt' },
-		{ titre: 'Expositions', description: 'Ambiance sonore maîtrisée, diffusion homogène pour accompagner la visite.', icone: 'Image' },
-		{ titre: 'Soirées privées', description: 'Du cocktail à la piste de danse — une progression musicale pensée pour vos invités.', icone: 'PartyPopper' },
-		{ titre: 'En salle & chapiteau', description: 'Matériel adapté à chaque configuration, intérieur comme extérieur.', icone: 'Tent' },
-		{ titre: 'Mariages', description: 'Cérémonie, vin d\'honneur, repas, soirée — une journée complète, une seule équipe.', icone: 'Heart' },
-		{ titre: 'Anniversaires', description: 'Des 18 ans à la fête en famille, on adapte l\'énergie à vos envies.', icone: 'Cake' },
-		{ titre: 'Événements d\'entreprise', description: 'Séminaires, soirées d\'entreprise, inaugurations — prestation sobre et pro.', icone: 'Briefcase' }
+		{
+			titre: 'Défilés',
+			description: 'Sonorisation rythmée et lumière scénique pour mettre en valeur chaque passage.',
+			icone: 'Shirt'
+		},
+		{
+			titre: 'Expositions',
+			description: 'Ambiance sonore maîtrisée, diffusion homogène pour accompagner la visite.',
+			icone: 'Image'
+		},
+		{
+			titre: 'Soirées privées',
+			description:
+				'Du cocktail à la piste de danse - une progression musicale pensée pour vos invités.',
+			icone: 'PartyPopper'
+		},
+		{
+			titre: 'En salle & chapiteau',
+			description: 'Matériel adapté à chaque configuration, intérieur comme extérieur.',
+			icone: 'Tent'
+		},
+		{
+			titre: 'Mariages',
+			description:
+				"Cérémonie, vin d'honneur, repas, soirée - une journée complète, une seule équipe.",
+			icone: 'Heart'
+		},
+		{
+			titre: 'Anniversaires',
+			description: "Des 18 ans à la fête en famille, on adapte l'énergie à vos envies.",
+			icone: 'Cake'
+		},
+		{
+			titre: "Événements d'entreprise",
+			description: "Séminaires, soirées d'entreprise, inaugurations - prestation sobre et pro.",
+			icone: 'Briefcase'
+		}
 	];
 
 	const items = $derived(
@@ -71,7 +111,8 @@
 		<span class="eyebrow"><span class="rule"></span>Section 01 / Prestations</span>
 		<h2>
 			Nos <em>prestations</em>
-			<span class="head__sub">Son, lumière, animation — <span class="gold">clé en main</span>.</span>
+			<span class="head__sub">Son, lumière, animation - <span class="gold">clé en main</span>.</span
+			>
 		</h2>
 	</header>
 
@@ -88,7 +129,14 @@
 				<h3 class="card__title">{item.titre}</h3>
 				<p class="card__desc">{item.description ?? ''}</p>
 				<div class="card__arrow" aria-hidden="true">
-					<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.3">
+					<svg
+						viewBox="0 0 24 24"
+						width="18"
+						height="18"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="1.3"
+					>
 						<path d="M5 12h14M13 6l6 6-6 6" />
 					</svg>
 				</div>
@@ -163,7 +211,9 @@
 		color: var(--bone-soft);
 		line-height: 1.5;
 
-		.gold { color: var(--gold); }
+		.gold {
+			color: var(--gold);
+		}
 	}
 
 	.grid {
@@ -263,6 +313,8 @@
 	.card__arrow {
 		align-self: flex-end;
 		color: var(--bone-soft);
-		transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), color 0.3s ease;
+		transition:
+			transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1),
+			color 0.3s ease;
 	}
 </style>

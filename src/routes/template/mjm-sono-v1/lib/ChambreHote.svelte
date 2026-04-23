@@ -31,21 +31,31 @@
 		gsap.registerPlugin(ScrollTrigger);
 
 		gsap.from(titleEl, {
-			opacity: 0, y: 24, duration: 0.7, ease: 'power2.out',
+			opacity: 0,
+			y: 24,
+			duration: 0.7,
+			ease: 'power2.out',
 			scrollTrigger: { trigger: titleEl, start: 'top 82%' }
 		});
 
 		photoEls.forEach((el, i) => {
 			if (!el) return;
 			gsap.from(el, {
-				opacity: 0, y: 24, duration: 0.6, delay: i * 0.07, ease: 'power2.out',
+				opacity: 0,
+				y: 24,
+				duration: 0.6,
+				delay: i * 0.07,
+				ease: 'power2.out',
 				scrollTrigger: { trigger: el, start: 'top 90%' }
 			});
 		});
 
 		if (cardEl) {
 			gsap.from(cardEl, {
-				opacity: 0, y: 24, duration: 0.7, ease: 'power2.out',
+				opacity: 0,
+				y: 24,
+				duration: 0.7,
+				ease: 'power2.out',
 				scrollTrigger: { trigger: cardEl, start: 'top 85%' }
 			});
 		}
@@ -58,7 +68,8 @@
 			<span class="tag">Hébergement</span>
 			<h2>Chambre d'hôte</h2>
 			<p class="sub">
-				Un espace calme à deux pas d'Ostiches. Idéal pour prolonger votre événement ou faire étape dans la région.
+				Un espace calme à deux pas d'Ostiches. Idéal pour prolonger votre événement ou faire étape
+				dans la région.
 			</p>
 		</header>
 
@@ -66,8 +77,8 @@
 			<div class="gallery">
 				{#each photos as src, i (src + i)}
 					<figure class="cell" bind:this={photoEls[i]}>
-						<!-- IMAGE CLIENT — remplacer par photo chambre réelle -->
-						<img src={src} alt="Chambre d'hôte {i + 1}" loading="lazy" />
+						<!-- IMAGE CLIENT - remplacer par photo chambre réelle -->
+						<img {src} alt="Chambre d'hôte {i + 1}" loading="lazy" />
 					</figure>
 				{/each}
 			</div>
@@ -80,8 +91,14 @@
 					</header>
 
 					<ul class="infos">
-						<li><MapPin size={14} strokeWidth={1.8} /><span>337, route de Flobecq · 7804 Ostiches</span></li>
-						<li><BedDouble size={14} strokeWidth={1.8} /><span>2 chambres · jusqu'à 4 personnes</span></li>
+						<li>
+							<MapPin size={14} strokeWidth={1.8} /><span
+								>337, route de Flobecq · 7804 Ostiches</span
+							>
+						</li>
+						<li>
+							<BedDouble size={14} strokeWidth={1.8} /><span>2 chambres · jusqu'à 4 personnes</span>
+						</li>
 						<li><Wifi size={14} strokeWidth={1.8} /><span>Wi-Fi inclus</span></li>
 						<li><Coffee size={14} strokeWidth={1.8} /><span>Petit-déjeuner maison</span></li>
 					</ul>
@@ -120,7 +137,10 @@
 		}
 	}
 
-	.wrap { max-width: 1280px; margin: 0 auto; }
+	.wrap {
+		max-width: 1280px;
+		margin: 0 auto;
+	}
 
 	.head {
 		max-width: 42rem;
@@ -193,7 +213,9 @@
 			transition: transform 0.6s ease;
 		}
 
-		&:hover img { transform: scale(1.04); }
+		&:hover img {
+			transform: scale(1.04);
+		}
 	}
 
 	.side {
@@ -257,7 +279,10 @@
 			font-size: 0.88rem;
 			color: var(--text);
 
-			:global(svg) { color: var(--red); flex-shrink: 0; }
+			:global(svg) {
+				color: var(--red);
+				flex-shrink: 0;
+			}
 		}
 	}
 
@@ -270,8 +295,13 @@
 		font-family: var(--f-body);
 		font-size: 0.85rem;
 
-		span { color: var(--text-soft); }
-		strong { color: var(--text); font-weight: 600; }
+		span {
+			color: var(--text-soft);
+		}
+		strong {
+			color: var(--text);
+			font-weight: 600;
+		}
 	}
 
 	.platforms {

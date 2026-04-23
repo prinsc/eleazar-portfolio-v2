@@ -6,7 +6,7 @@
 	let { horairesAPI = null, infos = null, cuisine = null } = $props();
 
 	// Normalise la réponse API vers le format { j, h }[]
-	// L'API retourne typiquement un objet par jour ou un tableau — on gère les deux
+	// L'API retourne typiquement un objet par jour ou un tableau - on gère les deux
 	function normaliseHoraires(raw) {
 		if (!raw) return null;
 
@@ -170,13 +170,13 @@
 			</ul>
 
 			{#if cuisine?.midi || cuisine?.soir}
-			<div class="kitchen">
-				<span class="label">Service en cuisine</span>
-				<p>
-					{#if cuisine?.midi}Midi · <strong>{cuisine.midi}</strong><br />{/if}
-					{#if cuisine?.soir}Soir · <strong>{cuisine.soir}</strong>{/if}
-				</p>
-			</div>
+				<div class="kitchen">
+					<span class="label">Service en cuisine</span>
+					<p>
+						{#if cuisine?.midi}Midi · <strong>{cuisine.midi}</strong><br />{/if}
+						{#if cuisine?.soir}Soir · <strong>{cuisine.soir}</strong>{/if}
+					</p>
+				</div>
 			{/if}
 		</div>
 

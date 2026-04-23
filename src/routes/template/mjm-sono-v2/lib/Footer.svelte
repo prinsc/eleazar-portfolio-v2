@@ -29,8 +29,12 @@
 		<div class="col">
 			<span class="label">Contact</span>
 			<p>
-				<a href="mailto:{infos?.email ?? 'contact@mjmsono.be'}">{infos?.email ?? 'contact@mjmsono.be'}</a><br />
-				<a href="tel:{(infos?.telephone ?? '+32475307333').replace(/\s/g, '')}">{infos?.telephone ?? '+32 475 30 73 33'}</a>
+				<a href="mailto:{infos?.email ?? 'contact@mjmsono.be'}"
+					>{infos?.email ?? 'contact@mjmsono.be'}</a
+				><br />
+				<a href="tel:{(infos?.telephone ?? '+32475307333').replace(/\s/g, '')}"
+					>{infos?.telephone ?? '+32 475 30 73 33'}</a
+				>
 			</p>
 		</div>
 		<div class="col">
@@ -65,7 +69,7 @@
 	</div>
 
 	<div class="footer__meta">
-		<span>© 2025 MJM Sonorisation &amp; Yohan — Tous droits réservés</span>
+		<span>© 2025 MJM Sonorisation &amp; Yohan - Tous droits réservés</span>
 		<span>
 			Site réalisé par
 			<a href="https://kltk.be" target="_blank" rel="noopener">Kltk</a>
@@ -121,7 +125,9 @@
 			text-decoration: none;
 			transition: color 0.3s ease;
 
-			&:hover { color: var(--gold); }
+			&:hover {
+				color: var(--gold);
+			}
 		}
 	}
 
@@ -176,7 +182,9 @@
 			text-decoration: none;
 			border-bottom: 1px solid transparent;
 
-			&:hover { border-bottom-color: var(--gold); }
+			&:hover {
+				border-bottom-color: var(--gold);
+			}
 		}
 	}
 </style>

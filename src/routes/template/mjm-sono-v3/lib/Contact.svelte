@@ -4,7 +4,7 @@
 
 	let { infos = null, socials = null, cta = null } = $props();
 
-	const adresse = $derived(infos?.adresseComplete ?? '337, route de Flobecq — 7804 Ostiches');
+	const adresse = $derived(infos?.adresseComplete ?? '337, route de Flobecq - 7804 Ostiches');
 	const numeroEntreprise = $derived(infos?.numeroEntreprise ?? 'BE 0819.776.395');
 	const telephone = $derived(infos?.telephone ?? cta?.principal?.valeur ?? '+32 475 30 73 33');
 	const email = $derived(infos?.email ?? cta?.secondaire?.valeur ?? 'contact@mjmsono.be');
@@ -21,7 +21,15 @@
 	let success = $state(false);
 	let error = $state('');
 
-	const types = ['Mariage', 'Anniversaire', 'Soirée', "Événement d'entreprise", 'Défilé', 'Exposition', 'Autre'];
+	const types = [
+		'Mariage',
+		'Anniversaire',
+		'Soirée',
+		"Événement d'entreprise",
+		'Défilé',
+		'Exposition',
+		'Autre'
+	];
 
 	async function handleSubmit(e) {
 		e.preventDefault();
@@ -46,26 +54,39 @@
 		gsap.registerPlugin(ScrollTrigger);
 
 		gsap.from(titleEl, {
-			opacity: 0, y: 30, duration: 1, ease: 'power3.out',
+			opacity: 0,
+			y: 30,
+			duration: 1,
+			ease: 'power3.out',
 			scrollTrigger: { trigger: titleEl, start: 'top 85%' }
 		});
 		gsap.from(panelEl, {
-			opacity: 0, x: -30, duration: 0.9, delay: 0.1, ease: 'power3.out',
+			opacity: 0,
+			x: -30,
+			duration: 0.9,
+			delay: 0.1,
+			ease: 'power3.out',
 			scrollTrigger: { trigger: panelEl, start: 'top 88%' }
 		});
 		gsap.from(formEl, {
-			opacity: 0, x: 30, duration: 0.9, delay: 0.2, ease: 'power3.out',
+			opacity: 0,
+			x: 30,
+			duration: 0.9,
+			delay: 0.2,
+			ease: 'power3.out',
 			scrollTrigger: { trigger: formEl, start: 'top 88%' }
 		});
 	});
 
-	function phoneHref(t) { return 'tel:' + String(t).replace(/\s/g, ''); }
+	function phoneHref(t) {
+		return 'tel:' + String(t).replace(/\s/g, '');
+	}
 </script>
 
 <section class="ct" id="contact">
 	<header class="ct__head" bind:this={titleEl}>
 		<div class="ct__head-meta">
-			<span class="ct__tag">SECTION/06 — INPUT.LINE</span>
+			<span class="ct__tag">SECTION/06 - INPUT.LINE</span>
 			<span class="ct__head-status">
 				<span class="ct__head-led"></span>
 				LIGNE OUVERTE
@@ -77,7 +98,7 @@
 			<span class="ct__title-bracket">[</span>
 		</h2>
 		<p class="ct__sub">
-			Un événement, une idée — appuyez sur <span class="ct__sub-rec">●</span> et envoyez-nous votre brief.
+			Un événement, une idée - appuyez sur <span class="ct__sub-rec">●</span> et envoyez-nous votre brief.
 			Réponse sous 24 à 48h.
 		</p>
 	</header>
@@ -157,7 +178,14 @@
 		</aside>
 
 		<!-- Form = recording deck -->
-		<form class="deck" onsubmit={handleSubmit} bind:this={formEl} method="POST" action="?/contact" novalidate>
+		<form
+			class="deck"
+			onsubmit={handleSubmit}
+			bind:this={formEl}
+			method="POST"
+			action="?/contact"
+			novalidate
+		>
 			<div class="deck__top">
 				<span class="deck__top-rec">
 					<span class="deck__top-rec-dot"></span>
@@ -208,7 +236,13 @@
 
 					<label class="deck__field">
 						<span class="deck__lbl">MESSAGE <em>*</em></span>
-						<textarea bind:value={message} name="message" rows="5" required placeholder="Lieu, nombre d'invités, style d'ambiance..."></textarea>
+						<textarea
+							bind:value={message}
+							name="message"
+							rows="5"
+							required
+							placeholder="Lieu, nombre d'invités, style d'ambiance..."
+						></textarea>
 					</label>
 
 					{#if error}
@@ -221,9 +255,7 @@
 							<span>{submitting ? 'TRANSMISSION...' : 'TRANSMETTRE'}</span>
 							<Send size={14} strokeWidth={1.8} />
 						</button>
-						<p class="deck__note">
-							EN ENVOYANT, VOUS ACCEPTEZ D'ÊTRE RECONTACTÉ PAR YOHAN.
-						</p>
+						<p class="deck__note">EN ENVOYANT, VOUS ACCEPTEZ D'ÊTRE RECONTACTÉ PAR YOHAN.</p>
 					</div>
 				</div>
 			{/if}
@@ -275,15 +307,23 @@
 		color: var(--led);
 	}
 	.ct__head-led {
-		width: 8px; height: 8px;
+		width: 8px;
+		height: 8px;
 		background: var(--led);
 		border-radius: 50%;
-		box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.2), 0 0 8px rgba(34, 197, 94, 0.5);
+		box-shadow:
+			0 0 0 2px rgba(34, 197, 94, 0.2),
+			0 0 8px rgba(34, 197, 94, 0.5);
 		animation: ledPulse 1.5s ease-in-out infinite;
 	}
 	@keyframes ledPulse {
-		0%, 100% { opacity: 1; }
-		50% { opacity: 0.4; }
+		0%,
+		100% {
+			opacity: 1;
+		}
+		50% {
+			opacity: 0.4;
+		}
 	}
 	.ct__title {
 		margin: 0 0 1rem;
@@ -303,7 +343,9 @@
 		color: transparent;
 		-webkit-text-stroke: 1.5px var(--ink);
 	}
-	.ct__title-main { color: var(--signal); }
+	.ct__title-main {
+		color: var(--signal);
+	}
 	.ct__title-bracket {
 		color: var(--ink-mute);
 		font-family: var(--f-mono);
@@ -355,7 +397,9 @@
 		letter-spacing: 0.22em;
 		color: var(--signal);
 	}
-	.panel__top-id { color: var(--ink-mute); }
+	.panel__top-id {
+		color: var(--ink-mute);
+	}
 
 	.panel__rows {
 		padding: 1rem 1rem;
@@ -375,10 +419,15 @@
 		transition: color 0.25s ease;
 		&:hover {
 			color: var(--signal);
-			.panel__plug { background: var(--led); box-shadow: 0 0 6px var(--led); }
+			.panel__plug {
+				background: var(--led);
+				box-shadow: 0 0 6px var(--led);
+			}
 		}
 	}
-	.panel__row--socials { grid-template-columns: 60px 1fr; }
+	.panel__row--socials {
+		grid-template-columns: 60px 1fr;
+	}
 	.panel__k {
 		font-family: var(--f-mono);
 		font-size: 10px;
@@ -399,7 +448,8 @@
 		color: var(--ink-dim);
 	}
 	.panel__plug {
-		width: 10px; height: 10px;
+		width: 10px;
+		height: 10px;
 		border-radius: 50%;
 		background: var(--ink-mute);
 		transition: all 0.3s ease;
@@ -414,7 +464,8 @@
 		gap: 0.5rem;
 
 		a {
-			width: 32px; height: 32px;
+			width: 32px;
+			height: 32px;
 			display: inline-flex;
 			align-items: center;
 			justify-content: center;
@@ -508,12 +559,15 @@
 		color: var(--signal);
 	}
 	.deck__top-rec-dot {
-		width: 8px; height: 8px;
+		width: 8px;
+		height: 8px;
 		background: var(--signal);
 		border-radius: 50%;
 		animation: ledPulse 1.2s ease-in-out infinite;
 	}
-	.deck__top-id { color: var(--ink-mute); }
+	.deck__top-id {
+		color: var(--ink-mute);
+	}
 
 	.deck__body {
 		padding: 1.5rem 1.25rem;
@@ -532,7 +586,9 @@
 		grid-template-columns: 1fr;
 
 		@include breakpoint('small') {
-			&--2 { grid-template-columns: 1fr 1fr; }
+			&--2 {
+				grid-template-columns: 1fr 1fr;
+			}
 		}
 	}
 
@@ -546,7 +602,11 @@
 		font-size: 10px;
 		letter-spacing: 0.22em;
 		color: var(--signal);
-		em { color: var(--led); font-style: normal; margin-left: 0.2em; }
+		em {
+			color: var(--led);
+			font-style: normal;
+			margin-left: 0.2em;
+		}
 	}
 
 	.deck__field input,
@@ -559,7 +619,9 @@
 		padding: 0.85rem 0.85rem;
 		color: var(--ink);
 		outline: none;
-		transition: border-color 0.25s ease, box-shadow 0.25s ease;
+		transition:
+			border-color 0.25s ease,
+			box-shadow 0.25s ease;
 		width: 100%;
 
 		&:focus {
@@ -567,7 +629,9 @@
 			box-shadow: inset 0 0 0 1px var(--signal);
 		}
 
-		&::placeholder { color: var(--ink-mute); }
+		&::placeholder {
+			color: var(--ink-mute);
+		}
 	}
 
 	.deck__field select {
@@ -576,15 +640,23 @@
 		background-image:
 			linear-gradient(45deg, transparent 50%, var(--signal) 50%),
 			linear-gradient(135deg, var(--signal) 50%, transparent 50%);
-		background-position: calc(100% - 14px) center, calc(100% - 9px) center;
+		background-position:
+			calc(100% - 14px) center,
+			calc(100% - 9px) center;
 		background-size: 5px 5px;
 		background-repeat: no-repeat;
 		padding-right: 2rem;
 
-		option { background: var(--bg); color: var(--ink); }
+		option {
+			background: var(--bg);
+			color: var(--ink);
+		}
 	}
 
-	.deck__field textarea { resize: vertical; min-height: 130px; }
+	.deck__field textarea {
+		resize: vertical;
+		min-height: 130px;
+	}
 
 	.deck__err {
 		margin: 0;
@@ -600,7 +672,8 @@
 		background: rgba(245, 158, 11, 0.05);
 	}
 	.deck__err-led {
-		width: 8px; height: 8px;
+		width: 8px;
+		height: 8px;
 		background: var(--amber);
 		animation: ledPulse 0.8s ease-in-out infinite;
 	}
@@ -636,12 +709,18 @@
 
 		&:hover:not(:disabled) {
 			background: var(--ink);
-			.deck__send-rec { background: var(--signal); }
+			.deck__send-rec {
+				background: var(--signal);
+			}
 		}
-		&:disabled { opacity: 0.6; cursor: wait; }
+		&:disabled {
+			opacity: 0.6;
+			cursor: wait;
+		}
 	}
 	.deck__send-rec {
-		width: 8px; height: 8px;
+		width: 8px;
+		height: 8px;
 		background: var(--bg);
 		border-radius: 50%;
 	}
@@ -663,14 +742,17 @@
 		gap: 0.65rem;
 	}
 	.deck__success-icon {
-		width: 64px; height: 64px;
+		width: 64px;
+		height: 64px;
 		background: var(--led);
 		color: var(--bg);
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
 		margin-bottom: 1rem;
-		box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.2), 0 0 24px rgba(34, 197, 94, 0.5);
+		box-shadow:
+			0 0 0 4px rgba(34, 197, 94, 0.2),
+			0 0 24px rgba(34, 197, 94, 0.5);
 	}
 	.deck__success h3 {
 		margin: 0;

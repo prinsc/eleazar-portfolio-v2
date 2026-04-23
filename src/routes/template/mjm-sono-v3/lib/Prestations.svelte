@@ -1,18 +1,60 @@
 <script>
 	import { onMount } from 'svelte';
-	import { Music2, Speaker, PartyPopper, Tent, Heart, Cake, Briefcase, Shirt, Image as ImageIcon } from 'lucide-svelte';
+	import {
+		Music2,
+		Speaker,
+		PartyPopper,
+		Tent,
+		Heart,
+		Cake,
+		Briefcase,
+		Shirt,
+		Image as ImageIcon
+	} from 'lucide-svelte';
 
 	let { prestations = null } = $props();
 
 	const defaults = [
-		{ titre: 'Défilés', description: 'Sonorisation rythmée et lumière scénique pour mettre en valeur chaque passage.', icone: 'Shirt' },
-		{ titre: 'Expositions', description: 'Ambiance sonore maîtrisée, diffusion homogène pour accompagner la visite.', icone: 'Image' },
-		{ titre: 'Soirées privées', description: 'Du cocktail à la piste de danse — une progression musicale pensée.', icone: 'PartyPopper' },
-		{ titre: 'Salle & chapiteau', description: 'Matériel adapté à chaque configuration, intérieur comme extérieur.', icone: 'Tent' },
-		{ titre: 'Mariages', description: 'Cérémonie, vin d\'honneur, repas, soirée — une seule équipe, une journée.', icone: 'Heart' },
-		{ titre: 'Anniversaires', description: 'Des 18 ans à la fête en famille, on adapte l\'énergie à vos envies.', icone: 'Cake' },
-		{ titre: 'Entreprise', description: 'Séminaires, soirées, inaugurations — prestation sobre et pro.', icone: 'Briefcase' },
-		{ titre: 'Sur mesure', description: 'Une demande spécifique ? On compose le set selon votre brief.', icone: 'Speaker' }
+		{
+			titre: 'Défilés',
+			description: 'Sonorisation rythmée et lumière scénique pour mettre en valeur chaque passage.',
+			icone: 'Shirt'
+		},
+		{
+			titre: 'Expositions',
+			description: 'Ambiance sonore maîtrisée, diffusion homogène pour accompagner la visite.',
+			icone: 'Image'
+		},
+		{
+			titre: 'Soirées privées',
+			description: 'Du cocktail à la piste de danse - une progression musicale pensée.',
+			icone: 'PartyPopper'
+		},
+		{
+			titre: 'Salle & chapiteau',
+			description: 'Matériel adapté à chaque configuration, intérieur comme extérieur.',
+			icone: 'Tent'
+		},
+		{
+			titre: 'Mariages',
+			description: "Cérémonie, vin d'honneur, repas, soirée - une seule équipe, une journée.",
+			icone: 'Heart'
+		},
+		{
+			titre: 'Anniversaires',
+			description: "Des 18 ans à la fête en famille, on adapte l'énergie à vos envies.",
+			icone: 'Cake'
+		},
+		{
+			titre: 'Entreprise',
+			description: 'Séminaires, soirées, inaugurations - prestation sobre et pro.',
+			icone: 'Briefcase'
+		},
+		{
+			titre: 'Sur mesure',
+			description: 'Une demande spécifique ? On compose le set selon votre brief.',
+			icone: 'Speaker'
+		}
 	];
 
 	const items = $derived(
@@ -23,7 +65,18 @@
 		}))
 	);
 
-	const iconMap = { Music: Music2, Music2, Speaker, PartyPopper, Tent, Heart, Cake, Briefcase, Shirt, Image: ImageIcon };
+	const iconMap = {
+		Music: Music2,
+		Music2,
+		Speaker,
+		PartyPopper,
+		Tent,
+		Heart,
+		Cake,
+		Briefcase,
+		Shirt,
+		Image: ImageIcon
+	};
 
 	let titleEl;
 	let cardEls = $state([]);
@@ -34,15 +87,21 @@
 		gsap.registerPlugin(ScrollTrigger);
 
 		gsap.from(titleEl, {
-			opacity: 0, y: 30, duration: 1, ease: 'power3.out',
+			opacity: 0,
+			y: 30,
+			duration: 1,
+			ease: 'power3.out',
 			scrollTrigger: { trigger: titleEl, start: 'top 85%' }
 		});
 
 		cardEls.forEach((el, i) => {
 			if (!el) return;
 			gsap.from(el, {
-				opacity: 0, y: 40, duration: 0.7,
-				delay: (i % 4) * 0.06, ease: 'power3.out',
+				opacity: 0,
+				y: 40,
+				duration: 0.7,
+				delay: (i % 4) * 0.06,
+				ease: 'power3.out',
 				scrollTrigger: { trigger: el, start: 'top 90%' }
 			});
 			// fader animation au scroll
@@ -63,7 +122,7 @@
 <section class="prestations" id="prestations">
 	<header class="head" bind:this={titleEl}>
 		<div class="head__top">
-			<span class="head__tag">SECTION/01 — RACK·OUT</span>
+			<span class="head__tag">SECTION/01 - RACK·OUT</span>
 			<span class="head__count">[ {String(items.length).padStart(2, '0')} CANAUX ACTIFS ]</span>
 		</div>
 		<h2 class="head__title">
@@ -72,7 +131,7 @@
 		</h2>
 		<p class="head__sub">
 			Chaque prestation est un canal séparé, mixé selon votre cahier des charges.
-			<span class="head__sig">— SON / LUMIÈRE / ANIMATION.</span>
+			<span class="head__sig">- SON / LUMIÈRE / ANIMATION.</span>
 		</p>
 	</header>
 
@@ -126,7 +185,9 @@
 		&::before {
 			content: '';
 			position: absolute;
-			top: 0; left: 0; right: 0;
+			top: 0;
+			left: 0;
+			right: 0;
 			height: 1px;
 			background: linear-gradient(90deg, transparent, var(--signal) 50%, transparent);
 			opacity: 0.4;
@@ -191,8 +252,14 @@
 		}
 	}
 	@keyframes cursorBlink {
-		0%, 50% { opacity: 1; }
-		51%, 100% { opacity: 0; }
+		0%,
+		50% {
+			opacity: 1;
+		}
+		51%,
+		100% {
+			opacity: 0;
+		}
 	}
 	.head__sub {
 		margin: 1.5rem 0 0;
@@ -247,7 +314,9 @@
 		&::before {
 			content: '';
 			position: absolute;
-			top: 0; left: 0; right: 0;
+			top: 0;
+			left: 0;
+			right: 0;
 			height: 3px;
 			background: var(--signal);
 			transform: scaleX(0);
@@ -257,12 +326,21 @@
 
 		&:hover {
 			background: var(--panel-2);
-			&::before { transform: scaleX(1); }
-			.ch__icon { color: var(--signal); border-color: var(--signal); }
-			.ch__title { color: var(--signal); }
+			&::before {
+				transform: scaleX(1);
+			}
+			.ch__icon {
+				color: var(--signal);
+				border-color: var(--signal);
+			}
+			.ch__title {
+				color: var(--signal);
+			}
 			.ch__led {
 				background: var(--led);
-				box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.2), 0 0 8px rgba(34, 197, 94, 0.6);
+				box-shadow:
+					0 0 0 2px rgba(34, 197, 94, 0.2),
+					0 0 8px rgba(34, 197, 94, 0.6);
 			}
 		}
 	}
@@ -279,14 +357,16 @@
 		color: var(--ink-mute);
 	}
 	.ch__led {
-		width: 8px; height: 8px;
+		width: 8px;
+		height: 8px;
 		background: var(--ink-mute);
 		border-radius: 50%;
 		transition: all 0.3s ease;
 	}
 
 	.ch__icon {
-		width: 42px; height: 42px;
+		width: 42px;
+		height: 42px;
 		border: 1px solid var(--rule-hot);
 		display: inline-flex;
 		align-items: center;
@@ -335,11 +415,15 @@
 		height: 1px;
 		background: var(--rule-hot);
 		width: 100%;
-		&:nth-child(odd) { background: var(--ink-mute); width: 70%; }
+		&:nth-child(odd) {
+			background: var(--ink-mute);
+			width: 70%;
+		}
 	}
 	.ch__fader-knob {
 		position: absolute;
-		left: 4px; right: 4px;
+		left: 4px;
+		right: 4px;
 		height: 14px;
 		background: var(--signal);
 		border-radius: 1px;
@@ -349,7 +433,8 @@
 			content: '';
 			position: absolute;
 			top: 50%;
-			left: 0; right: 0;
+			left: 0;
+			right: 0;
 			height: 1px;
 			background: var(--bg);
 			transform: translateY(-50%);
@@ -366,6 +451,10 @@
 		font-size: 9px;
 		letter-spacing: 0.18em;
 	}
-	.ch__lvl { color: var(--led); }
-	.ch__on { color: var(--ink-mute); }
+	.ch__lvl {
+		color: var(--led);
+	}
+	.ch__on {
+		color: var(--ink-mute);
+	}
 </style>

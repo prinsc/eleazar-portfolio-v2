@@ -19,7 +19,10 @@
 		gsap.registerPlugin(ScrollTrigger);
 
 		gsap.from(titleEl, {
-			opacity: 0, y: 30, duration: 1, ease: 'power3.out',
+			opacity: 0,
+			y: 30,
+			duration: 1,
+			ease: 'power3.out',
 			scrollTrigger: { trigger: titleEl, start: 'top 85%' }
 		});
 	});
@@ -28,7 +31,7 @@
 <section class="pt" id="confiance">
 	<header class="pt__head" bind:this={titleEl}>
 		<div class="pt__head-l">
-			<span class="pt__tag">SECTION/05 — TRUST.LOG</span>
+			<span class="pt__tag">SECTION/05 - TRUST.LOG</span>
 			<h2 class="pt__title">
 				ILS NOUS ONT<br />
 				<span class="pt__title-hot">FAIT CONFIANCE</span>
@@ -40,7 +43,7 @@
 				<span class="pt__counter-u">CLIENTS<br />RÉCURRENTS</span>
 			</div>
 			<p class="pt__sig">
-				MERCI. <span class="pt__sig-d">— SIGNAL FROM Y/2026</span>
+				MERCI. <span class="pt__sig-d">- SIGNAL FROM Y/2026</span>
 			</p>
 		</div>
 	</header>
@@ -50,7 +53,12 @@
 		<div class="pt__tape-track pt__tape-track--rtl">
 			{#each Array(3) as _, k (k)}
 				{#each items as p, i (p.name + i + k)}
-					<a class="pt__chip" href={p.url ?? '#'} target={p.url && p.url !== '#' ? '_blank' : undefined} rel="noopener">
+					<a
+						class="pt__chip"
+						href={p.url ?? '#'}
+						target={p.url && p.url !== '#' ? '_blank' : undefined}
+						rel="noopener"
+					>
 						{#if p.logo}
 							<img src={p.logo} alt={p.name} loading="lazy" />
 						{:else}
@@ -68,12 +76,17 @@
 		<div class="pt__tape-track pt__tape-track--ltr">
 			{#each Array(3) as _, k (k)}
 				{#each [...items].reverse() as p, i (p.name + i + 'r' + k)}
-					<a class="pt__chip pt__chip--alt" href={p.url ?? '#'} target={p.url && p.url !== '#' ? '_blank' : undefined} rel="noopener">
+					<a
+						class="pt__chip pt__chip--alt"
+						href={p.url ?? '#'}
+						target={p.url && p.url !== '#' ? '_blank' : undefined}
+						rel="noopener"
+					>
 						{#if p.logo}
 							<img src={p.logo} alt={p.name} loading="lazy" />
 						{:else}
 							<span class="pt__chip-name">{p.name}</span>
-							<span class="pt__chip-num">·{String((items.length - i)).padStart(2, '0')}</span>
+							<span class="pt__chip-num">·{String(items.length - i).padStart(2, '0')}</span>
 						{/if}
 						<span class="pt__chip-sep">+</span>
 					</a>
@@ -150,7 +163,9 @@
 		text-transform: uppercase;
 		color: var(--ink);
 	}
-	.pt__title-hot { color: var(--signal); }
+	.pt__title-hot {
+		color: var(--signal);
+	}
 
 	.pt__head-r {
 		display: flex;
@@ -218,16 +233,28 @@
 		white-space: nowrap;
 		will-change: transform;
 
-		&--rtl { animation: tapeRTL 50s linear infinite; }
-		&--ltr { animation: tapeLTR 60s linear infinite; }
+		&--rtl {
+			animation: tapeRTL 50s linear infinite;
+		}
+		&--ltr {
+			animation: tapeLTR 60s linear infinite;
+		}
 	}
 	@keyframes tapeRTL {
-		from { transform: translateX(0); }
-		to { transform: translateX(-33.333%); }
+		from {
+			transform: translateX(0);
+		}
+		to {
+			transform: translateX(-33.333%);
+		}
 	}
 	@keyframes tapeLTR {
-		from { transform: translateX(-33.333%); }
-		to { transform: translateX(0); }
+		from {
+			transform: translateX(-33.333%);
+		}
+		to {
+			transform: translateX(0);
+		}
 	}
 
 	.pt__chip {
@@ -249,8 +276,13 @@
 			color: var(--bg);
 			border-color: var(--signal);
 
-			.pt__chip-num { color: var(--bg); opacity: 0.7; }
-			.pt__chip-sep { color: var(--bg); }
+			.pt__chip-num {
+				color: var(--bg);
+				opacity: 0.7;
+			}
+			.pt__chip-sep {
+				color: var(--bg);
+			}
 		}
 	}
 	.pt__chip--alt {
@@ -293,14 +325,20 @@
 		flex-direction: column;
 		gap: 0.4rem;
 
-		&:nth-child(2n) { border-right: none; }
+		&:nth-child(2n) {
+			border-right: none;
+		}
 
 		@include breakpoint('medium') {
 			border-bottom: none;
 			padding: 2rem;
 
-			&:nth-child(2n) { border-right: 1px solid var(--rule); }
-			&:last-child { border-right: none; }
+			&:nth-child(2n) {
+				border-right: 1px solid var(--rule);
+			}
+			&:last-child {
+				border-right: none;
+			}
 		}
 	}
 	.pt__stat-k {

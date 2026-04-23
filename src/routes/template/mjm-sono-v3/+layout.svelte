@@ -31,24 +31,24 @@
 		padding: 0;
 	}
 	:global(body) {
-		/* Palette régie / console techno — dark industriel */
-		--bg: #0a0a0b;              /* fond principal */
-		--panel: #121214;           /* panneau rack */
-		--panel-2: #1a1a1e;         /* surface secondaire */
-		--panel-3: #26262b;         /* relief */
-		--ink: #f2f2ef;             /* texte principal */
-		--ink-dim: #8a8a86;         /* texte secondaire */
-		--ink-mute: #55554f;        /* texte tertiaire */
+		/* Palette régie / console techno - dark industriel */
+		--bg: #0a0a0b; /* fond principal */
+		--panel: #121214; /* panneau rack */
+		--panel-2: #1a1a1e; /* surface secondaire */
+		--panel-3: #26262b; /* relief */
+		--ink: #f2f2ef; /* texte principal */
+		--ink-dim: #8a8a86; /* texte secondaire */
+		--ink-mute: #55554f; /* texte tertiaire */
 		--rule: rgba(242, 242, 239, 0.08);
 		--rule-hot: rgba(242, 242, 239, 0.18);
 
-		--signal: #ff6b1a;          /* orange signal / clipping */
-		--signal-hot: #ffa066;      /* orange clair */
-		--signal-deep: #b34712;     /* orange profond */
-		--led: #22c55e;             /* vert LED ON AIR */
+		--signal: #ff6b1a; /* orange signal / clipping */
+		--signal-hot: #ffa066; /* orange clair */
+		--signal-deep: #b34712; /* orange profond */
+		--led: #22c55e; /* vert LED ON AIR */
 		--led-dim: #166534;
-		--amber: #f59e0b;           /* warning */
-		--cobalt: #3b82f6;          /* data link */
+		--amber: #f59e0b; /* warning */
+		--cobalt: #3b82f6; /* data link */
 
 		--f-display: 'Archivo Black', 'Archivo', 'Helvetica Neue', sans-serif;
 		--f-body: 'Space Grotesk', 'Helvetica Neue', system-ui, sans-serif;

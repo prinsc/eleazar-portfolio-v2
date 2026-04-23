@@ -4,7 +4,8 @@
 	let { tonnelle = null } = $props();
 
 	const defaults = {
-		texte: "La Tonnelle, c'est l'espace élégant que nous installons, montons et démontons pour vos événements en extérieur. Pratique, modulable, prête à accueillir vos invités — vous profitez, on gère.",
+		texte:
+			"La Tonnelle, c'est l'espace élégant que nous installons, montons et démontons pour vos événements en extérieur. Pratique, modulable, prête à accueillir vos invités - vous profitez, on gère.",
 		photos: [
 			'https://images.unsplash.com/photo-1519741497674-611481863552?w=1200&q=85',
 			'https://images.unsplash.com/photo-1478146896981-b80fe463b330?w=1200&q=85',
@@ -16,7 +17,9 @@
 	};
 
 	const texte = $derived(tonnelle?.texte ?? defaults.texte);
-	const photos = $derived(tonnelle?.photos && tonnelle.photos.length > 0 ? tonnelle.photos : defaults.photos);
+	const photos = $derived(
+		tonnelle?.photos && tonnelle.photos.length > 0 ? tonnelle.photos : defaults.photos
+	);
 
 	let titleEl;
 	let photoEls = $state([]);
@@ -67,8 +70,8 @@
 		<div class="gallery">
 			{#each photos as src, i (src + i)}
 				<figure class="cell" bind:this={photoEls[i]} class:cell--tall={i === 1 || i === 4}>
-					<!-- IMAGE CLIENT — remplacer par photo tonnelle réelle -->
-					<img src={src} alt="Ambiance tonnelle événement {i + 1}" loading="lazy" />
+					<!-- IMAGE CLIENT - remplacer par photo tonnelle réelle -->
+					<img {src} alt="Ambiance tonnelle événement {i + 1}" loading="lazy" />
 					<figcaption>
 						<span>{String(i + 1).padStart(2, '0')}</span>
 						<span class="cap">Tonnelle</span>
@@ -129,7 +132,12 @@
 		text-transform: uppercase;
 		color: var(--bone-soft);
 
-		.rule { display: inline-block; width: 42px; height: 1px; background: var(--gold); }
+		.rule {
+			display: inline-block;
+			width: 42px;
+			height: 1px;
+			background: var(--gold);
+		}
 	}
 
 	h2 {
@@ -236,7 +244,9 @@
 			height: 100%;
 			object-fit: cover;
 			filter: grayscale(30%) contrast(1.08) brightness(0.9);
-			transition: transform 0.9s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.4s ease;
+			transition:
+				transform 0.9s cubic-bezier(0.2, 0.8, 0.2, 1),
+				filter 0.4s ease;
 		}
 
 		&:hover img {
@@ -258,7 +268,9 @@
 			color: var(--bone);
 			text-shadow: 0 1px 10px rgba(0, 0, 0, 0.7);
 
-			.cap { color: var(--gold); }
+			.cap {
+				color: var(--gold);
+			}
 		}
 	}
 </style>

@@ -4,7 +4,7 @@
 
 	let { infos = null, socials = null, cta = null } = $props();
 
-	const adresse = $derived(infos?.adresseComplete ?? '337, route de Flobecq — 7804 Ostiches');
+	const adresse = $derived(infos?.adresseComplete ?? '337, route de Flobecq - 7804 Ostiches');
 	const numeroEntreprise = $derived(infos?.numeroEntreprise ?? 'BE 0819.776.395');
 	const telephone = $derived(infos?.telephone ?? cta?.principal?.valeur ?? '0475 30 73 33');
 	const email = $derived(infos?.email ?? cta?.secondaire?.valeur ?? 'contact@mjmsono.be');
@@ -21,7 +21,15 @@
 	let success = $state(false);
 	let error = $state('');
 
-	const types = ['Mariage', 'Anniversaire', 'Soirée', "Événement d'entreprise", 'Défilé', 'Exposition', 'Autre'];
+	const types = [
+		'Mariage',
+		'Anniversaire',
+		'Soirée',
+		"Événement d'entreprise",
+		'Défilé',
+		'Exposition',
+		'Autre'
+	];
 
 	async function handleSubmit(e) {
 		e.preventDefault();
@@ -46,20 +54,33 @@
 		gsap.registerPlugin(ScrollTrigger);
 
 		gsap.from(titleEl, {
-			opacity: 0, y: 24, duration: 0.7, ease: 'power2.out',
+			opacity: 0,
+			y: 24,
+			duration: 0.7,
+			ease: 'power2.out',
 			scrollTrigger: { trigger: titleEl, start: 'top 82%' }
 		});
 		gsap.from(infoEl, {
-			opacity: 0, y: 24, duration: 0.7, delay: 0.1, ease: 'power2.out',
+			opacity: 0,
+			y: 24,
+			duration: 0.7,
+			delay: 0.1,
+			ease: 'power2.out',
 			scrollTrigger: { trigger: infoEl, start: 'top 85%' }
 		});
 		gsap.from(formEl, {
-			opacity: 0, y: 24, duration: 0.7, delay: 0.15, ease: 'power2.out',
+			opacity: 0,
+			y: 24,
+			duration: 0.7,
+			delay: 0.15,
+			ease: 'power2.out',
 			scrollTrigger: { trigger: formEl, start: 'top 85%' }
 		});
 	});
 
-	function phoneHref(t) { return 'tel:' + String(t).replace(/\s/g, ''); }
+	function phoneHref(t) {
+		return 'tel:' + String(t).replace(/\s/g, '');
+	}
 </script>
 
 <section class="contact" id="contact">
@@ -125,7 +146,14 @@
 				</div>
 			</aside>
 
-			<form class="form" onsubmit={handleSubmit} bind:this={formEl} method="POST" action="?/contact" novalidate>
+			<form
+				class="form"
+				onsubmit={handleSubmit}
+				bind:this={formEl}
+				method="POST"
+				action="?/contact"
+				novalidate
+			>
 				{#if success}
 					<div class="success" role="status">
 						<span class="success__ic"><Check size={28} strokeWidth={2} /></span>
@@ -167,7 +195,13 @@
 
 					<label class="field">
 						<span>Message <em>*</em></span>
-						<textarea bind:value={message} name="message" rows="5" required placeholder="Lieu, nombre d'invités, style d'ambiance…"></textarea>
+						<textarea
+							bind:value={message}
+							name="message"
+							rows="5"
+							required
+							placeholder="Lieu, nombre d'invités, style d'ambiance…"
+						></textarea>
 					</label>
 
 					{#if error}
@@ -180,7 +214,8 @@
 					</button>
 
 					<p class="note">
-						En envoyant ce formulaire, vous acceptez d'être recontacté par Yohan au sujet de votre demande.
+						En envoyant ce formulaire, vous acceptez d'être recontacté par Yohan au sujet de votre
+						demande.
 					</p>
 				{/if}
 			</form>
@@ -201,7 +236,10 @@
 		}
 	}
 
-	.wrap { max-width: 1280px; margin: 0 auto; }
+	.wrap {
+		max-width: 1280px;
+		margin: 0 auto;
+	}
 
 	.head {
 		max-width: 42rem;
@@ -396,7 +434,9 @@
 		grid-template-columns: 1fr;
 
 		@include breakpoint('small') {
-			&--2 { grid-template-columns: 1fr 1fr; }
+			&--2 {
+				grid-template-columns: 1fr 1fr;
+			}
 		}
 	}
 
@@ -417,7 +457,9 @@
 			}
 		}
 
-		input, select, textarea {
+		input,
+		select,
+		textarea {
 			font-family: var(--f-body);
 			font-size: 0.95rem;
 			background: var(--surface);
@@ -429,7 +471,9 @@
 			transition: border-color 0.2s ease;
 			width: 100%;
 
-			&:focus { border-color: var(--red); }
+			&:focus {
+				border-color: var(--red);
+			}
 
 			&::placeholder {
 				color: var(--text-faint);
@@ -439,14 +483,20 @@
 		select {
 			appearance: none;
 			cursor: pointer;
-			background-image: linear-gradient(45deg, transparent 50%, var(--text-soft) 50%),
+			background-image:
+				linear-gradient(45deg, transparent 50%, var(--text-soft) 50%),
 				linear-gradient(135deg, var(--text-soft) 50%, transparent 50%);
-			background-position: calc(100% - 14px) center, calc(100% - 9px) center;
+			background-position:
+				calc(100% - 14px) center,
+				calc(100% - 9px) center;
 			background-size: 5px 5px;
 			background-repeat: no-repeat;
 			padding-right: 2rem;
 
-			option { background: var(--surface); color: var(--text); }
+			option {
+				background: var(--surface);
+				color: var(--text);
+			}
 		}
 
 		textarea {
@@ -479,8 +529,13 @@
 		border-radius: 4px;
 		transition: background 0.2s ease;
 
-		&:hover:not(:disabled) { background: var(--red-deep); }
-		&:disabled { opacity: 0.6; cursor: wait; }
+		&:hover:not(:disabled) {
+			background: var(--red-deep);
+		}
+		&:disabled {
+			opacity: 0.6;
+			cursor: wait;
+		}
 	}
 
 	.note {

@@ -67,8 +67,9 @@
 		</div>
 
 		<div class="meta">
-			<span>© 2025 MJM Sonorisation &amp; Yohan — Tous droits réservés</span>
-			<span>Site réalisé par <a href="https://kltk.be" target="_blank" rel="noopener">Kltk</a></span>
+			<span>© 2025 MJM Sonorisation &amp; Yohan - Tous droits réservés</span>
+			<span>Site réalisé par <a href="https://kltk.be" target="_blank" rel="noopener">Kltk</a></span
+			>
 		</div>
 	</div>
 </footer>
@@ -86,7 +87,10 @@
 		}
 	}
 
-	.wrap { max-width: 1280px; margin: 0 auto; }
+	.wrap {
+		max-width: 1280px;
+		margin: 0 auto;
+	}
 
 	.grid {
 		display: grid;
@@ -115,11 +119,15 @@
 			text-decoration: none;
 			transition: color 0.2s ease;
 
-			:global(svg) { color: var(--text-faint); }
+			:global(svg) {
+				color: var(--text-faint);
+			}
 
 			&:hover {
 				color: var(--red);
-				:global(svg) { color: var(--red); }
+				:global(svg) {
+					color: var(--red);
+				}
 			}
 		}
 	}
@@ -216,7 +224,9 @@
 			color: var(--text);
 			text-decoration: none;
 
-			&:hover { color: var(--red); }
+			&:hover {
+				color: var(--red);
+			}
 		}
 	}
 </style>

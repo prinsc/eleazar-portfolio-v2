@@ -40,10 +40,11 @@
 </script>
 
 <svelte:head>
-	<title>{d.seo?.titleDefault ?? 'MJM Sonorisation & Yohan — Son, lumière, animation'}</title>
+	<title>{d.seo?.titleDefault ?? 'MJM Sonorisation - Son, lumière, animation'}</title>
 	<meta
 		name="description"
-		content={d.seo?.description ?? "Prestataire son, lumière et animation pour vos événements à Ostiches et dans le Hainaut. 30 ans d'expérience."}
+		content={d.seo?.description ??
+			"Prestataire son, lumière et animation pour vos événements à Ostiches et dans le Hainaut. 30 ans d'expérience."}
 	/>
 </svelte:head>
 

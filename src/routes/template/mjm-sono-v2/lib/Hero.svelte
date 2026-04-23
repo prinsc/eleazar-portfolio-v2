@@ -12,9 +12,9 @@
 	];
 
 	const paragraphes = [
-		"Avec MJM Sonorisation & Yohan, profitez d'une prise en charge complète : sonorisation, éclairage et animation, pour un événement clé en main.",
+		"Avec MJM Sonorisation, profitez d'une prise en charge complète : sonorisation, éclairage et animation, pour un événement clé en main.",
 		"Forts de plus de 30 ans d'expérience, nous mettons à votre service du matériel professionnel et un savoir-faire reconnu, pour un rendu à la hauteur de vos attentes.",
-		"Toujours à la pointe de la technologie, nous faisons évoluer nos équipements pour vous offrir le meilleur."
+		'Toujours à la pointe de la technologie, nous faisons évoluer nos équipements pour vous offrir le meilleur.'
 	];
 
 	let heroEl;
@@ -29,12 +29,11 @@
 	let counterEl;
 
 	const img1 = $derived(
-		heroImage ??
-			'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=1600&q=85'
-		/* IMAGE CLIENT — remplacer par photo ambiance événement réelle */
+		heroImage ?? 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=1600&q=85'
+		/* IMAGE CLIENT - remplacer par photo ambiance événement réelle */
 	);
 	const img2 = 'https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=1400&q=85';
-	/* IMAGE CLIENT — remplacer par photo lumière / scène réelle */
+	/* IMAGE CLIENT - remplacer par photo lumière / scène réelle */
 
 	onMount(async () => {
 		const { gsap } = await import('gsap');
@@ -84,8 +83,18 @@
 			const rect = heroEl.getBoundingClientRect();
 			if (rect.bottom < 0 || rect.top > window.innerHeight) return;
 			const progress = -rect.top / window.innerHeight;
-			gsap.to(photo1ImgEl, { yPercent: progress * 14, duration: 0.9, ease: 'power2.out', overwrite: 'auto' });
-			gsap.to(photo2ImgEl, { yPercent: progress * -10, duration: 0.9, ease: 'power2.out', overwrite: 'auto' });
+			gsap.to(photo1ImgEl, {
+				yPercent: progress * 14,
+				duration: 0.9,
+				ease: 'power2.out',
+				overwrite: 'auto'
+			});
+			gsap.to(photo2ImgEl, {
+				yPercent: progress * -10,
+				duration: 0.9,
+				ease: 'power2.out',
+				overwrite: 'auto'
+			});
 		};
 		window.addEventListener('scroll', onScroll, { passive: true });
 		return () => window.removeEventListener('scroll', onScroll);
@@ -109,19 +118,23 @@
 			<span class="hero__eyebrow">
 				<span class="rule" bind:this={eyebrowRule}></span>
 				<span class="eb-text" bind:this={eyebrowText}>
-					Prestataire son · lumière · animation — {infos?.ville ?? 'Ostiches'}, {infos?.pays ?? 'Belgique'}
+					Prestataire son · lumière · animation - {infos?.ville ?? 'Ostiches'}, {infos?.pays ??
+						'Belgique'}
 				</span>
 			</span>
 
 			<h1 class="hero__title">
-				<span class="mask"><span class="line line--md" bind:this={lineEls[0]}>MJM</span></span>
-				<span class="mask"><span class="line line--xl" bind:this={lineEls[1]}>Sonorisation</span></span>
-				<span class="mask"><span class="line line--md indent" bind:this={lineEls[2]}><em>&amp; Yohan</em></span></span>
+				<span class="mask"
+					><span class="line indent line--md" bind:this={lineEls[0]}><em>MJM</em></span></span
+				>
+				<span class="mask"
+					><span class="line line--xl" bind:this={lineEls[1]}>Sonorisation</span></span
+				>
 			</h1>
 
 			<p class="hero__subtitle" bind:this={subtitleEl}>
 				Donnez une autre dimension à vos événements.<br />
-				<span class="muted">Son, lumière, ambiance — nous créons des expériences uniques.</span>
+				<span class="muted">Son, lumière, ambiance - nous créons des expériences uniques.</span>
 			</p>
 
 			<div class="hero__lede" bind:this={ledeEl}>
@@ -142,20 +155,32 @@
 
 				<a class="cta-primary" href="#contact">
 					<span>Une question, un projet ? Contactez-nous</span>
-					<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5">
+					<svg
+						viewBox="0 0 24 24"
+						width="14"
+						height="14"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="1.5"
+					>
 						<path d="M5 12h14M13 6l6 6-6 6" />
 					</svg>
 				</a>
 
 				<p class="tagline">
-					MJM Sonorisation &amp; Yohan — <em>la signature de vos plus beaux événements.</em>
+					MJM Sonorisation &amp; Yohan - <em>la signature de vos plus beaux événements.</em>
 				</p>
 			</div>
 		</div>
 
 		<div class="hero__right">
 			<figure class="hero__photo hero__photo--1" bind:this={photo1El}>
-				<img src={img1} alt="Ambiance événement — sonorisation scène" loading="eager" bind:this={photo1ImgEl} />
+				<img
+					src={img1}
+					alt="Ambiance événement - sonorisation scène"
+					loading="eager"
+					bind:this={photo1ImgEl}
+				/>
 				<figcaption>
 					<span class="num">N<sup>o</sup> 01</span>
 					<span class="cap">Sur scène</span>
@@ -171,7 +196,7 @@
 			</div>
 
 			<figure class="hero__photo hero__photo--2" bind:this={photo2El}>
-				<img src={img2} alt="Ambiance lumière — mariage" loading="eager" bind:this={photo2ImgEl} />
+				<img src={img2} alt="Ambiance lumière - mariage" loading="eager" bind:this={photo2ImgEl} />
 				<figcaption>
 					<span class="num">N<sup>o</sup> 02</span>
 					<span class="cap">En lumière</span>
@@ -240,12 +265,21 @@
 		color: var(--bone);
 		animation: marquee 42s linear infinite;
 
-		span { display: inline-block; }
-		.sep { color: var(--gold); font-style: normal; }
+		span {
+			display: inline-block;
+		}
+		.sep {
+			color: var(--gold);
+			font-style: normal;
+		}
 	}
 	@keyframes marquee {
-		from { transform: translateX(0); }
-		to { transform: translateX(-33.333%); }
+		from {
+			transform: translateX(0);
+		}
+		to {
+			transform: translateX(-33.333%);
+		}
 	}
 
 	.hero__grid {
@@ -482,7 +516,9 @@
 			color: var(--bone);
 			text-shadow: 0 1px 10px rgba(0, 0, 0, 0.7);
 		}
-		figcaption .cap { color: var(--gold); }
+		figcaption .cap {
+			color: var(--gold);
+		}
 	}
 
 	.hero__photo--1 {

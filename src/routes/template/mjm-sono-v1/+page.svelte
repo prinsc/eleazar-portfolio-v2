@@ -13,8 +13,12 @@
 	let failed = $state(false);
 
 	data.streamed
-		?.then((raw) => { resolved = normalise(raw); })
-		.catch(() => { failed = true; });
+		?.then((raw) => {
+			resolved = normalise(raw);
+		})
+		.catch(() => {
+			failed = true;
+		});
 
 	function normalise(raw) {
 		if (!raw) return {};
@@ -35,10 +39,11 @@
 </script>
 
 <svelte:head>
-	<title>{d.seo?.titleDefault ?? 'MJM Sonorisation & Yohan — Son, lumière, animation à Ostiches'}</title>
+	<title>{d.seo?.titleDefault ?? 'MJM Sonorisation - Son, lumière, animation à Ostiches'}</title>
 	<meta
 		name="description"
-		content={d.seo?.description ?? "Prestataire son, lumière et animation pour mariages, anniversaires et événements dans le Hainaut. 30 ans d'expérience."}
+		content={d.seo?.description ??
+			"Prestataire son, lumière et animation pour mariages, anniversaires et événements dans le Hainaut. 30 ans d'expérience."}
 	/>
 </svelte:head>
 
