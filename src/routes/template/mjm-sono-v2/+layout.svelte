@@ -10,7 +10,7 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com" />
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
 	<link
-		href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,800;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap"
+		href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@300;400;500;600;800;900&family=Space+Grotesk:wght@300;400;500;600&family=IBM+Plex+Mono:wght@300;400;500;600&display=swap"
 		rel="stylesheet"
 	/>
 </svelte:head>
@@ -31,24 +31,32 @@
 		padding: 0;
 	}
 	:global(body) {
-		/* Palette brutaliste chic - dark confiance */
-		--void: #0b0b0c; /* fond principal, presque noir */
-		--coal: #131315; /* bloc secondaire */
-		--graphite: #1d1d20; /* cards / surfaces */
-		--bone: #ede6d6; /* texte principal chaud */
-		--bone-soft: #a9a396; /* texte secondaire */
-		--rule: rgba(237, 230, 214, 0.12);
-		--rule-strong: rgba(237, 230, 214, 0.22);
-		--gold: #c9a96b; /* accent or chaud discret */
-		--gold-deep: #8a6a2f; /* ambre profond */
-		--signal: #e8c88a; /* highlight, usage parcimonieux */
+		/* Palette régie / console techno - dark industriel */
+		--bg: #0a0a0b; /* fond principal */
+		--panel: #121214; /* panneau rack */
+		--panel-2: #1a1a1e; /* surface secondaire */
+		--panel-3: #26262b; /* relief */
+		--ink: #f2f2ef; /* texte principal */
+		--ink-dim: #8a8a86; /* texte secondaire */
+		--ink-mute: #55554f; /* texte tertiaire */
+		--rule: rgba(242, 242, 239, 0.08);
+		--rule-hot: rgba(242, 242, 239, 0.18);
 
-		--f-display: 'Fraunces', 'Times New Roman', serif;
-		--f-body: 'Inter', system-ui, sans-serif;
-		--f-mono: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+		--signal: #ff6b1a; /* orange signal / clipping */
+		--signal-hot: #ffa066; /* orange clair */
+		--signal-deep: #b34712; /* orange profond */
+		--led: #22c55e; /* vert LED ON AIR */
+		--led-dim: #166534;
+		--amber: #f59e0b; /* warning */
+		--cobalt: #3b82f6; /* data link */
 
-		background: var(--void);
-		color: var(--bone);
+		--f-display: 'Archivo Black', 'Archivo', 'Helvetica Neue', sans-serif;
+		--f-body: 'Space Grotesk', 'Helvetica Neue', system-ui, sans-serif;
+		--f-mono: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
+		--f-num: 'Archivo', 'Helvetica Neue', sans-serif;
+
+		background: var(--bg);
+		color: var(--ink);
 		font-family: var(--f-body);
 		font-weight: 400;
 		-webkit-font-smoothing: antialiased;
@@ -61,13 +69,29 @@
 		color: inherit;
 	}
 	:global(::selection) {
-		background: var(--gold);
-		color: var(--void);
+		background: var(--signal);
+		color: var(--bg);
 	}
 
 	.app {
 		position: relative;
 		min-height: 100vh;
 		overflow-x: hidden;
+	}
+
+	/* Scanline globale - ambiance écran CRT console */
+	.app::before {
+		content: '';
+		position: fixed;
+		inset: 0;
+		pointer-events: none;
+		z-index: 1;
+		background: repeating-linear-gradient(
+			0deg,
+			transparent 0,
+			transparent 2px,
+			rgba(242, 242, 239, 0.012) 2px,
+			rgba(242, 242, 239, 0.012) 3px
+		);
 	}
 </style>

@@ -17,8 +17,7 @@
 		{ slug: 'cafe-des-delices', name: 'Café des Délices' },
 		{ slug: 'map-contact', name: 'Carte des contacts' },
 		{ slug: 'mjm-sono-v1', name: 'MJM Sono V1' },
-		{ slug: 'mjm-sono-v2', name: 'MJM Sono V2' },
-		{ slug: 'mjm-sono-v3', name: 'MJM Sono V3' }
+		{ slug: 'mjm-sono-v2', name: 'MJM Sono V2' }
 	];
 
 	const iconMap = {

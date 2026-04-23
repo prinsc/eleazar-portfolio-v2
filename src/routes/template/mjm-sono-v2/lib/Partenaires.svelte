@@ -3,9 +3,8 @@
 
 	let { partenaires = null } = $props();
 
-	// Si API ne renvoie rien, on génère 8 emplacements placeholder
-	const defaults = Array.from({ length: 8 }, (_, i) => ({
-		name: `Partenaire ${String(i + 1).padStart(2, '0')}`,
+	const defaults = Array.from({ length: 10 }, (_, i) => ({
+		name: `PARTENAIRE·${String(i + 1).padStart(2, '0')}`,
 		logo: null,
 		url: '#'
 	}));
@@ -13,7 +12,6 @@
 	const items = $derived(partenaires && partenaires.length > 0 ? partenaires : defaults);
 
 	let titleEl;
-	let cellEls = $state([]);
 
 	onMount(async () => {
 		const { gsap } = await import('gsap');
@@ -22,56 +20,98 @@
 
 		gsap.from(titleEl, {
 			opacity: 0,
-			y: 40,
+			y: 30,
 			duration: 1,
 			ease: 'power3.out',
-			scrollTrigger: { trigger: titleEl, start: 'top 80%' }
-		});
-
-		cellEls.forEach((el, i) => {
-			if (!el) return;
-			gsap.from(el, {
-				opacity: 0,
-				scale: 0.94,
-				duration: 0.8,
-				delay: i * 0.05,
-				ease: 'power3.out',
-				scrollTrigger: { trigger: el, start: 'top 92%' }
-			});
+			scrollTrigger: { trigger: titleEl, start: 'top 85%' }
 		});
 	});
 </script>
 
-<section class="part" id="confiance">
-	<div class="wrap">
-		<header class="head" bind:this={titleEl}>
-			<span class="eyebrow"><span class="rule"></span>Section 05 / Références</span>
-			<h2>Ils nous ont <em>fait confiance</em></h2>
-			<p class="sub">
-				Plus de {items.length}+ partenaires et clients récurrents. <span class="gold">Merci.</span>
+<section class="pt" id="confiance">
+	<header class="pt__head" bind:this={titleEl}>
+		<div class="pt__head-l">
+			<span class="pt__tag">SECTION/05 - TRUST.LOG</span>
+			<h2 class="pt__title">
+				ILS NOUS ONT<br />
+				<span class="pt__title-hot">FAIT CONFIANCE</span>
+			</h2>
+		</div>
+		<div class="pt__head-r">
+			<div class="pt__counter">
+				<span class="pt__counter-v">{items.length}+</span>
+				<span class="pt__counter-u">CLIENTS<br />RÉCURRENTS</span>
+			</div>
+			<p class="pt__sig">
+				MERCI. <span class="pt__sig-d">- SIGNAL FROM Y/2026</span>
 			</p>
-		</header>
+		</div>
+	</header>
 
-		<div class="grid">
-			{#each items as p, i (p.name + i)}
-				<a
-					class="cell"
-					href={p.url ?? '#'}
-					target={p.url && p.url !== '#' ? '_blank' : undefined}
-					rel="noopener"
-					bind:this={cellEls[i]}
-					aria-label={p.name}
-				>
-					{#if p.logo}
-						<img src={p.logo} alt={p.name} loading="lazy" />
-					{:else}
-						<span class="cell__ph">
-							<span class="cell__num">{String(i + 1).padStart(2, '0')}</span>
-							<span class="cell__name">{p.name}</span>
-						</span>
-					{/if}
-				</a>
+	<!-- Ticker tape : 2 rangées qui défilent en sens opposés -->
+	<div class="pt__tape pt__tape--top" aria-hidden="true">
+		<div class="pt__tape-track pt__tape-track--rtl">
+			{#each Array(3) as _, k (k)}
+				{#each items as p, i (p.name + i + k)}
+					<a
+						class="pt__chip"
+						href={p.url ?? '#'}
+						target={p.url && p.url !== '#' ? '_blank' : undefined}
+						rel="noopener"
+					>
+						{#if p.logo}
+							<img src={p.logo} alt={p.name} loading="lazy" />
+						{:else}
+							<span class="pt__chip-num">{String(i + 1).padStart(2, '0')}</span>
+							<span class="pt__chip-name">{p.name}</span>
+						{/if}
+						<span class="pt__chip-sep">×</span>
+					</a>
+				{/each}
 			{/each}
+		</div>
+	</div>
+
+	<div class="pt__tape pt__tape--bot" aria-hidden="true">
+		<div class="pt__tape-track pt__tape-track--ltr">
+			{#each Array(3) as _, k (k)}
+				{#each [...items].reverse() as p, i (p.name + i + 'r' + k)}
+					<a
+						class="pt__chip pt__chip--alt"
+						href={p.url ?? '#'}
+						target={p.url && p.url !== '#' ? '_blank' : undefined}
+						rel="noopener"
+					>
+						{#if p.logo}
+							<img src={p.logo} alt={p.name} loading="lazy" />
+						{:else}
+							<span class="pt__chip-name">{p.name}</span>
+							<span class="pt__chip-num">·{String(items.length - i).padStart(2, '0')}</span>
+						{/if}
+						<span class="pt__chip-sep">+</span>
+					</a>
+				{/each}
+			{/each}
+		</div>
+	</div>
+
+	<!-- Stats bar inférieure -->
+	<div class="pt__stats">
+		<div class="pt__stat">
+			<span class="pt__stat-k">SETS LIVRÉS</span>
+			<span class="pt__stat-v">2400+</span>
+		</div>
+		<div class="pt__stat">
+			<span class="pt__stat-k">HEURES SCÈNE</span>
+			<span class="pt__stat-v">15K+</span>
+		</div>
+		<div class="pt__stat">
+			<span class="pt__stat-k">RÉGIONS</span>
+			<span class="pt__stat-v">BE/FR</span>
+		</div>
+		<div class="pt__stat">
+			<span class="pt__stat-k">UPTIME</span>
+			<span class="pt__stat-v pt__stat-v--led">99.9%</span>
 		</div>
 	</div>
 </section>
@@ -79,126 +119,244 @@
 <style lang="scss">
 	@use './styles/mixins' as *;
 
-	.part {
-		padding: 6rem 1.25rem;
-		border-bottom: 1px solid var(--rule);
+	.pt {
+		padding: 5rem 0 0;
+		background: var(--bg);
+		border-bottom: 1px solid var(--rule-hot);
+		overflow: hidden;
 
 		@include breakpoint('medium') {
-			padding: 8rem 2rem;
+			padding: 7rem 0 0;
 		}
 	}
 
-	.wrap {
-		max-width: 1400px;
-		margin: 0 auto;
-	}
+	.pt__head {
+		padding: 0 1.25rem;
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 2rem;
+		margin-bottom: 3.5rem;
 
-	.head {
-		max-width: 50rem;
-		margin-bottom: 4rem;
-	}
+		@include breakpoint('medium') {
+			padding: 0 2rem;
+		}
 
-	.eyebrow {
-		display: inline-flex;
-		align-items: center;
-		gap: 0.9em;
+		@include breakpoint('large') {
+			grid-template-columns: 1fr auto;
+			gap: 3rem;
+			align-items: end;
+		}
+	}
+	.pt__tag {
 		font-family: var(--f-mono);
 		font-size: 11px;
-		letter-spacing: 0.2em;
+		letter-spacing: 0.22em;
+		color: var(--signal);
+	}
+	.pt__title {
+		margin: 1rem 0 0;
+		font-family: var(--f-display);
+		font-weight: 900;
+		font-size: clamp(2.5rem, 8vw, 6rem);
+		line-height: 0.88;
+		letter-spacing: -0.04em;
 		text-transform: uppercase;
-		color: var(--bone-soft);
-
-		.rule { display: inline-block; width: 42px; height: 1px; background: var(--gold); }
+		color: var(--ink);
+	}
+	.pt__title-hot {
+		color: var(--signal);
 	}
 
-	h2 {
+	.pt__head-r {
+		display: flex;
+		align-items: end;
+		gap: 1.5rem;
+	}
+	.pt__counter {
+		display: flex;
+		align-items: baseline;
+		gap: 0.65rem;
+		padding: 0.85rem 1.1rem;
+		border: 1px solid var(--rule-hot);
+		background: var(--panel);
+	}
+	.pt__counter-v {
 		font-family: var(--f-display);
-		font-weight: 300;
-		font-size: clamp(2.5rem, 7vw, 5.5rem);
-		line-height: 0.95;
-		letter-spacing: -0.035em;
-		margin: 1.25rem 0 1rem;
-		color: var(--bone);
+		font-size: clamp(2rem, 4vw, 3rem);
+		color: var(--signal);
+		font-weight: 900;
+		letter-spacing: -0.04em;
+		line-height: 0.9;
+	}
+	.pt__counter-u {
+		font-family: var(--f-mono);
+		font-size: 9px;
+		letter-spacing: 0.18em;
+		color: var(--ink-dim);
+		line-height: 1.3;
+	}
+	.pt__sig {
+		margin: 0;
+		font-family: var(--f-display);
+		font-size: 1.5rem;
+		color: var(--ink);
+		font-weight: 900;
+		text-transform: uppercase;
+	}
+	.pt__sig-d {
+		display: block;
+		font-family: var(--f-mono);
+		font-size: 10px;
+		letter-spacing: 0.22em;
+		color: var(--ink-mute);
+		font-weight: 400;
+		margin-top: 0.3rem;
+	}
 
-		em {
-			font-family: var(--f-display);
-			font-style: italic;
-			color: var(--gold);
+	/* TAPE */
+	.pt__tape {
+		overflow: hidden;
+		border-top: 1px solid var(--rule-hot);
+		border-bottom: 1px solid var(--rule);
+		padding: 1.5rem 0;
+		background: var(--panel);
+
+		&--bot {
+			background: var(--bg);
+			border-top: none;
+			border-bottom: 1px solid var(--rule-hot);
+		}
+	}
+	.pt__tape-track {
+		display: inline-flex;
+		gap: 1.5rem;
+		white-space: nowrap;
+		will-change: transform;
+
+		&--rtl {
+			animation: tapeRTL 50s linear infinite;
+		}
+		&--ltr {
+			animation: tapeLTR 60s linear infinite;
+		}
+	}
+	@keyframes tapeRTL {
+		from {
+			transform: translateX(0);
+		}
+		to {
+			transform: translateX(-33.333%);
+		}
+	}
+	@keyframes tapeLTR {
+		from {
+			transform: translateX(-33.333%);
+		}
+		to {
+			transform: translateX(0);
 		}
 	}
 
-	.sub {
-		margin: 0;
-		font-family: var(--f-body);
-		font-size: 1rem;
-		color: var(--bone-soft);
+	.pt__chip {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.85rem;
+		padding: 0.65rem 1.1rem;
+		text-decoration: none;
+		color: var(--ink);
+		border: 1px solid var(--rule-hot);
+		font-family: var(--f-mono);
+		font-size: 13px;
+		letter-spacing: 0.1em;
+		transition: all 0.3s ease;
+		flex-shrink: 0;
 
-		.gold { color: var(--gold); }
+		&:hover {
+			background: var(--signal);
+			color: var(--bg);
+			border-color: var(--signal);
+
+			.pt__chip-num {
+				color: var(--bg);
+				opacity: 0.7;
+			}
+			.pt__chip-sep {
+				color: var(--bg);
+			}
+		}
+	}
+	.pt__chip--alt {
+		background: var(--panel);
+	}
+	.pt__chip-num {
+		color: var(--signal);
+		font-size: 11px;
+	}
+	.pt__chip-name {
+		font-weight: 500;
+	}
+	.pt__chip-sep {
+		color: var(--ink-mute);
+		font-size: 16px;
+		margin-left: 0.5rem;
+	}
+	.pt__chip img {
+		max-height: 28px;
+		max-width: 100px;
+		object-fit: contain;
+		filter: grayscale(100%) brightness(2);
 	}
 
-	.grid {
+	/* STATS */
+	.pt__stats {
 		display: grid;
 		grid-template-columns: repeat(2, 1fr);
-		gap: 1px;
-		background: var(--rule);
-		border: 1px solid var(--rule);
-
-		@include breakpoint('small') {
-			grid-template-columns: repeat(3, 1fr);
-		}
+		background: var(--bg);
 
 		@include breakpoint('medium') {
 			grid-template-columns: repeat(4, 1fr);
 		}
 	}
-
-	.cell {
-		background: var(--void);
-		aspect-ratio: 3 / 2;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		text-decoration: none;
-		padding: 1.5rem;
-		transition: background 0.35s ease;
-		filter: grayscale(100%) opacity(0.55);
-
-		&:hover {
-			background: var(--graphite);
-			filter: grayscale(0%) opacity(1);
-
-			.cell__name { color: var(--gold); }
-		}
-
-		img {
-			max-width: 100%;
-			max-height: 60%;
-			object-fit: contain;
-			filter: brightness(1.2);
-		}
-	}
-
-	.cell__ph {
+	.pt__stat {
+		padding: 1.5rem 1.5rem;
+		border-right: 1px solid var(--rule);
+		border-bottom: 1px solid var(--rule);
 		display: flex;
 		flex-direction: column;
-		align-items: center;
 		gap: 0.4rem;
-		text-align: center;
-	}
 
-	.cell__num {
+		&:nth-child(2n) {
+			border-right: none;
+		}
+
+		@include breakpoint('medium') {
+			border-bottom: none;
+			padding: 2rem;
+
+			&:nth-child(2n) {
+				border-right: 1px solid var(--rule);
+			}
+			&:last-child {
+				border-right: none;
+			}
+		}
+	}
+	.pt__stat-k {
 		font-family: var(--f-mono);
-		font-size: 9px;
+		font-size: 10px;
 		letter-spacing: 0.22em;
-		text-transform: uppercase;
-		color: var(--gold);
+		color: var(--ink-mute);
 	}
-
-	.cell__name {
+	.pt__stat-v {
 		font-family: var(--f-display);
-		font-style: italic;
-		font-size: 1.1rem;
-		color: var(--bone);
-		transition: color 0.3s ease;
+		font-size: clamp(2rem, 4vw, 2.75rem);
+		font-weight: 900;
+		letter-spacing: -0.03em;
+		line-height: 0.95;
+		color: var(--ink);
+	}
+	.pt__stat-v--led {
+		color: var(--led);
+		text-shadow: 0 0 12px rgba(34, 197, 94, 0.4);
 	}
 </style>
