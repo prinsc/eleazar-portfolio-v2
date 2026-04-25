@@ -451,6 +451,26 @@
       ]
     },
     {
+      "name": "MJM Sonorisation",
+      "description": {
+        "fr": "Site destiné à promouvoir les services d'un sonorisateur passionné",
+        "en": "Website aimed at promoting the services of a passionate sound engineer",
+        "ru": "Сайт, предназначенный для продвижения услуг опытного звукорежиссера"
+      },
+      "date": "2026",
+      "image": "/assets/projects/mjm_spoil.webp",
+      "link": "https://mjmsono.com",
+      "technos": [
+        "svelte-5",
+        "sass",
+        "js",
+        "typescript",
+        "figma",
+        "postgresql",
+        "supabase"
+      ]
+    },
+    {
       "name": "Renaissance Coach",
       "description": {
         "fr": "Site vitrine pour un coach de vie spécialisé en développement personnel.",
