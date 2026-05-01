@@ -1,5 +1,5 @@
 <script>
-	import { ArrowUpRight, ArrowLeft } from 'lucide-svelte';
+	import { ArrowUpRight } from 'lucide-svelte';
 	import { goto } from '$app/navigation';
 	import { settings } from '$lib/stores/settings.js';
 	import { content } from '$lib/stores/content.js';
@@ -7,6 +7,8 @@
 	import MetaTags from '$lib/comp/metaTags.svelte';
 	import { onMount } from 'svelte';
 	import PageContent from '$lib/comp/PageContent.svelte';
+	import BackButton from '$lib/comp/BackButton.svelte';
+	import LoadingState from '$lib/comp/LoadingState.svelte';
 
 	let isReady = $state(false);
 
@@ -104,9 +106,7 @@
 />
 
 {#if !isReady}
-	<div class="loading" aria-label="Chargement en cours">
-		<div class="spinner"></div>
-	</div>
+	<LoadingState />
 {:else}
 	<PageContent>
 		<nav aria-label="Breadcrumb">
@@ -221,27 +221,6 @@
 <style lang="scss">
 	@use 'lib/styles/themes/_mixins' as *;
 	@use 'lib/styles/utils/_animations' as *;
-
-	.back-button {
-		display: flex;
-		align-items: center;
-		gap: 0.5rem;
-		margin-bottom: 2rem;
-		cursor: pointer;
-		font-weight: 500;
-		min-height: 44px;
-		padding: 0.5rem 1rem;
-		transition: opacity 0.2s;
-
-		&:hover {
-			opacity: 0.7;
-		}
-
-		.icon {
-			width: 16px;
-			display: inline-flex;
-		}
-	}
 
 	header {
 		margin: 2rem 0 3rem;
@@ -443,10 +422,4 @@
 		}
 	}
 
-	.loading {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		min-height: 50vh;
-	}
 </style>

@@ -193,6 +193,197 @@
       "fr": "Curriculum vitae",
       "en": "Resume",
       "ru": "Pезюме"
+    },
+    "guideline": {
+      "title": {
+        "fr": "Guide de style",
+        "en": "Style Guide",
+        "ru": "Руководство по стилю"
+      },
+      "subtitle": {
+        "fr": "Inventaire vivant des composants, couleurs, typographies et règles visuelles du site.",
+        "en": "Living inventory of components, colors, typography and visual rules of the site.",
+        "ru": "Живая опись компонентов, цветов, типографики и визуальных правил сайта."
+      },
+      "sections": {
+        "foundations": {
+          "fr": "Fondations",
+          "en": "Foundations",
+          "ru": "Основы"
+        },
+        "colors": {
+          "fr": "Couleurs",
+          "en": "Colors",
+          "ru": "Цвета"
+        },
+        "typography": {
+          "fr": "Typographie",
+          "en": "Typography",
+          "ru": "Типографика"
+        },
+        "radii": {
+          "fr": "Border-radius (clothoïdes)",
+          "en": "Border-radius (clothoid)",
+          "ru": "Скругления (клотоида)"
+        },
+        "textures": {
+          "fr": "Textures & arrière-plans",
+          "en": "Textures & backgrounds",
+          "ru": "Текстуры и фоны"
+        },
+        "components": {
+          "fr": "Composants",
+          "en": "Components",
+          "ru": "Компоненты"
+        },
+        "buttons": {
+          "fr": "Boutons",
+          "en": "Buttons",
+          "ru": "Кнопки"
+        },
+        "links": {
+          "fr": "Liens",
+          "en": "Links",
+          "ru": "Ссылки"
+        },
+        "cards": {
+          "fr": "Cartes",
+          "en": "Cards",
+          "ru": "Карточки"
+        },
+        "cta": {
+          "fr": "CTA",
+          "en": "CTA",
+          "ru": "CTA"
+        },
+        "techno": {
+          "fr": "Technologies",
+          "en": "Technologies",
+          "ru": "Технологии"
+        },
+        "carousel": {
+          "fr": "Carrousel",
+          "en": "Carousel",
+          "ru": "Карусель"
+        },
+        "navigation": {
+          "fr": "Navigation",
+          "en": "Navigation",
+          "ru": "Навигация"
+        },
+        "forms": {
+          "fr": "Formulaires",
+          "en": "Forms",
+          "ru": "Формы"
+        },
+        "feedback": {
+          "fr": "Retours visuels",
+          "en": "Feedback",
+          "ru": "Обратная связь"
+        },
+        "animations": {
+          "fr": "Animations",
+          "en": "Animations",
+          "ru": "Анимации"
+        },
+        "utilities": {
+          "fr": "Classes utilitaires",
+          "en": "Utility classes",
+          "ru": "Утилиты"
+        }
+      },
+      "labels": {
+        "primary": {
+          "fr": "Primaire",
+          "en": "Primary",
+          "ru": "Основной"
+        },
+        "secondary": {
+          "fr": "Secondaire",
+          "en": "Secondary",
+          "ru": "Вторичный"
+        },
+        "accent": {
+          "fr": "Accent",
+          "en": "Accent",
+          "ru": "Акцент"
+        },
+        "ghost": {
+          "fr": "Discret",
+          "en": "Ghost",
+          "ru": "Призрачный"
+        },
+        "link": {
+          "fr": "Lien",
+          "en": "Link",
+          "ru": "Ссылка"
+        },
+        "small": {
+          "fr": "Petit",
+          "en": "Small",
+          "ru": "Маленький"
+        },
+        "medium": {
+          "fr": "Moyen",
+          "en": "Medium",
+          "ru": "Средний"
+        },
+        "large": {
+          "fr": "Grand",
+          "en": "Large",
+          "ru": "Большой"
+        },
+        "default": {
+          "fr": "Par défaut",
+          "en": "Default",
+          "ru": "По умолчанию"
+        },
+        "withIcon": {
+          "fr": "Avec icône",
+          "en": "With icon",
+          "ru": "С иконкой"
+        },
+        "disabled": {
+          "fr": "Désactivé",
+          "en": "Disabled",
+          "ru": "Отключен"
+        },
+        "fullWidth": {
+          "fr": "Pleine largeur",
+          "en": "Full width",
+          "ru": "Полная ширина"
+        }
+      },
+      "intro": {
+        "fr": "Cette page sert de référentiel interne. Tout y est : les couleurs, les radius en clothoïde, les boutons, les cartes, les états. Quand on construit un nouvel écran, on copie depuis ici.",
+        "en": "This page is an internal reference. Everything lives here: colors, clothoid radii, buttons, cards, states. When building a new screen, we copy from here.",
+        "ru": "Эта страница — внутренний справочник. Здесь всё: цвета, скругления, кнопки, карточки, состояния. Создавая новый экран, копируем отсюда."
+      },
+      "tocTitle": {
+        "fr": "Sommaire",
+        "en": "Table of contents",
+        "ru": "Содержание"
+      },
+      "sample": {
+        "fr": "Le vif-argent dort sous le marbre — un pangramme silencieux.",
+        "en": "The quick brown fox jumps over the lazy dog.",
+        "ru": "Съешь же ещё этих мягких французских булок."
+      },
+      "sampleParagraph": {
+        "fr": "Voici un paragraphe de démonstration. Il contient un <strong>mot fort</strong>, un <a href=\"#!\">lien décoratif</a>, et un <em>terme en italique</em>. La ligne respire à 1.6em pour rester lisible.",
+        "en": "Here is a demo paragraph. It includes a <strong>bold word</strong>, a <a href=\"#!\">decorative link</a>, and an <em>italic term</em>. Line-height is 1.6em for breathing room.",
+        "ru": "Это демонстрационный абзац. Содержит <strong>жирное слово</strong>, <a href=\"#!\">декоративную ссылку</a> и <em>курсив</em>. Высота строки 1.6em."
+      },
+      "noteUsage": {
+        "fr": "Usage",
+        "en": "Usage",
+        "ru": "Использование"
+      },
+      "comingSoon": {
+        "fr": "Page de référence privée — non listée dans la navigation.",
+        "en": "Private reference page — not listed in navigation.",
+        "ru": "Частная справочная страница — не в навигации."
+      }
     }
   },
   "school": [

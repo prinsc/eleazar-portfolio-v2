@@ -5,7 +5,6 @@
 	import { content } from '$lib/stores/content.js';
 	import MetaTags from '$lib/comp/metaTags.svelte';
 	import {
-		ArrowLeft,
 		Calendar,
 		Euro,
 		Code2,
@@ -21,6 +20,7 @@
 	import RealizedProjects from '$lib/comp/RealizedProjects.svelte';
 	import CTA from '$lib/comp/CTA.svelte';
 	import Reviews from '$lib/comp/reviews.svelte';
+	import BackButton from '$lib/comp/BackButton.svelte';
 
 	let { data } = $props();
 
@@ -65,12 +65,7 @@
 {/if}
 {#if isReady && service}
 	<PageContent>
-		<button class="back-button" onclick={goBack}>
-			<span class="icon">
-				<ArrowLeft />
-			</span>
-			<span>{$content.site.back[$settings.lang]}</span>
-		</button>
+		<BackButton onclick={goBack} />
 
 		<section class="service-header">
 			<div class="service-image grain">
@@ -207,27 +202,6 @@
 		max-width: 800px;
 		padding: 2rem;
 		margin: 0 auto;
-	}
-
-	.back-button {
-		display: flex;
-		align-items: center;
-		gap: 0.5rem;
-		margin-bottom: 2rem;
-		cursor: pointer;
-		font-weight: 500;
-		min-height: 44px;
-		padding: 0.5rem 1rem;
-		transition: opacity 0.2s;
-
-		&:hover {
-			opacity: 0.7;
-		}
-
-		.icon {
-			width: 16px;
-			display: inline-flex;
-		}
 	}
 
 	.service-header {

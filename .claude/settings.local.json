@@ -5,7 +5,8 @@
       "Bash(npm run dev:*)",
       "Bash(node:*)",
       "Bash(npx jsonlint:*)",
-      "Bash(move:*)"
+      "Bash(move:*)",
+      "Bash(npx svelte-check *)"
     ]
   }
 }

@@ -14,6 +14,7 @@
 	import { onMount } from 'svelte';
 	import PageContent from '$lib/comp/PageContent.svelte';
 	import Reviews from '$lib/comp/reviews.svelte';
+	import Pulse from '$lib/comp/Pulse.svelte';
 	let { data } = $props();
 	const { googleData } = data;
 
@@ -76,10 +77,11 @@
 
 		<div class="element">
 			<a href="https://cal.com/eleazar-kltk-bbheg9" class="no-effect" target="_blank">
-				<span class="pulse"></span>
-				<span>
-					{$content.me.disponibility[$settings.lang]}
-				</span>
+				<Pulse size={6}>
+					<span>
+						{$content.me.disponibility[$settings.lang]}
+					</span>
+				</Pulse>
 				<span class="cal">
 					[cal
 					<span class="icon">
@@ -295,15 +297,6 @@
 			align-items: center;
 			gap: 0.8rem;
 			font-weight: 500;
-			.pulse {
-				display: inline-flex;
-				min-width: 6px;
-				min-height: 6px;
-				border-radius: 50%;
-				background-color: rgba(33, 222, 151, 0.8);
-				animation: pulseEffect 1.5s infinite ease-in-out;
-				box-shadow: 0 0 0 0 rgba(33, 222, 151, 0.5);
-			}
 			.cal {
 				display: flex;
 				align-items: center;
