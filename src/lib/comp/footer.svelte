@@ -22,6 +22,13 @@
 						? 'Terms of Service'
 						: 'Условия использования'}
 			</a>
+			<a href="/{$settings.lang}/guideline" class="footer-link legal no-effect">
+				{$settings.lang === 'fr'
+					? "Guideline"
+					: $settings.lang === 'en'
+						? 'Guideline'
+						: 'Руководство'}
+			</a>
 		</div>
 	</PageContent>
 </footer>

@@ -77,13 +77,48 @@ Svelte components can use SCSS with `svelte-preprocess`:
 
 ### Component Structure
 
-Components are located in `src/lib/comp/`:
+Components are located in `src/lib/comp/`. **Always check this folder before writing inline styles or duplicating patterns — most primitives already exist as reusable components.**
 
-- Layout components: `nav.svelte`, `footer.svelte`, `PageContent.svelte`
-- Feature components: `Card.svelte`, `EmblaCarousel.svelte`, `ServiceMap.svelte`
-- Content components: `exp.svelte`, `projects.svelte`, `services.svelte`, `RealizedProjects.svelte`
-- Meta components: `metaTags.svelte`, `LocalBusinessSchema.svelte`
-- Technology components: `techno/techno_element.svelte`
+**Layout / page shells:**
+- `nav.svelte` — top sticky nav (theme + lang switch)
+- `footer.svelte` — site footer
+- `PageContent.svelte` — main page wrapper, optional sticky TOC w/ active heading tracking
+
+**Reusable primitives (use these instead of inline duplicates):**
+- `Button.svelte` — variants `primary | secondary | accent | ghost | link`, sizes `sm | md | lg`, `icon` snippet, `iconPosition`, `disabled`, `fullWidth`, `href` (renders `<a>`) or `onclick` (renders `<button>`)
+- `BackButton.svelte` — arrow-left + label, defaults to `$content.site.back`, takes `href` or `onclick`
+- `SectionTitle.svelte` — heading w/ optional `count`, `icon` snippet, `level 1-6`, `size`
+- `Spinner.svelte` — loader, props `size`, `thickness`, `color`
+- `LoadingState.svelte` — centered spinner wrapper (`minHeight`, `label`, `size`)
+- `Pulse.svelte` — pulsing dot indicator (`size`, `color`, `label` or children snippet)
+- `StatusCard.svelte` — feedback card, `variant: success | info | warning | error`, optional `title`
+- `MicroLabel.svelte` — small uppercase tracked label (eyebrows, form labels, dividers), `as` tag
+- `Caption.svelte` — muted descriptive text, `size: sm | md`, supports inline `<code>`
+- `CodeTag.svelte` — inline `<code>` w/ border, `bordered` toggle
+- `Swatch.svelte` — color token swatch button (chip + name + copy icon)
+- `TypeSpecimen.svelte` — type scale row (label + token + sample)
+- `RadiusSample.svelte` — clothoid radius demo card
+
+**Feature components:**
+- `Card.svelte` — project/service card, `elementType: a | button | div`, image + title + tagline/description + technos + pricing + date, lightbox on `div` mode
+- `CTA.svelte` — call-to-action, `variant: default | inline`, defaults from `$content.site`
+- `EmblaCarousel.svelte` — embla-carousel-svelte wrapper w/ prev/next buttons
+- `ServiceMap.svelte` — Mapbox service area map
+- `RealizedProjects.svelte` — referenced/inline project list (takes IDs or objects)
+
+**Content sections:**
+- `exp.svelte`, `projects.svelte`, `services.svelte`, `reviews.svelte` — homepage sections
+
+**Meta / SEO:**
+- `metaTags.svelte` — title, description, robots, OG/Twitter, canonical, JSON-LD
+- `LocalBusinessSchema.svelte` — local business structured data
+
+**Tech badges:**
+- `techno/techno_element.svelte` — icon + tippy tooltip per technology (icons in `static/assets/icons/`)
+
+### Style Guide page
+
+[`/[lang]/guideline`](src/routes/[lang]/guideline/+page.svelte) — internal-only living style guide (`noindex`, not in nav). Showcases every component, color token, type scale, radius, animation, and utility class. Edit a component → guideline auto-reflects. Use it as the visual reference before building new screens.
 
 ### Key Features
 
@@ -115,6 +150,12 @@ When modifying styles:
 1. Colors: `src/lib/styles/themes/_colors.scss`
 2. Typography: `src/lib/styles/base/_typography.scss`
 3. Base styles: `src/lib/styles/base/_base.scss`
+
+When building new UI:
+1. Check `src/lib/comp/` first — `Button`, `BackButton`, `Spinner`, `LoadingState`, `Pulse`, `StatusCard`, `MicroLabel`, `Caption`, `CodeTag`, `SectionTitle`, `Card`, `CTA` cover most needs
+2. Visit `/[lang]/guideline` to preview every component visually
+3. If a pattern repeats 2+ times, extract it into `src/lib/comp/` and add it to the guideline
+4. Global utility classes available: `.grain`, `.kl-container`, `.divider`, `.no-effect`, `.underline`, `.color-{red|blue|green|yellow|purple|gold}`
 
 ## Important Notes
 

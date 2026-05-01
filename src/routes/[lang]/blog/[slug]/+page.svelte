@@ -1,5 +1,5 @@
 <script>
-	import { ArrowLeft, Clock, Calendar, Tag, User } from 'lucide-svelte';
+	import { Clock, Calendar, Tag, User } from 'lucide-svelte';
 	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';
 	import { settings } from '$lib/stores/settings.js';
@@ -9,6 +9,8 @@
 	import PageContent from '$lib/comp/PageContent.svelte';
 	import RealizedProjects from '$lib/comp/RealizedProjects.svelte';
 	import CTA from '$lib/comp/CTA.svelte';
+	import BackButton from '$lib/comp/BackButton.svelte';
+	import LoadingState from '$lib/comp/LoadingState.svelte';
 	import blogData from '$lib/content/data_blog.json';
 
 	let isReady = $state(false);
@@ -264,14 +266,12 @@
 {/if}
 
 {#if !isReady}
-	<div class="loading" aria-label="Chargement en cours">
-		<div class="spinner"></div>
-	</div>
+	<LoadingState />
 {:else if !article}
 	<PageContent>
 		<div class="not-found">
 			<h1>Article non trouvé</h1>
-			<button class="back-button" onclick={goBack}>Retour au blog</button>
+			<BackButton onclick={goBack} label="Retour au blog" />
 		</div>
 	</PageContent>
 {:else}
@@ -282,20 +282,10 @@
 		onHeadingClick={scrollToHeading}
 	>
 		<nav aria-label="Breadcrumb">
-			<button class="back-button" onclick={goBack} aria-label="Retour au blog">
-				<span class="icon" aria-hidden="true">
-					<ArrowLeft />
-				</span>
-				<span>
-					{#if $settings.lang === 'fr'}
-						Retour au blog
-					{:else if $settings.lang === 'en'}
-						Back to blog
-					{:else}
-						Вернуться в блог
-					{/if}
-				</span>
-			</button>
+			<BackButton
+				onclick={goBack}
+				label={$settings.lang === 'fr' ? 'Retour au blog' : $settings.lang === 'en' ? 'Back to blog' : 'Вернуться в блог'}
+			/>
 		</nav>
 
 		<article class="blog-article">
@@ -433,26 +423,6 @@
 	@use 'lib/styles/themes/_mixins' as *;
 	@use 'lib/styles/utils/_animations' as *;
 
-	.back-button {
-		display: flex;
-		align-items: center;
-		gap: 0.5rem;
-		margin-bottom: 2rem;
-		cursor: pointer;
-		font-weight: 500;
-		min-height: 44px;
-		padding: 0.5rem 1rem;
-		transition: opacity 0.2s;
-
-		&:hover {
-			opacity: 0.7;
-		}
-
-		.icon {
-			width: 16px;
-			display: inline-flex;
-		}
-	}
 
 	.not-found {
 		text-align: center;
@@ -772,10 +742,4 @@
 		}
 	}
 
-	.loading {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		min-height: 50vh;
-	}
 </style>
