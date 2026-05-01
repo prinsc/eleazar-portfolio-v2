@@ -1,5 +1,5 @@
 <script>
-	import { ArrowUpRight } from 'lucide-svelte';
+	import { ArrowUpRight, ArrowLeft } from 'lucide-svelte';
 	import { goto } from '$app/navigation';
 	import { settings } from '$lib/stores/settings.js';
 	import { content } from '$lib/stores/content.js';
