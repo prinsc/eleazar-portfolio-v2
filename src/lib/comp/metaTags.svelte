@@ -1,6 +1,6 @@
 <script>
 	import { settings } from '$lib/stores/settings.js';
-	import { onMount } from 'svelte';
+	import { page } from '$app/stores';
 
 	let {
 		title = 'Eléazar Klyuvitkin - Développeur Web Freelance Ath',
@@ -12,10 +12,49 @@
 		twitterCardType = 'summary_large_image',
 		canonical = '',
 		schema = null,
-		type = 'website'
+		type = 'website',
+		availableLocales = ['fr', 'en', 'ru'],
+		defaultLocale = 'fr'
 	} = $props();
 
 	const urlMain = 'https://kltk.be';
+
+	// Canonical SSR-safe : calculé depuis $page.url
+	const canonicalUrl = $derived.by(() => {
+		if (canonical) return canonical;
+		if (!$page?.url) return urlMain;
+		return `${urlMain}${$page.url.pathname}`;
+	});
+
+	// Hreflang : remplace le segment /fr/, /en/, /ru/ par chaque locale
+	const hreflangLinks = $derived.by(() => {
+		if (!$page?.url) return [];
+		const pathname = $page.url.pathname;
+		const langPattern = /^\/(fr|en|ru)(\/|$)/;
+
+		return availableLocales.map((lang) => {
+			const altPath = langPattern.test(pathname)
+				? pathname.replace(langPattern, `/${lang}$2`)
+				: `/${lang}${pathname}`;
+			return { lang, href: `${urlMain}${altPath}` };
+		});
+	});
+
+	const xDefaultHref = $derived.by(() => {
+		if (!$page?.url) return urlMain;
+		const pathname = $page.url.pathname;
+		const langPattern = /^\/(fr|en|ru)(\/|$)/;
+		const path = langPattern.test(pathname)
+			? pathname.replace(langPattern, `/${defaultLocale}$2`)
+			: `/${defaultLocale}${pathname}`;
+		return `${urlMain}${path}`;
+	});
+
+	// Title/description tronqués (sans muter les props)
+	const safeTitle = $derived(title.length > 60 ? title.slice(0, 60) + '...' : title);
+	const safeDescription = $derived(
+		description.length > 160 ? description.slice(0, 157) + '...' : description
+	);
 
 	const jsonld = {
 		'@context': 'https://schema.org',
@@ -114,79 +153,33 @@
 		}
 	};
 
-	// Normaliser title et description
-	$effect(() => {
-		title = title.length > 60 ? title.slice(0, 60) + '...' : title;
-		description = description.length > 160 ? description.slice(0, 157) + '...' : description;
-	});
+	// Échappement minimal pour injection sûre via {@html}
+	const escapeJsonLd = (obj) =>
+		JSON.stringify(obj).replace(/</g, '\\u003c').replace(/>/g, '\\u003e').replace(/&/g, '\\u0026');
 
-	onMount(async () => {
-		if (typeof window !== 'undefined') {
-			// Récupérer l'URL actuelle
-			const currentUrl = new URL(window.location.href);
-			canonical = currentUrl.href;
-
-			// Ajouter ou mettre à jour la balise rel="canonical"
-			let canonicalLink = document.querySelector('link[rel="canonical"]');
-			if (!canonicalLink) {
-				canonicalLink = document.createElement('link');
-				canonicalLink.rel = 'canonical';
-				document.head.appendChild(canonicalLink);
-			}
-			canonicalLink.href = canonical;
-		}
-
-		// Injecter le schema principal
-		const scriptJsonld = document.createElement('script');
-		scriptJsonld.type = 'application/ld+json';
-		scriptJsonld.text = JSON.stringify(jsonld);
-		document.head.appendChild(scriptJsonld);
-
-		// Gérer schema personnalisé (objet ou tableau)
-		const scriptElements = [];
-
-		if (schema) {
-			if (Array.isArray(schema)) {
-				schema.forEach((s) => {
-					const script = document.createElement('script');
-					script.type = 'application/ld+json';
-					script.text = JSON.stringify(s);
-					document.head.appendChild(script);
-					scriptElements.push(script);
-				});
-			} else {
-				const script = document.createElement('script');
-				script.type = 'application/ld+json';
-				script.text = JSON.stringify(schema);
-				document.head.appendChild(script);
-				scriptElements.push(script);
-			}
-		}
-
-		// Nettoyage pour navigation client-side
-		return () => {
-			if (scriptJsonld.parentNode) {
-				document.head.removeChild(scriptJsonld);
-			}
-			scriptElements.forEach((script) => {
-				if (script.parentNode) {
-					document.head.removeChild(script);
-				}
-			});
-		};
+	const jsonldHtml = $derived(escapeJsonLd(jsonld));
+	const customSchemaHtml = $derived.by(() => {
+		if (!schema) return [];
+		return (Array.isArray(schema) ? schema : [schema]).map(escapeJsonLd);
 	});
 </script>
 
 <svelte:head>
-	<title>{title}</title>
-	<meta name="description" content={description} />
+	<title>{safeTitle}</title>
+	<meta name="description" content={safeDescription} />
 	<meta name="robots" content={robots} />
-	<link rel="canonical" href={canonical} />
+	<link rel="canonical" href={canonicalUrl} />
+
+	<!-- Hreflang : variantes linguistiques (SSR) -->
+	{#each hreflangLinks as { lang, href }}
+		<link rel="alternate" {href} hreflang={lang} />
+	{/each}
+	<link rel="alternate" href={xDefaultHref} hreflang="x-default" />
 
 	<!-- Open Graph -->
-	<meta property="og:url" content={canonical} />
-	<meta property="og:title" content={title} />
-	<meta property="og:description" content={description} />
+	<meta property="og:url" content={canonicalUrl} />
+	<meta property="og:title" content={safeTitle} />
+	<meta property="og:description" content={safeDescription} />
 	<meta property="og:type" content={type} />
 	<meta property="og:locale" content={locale} />
 	<meta property="og:image" content={imageUrl} />
@@ -197,11 +190,11 @@
 
 	<!-- Twitter -->
 	<meta name="twitter:card" content={twitterCardType} />
-	<meta name="twitter:title" content={title} />
-	<meta name="twitter:description" content={description} />
+	<meta name="twitter:title" content={safeTitle} />
+	<meta name="twitter:description" content={safeDescription} />
 	<meta name="twitter:image" content={imageUrl} />
 	<meta name="twitter:image:alt" content="{siteName} - Banner" />
-	<meta name="twitter:url" content={canonical} />
+	<meta name="twitter:url" content={canonicalUrl} />
 	<meta name="twitter:domain" content="kltk.be" />
 
 	<!-- Géolocalisation Belgique - Ath -->
@@ -226,4 +219,12 @@
 	{:else}
 		<meta name="theme-color" content="#ffffff" />
 	{/if}
+
+	<!-- JSON-LD principal (SSR) -->
+	{@html `<script type="application/ld+json">${jsonldHtml}</script>`}
+
+	<!-- JSON-LD additionnel (SSR) -->
+	{#each customSchemaHtml as s}
+		{@html `<script type="application/ld+json">${s}</script>`}
+	{/each}
 </svelte:head>
