@@ -1,16 +1,16 @@
 <script>
-	import { Clock, Calendar, Tag } from 'lucide-svelte';
+	import { Clock, ArrowRight } from 'lucide-svelte';
 	import { goto } from '$app/navigation';
 	import { settings } from '$lib/stores/settings.js';
 	import MetaTags from '$lib/comp/metaTags.svelte';
 	import { onMount } from 'svelte';
 	import PageContent from '$lib/comp/PageContent.svelte';
-	import BackButton from '$lib/comp/BackButton.svelte';
 	import LoadingState from '$lib/comp/LoadingState.svelte';
 	import blogData from '$lib/content/data_blog.json';
 
 	let isReady = $state(false);
 	let articles = $state(blogData.articles);
+	let hoveredIndex = $state(-1);
 
 	onMount(async () => {
 		isReady = false;
@@ -45,30 +45,29 @@
 	};
 
 	const introText = {
-		fr: 'Conseils, astuces et guides pratiques pour l\'entretien et le dépannage de vos équipements',
+		fr: "Conseils, astuces et guides pratiques pour l'entretien et le dépannage de vos équipements",
 		en: 'Tips, tricks and practical guides for maintaining and troubleshooting your equipment',
 		ru: 'Советы, хитрости и практические руководства по обслуживанию и устранению неполадок вашего оборудования'
 	};
 
 	const readMoreText = {
-		fr: 'Lire l\'article',
-		en: 'Read article',
-		ru: 'Читать статью'
+		fr: 'Lire',
+		en: 'Read',
+		ru: 'Читать'
 	};
 
 	const readingTimeText = {
-		fr: 'min de lecture',
-		en: 'min read',
-		ru: 'мин чтения'
+		fr: 'min',
+		en: 'min',
+		ru: 'мин'
 	};
 
 	const languageWarning = {
-		fr: null, // Pas de message pour le français
+		fr: null,
 		en: 'Most articles are only available in French. We are working on translations.',
 		ru: 'Большинство статей доступны только на французском языке. Мы работаем над переводами.'
 	};
 
-	// Vérifier si la langue actuelle a des traductions limitées
 	let hasLimitedTranslations = $derived($settings.lang !== 'fr');
 </script>
 
@@ -86,97 +85,63 @@
 	<LoadingState />
 {:else}
 	<PageContent>
-		<nav aria-label="Breadcrumb">
-			<button class="back-button" onclick={goBack} aria-label="Retour à l'accueil">
-				<span class="icon" aria-hidden="true">
-					<ArrowLeft />
-				</span>
-				<span>
-					{#if $settings.lang === 'fr'}
-						Retour à l'accueil
-					{:else if $settings.lang === 'en'}
-						Back to home
-					{:else}
-						Вернуться на главную
-					{/if}
-				</span>
+		<header class="blog-header">
+			<button class="back-link" onclick={goBack}>
+				← {$settings.lang === 'fr' ? 'Accueil' : $settings.lang === 'en' ? 'Home' : 'Главная'}
 			</button>
-		</nav>
-
-		<header>
-			<h1>{pageHeading[$settings.lang]}</h1>
-			<p class="intro">{introText[$settings.lang]}</p>
+			<div class="header-content">
+				<h1>{pageHeading[$settings.lang]}</h1>
+				<p class="section-label">Journal</p>
+				<p class="intro">{introText[$settings.lang]}</p>
+			</div>
 		</header>
 
 		{#if hasLimitedTranslations && languageWarning[$settings.lang]}
 			<div class="language-warning" role="alert">
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					width="20"
-					height="20"
-					viewBox="0 0 24 24"
-					fill="none"
-					stroke="currentColor"
-					stroke-width="2"
-					stroke-linecap="round"
-					stroke-linejoin="round"
-					aria-hidden="true"
-				>
-					<circle cx="12" cy="12" r="10"></circle>
-					<line x1="12" y1="8" x2="12" y2="12"></line>
-					<line x1="12" y1="16" x2="12.01" y2="16"></line>
-				</svg>
 				<p>{languageWarning[$settings.lang]}</p>
 			</div>
 		{/if}
 
-		<section class="blog-grid" aria-label="Liste des articles">
-			{#each articles as article}
-				<article class="article-card grain">
-					<button
-						class="article-link"
-						onclick={() => goToArticle(article.slug)}
-						aria-label="Lire l'article {article.title[$settings.lang] || article.title.fr}"
-					>
+		<section class="article-list" aria-label="Liste des articles">
+			{#each articles as article, i}
+				<button
+					class="article-row"
+					class:is-hovered={hoveredIndex === i}
+					onclick={() => goToArticle(article.slug)}
+					onmouseenter={() => (hoveredIndex = i)}
+					onmouseleave={() => (hoveredIndex = -1)}
+					aria-label="Lire l'article {article.title[$settings.lang] || article.title.fr}"
+				>
+					<span class="article-index" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+
+					<span class="article-body">
+						<span class="article-category"
+							>{article.category?.[$settings.lang] || article.category?.fr || 'Guide'}</span
+						>
+						<span class="article-title">{article.title[$settings.lang] || article.title.fr}</span>
+						<span class="article-excerpt"
+							>{article.excerpt[$settings.lang] || article.excerpt.fr}</span
+						>
+					</span>
+
+					<span class="article-aside">
 						{#if article.image}
-							<div class="article-image">
-								<img
-									src={article.image}
-									alt={article.imageAlt[$settings.lang] || article.imageAlt?.fr || article.title[$settings.lang] || article.title.fr}
-									loading="lazy"
-								/>
-							</div>
+							<span class="article-thumb">
+								<img src={article.image} alt="" aria-hidden="true" loading="lazy" />
+							</span>
 						{/if}
-
-						<div class="article-content">
-							<div class="article-meta">
-								<span class="date">
-									<Calendar size={14} />
-									{new Date(article.publishDate).toLocaleDateString($settings.lang === 'fr' ? 'fr-BE' : $settings.lang === 'en' ? 'en-GB' : 'ru-RU')}
-								</span>
-								<span class="reading-time">
-									<Clock size={14} />
-									{article.readingTime} {readingTimeText[$settings.lang]}
-								</span>
-							</div>
-
-							<h2>{article.title[$settings.lang] || article.title.fr}</h2>
-
-							<p class="excerpt">{article.excerpt[$settings.lang] || article.excerpt.fr}</p>
-
-							{#if article.tags && article.tags.length > 0}
-								<div class="tags">
-									<Tag size={14} />
-									{#each article.tags.slice(0, 3) as tag}
-										<span class="tag">{tag}</span>
-									{/each}
-								</div>
-							{/if}
-
-							<span class="read-more">{readMoreText[$settings.lang]} →</span>
-						</div>
-					</button>
-				</article>
+						<span class="article-meta">
+							<span class="reading-time">
+								<Clock size={11} />
+								{article.readingTime}{readingTimeText[$settings.lang]}
+							</span>
+							<span class="read-cta">
+								{readMoreText[$settings.lang]}
+								<ArrowRight size={13} />
+							</span>
+						</span>
+					</span>
+				</button>
 			{/each}
 		</section>
 	</PageContent>
@@ -184,179 +149,263 @@
 
 <style lang="scss">
 	@use 'lib/styles/themes/_mixins' as *;
-	@use 'lib/styles/utils/_animations' as *;
 
-	header {
-		margin: 2rem 0 3rem;
+	.blog-header {
+		padding: 2rem 0 3rem;
+		border-bottom: 1px solid var(--color-gray-15);
+		margin-bottom: 0;
 
-		h1 {
-			font-size: 2rem;
-			font-weight: 700;
-			margin-bottom: 1rem;
-			line-height: 1.2;
+		.back-link {
+			display: inline-flex;
+			align-items: center;
+			gap: 0.4rem;
+			font-size: 0.78rem;
+			letter-spacing: 0.04em;
+			opacity: 0.5;
+			cursor: pointer;
+			transition: opacity 0.15s;
+			margin-bottom: 2.5rem;
+			text-transform: uppercase;
 
-			@include breakpoint('small') {
-				font-size: 2.5rem;
+			&:hover {
+				opacity: 1;
 			}
+		}
+
+		.header-content {
+			display: grid;
+			gap: 0.75rem;
 
 			@include breakpoint('medium') {
-				font-size: 3rem;
+				grid-template-columns: auto 1fr;
+				grid-template-rows: auto auto;
+				column-gap: 2.5rem;
+				align-items: start;
+			}
+		}
+
+		.section-label {
+			font-size: 0.72rem;
+			letter-spacing: 0.12em;
+			text-transform: uppercase;
+			opacity: 0.4;
+			font-weight: 500;
+			padding-top: 0.2rem;
+
+			@include breakpoint('medium') {
+				grid-row: 1;
+				grid-column: 2;
+			}
+		}
+
+		h1 {
+			font-size: clamp(1.8rem, 5vw, 3.2rem) !important;
+			font-weight: 700 !important;
+			line-height: 1.1 !important;
+			letter-spacing: -0.02em;
+			margin: 0 !important;
+
+			@include breakpoint('medium') {
+				grid-row: 1 / 3;
+				grid-column: 1;
 			}
 		}
 
 		.intro {
-			font-size: 1.15rem;
-			opacity: 0.85;
+			font-size: 0.88rem;
+			opacity: 0.55;
 			line-height: 1.6;
+			max-width: 48ch;
+			margin: 0;
 
-			@include breakpoint('small') {
-				font-size: 1.25rem;
+			@include breakpoint('medium') {
+				grid-row: 2;
+				grid-column: 2;
 			}
 		}
 	}
 
 	.language-warning {
-		display: flex;
-		align-items: flex-start;
-		gap: 0.75rem;
-		padding: 1rem 1.25rem;
-		margin: 1.5rem 0;
-		background: rgba(255, 193, 7, 0.1);
-		border-left: 4px solid #ffc107;
-		border-radius: 4px;
-		font-size: 0.95rem;
-		line-height: 1.5;
-		color: var(--color-text);
-
-		svg {
-			flex-shrink: 0;
-			margin-top: 0.1rem;
-			color: #ffc107;
-		}
+		padding: 0.75rem 1rem;
+		margin: 1.5rem 0 0;
+		border-left: 2px solid var(--color-yellow);
+		font-size: 0.82rem;
+		opacity: 0.75;
 
 		p {
 			margin: 0;
 		}
 	}
 
-	.blog-grid {
+	.article-list {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.article-row {
 		display: grid;
-		grid-template-columns: 1fr;
-		gap: 2rem;
-		margin: 3rem 0;
+		grid-template-columns: 2.5rem 1fr;
+		gap: 0 1.25rem;
+		padding: 1.5rem 0;
+		border-bottom: 1px solid var(--color-gray-10);
+		cursor: pointer;
+		text-align: left;
+		width: 100%;
+		transition: background 0.15s;
+		position: relative;
 
 		@include breakpoint('small') {
-			grid-template-columns: repeat(2, 1fr);
+			grid-template-columns: 3rem 1fr auto;
+			gap: 0 1.5rem;
 		}
+
+		&::before {
+			content: '';
+			position: absolute;
+			inset: 0;
+			background: var(--color-gray-05);
+			opacity: 0;
+			transition: opacity 0.15s;
+			pointer-events: none;
+			margin: 0 -1.5rem;
+		}
+
+		&.is-hovered::before {
+			opacity: 1;
+		}
+
+		&.is-hovered .article-index {
+			color: var(--primary-color-shamrock-600);
+		}
+
+		&.is-hovered .article-title {
+			text-decoration: underline;
+			text-underline-offset: 3px;
+			text-decoration-thickness: 1px;
+		}
+
+		&.is-hovered .article-thumb img {
+			transform: scale(1.05);
+		}
+
+		&.is-hovered .read-cta {
+			opacity: 1;
+			transform: translateX(3px);
+		}
+	}
+
+	.article-index {
+		font-size: 0.7rem;
+		font-weight: 600;
+		letter-spacing: 0.06em;
+		opacity: 0.3;
+		padding-top: 0.25rem;
+		transition:
+			color 0.15s,
+			opacity 0.15s;
+		line-height: 1;
+		align-self: start;
+		flex-shrink: 0;
+	}
+
+	.article-body {
+		display: flex;
+		flex-direction: column;
+		gap: 0.4rem;
+		min-width: 0;
+	}
+
+	.article-category {
+		font-size: 0.7rem;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		color: var(--primary-color-shamrock-600);
+		font-weight: 500;
+	}
+
+	.article-title {
+		font-size: clamp(0.95rem, 2vw, 1.1rem);
+		font-weight: 600;
+		line-height: 1.3;
+		color: var(--color-black);
+		transition: text-decoration 0.1s;
+	}
+
+	.article-excerpt {
+		font-size: 0.82rem;
+		opacity: 0.55;
+		line-height: 1.55;
+		display: none;
+		max-width: 60ch;
+
+		@include breakpoint('small') {
+			display: block;
+		}
+	}
+
+	.article-aside {
+		display: none;
+		flex-direction: column;
+		align-items: flex-end;
+		justify-content: space-between;
+		gap: 0.75rem;
+		flex-shrink: 0;
+
+		@include breakpoint('small') {
+			display: flex;
+		}
+	}
+
+	.article-thumb {
+		width: 80px;
+		height: 56px;
+		overflow: hidden;
+		border-radius: 4px;
+		flex-shrink: 0;
 
 		@include breakpoint('medium') {
-			grid-template-columns: repeat(2, 1fr);
-			gap: 2rem;
+			width: 100px;
+			height: 68px;
 		}
-	}
-
-	.article-card {
-		overflow: hidden;
-		box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.05);
-		transition:
-			transform 0.2s,
-			box-shadow 0.2s;
-		@include borderRadius('xsmall');
-
-		&:hover {
-			transform: translateY(-5px);
-			box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.1);
-
-			.article-image img {
-				transform: scale(1.05);
-			}
-
-			.read-more {
-				opacity: 1;
-				transform: translateX(5px);
-			}
-		}
-	}
-
-	.article-link {
-		display: block;
-		width: 100%;
-		text-align: left;
-		cursor: pointer;
-	}
-
-	.article-image {
-		width: 100%;
-		height: 200px;
-		overflow: hidden;
-		position: relative;
 
 		img {
 			width: 100%;
 			height: 100%;
 			object-fit: cover;
-			transition: transform 0.3s;
-		}
-	}
-
-	.article-content {
-		padding: 1.5rem;
-
-		h2 {
-			font-size: 1.35rem;
-			font-weight: 600;
-			margin: 1rem 0 0.75rem;
-			line-height: 1.3;
-		}
-
-		.excerpt {
-			opacity: 0.8;
-			font-size: 0.95rem;
-			line-height: 1.6;
-			margin-bottom: 1rem;
+			transition: transform 0.3s ease;
 		}
 	}
 
 	.article-meta {
 		display: flex;
-		gap: 1.5rem;
-		font-size: 0.85rem;
-		opacity: 0.7;
-		margin-bottom: 0.5rem;
-
-		span {
-			display: flex;
-			align-items: center;
-			gap: 0.35rem;
-		}
+		flex-direction: column;
+		align-items: flex-end;
+		gap: 0.35rem;
 	}
 
-	.tags {
+	.reading-time {
 		display: flex;
-		gap: 0.5rem;
-		flex-wrap: wrap;
 		align-items: center;
-		margin-top: 1rem;
-		font-size: 0.8rem;
-		opacity: 0.75;
-
-		.tag {
-			background: var(--color-gray-10);
-			padding: 0.25rem 0.6rem;
-			border-radius: 4px;
-			font-size: 0.75rem;
-		}
+		gap: 0.3rem;
+		font-size: 0.72rem;
+		opacity: 0.4;
+		letter-spacing: 0.02em;
+		white-space: nowrap;
 	}
 
-	.read-more {
-		display: inline-block;
-		margin-top: 1rem;
+	.read-cta {
+		display: flex;
+		align-items: center;
+		gap: 0.3rem;
+		font-size: 0.72rem;
 		font-weight: 600;
-		color: var(--color-primary);
-		opacity: 0.8;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+		color: var(--primary-color-shamrock-600);
+		opacity: 0.7;
 		transition:
 			opacity 0.2s,
 			transform 0.2s;
+		white-space: nowrap;
 	}
-
 </style>
