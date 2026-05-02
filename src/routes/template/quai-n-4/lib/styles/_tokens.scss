@@ -1,0 +1,33 @@
+// Design tokens locaux Quai n°4
+// Palette : beige + noir + blanc, accent dorure & émeraude
+
+:root {
+	// Base
+	--q-black: #0c0c0a;
+	--q-ink: #1a1a16;
+	--q-white: #fdfcf8;
+	--q-paper: #f5f0e6;
+	--q-cream: #ece4d2;
+	--q-beige: #d8cdb4;
+	--q-beige-deep: #b8a989;
+	--q-line: rgba(12, 12, 10, 0.12);
+	--q-line-soft: rgba(12, 12, 10, 0.06);
+
+	// Accents
+	--q-gold: #b8945a;
+	--q-gold-bright: #d4b072;
+	--q-gold-deep: #8a6d3f;
+	--q-emerald: #0f4d3a;
+	--q-emerald-deep: #08311f;
+	--q-emerald-leaf: #1f6b4f;
+
+	// Typo
+	--q-serif: 'Cormorant Garamond', 'Cormorant', Georgia, serif;
+	--q-display: 'Fraunces', 'Cormorant Garamond', Georgia, serif;
+	--q-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+	--q-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', monospace;
+
+	// Layout
+	--q-radius: 2px;
+	--q-shadow: 0 30px 80px -40px rgba(8, 8, 6, 0.45);
+}

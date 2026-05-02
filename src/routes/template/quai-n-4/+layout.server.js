@@ -12,8 +12,8 @@ async function fetchSection(section, key) {
 }
 
 export const load = async () => {
-	const data = await fetchSection('horaires', LESSENTIELLES);
+	const data = await fetchSection('all', LESSENTIELLES);
 	return {
-		horaires: data?.horaires?.data ?? null
+		all: data,
 	};
 };
