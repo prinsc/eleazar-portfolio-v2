@@ -1,13 +1,59 @@
 <script>
 	import { onMount, onDestroy } from 'svelte';
 	import { browser } from '$app/environment';
+	import Atelier from './lib/Atelier.svelte';
 
 	let isReady = $state(false);
 	let openFaq = $state(null);
 
-	let canvasEl;
-	let scene3dEl;
-	let scene3dInnerEl;
+	let atelierEl;
+	let stackEl;
+	let inclusEl;
+
+	const stack = [
+		{ n: 'SvelteKit', v: 'framework', d: 'Pages rendues côté serveur, instantanées au clic.' },
+		{
+			n: 'Svelte 5',
+			v: 'composants',
+			d: 'Réactivité fine, bundle léger, pas de virtual DOM lourd.'
+		},
+		{ n: 'GSAP', v: 'animation', d: 'Mouvements précis, scroll-driven, calés au pixel.' },
+		{ n: 'Matter.js', v: 'physics 2D', d: 'Le bac à sable que vous venez de lancer, par exemple.' },
+		{ n: 'Three.js', v: '3D / WebGL', d: 'Quand un produit mérite un rendu volumétrique.' },
+		{ n: 'Mapbox GL', v: 'cartographie', d: 'Cartes vectorielles fluides, stylées sur mesure.' },
+		{
+			n: 'Supabase',
+			v: 'back-office',
+			d: 'Authentification, base de données, fichiers — sans serveur à entretenir.'
+		},
+		{ n: 'Vercel', v: 'hébergement', d: 'Déploiement à chaque commit, CDN mondial, zéro friction.' }
+	];
+
+	const inclus = [
+		{
+			t: 'Code source à vous',
+			d: 'Vous repartez avec les sources sur GitHub. Pas d’otage technique.'
+		},
+		{
+			t: 'Hébergement an 1',
+			d: 'Mise en ligne, certificat HTTPS, nom de domaine .be ou .com inclus.'
+		},
+		{
+			t: 'Performance Lighthouse',
+			d: 'Score visé > 90 sur les quatre axes. Mesuré avant livraison.'
+		},
+		{ t: 'Accessibilité AA', d: 'Contrastes, alt, focus, navigation clavier. Lisible par tous.' },
+		{ t: 'SEO de base', d: 'Sitemap, balises Open Graph, données structurées Schema.org.' },
+		{ t: 'RGPD-ready', d: 'Bandeau cookies si pertinent, mentions légales, hébergement UE.' },
+		{ t: 'Formation 1 h', d: 'Comment changer un texte, une photo, ajouter une page.' },
+		{
+			t: 'Assistance 30 jours',
+			d: 'Petits ajustements post-livraison sans facturation supplémentaire.'
+		}
+	];
+
+	let pressEl;
+	let pressSheetEl;
 	let heroEl;
 	let mastheadEl;
 	let dropcapEl;
@@ -35,12 +81,42 @@
 	];
 
 	const why = [
-		{ t: 'Les locaux', d: 'Bureaux centre-ville. Baby-foot. Nespresso.', tag: 'overhead', c: 'Vous payez le loyer.' },
-		{ t: 'La hiérarchie', d: 'Account, projet, lead, junior, design, QA.', tag: 'salaires', c: 'Cinq salaires. Un seul site.' },
-		{ t: 'La marge', d: 'Une agence vise 30 à 50% de marge nette.', tag: 'capital', c: 'Légitime. Mais c’est vous qui financez.' },
-		{ t: 'Le commercial', d: 'Quelqu’un est payé pour vous vendre.', tag: 'sales', c: 'Vous payez aussi cette personne.' },
-		{ t: 'Les juniors', d: 'Le devis est signé par le senior.', tag: 'bait', c: 'Le code est écrit par un junior facturé senior.' },
-		{ t: 'La file d’attente', d: 'Votre projet attend dans une queue.', tag: 'delays', c: 'Trois mois pour un site vitrine.' }
+		{
+			t: 'Les locaux',
+			d: 'Bureaux centre-ville. Baby-foot. Nespresso.',
+			tag: 'overhead',
+			c: 'Vous payez le loyer.'
+		},
+		{
+			t: 'La hiérarchie',
+			d: 'Account, projet, lead, junior, design, QA.',
+			tag: 'salaires',
+			c: 'Cinq salaires. Un seul site.'
+		},
+		{
+			t: 'La marge',
+			d: 'Une agence vise 30 à 50% de marge nette.',
+			tag: 'capital',
+			c: 'Légitime. Mais c’est vous qui financez.'
+		},
+		{
+			t: 'Le commercial',
+			d: 'Quelqu’un est payé pour vous vendre.',
+			tag: 'sales',
+			c: 'Vous payez aussi cette personne.'
+		},
+		{
+			t: 'Les juniors',
+			d: 'Le devis est signé par le senior.',
+			tag: 'bait',
+			c: 'Le code est écrit par un junior facturé senior.'
+		},
+		{
+			t: 'La file d’attente',
+			d: 'Votre projet attend dans une queue.',
+			tag: 'delays',
+			c: 'Trois mois pour un site vitrine.'
+		}
 	];
 
 	const vsCards = [
@@ -73,11 +149,11 @@
 			note: 'Pas de bait & switch : le devis et le code, c’est la même personne.'
 		},
 		{
-			label: 'Le stack',
-			a: { v: 'WordPress vieillissant', t: 'agence' },
-			b: { v: 'Svelte / Shopify', t: 'eleazar' },
-			diff: '2026',
-			note: 'Score Lighthouse au-dessus de 95. Léger. Sécurisé. Indexé Google.'
+			label: 'La technologie',
+			a: { v: 'Solution datée', t: 'agence' },
+			b: { v: 'Outils 2026', t: 'eleazar' },
+			diff: 'à jour',
+			note: 'Sites rapides, sécurisés, bien placés sur Google. Sans surcouche inutile.'
 		},
 		{
 			label: 'Après livraison',
@@ -89,11 +165,31 @@
 	];
 
 	const process = [
-		{ n: '01', t: 'L’appel découverte', d: 'Trente minutes, gratuit. Vous expliquez. Je pose des questions. C’est aussi simple que ça.' },
-		{ n: '02', t: 'Le devis chiffré', d: 'Sous 48 heures. Prix fixe, ferme. Pas de surprise en cours de route.' },
-		{ n: '03', t: 'La maquette', d: 'Sur Figma. Vous validez le design avant que je touche au code.' },
-		{ n: '04', t: 'Le développement', d: 'Vous suivez en direct sur une URL de preview. Aucune boîte noire. 3 à 14 jours selon la complexité.' },
-		{ n: '05', t: 'La mise en ligne', d: 'Hébergement, nom de domaine, SEO de base, formation rapide pour gérer le contenu.' },
+		{
+			n: '01',
+			t: 'L’appel découverte',
+			d: 'Trente minutes, gratuit. Vous expliquez. Je pose des questions. C’est aussi simple que ça.'
+		},
+		{
+			n: '02',
+			t: 'Le devis chiffré',
+			d: 'Sous 48 heures. Prix fixe, ferme. Pas de surprise en cours de route.'
+		},
+		{
+			n: '03',
+			t: 'La maquette',
+			d: 'Vous voyez le design en image avant que je touche au code. Vous validez, on avance.'
+		},
+		{
+			n: '04',
+			t: 'Le développement',
+			d: 'Vous suivez en direct sur un lien privé. Aucune boîte noire. 3 à 14 jours selon la complexité.'
+		},
+		{
+			n: '05',
+			t: 'La mise en ligne',
+			d: 'Mise en ligne, nom de domaine, visibilité Google de base, formation rapide pour gérer le contenu.'
+		},
 		{ n: '06', t: 'Le suivi', d: 'On reste en contact. Je ne disparais pas après le virement.' }
 	];
 
@@ -103,8 +199,10 @@
 			date: '2026',
 			cat: 'Vitrine',
 			delay: '3 jours',
-			description: 'Site vitrine pour un sonorisateur passionné. Maquette, dev, mise en ligne — bouclé en trois jours.',
-			image: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=900&auto=format&fit=crop',
+			description:
+				'Site vitrine pour un sonorisateur passionné. Maquette, dev, mise en ligne — bouclé en trois jours.',
+			image:
+				'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=900&auto=format&fit=crop',
 			link: 'https://mjmsono.com'
 		},
 		{
@@ -113,7 +211,8 @@
 			cat: 'Vitrine',
 			delay: '9 jours',
 			description: 'Site vitrine pour un coach de vie spécialisé en développement personnel.',
-			image: 'https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=900&auto=format&fit=crop',
+			image:
+				'https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=900&auto=format&fit=crop',
 			link: 'https://renaissance-coach.be'
 		},
 		{
@@ -121,8 +220,10 @@
 			date: '2024–2025',
 			cat: 'Plateforme',
 			delay: '6 mois',
-			description: 'Plateforme dédiée à la découverte et au partage d’événements locaux. Un projet plus ambitieux.',
-			image: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=900&auto=format&fit=crop',
+			description:
+				'Plateforme dédiée à la découverte et au partage d’événements locaux. Un projet plus ambitieux.',
+			image:
+				'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=900&auto=format&fit=crop',
 			link: 'https://blinkr.events'
 		},
 		{
@@ -130,16 +231,17 @@
 			date: '2025',
 			cat: 'E-commerce',
 			delay: '3 semaines',
-			description: 'Boutique e-commerce Shopify pour une marque de bijoux artisanaux.',
-			image: 'https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=900&auto=format&fit=crop',
+			description: 'Boutique en ligne pour une marque de bijoux artisanaux.',
+			image:
+				'https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=900&auto=format&fit=crop',
 			link: 'https://noumis-jewelry.com'
 		}
 	];
 
 	const faq = [
 		{
-			q: 'Sérieusement, 500 € pour un site ?',
-			a: 'Oui. Site vitrine une page, design propre, mobile, hébergement un an inclus, formation pour gérer votre contenu. Si vous voulez cinq pages, des animations custom, un back-office, du e-commerce — on monte. Mais le ticket d’entrée est à 500 €, et c’est négociable selon votre projet.'
+			q: 'Qu’est-ce qui n’est PAS inclus dans les 500 € ?',
+			a: 'Pour cadrer les attentes : le ticket à 500 € couvre une vitrine une page avec vos textes et vos photos. Ce qu’il faut ajouter au-dessus : multi-pages (+700 €), animations sur-mesure (+300 à 1 200 €), prise de photos pro (devis photographe), copywriting (devis rédacteur), espace boutique (à partir de 2 000 €), application métier (sur devis). Tout est listé clairement avant signature, jamais en cours de route.'
 		},
 		{
 			q: 'Trois jours pour un site, c’est pas trop court ?',
@@ -151,7 +253,7 @@
 		},
 		{
 			q: 'Vous travaillez seul. Et si vous tombez malade ?',
-			a: 'Question légitime. Je bosse avec un petit réseau de freelances de confiance pour les renforts. Et le code que je livre est propre, documenté, hébergé chez VOUS : n’importe quel développeur peut reprendre.'
+			a: 'Question légitime. Je travaille avec un petit réseau d’indépendants de confiance pour les renforts. Et tout ce que je livre vous appartient : un autre professionnel peut reprendre la main sans difficulté.'
 		},
 		{
 			q: 'Vous bossez où ?',
@@ -159,7 +261,7 @@
 		},
 		{
 			q: 'Et après la livraison ?',
-			a: 'Vous êtes propriétaire de tout. Suivi mensuel optionnel (correctifs, petites évolutions, hébergement) à partir de 30 €/mois. Sans engagement. Vous pouvez partir quand vous voulez.'
+			a: 'Vous êtes propriétaire de tout. Suivi mensuel optionnel (corrections, petites évolutions, mise en ligne) à partir de 30 €/mois. Sans engagement. Vous pouvez partir quand vous voulez.'
 		}
 	];
 
@@ -168,7 +270,8 @@
 	}
 
 	function emailMe() {
-		window.location.href = 'mailto:eleazar@kltk.be?subject=Projet%20web%20%E2%80%94%20demande%20de%20devis';
+		window.location.href =
+			'mailto:eleazar@kltk.be?subject=Projet%20web%20%E2%80%94%20demande%20de%20devis';
 	}
 
 	onMount(async () => {
@@ -177,330 +280,77 @@
 
 		if (!browser) return;
 
-		const [{ default: gsap }, { ScrollTrigger }, THREE] = await Promise.all([
+		const [{ default: gsap }, { ScrollTrigger }] = await Promise.all([
 			import('gsap'),
-			import('gsap/ScrollTrigger'),
-			import('three')
+			import('gsap/ScrollTrigger')
 		]);
 
 		gsap.registerPlugin(ScrollTrigger);
 
-		// ---------- THREE.JS : feuille journal froissée qui pivote au scroll ----------
-		const initThree = () => {
-			if (!canvasEl) return;
-			const w = canvasEl.clientWidth;
-			const h = canvasEl.clientHeight;
+		// ---------- PRESS SHEET : reveal éditorial scroll-driven ----------
+		const initPress = () => {
+			if (!pressEl) return;
 
-			const scene = new THREE.Scene();
-			const camera = new THREE.PerspectiveCamera(38, w / h, 0.1, 100);
-			camera.position.set(0, 0, 6.5);
+			// reveal feuille + parallax léger
+			if (pressSheetEl) {
+				gsap.fromTo(
+					pressSheetEl,
+					{ y: 60, rotate: -1.5, opacity: 0 },
+					{
+						y: 0,
+						rotate: -0.8,
+						opacity: 1,
+						duration: 1.1,
+						ease: 'power3.out',
+						scrollTrigger: { trigger: pressEl, start: 'top 75%' }
+					}
+				);
 
-			const renderer = new THREE.WebGLRenderer({
-				canvas: canvasEl,
-				alpha: true,
-				antialias: true
-			});
-			renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-			renderer.setSize(w, h, false);
-
-			// Lumières
-			const amb = new THREE.AmbientLight(0xfff3d0, 0.55);
-			scene.add(amb);
-			const dir = new THREE.DirectionalLight(0xffffff, 1.1);
-			dir.position.set(2.5, 3, 4);
-			scene.add(dir);
-			const rim = new THREE.DirectionalLight(0xff4500, 0.6);
-			rim.position.set(-3, -2, 2);
-			scene.add(rim);
-
-			// Géo : feuille papier déformée façon journal froissé
-			const geo = new THREE.PlaneGeometry(3.3, 4.4, 60, 80);
-			const pos = geo.attributes.position;
-			for (let i = 0; i < pos.count; i++) {
-				const x = pos.getX(i);
-				const y = pos.getY(i);
-				const z =
-					Math.sin(x * 2.1 + y * 0.6) * 0.07 +
-					Math.cos(y * 1.7 - x * 0.4) * 0.05 +
-					(Math.random() - 0.5) * 0.04;
-				pos.setZ(i, z);
-			}
-			geo.computeVertexNormals();
-
-			// Texture procédurale : texte journal sur canvas
-			const tex = (() => {
-				const c = document.createElement('canvas');
-				c.width = 660;
-				c.height = 880;
-				const ctx = c.getContext('2d');
-				// fond crème
-				ctx.fillStyle = '#f6efde';
-				ctx.fillRect(0, 0, c.width, c.height);
-				// grain
-				const img = ctx.getImageData(0, 0, c.width, c.height);
-				for (let i = 0; i < img.data.length; i += 4) {
-					const n = (Math.random() - 0.5) * 22;
-					img.data[i] += n;
-					img.data[i + 1] += n;
-					img.data[i + 2] += n;
-				}
-				ctx.putImageData(img, 0, 0);
-
-				// masthead
-				ctx.fillStyle = '#14110d';
-				ctx.font = 'italic 700 64px "Playfair Display", Georgia, serif';
-				ctx.fillText('L’Édition', 30, 90);
-				ctx.fillStyle = '#ff4500';
-				ctx.font = 'italic 700 64px "Playfair Display", Georgia, serif';
-				ctx.fillText('spéciale', 220, 90);
-
-				ctx.fillStyle = '#14110d';
-				ctx.font = '12px "Geist Mono", monospace';
-				ctx.fillText('VOL. VI · N°06 · 26 AVRIL 2026', 30, 115);
-
-				// double rule
-				ctx.strokeStyle = '#14110d';
-				ctx.lineWidth = 2;
-				ctx.beginPath();
-				ctx.moveTo(30, 130);
-				ctx.lineTo(630, 130);
-				ctx.stroke();
-				ctx.lineWidth = 1;
-				ctx.beginPath();
-				ctx.moveTo(30, 136);
-				ctx.lineTo(630, 136);
-				ctx.stroke();
-
-				// gros titre
-				ctx.fillStyle = '#14110d';
-				ctx.font = 'italic 56px "Playfair Display", Georgia, serif';
-				ctx.fillText('Site web', 30, 220);
-				ctx.fillText('dès 500 €.', 30, 290);
-
-				ctx.fillStyle = '#ff4500';
-				ctx.font = 'italic 700 56px "Playfair Display", Georgia, serif';
-				ctx.fillText('Vraiment.', 30, 360);
-
-				// fake colonnes
-				ctx.fillStyle = '#14110d';
-				ctx.font = '13px "Bricolage Grotesque", sans-serif';
-				const lorem = [
-					'Mainvault. Pendant que les agences belges',
-					'facturent huit mille euros pour un site',
-					'vitrine, un développeur freelance basé à',
-					'Ath propose la même qualité — souvent',
-					'meilleure — pour un dixième du prix.',
-					'',
-					'« Pas de chef de projet inutile, pas de',
-					'stagiaire qui code à votre place, pas de',
-					'marge gonflée. Juste un développeur qui',
-					'fait le job, et qui facture honnêtement. »',
-					'',
-					'Le ticket d’entrée est à 500 €, négociable',
-					'selon le projet. Site MJM Sonorisation',
-					'livré en 3 jours en 2026.',
-					'',
-					'Eléazar Klyuvitkin couvre tout le Hainaut',
-					'occidental. Ath, Tournai, Leuze, Lessines.',
-					'Et à distance partout en Belgique.'
-				];
-				let yLine = 420;
-				lorem.forEach((line) => {
-					ctx.fillText(line, 30, yLine);
-					yLine += 22;
-				});
-
-				// colonne droite
-				yLine = 420;
-				const lorem2 = [
-					'PROCESS · Six étapes',
-					'',
-					'01. Un appel découverte',
-					'02. Devis fixe sous 48h',
-					'03. Maquette Figma',
-					'04. Développement live',
-					'05. Mise en ligne SEO',
-					'06. Suivi mensuel option.',
-					'',
-					'TARIFS · à partir de',
-					'',
-					'Vitrine . . . . . . 500 €',
-					'Custom . . . . 1 500 €',
-					'Shopify . . . . 2 000 €',
-					'',
-					'CONTACT · email',
-					'eleazar@kltk.be',
-					'+32 485 700 737'
-				];
-				lorem2.forEach((line) => {
-					ctx.fillText(line, 360, yLine);
-					yLine += 22;
-				});
-
-				// stamp orange tilted
-				ctx.save();
-				ctx.translate(490, 760);
-				ctx.rotate(-0.18);
-				ctx.strokeStyle = '#ff4500';
-				ctx.lineWidth = 3;
-				ctx.strokeRect(-70, -28, 140, 56);
-				ctx.fillStyle = '#ff4500';
-				ctx.font = 'italic 700 22px "Playfair Display", serif';
-				ctx.textAlign = 'center';
-				ctx.fillText('500€', 0, 8);
-				ctx.restore();
-
-				ctx.textAlign = 'left';
-
-				const t = new THREE.CanvasTexture(c);
-				t.colorSpace = THREE.SRGBColorSpace;
-				t.anisotropy = 8;
-				return t;
-			})();
-
-			const mat = new THREE.MeshStandardMaterial({
-				map: tex,
-				side: THREE.DoubleSide,
-				roughness: 0.85,
-				metalness: 0.0
-			});
-			const paper = new THREE.Mesh(geo, mat);
-			// position initiale: feuille un peu sur le côté, légèrement tournée
-			paper.rotation.set(0.05, -0.7, 0.08);
-			paper.position.set(-0.4, 0, 0);
-			scene.add(paper);
-
-			// state scroll
-			const state = { scrub: 0 };
-
-			// trigger sur la section dédiée, pinned plein écran
-			const st = ScrollTrigger.create({
-				trigger: scene3dEl,
-				start: 'top top',
-				end: '+=200%',
-				pin: true,
-				pinSpacing: true,
-				scrub: 0.7,
-				onUpdate: (self) => {
-					state.scrub = self.progress;
-				}
-			});
-
-			// reveal narration text steps avec scrub
-			if (scene3dInnerEl) {
-				const steps = scene3dInnerEl.querySelectorAll('.scene-step');
-				steps.forEach((step, i) => {
-					const total = steps.length;
-					const startP = i / total;
-					const endP = (i + 1) / total;
-					gsap.fromTo(
-						step,
-						{ opacity: 0, y: 30 },
-						{
-							opacity: 1,
-							y: 0,
-							duration: 0.5,
-							ease: 'power2.out',
-							scrollTrigger: {
-								trigger: scene3dEl,
-								start: () => `top+=${startP * 100}% top`,
-								end: () => `top+=${endP * 100}% top`,
-								scrub: 0.5,
-								toggleActions: 'play reverse play reverse'
-							}
-						}
-					);
+				gsap.to(pressSheetEl, {
+					yPercent: -8,
+					ease: 'none',
+					scrollTrigger: {
+						trigger: pressEl,
+						start: 'top bottom',
+						end: 'bottom top',
+						scrub: 0.6
+					}
 				});
 			}
 
-			// pointer subtle
-			let mx = 0,
-				my = 0;
-			const onPointer = (e) => {
-				const r = canvasEl.getBoundingClientRect();
-				mx = ((e.clientX - r.left) / r.width - 0.5) * 2;
-				my = ((e.clientY - r.top) / r.height - 0.5) * 2;
-			};
-			window.addEventListener('pointermove', onPointer);
-
-			// resize
-			const onResize = () => {
-				const nw = canvasEl.clientWidth;
-				const nh = canvasEl.clientHeight;
-				camera.aspect = nw / nh;
-				camera.updateProjectionMatrix();
-				renderer.setSize(nw, nh, false);
-			};
-			window.addEventListener('resize', onResize);
-
-			// loop
-			let raf;
-			const tick = (now) => {
-				const scrub = state.scrub;
-
-				// 3 phases narratives :
-				// 0 → 0.33 : feuille arrive de profil → s'ouvre face caméra
-				// 0.33 → 0.66 : feuille pivote, défile vers le haut, "imprimée"
-				// 0.66 → 1 : feuille s'éloigne, tournoie vers la droite, presque hors champ
-				const phase1 = Math.min(scrub / 0.33, 1);
-				const phase2 = Math.min(Math.max((scrub - 0.33) / 0.33, 0), 1);
-				const phase3 = Math.max((scrub - 0.66) / 0.34, 0);
-
-				// rotation : -0.7 (profil) → 0 (face) → -2 (revers tournoie)
-				const targetRy = -0.7 + phase1 * 0.7 - phase2 * 0.15 - phase3 * 1.8;
-				const targetRx = 0.05 - phase2 * 0.25 + phase3 * 0.4 + my * 0.08;
-				const targetRz = 0.08 + phase2 * 0.06 - phase3 * 0.6 + mx * 0.05;
-
-				// position
-				const targetPx = -0.4 + phase1 * 0.4 + phase3 * 1.8;
-				const targetPy = 0 + phase2 * -0.3 - phase3 * 0.4;
-				const targetPz = 0 + phase1 * 0.6 - phase2 * 0.4 - phase3 * 1.5;
-
-				const damp = 0.1;
-				paper.rotation.x += (targetRx - paper.rotation.x) * damp;
-				paper.rotation.y += (targetRy - paper.rotation.y) * damp;
-				paper.rotation.z += (targetRz - paper.rotation.z) * damp;
-				paper.position.x += (targetPx - paper.position.x) * damp;
-				paper.position.y += (targetPy - paper.position.y) * damp;
-				paper.position.z += (targetPz - paper.position.z) * damp;
-
-				// caméra zoom léger phase 2
-				const camZ = 6.5 - phase2 * 0.7;
-				camera.position.z += (camZ - camera.position.z) * damp;
-
-				// onde papier — froissé idle + amplifiée phase 1 (déploiement)
-				const p = geo.attributes.position;
-				const t = now * 0.0008;
-				const fold = 1 - phase1; // au début papier plié, ondes max
-				const wave = phase2; // milieu : ondes douces
-				for (let i = 0; i < p.count; i++) {
-					const xi = p.getX(i);
-					const yi = p.getY(i);
-					const baseFold = fold * (Math.sin(yi * 6) * 0.25 + Math.cos(xi * 4) * 0.15);
-					const idle =
-						Math.sin(xi * 2.1 + yi * 0.6 + t) * 0.06 +
-						Math.cos(yi * 1.7 - xi * 0.4 + t * 0.7) * 0.04;
-					const ripple = wave * Math.sin(yi * 3 + t * 1.5) * 0.12;
-					p.setZ(i, baseFold + idle + ripple);
-				}
-				p.needsUpdate = true;
-				geo.computeVertexNormals();
-
-				renderer.render(scene, camera);
-				raf = requestAnimationFrame(tick);
-			};
-			raf = requestAnimationFrame(tick);
-
-			cleanups.push(() => {
-				cancelAnimationFrame(raf);
-				window.removeEventListener('pointermove', onPointer);
-				window.removeEventListener('resize', onResize);
-				st.kill();
-				geo.dispose();
-				mat.dispose();
-				tex.dispose();
-				renderer.dispose();
+			// stagger des notes éditoriales
+			const notes = pressEl.querySelectorAll('.press-note');
+			notes.forEach((note, i) => {
+				gsap.fromTo(
+					note,
+					{ opacity: 0, y: 30, x: i % 2 === 0 ? -20 : 20 },
+					{
+						opacity: 1,
+						y: 0,
+						x: 0,
+						duration: 0.8,
+						ease: 'power3.out',
+						scrollTrigger: { trigger: note, start: 'top 85%' }
+					}
+				);
 			});
+
+			// stamp tampon
+			const stamp = pressEl.querySelector('.press-stamp');
+			if (stamp) {
+				gsap.fromTo(
+					stamp,
+					{ scale: 0.4, rotate: -25, opacity: 0 },
+					{
+						scale: 1,
+						rotate: -12,
+						opacity: 1,
+						duration: 0.7,
+						ease: 'back.out(2.4)',
+						scrollTrigger: { trigger: stamp, start: 'top 80%' }
+					}
+				);
+			}
 		};
 
 		// ---------- GSAP : reveals ----------
@@ -614,9 +464,7 @@
 			const text = bigquoteTextEl.textContent;
 			bigquoteTextEl.innerHTML = text
 				.split(/(\s+)/)
-				.map((w) =>
-					w.trim() ? `<span class="word"><span class="inner">${w}</span></span>` : w
-				)
+				.map((w) => (w.trim() ? `<span class="word"><span class="inner">${w}</span></span>` : w))
 				.join('');
 
 			gsap.from(bigquoteEl.querySelector('.quote-mark'), {
@@ -673,8 +521,10 @@
 			});
 			cards.forEach((card) => {
 				const num = card.querySelector('.vs-diff');
-				const onEnter = () => gsap.to(num, { scale: 1.08, rotate: -2, duration: 0.4, ease: 'back.out(2)' });
-				const onLeave = () => gsap.to(num, { scale: 1, rotate: 0, duration: 0.4, ease: 'power2.out' });
+				const onEnter = () =>
+					gsap.to(num, { scale: 1.08, rotate: -2, duration: 0.4, ease: 'back.out(2)' });
+				const onLeave = () =>
+					gsap.to(num, { scale: 1, rotate: 0, duration: 0.4, ease: 'power2.out' });
 				card.addEventListener('mouseenter', onEnter);
 				card.addEventListener('mouseleave', onLeave);
 				cleanups.push(() => {
@@ -748,9 +598,53 @@
 			gsap.to(inner, { x: -w, duration: 30, ease: 'none', repeat: -1 });
 		}
 
-		// init three after layout, puis refresh ScrollTrigger
+		// ATELIER reveal
+		if (atelierEl) {
+			gsap.from(atelierEl.querySelector('.atelier-frame'), {
+				opacity: 0,
+				y: 50,
+				rotate: -1,
+				duration: 1,
+				ease: 'power3.out',
+				scrollTrigger: { trigger: atelierEl, start: 'top 80%' }
+			});
+			gsap.from(atelierEl.querySelectorAll('.atelier-caption li'), {
+				opacity: 0,
+				x: -20,
+				stagger: 0.08,
+				duration: 0.6,
+				ease: 'power2.out',
+				scrollTrigger: { trigger: atelierEl, start: 'top 75%' }
+			});
+		}
+
+		// STACK reveal
+		if (stackEl) {
+			gsap.from(stackEl.querySelectorAll('.stack-row'), {
+				opacity: 0,
+				x: -30,
+				stagger: 0.06,
+				duration: 0.7,
+				ease: 'power3.out',
+				scrollTrigger: { trigger: stackEl, start: 'top 80%' }
+			});
+		}
+
+		// INCLUS reveal
+		if (inclusEl) {
+			gsap.from(inclusEl.querySelectorAll('.incl-item'), {
+				opacity: 0,
+				y: 24,
+				stagger: 0.05,
+				duration: 0.6,
+				ease: 'power2.out',
+				scrollTrigger: { trigger: inclusEl, start: 'top 80%' }
+			});
+		}
+
+		// init press reveals après layout, puis refresh ScrollTrigger
 		requestAnimationFrame(() => {
-			initThree();
+			initPress();
 			requestAnimationFrame(() => ScrollTrigger.refresh());
 		});
 
@@ -808,11 +702,14 @@
 			<aside class="hero-rail">
 				<span class="rail-label mono">À LA UNE</span>
 				<ul class="rail-list">
-					<li><span class="rail-num">01</span> Pourquoi 500 €</li>
-					<li><span class="rail-num">02</span> Le coût caché des agences</li>
-					<li><span class="rail-num">03</span> Le match en chiffres</li>
-					<li><span class="rail-num">04</span> Comment ça se passe</li>
-					<li><span class="rail-num">05</span> Six questions, six réponses</li>
+					<li><span class="rail-num">01</span> Anatomie d’un devis</li>
+					<li><span class="rail-num">02</span> Le match en chiffres</li>
+					<li><span class="rail-num">02·b</span> Le bac à sable</li>
+					<li><span class="rail-num">02·c</span> Sous le capot</li>
+					<li><span class="rail-num">03</span> Le déroulé</li>
+					<li><span class="rail-num">04</span> Sites livrés</li>
+					<li><span class="rail-num">04·b</span> Ce qui est inclus</li>
+					<li><span class="rail-num">05</span> Courrier des lecteurs</li>
 				</ul>
 				<div class="rail-stamp">
 					<span>★</span>
@@ -834,8 +731,8 @@
 					site vitrine, un développeur freelance basé à Ath propose la même qualité — souvent
 					meilleure — pour un dixième du prix. Pas de chef de projet inutile, pas de stagiaire qui
 					code à votre place, pas de marge gonflée. Juste un développeur qui fait le job, et qui
-					vous facture honnêtement. Le ticket d’entrée est à 500 €, négociable selon le projet.
-					Les délais ? <strong>De trois à quatorze jours</strong> pour un site vitrine. Le site
+					vous facture honnêtement. Le ticket d’entrée est à 500 €, négociable selon le projet. Les
+					délais ? <strong>De trois à quatorze jours</strong> pour un site vitrine. Le site
 					mjmsono.com a été livré en <strong>trois jours</strong> top chrono.
 				</p>
 
@@ -856,8 +753,8 @@
 				<span class="pb-num">500€</span>
 				<span class="pb-rule"></span>
 				<p class="pb-text">
-					Site vitrine, hébergement un an inclus, formation au CMS. Négociable selon vos besoins.
-					Délai 3 à 14 jours.
+					Site vitrine, mise en ligne un an incluse, formation pour gérer vos textes et photos.
+					Négociable selon vos besoins. Délai 3 à 14 jours.
 				</p>
 				<span class="pb-stamp">★ TARIF HONNÊTE ★</span>
 			</aside>
@@ -914,44 +811,200 @@
 	<section class="bigquote" bind:this={bigquoteEl}>
 		<span class="quote-mark serif">“</span>
 		<blockquote class="serif" bind:this={bigquoteTextEl}>
-			Pour 80% des projets PME, une agence c’est cinq personnes payées pour un boulot qu’une seule peut faire mieux, plus vite, et pour beaucoup moins cher.
+			Pour 80% des projets PME, une agence c’est cinq personnes payées pour un boulot qu’une seule
+			peut faire mieux, plus vite, et pour beaucoup moins cher.
 		</blockquote>
 		<cite class="mono">— Constat, après 6 ans dans le métier</cite>
 	</section>
 
-	<!-- SCENE 3D : feuille journal scroll-driven -->
-	<section class="scene-3d" bind:this={scene3dEl} aria-label="Animation feuille journal">
-		<canvas class="scene-canvas" bind:this={canvasEl} aria-hidden="true"></canvas>
+	<!-- ATELIER : Matter.js sandbox -->
+	<!-- <section class="atelier" bind:this={atelierEl}>
+		<header class="section-head">
+			<span class="kicker">§ 02·b · Démonstration</span>
+			<h2 class="big-title serif">
+				Un site, ce n’est pas que <em>du texte qui défile.</em>
+			</h2>
+			<p class="lede">
+				La plupart des agences livrent du HTML décoré. Voici ce qu’on peut faire en plus, sans
+				changer de prix : de la physique, de la 3D, des cartes, de l’interactif. Attrapez les blocs
+				ci-dessous.
+			</p>
+		</header>
 
-		<div class="scene-overlay" bind:this={scene3dInnerEl}>
-			<span class="scene-kicker mono">§ Intermède · sortie de presse</span>
-
-			<div class="scene-step" data-i="0">
-				<span class="step-num serif">i.</span>
-				<h3 class="serif">L’encre n’a pas encore séché.</h3>
-				<p>
-					Chaque site qui sort de chez moi, c’est un peu comme un journal qui sort de l’imprimerie : un objet pensé, plié, prêt à être lu.
-				</p>
+		<div class="atelier-layout">
+			<div class="atelier-frame">
+				<Atelier />
 			</div>
 
-			<div class="scene-step" data-i="1">
-				<span class="step-num serif">ii.</span>
-				<h3 class="serif">Trois jours pour MJM Sonorisation.</h3>
-				<p>
-					Trois jours entre l’appel et la mise en ligne. Pas trois mois. Pas trois semaines. Trois jours.
-				</p>
-			</div>
+			<aside class="atelier-caption">
+				<span class="atelier-eye mono">[ ce que vous regardez ]</span>
+				<ul>
+					<li>
+						<span class="num serif">i.</span>
+						<div>
+							<strong>Moteur physique 2D</strong> embarqué dans la page. Collisions, gravité, friction
+							— calculées en direct.
+						</div>
+					</li>
+					<li>
+						<span class="num serif">ii.</span>
+						<div>
+							<strong>Drag &amp; drop natif.</strong> Cliquez, glissez, lancez. Aucun framework jouet
+							: c’est la même tech utilisée par certains jeux web pro.
+						</div>
+					</li>
+					<li>
+						<span class="num serif">iii.</span>
+						<div>
+							<strong>Bibliothèque : Matter.js.</strong> 90 ko, libre, performante. Posable sur n’importe
+							quel site existant en deux jours.
+						</div>
+					</li>
+				</ul>
 
-			<div class="scene-step" data-i="2">
-				<span class="step-num serif">iii.</span>
-				<h3 class="serif">Imprimé à Mainvault. Lu partout.</h3>
-				<p>
-					De Tournai à Bruxelles, de Lessines à Mons. Hébergement Vercel, performance Lighthouse 95+, aucune dépendance à un commercial qui te rappelle six fois.
+				<p class="atelier-pitch serif">
+					Une vitrine de plombier n’a probablement pas besoin de ça. <em
+						>Un site qui doit marquer les esprits, oui.</em
+					>
 				</p>
-			</div>
+			</aside>
+		</div>
+	</section> -->
+
+	<!-- INTERMÈDE : feuille de presse imprimée -->
+	<section class="press" bind:this={pressEl} aria-label="Intermède éditorial">
+		<div class="press-margin press-margin-l mono" aria-hidden="true">
+			<span>EDITION · VI</span>
+			<span>·</span>
+			<span>SORTIE DE PRESSE</span>
+		</div>
+		<div class="press-margin press-margin-r mono" aria-hidden="true">
+			<span>500€</span>
+			<span>·</span>
+			<span>3 JOURS</span>
+			<span>·</span>
+			<span>ATH (B)</span>
 		</div>
 
-		<div class="scene-marks mono" aria-hidden="true">
+		<div class="press-inner">
+			<header class="press-head">
+				<span class="press-kicker mono">§ Intermède · sortie de presse</span>
+				<h2 class="press-title serif">
+					L’encre n’a pas encore séché. <em>Le site est déjà en ligne.</em>
+				</h2>
+				<p class="press-lede">
+					Chaque livraison ressemble à un journal qui sort de la rotative : objet pensé, mis en
+					page, plié, prêt à être lu.
+				</p>
+			</header>
+
+			<article class="press-sheet" bind:this={pressSheetEl}>
+				<div class="press-sheet-edge" aria-hidden="true"></div>
+
+				<div class="press-masthead">
+					<span class="ps-vol mono">VOL. VI · N°06 · 26 AVRIL 2026</span>
+					<h3 class="ps-title serif">L’Édition <em>spéciale</em></h3>
+					<span class="ps-tag mono">— Le journal honnête du web belge —</span>
+				</div>
+
+				<div class="press-rule" aria-hidden="true"></div>
+
+				<div class="press-grid press-grid-tight">
+					<div class="press-col press-col-side">
+						<span class="press-eyebrow mono">TARIFS · à partir de</span>
+						<dl class="press-prices">
+							<div>
+								<dt>Vitrine une page</dt>
+								<dd class="dots"></dd>
+								<dd class="val">500 €</dd>
+							</div>
+							<div>
+								<dt>Vitrine multi-pages</dt>
+								<dd class="dots"></dd>
+								<dd class="val">1 200 €</dd>
+							</div>
+							<div>
+								<dt>Sur mesure</dt>
+								<dd class="dots"></dd>
+								<dd class="val">1 500 €</dd>
+							</div>
+							<div>
+								<dt>Boutique en ligne</dt>
+								<dd class="dots"></dd>
+								<dd class="val">2 000 €</dd>
+							</div>
+							<div>
+								<dt>Plateforme / app</dt>
+								<dd class="dots"></dd>
+								<dd class="val">sur devis</dd>
+							</div>
+						</dl>
+					</div>
+
+					<div class="press-col press-col-side">
+						<span class="press-eyebrow mono">SUIVI MENSUEL · option</span>
+						<dl class="press-prices">
+							<div>
+								<dt>Petites évolutions</dt>
+								<dd class="dots"></dd>
+								<dd class="val">30 €/m</dd>
+							</div>
+							<div>
+								<dt>Maintenance + sécurité</dt>
+								<dd class="dots"></dd>
+								<dd class="val">60 €/m</dd>
+							</div>
+							<div>
+								<dt>SEO mensuel</dt>
+								<dd class="dots"></dd>
+								<dd class="val">120 €/m</dd>
+							</div>
+						</dl>
+
+						<span class="press-eyebrow mono">CONTACT</span>
+						<address class="press-contact">
+							<strong>eleazar@kltk.be</strong><br />
+							+32 485 700 737
+						</address>
+					</div>
+				</div>
+
+				<div class="press-stamp" aria-hidden="true">
+					<span class="stamp-line">★ TARIF ★</span>
+					<span class="stamp-num serif">500€</span>
+					<span class="stamp-line">★ HONNÊTE ★</span>
+				</div>
+			</article>
+
+			<aside class="press-notes">
+				<div class="press-note" data-i="0">
+					<span class="note-num serif">i.</span>
+					<h4 class="serif">Pensé. Plié. Livré.</h4>
+					<p>
+						Comme un numéro de journal : un objet abouti, une mise en page lisible, une voix
+						éditoriale claire.
+					</p>
+				</div>
+				<div class="press-note" data-i="1">
+					<span class="note-num serif">ii.</span>
+					<h4 class="serif">Le devis tient sur une feuille.</h4>
+					<p>
+						Pas un PDF de douze pages. Une ligne, un prix, une signature. Les heures masquées dans
+						des « frais de gestion » n’existent pas chez moi.
+					</p>
+				</div>
+				<div class="press-note" data-i="2">
+					<span class="note-num serif">iii.</span>
+					<h4 class="serif">Vous gardez les clés.</h4>
+					<p>
+						Code source sur GitHub à votre nom, hébergement à votre nom, nom de domaine à votre nom.
+						Si on se sépare, vous repartez avec tout — sans avocat.
+					</p>
+				</div>
+			</aside>
+		</div>
+
+		<div class="press-marks mono" aria-hidden="true">
 			<span>★</span><span>EDITION</span><span>HONEST</span><span>★</span>
 		</div>
 	</section>
@@ -1005,13 +1058,42 @@
 				<span class="dot">●</span>
 				<span class="serif italic">Hainaut · Belgique</span>
 				<span class="dot">●</span>
-				<span class="serif italic">SvelteKit · Shopify</span>
+				<span class="serif italic">Vitrine · Boutique en ligne</span>
 				<span class="dot">●</span>
 				<span class="serif italic">eleazar@kltk.be</span>
 				<span class="dot">●</span>
 			{/each}
 		</div>
 	</div>
+
+	<!-- STACK -->
+	<section class="stack" bind:this={stackEl}>
+		<header class="section-head">
+			<span class="kicker">§ 02·c · Sous le capot</span>
+			<h2 class="big-title serif">
+				La <em>vraie</em> liste des outils. <span class="hl">Pas du jargon.</span>
+			</h2>
+			<p class="lede">
+				Demandez à une agence sa stack, vous aurez un PDF marketing. La voici, sans filtre, avec ce
+				que chaque pièce apporte concrètement.
+			</p>
+		</header>
+
+		<div class="stack-table">
+			<div class="stack-row stack-head">
+				<span class="mono">outil</span>
+				<span class="mono">rôle</span>
+				<span class="mono">à quoi ça sert pour vous</span>
+			</div>
+			{#each stack as s, i}
+				<div class="stack-row" style="--i:{i}">
+					<span class="stack-name serif">{s.n}</span>
+					<span class="stack-role mono">{s.v}</span>
+					<span class="stack-desc">{s.d}</span>
+				</div>
+			{/each}
+		</div>
+	</section>
 
 	<!-- PROCESS -->
 	<section class="process">
@@ -1043,8 +1125,8 @@
 				Des sites <em>livrés.</em> <span class="hl">Pas des promesses.</span>
 			</h2>
 			<p class="lede">
-				Chaque carte indique le délai réel de livraison. MJM Sonorisation, par exemple, a été
-				bouclé en trois jours.
+				Chaque carte indique le délai réel de livraison. MJM Sonorisation, par exemple, a été bouclé
+				en trois jours.
 			</p>
 		</header>
 
@@ -1067,6 +1149,38 @@
 				</a>
 			{/each}
 		</div>
+	</section>
+
+	<!-- INCLUS -->
+	<section class="inclus" bind:this={inclusEl}>
+		<header class="section-head">
+			<span class="kicker">§ 04·b · Le ticket de caisse</span>
+			<h2 class="big-title serif">
+				Ce qui est <em>dans le prix.</em> <span class="hl">Vraiment dans le prix.</span>
+			</h2>
+			<p class="lede">
+				Pas d’options cachées, pas de pack premium déguisé. Voici les huit points livrés avec chaque
+				projet, du plus petit au plus gros.
+			</p>
+		</header>
+
+		<ul class="incl-list">
+			{#each inclus as it, i}
+				<li class="incl-item" style="--i:{i}">
+					<span class="incl-check serif" aria-hidden="true">✓</span>
+					<div class="incl-body">
+						<h3 class="serif">{it.t}</h3>
+						<p>{it.d}</p>
+					</div>
+					<span class="incl-num mono">0{i + 1}</span>
+				</li>
+			{/each}
+		</ul>
+
+		<p class="incl-foot mono">
+			★ Tout listé sur le devis. ★ Aucune ligne ajoutée en cours de route. ★ Si je l’oublie, c’est
+			offert.
+		</p>
 	</section>
 
 	<!-- FAQ -->
@@ -1831,7 +1945,6 @@
 		}
 
 		blockquote {
-			font-style: italic;
 			font-size: clamp(1.5rem, 3.5vw, 2.6rem);
 			line-height: 1.2;
 			letter-spacing: -0.01em;
@@ -1861,19 +1974,24 @@
 		}
 	}
 
-	/* ---------- SCENE 3D ---------- */
-	.scene-3d {
+	/* ---------- INTERMÈDE PRESSE ---------- */
+	.press {
 		position: relative;
 		z-index: 2;
 		width: 100%;
-		height: 100vh;
-		min-height: 600px;
 		overflow: hidden;
-		background: var(--p-bg-2);
+		background:
+			repeating-linear-gradient(
+				0deg,
+				rgba(20, 17, 13, 0.025) 0,
+				rgba(20, 17, 13, 0.025) 1px,
+				transparent 1px,
+				transparent 28px
+			),
+			var(--p-bg-2);
 		border-top: 6px double var(--p-rule);
 		border-bottom: 6px double var(--p-rule);
-		display: flex;
-		align-items: stretch;
+		padding: clamp(3rem, 7vw, 6rem) 0 clamp(4rem, 8vw, 7rem);
 
 		&::before {
 			content: '';
@@ -1881,109 +1999,378 @@
 			inset: 0;
 			pointer-events: none;
 			background:
-				radial-gradient(circle at 80% 30%, rgba(255, 69, 0, 0.08), transparent 55%),
-				radial-gradient(circle at 20% 70%, rgba(159, 232, 112, 0.1), transparent 55%);
+				radial-gradient(circle at 82% 22%, rgba(255, 69, 0, 0.1), transparent 55%),
+				radial-gradient(circle at 18% 78%, rgba(159, 232, 112, 0.1), transparent 55%);
+			z-index: 1;
+		}
+
+		&::after {
+			content: '';
+			position: absolute;
+			inset: 0;
+			pointer-events: none;
+			background-image: radial-gradient(rgba(20, 17, 13, 0.06) 1px, transparent 1px);
+			background-size: 4px 4px;
+			mix-blend-mode: multiply;
+			opacity: 0.5;
 			z-index: 1;
 		}
 	}
 
-	.scene-canvas {
+	.press-margin {
 		position: absolute;
-		inset: 0;
-		width: 100%;
-		height: 100%;
+		top: 0;
+		bottom: 0;
+		writing-mode: vertical-rl;
+		display: none;
+		gap: 0.7rem;
+		padding: 1.25rem 0;
+		font-size: 0.65rem;
+		letter-spacing: 0.32em;
+		color: var(--p-ink-soft);
+		opacity: 0.55;
 		z-index: 2;
-		pointer-events: none;
+
+		@media (min-width: 980px) {
+			display: flex;
+		}
+
+		&-l {
+			left: clamp(0.6rem, 1.2vw, 1.2rem);
+			border-right: 1px dotted var(--p-rule);
+		}
+		&-r {
+			right: clamp(0.6rem, 1.2vw, 1.2rem);
+			border-left: 1px dotted var(--p-rule);
+			transform: rotate(180deg);
+		}
 	}
 
-	.scene-overlay {
+	.press-inner {
 		position: relative;
 		z-index: 3;
 		width: 100%;
-		max-width: 1400px;
+		max-width: 1280px;
 		margin: 0 auto;
-		padding: clamp(2rem, 5vw, 4rem) clamp(1rem, 4vw, 3rem);
+		padding: 0 clamp(1.25rem, 4vw, 3rem);
 		display: grid;
 		grid-template-columns: 1fr;
-		gap: clamp(1.5rem, 3vw, 2.5rem);
-		align-content: center;
+		gap: clamp(2rem, 4vw, 3.5rem);
 
-		@media (min-width: $bp-medium) {
-			grid-template-columns: minmax(0, 480px) 1fr;
+		@media (min-width: 980px) {
+			grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+			grid-template-areas:
+				'head head'
+				'sheet notes';
+			align-items: start;
 		}
+	}
 
-		.scene-kicker {
-			grid-column: 1 / -1;
+	.press-head {
+		grid-area: head;
+		max-width: 760px;
+		display: grid;
+		gap: 0.85rem;
+
+		.press-kicker {
 			font-size: 0.72rem;
 			letter-spacing: 0.22em;
 			text-transform: uppercase;
 			color: var(--p-orange);
 			padding-bottom: 0.4rem;
 			border-bottom: 1px dotted var(--p-rule);
-			align-self: start;
+			justify-self: start;
 		}
 
-		.scene-step {
-			padding: 1.25rem 1.5rem;
-			background: var(--p-bg);
-			border: 2px solid var(--p-rule);
-			box-shadow: 6px 6px 0 var(--p-orange);
-			max-width: 460px;
+		.press-title {
+			font-size: clamp(2rem, 4.5vw, 3.6rem);
+			line-height: 1.02;
+			letter-spacing: -0.01em;
+			color: var(--p-ink);
 
-			&[data-i='1'] {
-				justify-self: end;
-				box-shadow: 6px 6px 0 var(--p-green);
-				transform: translateY(0);
-
-				@media (min-width: $bp-medium) {
-					grid-column: 1;
-					transform: translate(40px, 0);
-				}
-			}
-
-			&[data-i='2'] {
-				@media (min-width: $bp-medium) {
-					grid-column: 2;
-					justify-self: start;
-					transform: translate(-30px, 0);
-				}
-				box-shadow: 6px 6px 0 var(--p-pink);
-			}
-
-			.step-num {
+			em {
 				font-style: italic;
-				font-size: 1.4rem;
 				color: var(--p-orange);
-				display: block;
-				margin-bottom: 0.3rem;
+				display: inline-block;
 			}
+		}
 
-			h3 {
+		.press-lede {
+			font-size: clamp(1rem, 1.4vw, 1.15rem);
+			line-height: 1.55;
+			color: var(--p-ink-soft);
+			max-width: 56ch;
+		}
+	}
+
+	.press-sheet {
+		grid-area: sheet;
+		position: relative;
+		background: var(--p-bg);
+		border: 2px solid var(--p-rule);
+		box-shadow:
+			10px 10px 0 var(--p-orange),
+			18px 18px 30px -10px rgba(20, 17, 13, 0.35);
+		padding: clamp(1.4rem, 2.6vw, 2.4rem);
+		transform: rotate(-0.8deg);
+		transform-origin: top left;
+		overflow: hidden;
+
+		&::before {
+			content: '';
+			position: absolute;
+			inset: 0;
+			pointer-events: none;
+			background:
+				linear-gradient(180deg, rgba(20, 17, 13, 0.05), transparent 14%),
+				linear-gradient(0deg, rgba(20, 17, 13, 0.05), transparent 12%);
+		}
+
+		&::after {
+			content: '';
+			position: absolute;
+			inset: 0;
+			pointer-events: none;
+			background-image: radial-gradient(rgba(20, 17, 13, 0.05) 1px, transparent 1px);
+			background-size: 3px 3px;
+			mix-blend-mode: multiply;
+			opacity: 0.7;
+		}
+	}
+
+	.press-sheet-edge {
+		position: absolute;
+		inset: 0;
+		pointer-events: none;
+		background: linear-gradient(
+			135deg,
+			transparent calc(100% - 28px),
+			var(--p-bg-2) calc(100% - 28px) 100%
+		);
+		border-bottom: 0;
+	}
+
+	.press-masthead {
+		display: grid;
+		gap: 0.35rem;
+		text-align: center;
+		padding-bottom: 0.6rem;
+
+		.ps-vol {
+			font-size: 0.65rem;
+			letter-spacing: 0.28em;
+			color: var(--p-ink-soft);
+		}
+
+		.ps-title {
+			font-size: clamp(2.2rem, 5vw, 3.4rem);
+			line-height: 1;
+			letter-spacing: -0.02em;
+			color: var(--p-ink);
+
+			em {
 				font-style: italic;
-				font-size: clamp(1.4rem, 2.4vw, 2rem);
-				line-height: 1.05;
-				color: var(--p-ink);
-				margin-bottom: 0.5rem;
+				color: var(--p-orange);
 			}
+		}
 
-			p {
-				font-size: 0.95rem;
-				line-height: 1.55;
-				color: var(--p-ink-soft);
+		.ps-tag {
+			font-size: 0.7rem;
+			letter-spacing: 0.16em;
+			color: var(--p-ink-soft);
+		}
+	}
+
+	.press-rule {
+		height: 6px;
+		border-top: 2px solid var(--p-rule);
+		border-bottom: 1px solid var(--p-rule);
+		margin: 0.6rem 0 1.2rem;
+	}
+
+	.press-grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 1.4rem;
+		column-rule: 1px dotted var(--p-rule);
+		column-gap: 1.6rem;
+
+		@media (min-width: 540px) {
+			grid-template-columns: 1.4fr 1fr;
+		}
+	}
+
+	.press-col {
+		display: grid;
+		gap: 0.85rem;
+
+		& + .press-col {
+			padding-left: 1.2rem;
+			border-left: 1px dotted var(--p-rule);
+
+			@media (max-width: 539px) {
+				padding-left: 0;
+				border-left: 0;
+				padding-top: 1rem;
+				border-top: 1px dotted var(--p-rule);
 			}
 		}
 	}
 
-	.scene-marks {
+	.press-eyebrow {
+		font-size: 0.62rem;
+		letter-spacing: 0.24em;
+		color: var(--p-orange);
+		text-transform: uppercase;
+		padding-bottom: 0.25rem;
+		border-bottom: 1px solid var(--p-rule);
+	}
+
+	.press-grid-tight {
+		gap: 1.4rem;
+
+		@media (min-width: 540px) {
+			grid-template-columns: 1fr 1fr;
+		}
+	}
+
+	.press-prices {
+		margin: 0;
+		display: grid;
+		gap: 0.35rem;
+		font-size: 0.85rem;
+		color: var(--p-ink);
+
+		div {
+			display: grid;
+			grid-template-columns: auto 1fr auto;
+			align-items: baseline;
+			gap: 0.4rem;
+		}
+
+		dt {
+			font-family: 'Playfair Display', Georgia, serif;
+			font-style: italic;
+		}
+
+		.dots {
+			border-bottom: 1px dotted var(--p-rule);
+			height: 1px;
+			margin-bottom: 0.25rem;
+		}
+
+		.val {
+			font-family: 'Playfair Display', Georgia, serif;
+			font-weight: 700;
+			color: var(--p-orange);
+		}
+	}
+
+	.press-contact {
+		font-style: normal;
+		font-size: 0.85rem;
+		line-height: 1.5;
+		color: var(--p-ink);
+
+		strong {
+			color: var(--p-orange);
+		}
+	}
+
+	.press-stamp {
 		position: absolute;
-		left: clamp(1rem, 4vw, 3rem);
-		bottom: clamp(1rem, 4vw, 2rem);
+		right: clamp(1rem, 3vw, 2.4rem);
+		bottom: clamp(1rem, 3vw, 2rem);
+		display: grid;
+		place-items: center;
+		gap: 0.15rem;
+		padding: 0.7rem 1.1rem;
+		border: 3px solid var(--p-orange);
+		border-radius: 4px;
+		background: rgba(255, 69, 0, 0.05);
+		color: var(--p-orange);
+		transform: rotate(-12deg);
+		text-align: center;
+
+		.stamp-line {
+			font-family: 'Geist Mono', monospace;
+			font-size: 0.6rem;
+			letter-spacing: 0.18em;
+		}
+
+		.stamp-num {
+			font-family: 'Playfair Display', Georgia, serif;
+			font-style: italic;
+			font-weight: 700;
+			font-size: 1.6rem;
+			line-height: 1;
+		}
+	}
+
+	.press-notes {
+		grid-area: notes;
+		display: grid;
+		gap: 1.1rem;
+		align-content: start;
+		padding-top: clamp(0.5rem, 2vw, 2.4rem);
+	}
+
+	.press-note {
+		position: relative;
+		padding: 1.1rem 1.3rem 1.2rem;
+		background: var(--p-bg);
+		border: 2px solid var(--p-rule);
+		display: grid;
+		gap: 0.4rem;
+
+		&[data-i='0'] {
+			box-shadow: 6px 6px 0 var(--p-orange);
+			transform: rotate(0.4deg);
+		}
+		&[data-i='1'] {
+			box-shadow: 6px 6px 0 var(--p-green);
+			transform: rotate(-0.6deg);
+
+			@media (min-width: 980px) {
+				margin-left: 1.5rem;
+			}
+		}
+		&[data-i='2'] {
+			box-shadow: 6px 6px 0 var(--p-pink);
+			transform: rotate(0.3deg);
+		}
+
+		.note-num {
+			font-style: italic;
+			font-size: 1.3rem;
+			color: var(--p-orange);
+		}
+
+		h4 {
+			font-style: italic;
+			font-size: clamp(1.15rem, 1.8vw, 1.5rem);
+			line-height: 1.1;
+			color: var(--p-ink);
+		}
+
+		p {
+			font-size: 0.92rem;
+			line-height: 1.55;
+			color: var(--p-ink-soft);
+		}
+	}
+
+	.press-marks {
+		position: absolute;
+		left: 50%;
+		bottom: clamp(0.8rem, 2vw, 1.6rem);
+		transform: translateX(-50%);
 		z-index: 3;
 		display: flex;
 		gap: 0.6rem;
-		font-size: 0.7rem;
-		letter-spacing: 0.2em;
-		color: var(--p-rule);
+		font-size: 0.65rem;
+		letter-spacing: 0.24em;
+		color: var(--p-ink-soft);
 		opacity: 0.55;
 	}
 
@@ -2019,7 +2406,9 @@
 		padding: 1.5rem;
 		border: 2px solid var(--p-rule);
 		background: var(--p-bg);
-		transition: transform 0.3s ease, box-shadow 0.3s ease;
+		transition:
+			transform 0.3s ease,
+			box-shadow 0.3s ease;
 
 		&::before {
 			content: '';
@@ -2318,7 +2707,9 @@
 			letter-spacing: 0.15em;
 			text-transform: uppercase;
 			border: 2px solid var(--p-rule);
-			transition: background 0.25s ease, color 0.25s ease;
+			transition:
+				background 0.25s ease,
+				color 0.25s ease;
 		}
 	}
 
@@ -2536,6 +2927,280 @@
 		color: var(--p-pink);
 		opacity: 0.65;
 		line-height: 1.5;
+	}
+
+	/* ---------- ATELIER ---------- */
+	.atelier {
+		position: relative;
+		z-index: 2;
+		max-width: 1400px;
+		margin: 0 auto;
+		padding: clamp(3rem, 6vw, 5rem) clamp(1rem, 4vw, 3rem);
+		border-top: 1px solid var(--p-rule);
+	}
+
+	.atelier-layout {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: clamp(1.5rem, 3vw, 2.5rem);
+		align-items: start;
+
+		@media (min-width: $bp-medium) {
+			grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+		}
+	}
+
+	.atelier-frame {
+		position: relative;
+		will-change: transform, opacity;
+	}
+
+	.atelier-caption {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+
+		.atelier-eye {
+			font-size: 0.7rem;
+			letter-spacing: 0.22em;
+			text-transform: uppercase;
+			color: var(--p-orange);
+			padding-bottom: 0.4rem;
+			border-bottom: 1px dotted var(--p-rule);
+		}
+
+		ul {
+			list-style: none;
+			display: grid;
+			gap: 1rem;
+			padding: 0;
+			margin: 0;
+		}
+
+		li {
+			display: grid;
+			grid-template-columns: 28px 1fr;
+			gap: 0.75rem;
+			align-items: baseline;
+			font-size: 0.95rem;
+			line-height: 1.55;
+			color: var(--p-ink-soft);
+			padding-bottom: 0.85rem;
+			border-bottom: 1px dotted var(--p-rule);
+
+			strong {
+				color: var(--p-ink);
+				font-weight: 600;
+			}
+
+			.num {
+				font-style: italic;
+				font-size: 1.4rem;
+				color: var(--p-orange);
+				line-height: 1;
+			}
+		}
+
+		.atelier-pitch {
+			margin-top: 0.5rem;
+			font-size: 1.15rem;
+			line-height: 1.4;
+			color: var(--p-ink);
+			padding: 0.85rem 1rem;
+			background: var(--p-bg-2);
+			border-left: 3px solid var(--p-orange);
+
+			em {
+				font-style: italic;
+				color: var(--p-orange);
+			}
+		}
+	}
+
+	/* ---------- STACK ---------- */
+	.stack {
+		position: relative;
+		z-index: 2;
+		max-width: 1400px;
+		margin: 0 auto;
+		padding: clamp(3rem, 6vw, 5rem) clamp(1rem, 4vw, 3rem);
+		border-top: 1px solid var(--p-rule);
+	}
+
+	.stack-table {
+		border-top: 2px solid var(--p-rule);
+		border-bottom: 2px solid var(--p-rule);
+	}
+
+	.stack-row {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 0.4rem;
+		padding: 1rem 0.25rem;
+		border-bottom: 1px solid var(--p-rule);
+		transition:
+			background 0.2s ease,
+			padding 0.2s ease;
+
+		@media (min-width: $bp-small) {
+			grid-template-columns: minmax(140px, 1.2fr) minmax(110px, 1fr) minmax(0, 2.4fr);
+			gap: 1.25rem;
+			align-items: baseline;
+		}
+
+		&:last-child {
+			border-bottom: none;
+		}
+
+		&:not(.stack-head):hover {
+			background: var(--p-bg-2);
+			padding-left: 0.85rem;
+
+			.stack-name {
+				color: var(--p-orange);
+			}
+		}
+
+		&.stack-head {
+			padding: 0.6rem 0.25rem;
+			border-bottom: 2px solid var(--p-rule);
+			background: var(--p-ink);
+			color: var(--p-bg);
+			padding-left: 0.85rem;
+			padding-right: 0.85rem;
+
+			span {
+				font-size: 0.65rem;
+				letter-spacing: 0.22em;
+				text-transform: uppercase;
+				color: var(--p-orange);
+			}
+		}
+
+		.stack-name {
+			font-style: italic;
+			font-weight: 600;
+			font-size: clamp(1.2rem, 2vw, 1.6rem);
+			color: var(--p-ink);
+			line-height: 1;
+			transition: color 0.25s ease;
+		}
+
+		.stack-role {
+			font-size: 0.72rem;
+			letter-spacing: 0.18em;
+			text-transform: uppercase;
+			color: var(--p-orange);
+		}
+
+		.stack-desc {
+			font-size: 0.95rem;
+			line-height: 1.55;
+			color: var(--p-ink-soft);
+		}
+	}
+
+	/* ---------- INCLUS ---------- */
+	.inclus {
+		position: relative;
+		z-index: 2;
+		max-width: 1400px;
+		margin: 0 auto;
+		padding: clamp(3rem, 6vw, 5rem) clamp(1rem, 4vw, 3rem);
+		border-top: 1px solid var(--p-rule);
+	}
+
+	.incl-list {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 0;
+		border-top: 2px solid var(--p-rule);
+		border-left: 1px solid var(--p-rule);
+
+		@media (min-width: $bp-small) {
+			grid-template-columns: 1fr 1fr;
+		}
+
+		@media (min-width: $bp-medium) {
+			grid-template-columns: repeat(4, 1fr);
+		}
+	}
+
+	.incl-item {
+		position: relative;
+		display: grid;
+		grid-template-columns: 32px 1fr;
+		gap: 0.75rem;
+		align-items: start;
+		padding: 1.4rem 1.25rem;
+		border-right: 1px solid var(--p-rule);
+		border-bottom: 1px solid var(--p-rule);
+		transition: background 0.25s ease;
+
+		&:hover {
+			background: var(--p-bg-2);
+
+			.incl-check {
+				color: var(--p-orange);
+				transform: scale(1.15) rotate(-6deg);
+			}
+
+			h3 {
+				color: var(--p-orange);
+			}
+		}
+
+		.incl-check {
+			font-style: italic;
+			font-weight: 700;
+			font-size: 1.6rem;
+			line-height: 1;
+			color: var(--p-ink);
+			transition:
+				color 0.25s ease,
+				transform 0.25s ease;
+		}
+
+		.incl-body {
+			h3 {
+				font-style: italic;
+				font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+				line-height: 1.15;
+				color: var(--p-ink);
+				margin-bottom: 0.35rem;
+				transition: color 0.25s ease;
+			}
+
+			p {
+				font-size: 0.85rem;
+				line-height: 1.5;
+				color: var(--p-ink-soft);
+			}
+		}
+
+		.incl-num {
+			position: absolute;
+			top: 0.6rem;
+			right: 0.7rem;
+			font-size: 0.6rem;
+			letter-spacing: 0.18em;
+			color: var(--p-ink-soft);
+			opacity: 0.55;
+		}
+	}
+
+	.incl-foot {
+		margin-top: 1.5rem;
+		font-size: 0.7rem;
+		letter-spacing: 0.18em;
+		text-transform: uppercase;
+		color: var(--p-ink-soft);
+		text-align: center;
+		padding-top: 1rem;
+		border-top: 1px dotted var(--p-rule);
 	}
 
 	/* ---------- COLOPHON ---------- */
