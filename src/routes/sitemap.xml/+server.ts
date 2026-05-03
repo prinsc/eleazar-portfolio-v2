@@ -3,32 +3,38 @@ import blogData from '$lib/content/data_blog.json';
 
 const site = 'https://kltk.be';
 const languages = ['fr', 'en', 'ru'];
+const today = new Date().toISOString().split('T')[0];
+const created = '2026-01-01';
 
 export const GET = async () => {
     try {
         const pages = [
-            { path: '', priority: '1.0', changefreq: 'weekly' },
+            { path: '', priority: '1.0', changefreq: 'weekly', lastmod: today },
             ...languages.map(lang => ({
                 path: `/${lang}`,
                 priority: '1.0',
-                changefreq: 'weekly'
+                changefreq: 'weekly',
+                lastmod: today
             })),
             ...languages.map(lang => ({
                 path: `/${lang}/services`,
                 priority: '0.9',
-                changefreq: 'weekly'
+                changefreq: 'weekly',
+                lastmod: today
             })),
             ...languages.flatMap(lang =>
                 servicesData.services.map(service => ({
                     path: `/${lang}/services/${service.id}`,
                     priority: '0.8',
-                    changefreq: 'monthly'
+                    changefreq: 'monthly',
+                    lastmod: created
                 }))
             ),
             ...languages.map(lang => ({
                 path: `/${lang}/blog`,
                 priority: '0.9',
-                changefreq: 'weekly'
+                changefreq: 'weekly',
+                lastmod: today
             })),
             ...languages.flatMap(lang =>
                 blogData.articles
@@ -36,13 +42,15 @@ export const GET = async () => {
                     .map(article => ({
                         path: `/${lang}/blog/${article.slug}`,
                         priority: '0.8',
-                        changefreq: 'monthly'
+                        changefreq: 'monthly',
+                        lastmod: created
                     }))
             ),
             ...languages.map(lang => ({
                 path: `/${lang}/legal`,
                 priority: '0.3',
-                changefreq: 'yearly'
+                changefreq: 'yearly',
+                lastmod: created
             }))
         ];
 
@@ -80,13 +88,9 @@ ${pages.map(page => {
                 })
             ].join('\n');
 
-            const isBlog = page.path.includes('/blog');
-            const lastmodTag = isBlog ? '<lastmod>2026-01-01</lastmod>' : '';
-
-            // ← FIX : Structure XML propre avec indentation cohérente
             return `  <url>
     <loc>${site}${page.path}</loc>
-    ${lastmodTag}
+    <lastmod>${page.lastmod}</lastmod>
     <changefreq>${page.changefreq}</changefreq>
     <priority>${page.priority}</priority>
 ${hreflangLinks}
