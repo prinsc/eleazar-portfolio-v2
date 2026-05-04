@@ -7,7 +7,8 @@
 	let mapInstance = null;
 	let geojsonData = null;
 
-	let cutoffDate = $state('2026-01-01');
+	let dateFrom = $state('2020-01-01');
+	let dateTo = $state('2026-12-31');
 	let showBlue = $state(true);
 	let showYellow = $state(true);
 	let showRed = $state(true);
@@ -52,7 +53,9 @@
 
 	function passesFilter(props) {
 		const raw = props.creation_datetime;
-		return raw && new Date(raw) > new Date(cutoffDate + 'T00:00:00');
+		if (!raw) return false;
+		const d = new Date(raw);
+		return d >= new Date(dateFrom + 'T00:00:00') && d <= new Date(dateTo + 'T23:59:59');
 	}
 
 	function matchesSearch(props) {
@@ -143,7 +146,8 @@
 
 	$effect(() => {
 		// Les filtres instantanés (toggles, date) → rebuild direct
-		cutoffDate;
+		dateFrom;
+		dateTo;
 		showBlue;
 		showYellow;
 		showRed;
@@ -234,8 +238,10 @@
 	<div id="header">
 		<h1>Contacts Wallonie</h1>
 		<div id="controls">
-			<label for="cutoff">Depuis le :</label>
-			<input type="date" id="cutoff" bind:value={cutoffDate} />
+			<label for="date-from">Du :</label>
+			<input type="date" id="date-from" bind:value={dateFrom} />
+			<label for="date-to">au</label>
+			<input type="date" id="date-to" bind:value={dateTo} />
 			<div id="search-wrap">
 				<span id="search-icon">🔍</span>
 				<input type="text" id="search" placeholder="Rechercher..." bind:value={search} />
