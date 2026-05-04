@@ -1,0 +1,53 @@
+// Quai n°4 — design tokens
+:root {
+  // Palette — beige, émeraude, or
+  --c-paper: #f5f0e6;          // beige paper
+  --c-paper-deep: #ece4d2;     // shadow tone of paper
+  --c-ink: #0c1f18;            // near-black emerald
+  --c-emerald: #0f4d3a;        // signature emerald
+  --c-emerald-deep: #082c20;
+  --c-emerald-soft: #1a6a52;
+  --c-gold: #b8945a;           // signature gold
+  --c-gold-light: #d4b885;
+  --c-gold-deep: #8a6c3e;
+  --c-bone: #fbf8f1;
+  --c-rule: rgba(12, 31, 24, 0.18);
+  --c-muted: rgba(12, 31, 24, 0.62);
+
+  // Typography
+  --f-display: 'Bodoni Moda', 'Times New Roman', serif;
+  --f-sans: 'Satoshi', 'Inter', system-ui, sans-serif;
+  --f-mono: 'Fira Mono', 'Courier New', monospace;
+
+  // Sizing
+  --fs-xs: 0.72rem;
+  --fs-sm: 0.86rem;
+  --fs-base: 1rem;
+  --fs-md: 1.125rem;
+  --fs-lg: 1.5rem;
+  --fs-xl: clamp(1.75rem, 3.2vw, 2.6rem);
+  --fs-2xl: clamp(2.4rem, 5vw, 4rem);
+  --fs-3xl: clamp(3.2rem, 8vw, 6.5rem);
+  --fs-mega: clamp(4.5rem, 14vw, 12rem);
+  --fs-numeral: clamp(8rem, 22vw, 18rem);
+
+  // Spacing
+  --sp-1: 0.5rem;
+  --sp-2: 1rem;
+  --sp-3: 1.5rem;
+  --sp-4: 2.5rem;
+  --sp-5: 4rem;
+  --sp-6: 6rem;
+  --sp-7: 9rem;
+  --sp-section: clamp(5rem, 10vw, 9rem);
+
+  // Layout
+  --max-w: 1440px;
+  --gutter: clamp(1.25rem, 4vw, 3rem);
+
+  // Misc
+  --tracking-eyebrow: 0.22em;
+  --tracking-mono: 0.05em;
+  --ease: cubic-bezier(0.65, 0.05, 0.36, 1);
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}

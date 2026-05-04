@@ -1,0 +1,70 @@
+// Quai n°4 — mixins & utils
+
+$bp: (
+  small: 480px,
+  medium: 768px,
+  large: 1024px,
+  xlarge: 1280px,
+);
+
+@mixin breakpoint($size) {
+  @if map-has-key($bp, $size) {
+    @media (min-width: map-get($bp, $size)) { @content; }
+  }
+}
+
+@mixin eyebrow {
+  font-family: var(--f-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--c-gold-deep);
+  font-weight: 500;
+}
+
+@mixin display {
+  font-family: var(--f-display);
+  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: -0.015em;
+}
+
+@mixin display-italic {
+  @include display;
+  font-style: italic;
+  font-weight: 300;
+}
+
+@mixin grain {
+  position: relative;
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.06;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+    z-index: 1;
+  }
+}
+
+@mixin clamp-lines($n) {
+  display: -webkit-box;
+  -webkit-line-clamp: $n;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@mixin container {
+  width: 100%;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding-inline: var(--gutter);
+}
+
+@mixin gold-rule {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--c-gold) 30%, var(--c-gold) 70%, transparent);
+  border: none;
+}
