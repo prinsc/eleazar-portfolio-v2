@@ -7,13 +7,13 @@
 		<div>
 			<p class="eye"><span>02</span> Trois maisons, une tour</p>
 			<h2>
-				Découvrez les <em>pôles</em><br/>
+				Découvrez les <em>pôles</em><br />
 				qui font <span class="acc">vibrer</span> le lieu
 			</h2>
 		</div>
 		<p class="lead">
-			Chaque pôle a son ambiance, ses produits, sa raison d'être —
-			ensemble, ils composent l'identité de la Tour.
+			Chaque pôle a son ambiance, ses produits, sa raison d'être — ensemble, ils composent
+			l'identité de la Tour.
 		</p>
 	</header>
 
@@ -79,8 +79,12 @@
 	.poles {
 		padding: 6rem 1.25rem 4rem;
 		position: relative;
-		@include breakpoint('medium') { padding: 8rem 2.5rem 6rem; }
-		@include breakpoint('large') { padding: 10rem 4rem 8rem; }
+		@include breakpoint('medium') {
+			padding: 8rem 2.5rem 6rem;
+		}
+		@include breakpoint('large') {
+			padding: 10rem 4rem 8rem;
+		}
 	}
 
 	.ph {
@@ -116,8 +120,16 @@
 			font-size: clamp(2.2rem, 6vw, 5rem);
 			line-height: 0.95;
 			letter-spacing: -0.02em;
-			em { font-style: italic; color: var(--accent); }
-			.acc { font-style: italic; color: var(--gold-deep); text-decoration: underline wavy var(--accent); text-underline-offset: 6px; }
+			em {
+				font-style: italic;
+				color: var(--accent);
+			}
+			.acc {
+				font-style: italic;
+				color: var(--gold-deep);
+				text-decoration: underline wavy var(--accent);
+				text-underline-offset: 6px;
+			}
 		}
 		.lead {
 			font-family: var(--f-display);
@@ -129,7 +141,11 @@
 		}
 	}
 
-	.stack { display: flex; flex-direction: column; gap: 6rem; }
+	.stack {
+		display: flex;
+		flex-direction: column;
+		gap: 6rem;
+	}
 
 	.pole {
 		position: relative;
@@ -145,12 +161,12 @@
 		font-size: clamp(8rem, 24vw, 28rem);
 		line-height: 0.7;
 		color: var(--accent);
-		opacity: 0.12;
+		opacity: 0.25;
 		pointer-events: none;
 		user-select: none;
-		top: -2rem;
-		left: -1rem;
-		z-index: 0;
+		top: -5rem;
+		left: -10rem;
+		z-index: 5;
 	}
 	.sur {
 		font-family: var(--f-mono);
@@ -183,7 +199,10 @@
 		padding: 0.9rem 0;
 		border-top: 1px solid var(--ink);
 		border-bottom: 1px solid var(--ink);
-		transition: padding 0.3s, color 0.2s, border-color 0.3s;
+		transition:
+			padding 0.3s,
+			color 0.2s,
+			border-color 0.3s;
 		&:hover {
 			padding-inline: 1rem;
 			color: var(--accent-deep);
@@ -198,8 +217,13 @@
 		display: grid;
 		align-items: end;
 		padding: 2rem;
-		@include breakpoint('medium') { padding: 3rem; }
-		@include breakpoint('large') { padding: 4rem; min-height: 90vh; }
+		@include breakpoint('medium') {
+			padding: 3rem;
+		}
+		@include breakpoint('large') {
+			padding: 4rem;
+			min-height: 90vh;
+		}
 
 		.immersive-bg {
 			position: absolute;
@@ -212,7 +236,12 @@
 				inset: 0;
 				background: linear-gradient(180deg, rgba(11, 11, 12, 0.35) 0%, rgba(11, 11, 12, 0.65) 100%);
 			}
-			img { width: 100%; height: 100%; object-fit: cover; filter: saturate(0.9) contrast(1.05); }
+			img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				filter: saturate(0.9) contrast(1.05);
+			}
 		}
 
 		.immersive-text {
@@ -224,7 +253,9 @@
 			max-width: 640px;
 			border-left: 3px solid var(--gold);
 
-			@include breakpoint('medium') { padding: 3rem; }
+			@include breakpoint('medium') {
+				padding: 3rem;
+			}
 
 			.sur {
 				color: var(--gold);
@@ -243,7 +274,12 @@
 			.cta {
 				color: var(--gold);
 				border-color: var(--gold);
-				&:hover { background: var(--gold); color: var(--ink); border-color: var(--gold); padding-inline: 1rem; }
+				&:hover {
+					background: var(--gold);
+					color: var(--ink);
+					border-color: var(--gold);
+					padding-inline: 1rem;
+				}
 			}
 		}
 
@@ -256,7 +292,7 @@
 			font-weight: 900;
 			-webkit-text-stroke: 2px var(--gold);
 			color: transparent;
-			text-shadow: 0 0 60px rgba(0,0,0,0.5);
+			text-shadow: 0 0 60px rgba(0, 0, 0, 0.5);
 		}
 	}
 
@@ -266,27 +302,62 @@
 		grid-template-columns: 1fr;
 		gap: 2.5rem;
 		align-items: center;
-		@include breakpoint('large') { grid-template-columns: 1fr 1fr; gap: 5rem; }
+		@include breakpoint('large') {
+			grid-template-columns: 1fr 1fr;
+			gap: 5rem;
+		}
 	}
-	.pole--classic.flip .cl-grid { @include breakpoint('large') { direction: rtl; > * { direction: ltr; } } }
+	.pole--classic.flip .cl-grid {
+		@include breakpoint('large') {
+			direction: rtl;
+			> * {
+				direction: ltr;
+			}
+		}
+	}
 	.cl-img {
 		aspect-ratio: 4 / 5;
 		overflow: hidden;
 		position: relative;
 		z-index: 1;
-		img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s; }
-		&:hover img { transform: scale(1.04); }
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			transition: transform 0.8s;
+		}
+		&:hover img {
+			transform: scale(1.04);
+		}
 	}
-	.cl-text { position: relative; z-index: 1; padding: 1rem 0; }
+	.cl-text {
+		position: relative;
+		z-index: 1;
+		padding: 1rem 0;
+	}
 
 	/* EDITORIAL — texte large + image flottée + drop cap */
 	.ed-grid {
 		display: grid;
 		grid-template-columns: 1fr;
 		gap: 2.5rem;
-		@include breakpoint('large') { grid-template-columns: 1.4fr 1fr; gap: 4rem; align-items: start; }
+		@include breakpoint('large') {
+			grid-template-columns: 1.4fr 1fr;
+			gap: 4rem;
+			align-items: start;
+		}
 	}
-	.pole--editorial.flip .ed-grid { @include breakpoint('large') { grid-template-columns: 1fr 1.4fr; .ed-text { order: 2; } .ed-img { order: 1; } } }
+	.pole--editorial.flip .ed-grid {
+		@include breakpoint('large') {
+			grid-template-columns: 1fr 1.4fr;
+			.ed-text {
+				order: 2;
+			}
+			.ed-img {
+				order: 1;
+			}
+		}
+	}
 	.ed-text {
 		position: relative;
 		z-index: 1;
@@ -307,12 +378,18 @@
 		z-index: 1;
 		aspect-ratio: 3 / 4;
 		overflow: hidden;
-		@include breakpoint('large') { transform: translateY(2rem); }
-		img { width: 100%; height: 100%; object-fit: cover; }
+		@include breakpoint('large') {
+			transform: translateY(2rem);
+		}
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
 		.frame-tag {
 			position: absolute;
-			top: 1rem;
-			left: 1rem;
+			bottom: 1rem;
+			right: 1rem;
 			padding: 0.3rem 0.6rem;
 			background: var(--gold);
 			color: var(--ink);
@@ -323,6 +400,9 @@
 	}
 
 	@media (prefers-reduced-motion: reduce) {
-		img, .cta { transition: none; }
+		img,
+		.cta {
+			transition: none;
+		}
 	}
 </style>
