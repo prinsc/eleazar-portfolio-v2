@@ -170,7 +170,10 @@
 	.actions {
 		display: flex;
 		align-items: center;
+		justify-content: flex-end;
+		justify-self: end;
 		gap: 0.75rem;
+		grid-column: 3;
 	}
 	.reserver {
 		display: none;

@@ -2,7 +2,10 @@
 	import SignatureCurve from './SignatureCurve.svelte';
 	let { hero = null, infos = null } = $props();
 
-	const img = $derived(hero?.image || 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1600&auto=format&q=80');
+	const img = $derived(
+		hero?.image ||
+			'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1600&auto=format&q=80'
+	);
 	// PLACEHOLDER → photo de la salle / brasserie / Maison des Géants
 
 	let scrollY = $state(0);
@@ -45,7 +48,7 @@
 				</div>
 				<div class="cell">
 					<span class="lab">Esprit</span>
-					<span class="val italic">Trois maisons,<br/>une seule tour</span>
+					<span class="val italic">Trois maisons,<br />une seule tour</span>
 				</div>
 				<div class="cell">
 					<span class="lab">Statut</span>
@@ -59,7 +62,10 @@
 		<!-- Colonne droite : image cadrée + badge -->
 		<div class="col-img">
 			<div class="frame" style="transform: translateY({-parY * 0.4}px);">
-				<img src={img + (img.includes('?') ? '' : '?w=1200&auto=format&q=80')} alt={hero?.alt ?? 'Vue de la Tour des Légendes'} />
+				<img
+					src={img + (img.includes('?') ? '' : '?w=1200&auto=format&q=80')}
+					alt={hero?.alt ?? 'Vue de la Tour des Légendes'}
+				/>
 			</div>
 			<div class="badge" style="transform: rotate(-8deg) translateY({-parY * 0.2}px);">
 				<svg viewBox="0 0 200 200" aria-hidden="true">
@@ -72,7 +78,7 @@
 				</svg>
 				<div class="badge-inner">
 					<SignatureCurve size={42} color="var(--ink)" />
-					<span class="b-line">Maison<br/><em>des Géants</em></span>
+					<span class="b-line">Maison<br /><em>des Géants</em></span>
 				</div>
 			</div>
 		</div>
@@ -81,9 +87,9 @@
 	<!-- Bandeau bas — citation manifeste -->
 	<div class="manifest">
 		<p>
-			<span class="lead-l">Bienvenue&nbsp;:</span>
-			une brasserie moderne et axée sur les produits locaux, et un musée où chaque détail
-			de l'histoire de notre folklore <em>vibre</em> dans chacune des pièces.
+			<span class="lead-l">Bienvenue</span>
+			<br />une brasserie moderne et axée sur les produits locaux, et un musée où chaque détail de
+			l'histoire de notre folklore <em>vibre</em> dans chacune des pièces.
 		</p>
 		<a class="scroll-cue" href="#poles">
 			<span>Continuer</span>
@@ -104,8 +110,12 @@
 		flex-direction: column;
 		justify-content: space-between;
 
-		@include breakpoint('medium') { padding: 5rem 2.5rem 3rem; }
-		@include breakpoint('large') { padding: 6rem 4rem 3rem; }
+		@include breakpoint('medium') {
+			padding: 5rem 2.5rem 3rem;
+		}
+		@include breakpoint('large') {
+			padding: 6rem 4rem 3rem;
+		}
 	}
 
 	.ghost-num {
@@ -140,7 +150,11 @@
 		}
 	}
 
-	.col-text { display: flex; flex-direction: column; gap: 2rem; }
+	.col-text {
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+	}
 
 	.eyebrow {
 		display: inline-flex;
@@ -151,7 +165,9 @@
 		letter-spacing: 0.22em;
 		text-transform: uppercase;
 		color: var(--accent-deep);
-		.bullet { color: var(--gold-deep); }
+		.bullet {
+			color: var(--gold-deep);
+		}
 		animation: rise 1s 0.1s ease both;
 	}
 
@@ -192,7 +208,9 @@
 		padding-top: 1.5rem;
 		border-top: 1px dashed var(--rule-strong);
 		max-width: 600px;
-		@include breakpoint('small') { grid-template-columns: repeat(3, 1fr); }
+		@include breakpoint('small') {
+			grid-template-columns: repeat(3, 1fr);
+		}
 		animation: rise 1s 0.3s ease both;
 	}
 	.cell {
@@ -210,12 +228,23 @@
 			font-family: var(--f-display);
 			font-size: 1rem;
 			line-height: 1.25;
-			.italic, &.italic { font-style: italic; }
+			.italic,
+			&.italic {
+				font-style: italic;
+			}
 		}
-		.val.italic { font-style: italic; }
-		.pulse { display: inline-flex; align-items: center; gap: 0.4rem; }
+		.val.italic {
+			font-style: italic;
+		}
+		.pulse {
+			display: inline-flex;
+			align-items: center;
+			gap: 0.4rem;
+		}
 		.dot {
-			width: 8px; height: 8px; border-radius: 50%;
+			width: 8px;
+			height: 8px;
+			border-radius: 50%;
 			background: var(--accent);
 			animation: pulse 1.6s ease-in-out infinite;
 		}
@@ -224,7 +253,9 @@
 	.col-img {
 		position: relative;
 		min-height: 50vh;
-		@include breakpoint('large') { min-height: auto; }
+		@include breakpoint('large') {
+			min-height: auto;
+		}
 	}
 	.frame {
 		position: relative;
@@ -240,7 +271,9 @@
 			object-fit: cover;
 			transition: transform 0.8s ease;
 		}
-		&:hover img { transform: scale(1.04); }
+		&:hover img {
+			transform: scale(1.04);
+		}
 	}
 	.badge {
 		position: absolute;
@@ -253,16 +286,25 @@
 		display: grid;
 		place-items: center;
 		color: var(--ink);
-		animation: spin 30s linear infinite, rise 1s 0.5s ease both;
+		animation:
+			spin 30s linear infinite,
+			rise 1s 0.5s ease both;
 		box-shadow: 0 20px 40px -20px rgba(11, 11, 12, 0.4);
 
 		@include breakpoint('large') {
-			width: 220px; height: 220px;
+			width: 220px;
+			height: 220px;
 			bottom: 40px;
 			left: -60px;
 		}
 
-		svg { position: absolute; inset: 0; width: 100%; height: 100%; animation: spin 30s linear infinite reverse; }
+		svg {
+			position: absolute;
+			inset: 0;
+			width: 100%;
+			height: 100%;
+			animation: spin 30s linear infinite reverse;
+		}
 	}
 	.badge-inner {
 		display: flex;
@@ -274,7 +316,10 @@
 			font-family: var(--f-display);
 			font-size: 0.95rem;
 			line-height: 1.05;
-			em { color: var(--accent-deep); font-size: 1.1rem; }
+			em {
+				color: var(--accent-deep);
+				font-size: 1.1rem;
+			}
 		}
 	}
 
@@ -296,7 +341,10 @@
 			line-height: 1.45;
 			max-width: 60ch;
 			color: var(--ink-soft);
-			em { color: var(--accent); font-style: italic; }
+			em {
+				color: var(--accent);
+				font-style: italic;
+			}
 		}
 		.lead-l {
 			float: left;
@@ -320,26 +368,56 @@
 		padding: 0.8rem 0;
 		border-top: 1px solid var(--ink);
 		border-bottom: 1px solid var(--ink);
-		.arr { animation: bounce 2s ease-in-out infinite; }
+		.arr {
+			animation: bounce 2s ease-in-out infinite;
+		}
 	}
 
 	@keyframes rise {
-		from { transform: translateY(30px); opacity: 0; }
-		to { transform: translateY(0); opacity: 1; }
+		from {
+			transform: translateY(30px);
+			opacity: 0;
+		}
+		to {
+			transform: translateY(0);
+			opacity: 1;
+		}
 	}
 	@keyframes spin {
-		from { transform: rotate(0); }
-		to { transform: rotate(360deg); }
+		from {
+			transform: rotate(0);
+		}
+		to {
+			transform: rotate(360deg);
+		}
 	}
 	@keyframes pulse {
-		0%, 100% { transform: scale(1); opacity: 1; }
-		50% { transform: scale(1.6); opacity: 0.4; }
+		0%,
+		100% {
+			transform: scale(1);
+			opacity: 1;
+		}
+		50% {
+			transform: scale(1.6);
+			opacity: 0.4;
+		}
 	}
 	@keyframes bounce {
-		0%, 100% { transform: translateY(0); }
-		50% { transform: translateY(4px); }
+		0%,
+		100% {
+			transform: translateY(0);
+		}
+		50% {
+			transform: translateY(4px);
+		}
 	}
 	@media (prefers-reduced-motion: reduce) {
-		.badge, .badge svg, .dot, .arr, .row { animation: none !important; }
+		.badge,
+		.badge svg,
+		.dot,
+		.arr,
+		.row {
+			animation: none !important;
+		}
 	}
 </style>

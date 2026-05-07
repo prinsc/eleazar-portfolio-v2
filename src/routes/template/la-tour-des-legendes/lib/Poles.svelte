@@ -191,12 +191,16 @@
 		}
 	}
 
-	/* IMMERSIVE — image plein écran, texte par-dessus */
+	/* IMMERSIVE — image plein écran + carte papier ink posée par-dessus */
 	.pole--immersive {
 		position: relative;
 		min-height: 80vh;
 		display: grid;
 		align-items: end;
+		padding: 2rem;
+		@include breakpoint('medium') { padding: 3rem; }
+		@include breakpoint('large') { padding: 4rem; min-height: 90vh; }
+
 		.immersive-bg {
 			position: absolute;
 			inset: 0;
@@ -206,21 +210,54 @@
 				content: '';
 				position: absolute;
 				inset: 0;
-				background: linear-gradient(180deg, transparent 30%, rgba(11, 11, 12, 0.85) 100%);
+				background: linear-gradient(180deg, rgba(11, 11, 12, 0.35) 0%, rgba(11, 11, 12, 0.65) 100%);
 			}
-			img { width: 100%; height: 100%; object-fit: cover; }
+			img { width: 100%; height: 100%; object-fit: cover; filter: saturate(0.9) contrast(1.05); }
 		}
+
 		.immersive-text {
 			position: relative;
 			z-index: 1;
-			padding: 3rem 2rem;
+			background: var(--ink);
 			color: var(--base);
-			max-width: 700px;
-			h3, .sur { color: var(--gold); }
-			.txt { color: rgba(244, 244, 246, 0.85); }
-			.cta { color: var(--base); border-color: var(--gold); &:hover { color: var(--gold); border-color: var(--base); } }
+			padding: 2rem;
+			max-width: 640px;
+			border-left: 3px solid var(--gold);
+
+			@include breakpoint('medium') { padding: 3rem; }
+
+			.sur {
+				color: var(--gold);
+				margin-bottom: 1rem;
+			}
+			h3 {
+				color: var(--base);
+				font-weight: 500;
+				margin-bottom: 1.5rem;
+			}
+			.txt {
+				color: rgba(244, 244, 246, 0.82);
+				font-size: 1rem;
+				margin-bottom: 1.75rem;
+			}
+			.cta {
+				color: var(--gold);
+				border-color: var(--gold);
+				&:hover { background: var(--gold); color: var(--ink); border-color: var(--gold); padding-inline: 1rem; }
+			}
 		}
-		.big-num { color: var(--gold); opacity: 0.25; top: 1rem; left: 1rem; }
+
+		.big-num {
+			color: var(--gold);
+			opacity: 0.85;
+			top: 0;
+			left: auto;
+			right: -2rem;
+			font-weight: 900;
+			-webkit-text-stroke: 2px var(--gold);
+			color: transparent;
+			text-shadow: 0 0 60px rgba(0,0,0,0.5);
+		}
 	}
 
 	/* CLASSIC — split image / texte */

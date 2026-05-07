@@ -174,7 +174,7 @@
 		position: fixed;
 		inset: 0;
 		background: rgba(11, 11, 12, 0.96);
-		z-index: 1000;
+		z-index: 99999;
 		display: grid;
 		place-items: center;
 		padding: 2rem;
