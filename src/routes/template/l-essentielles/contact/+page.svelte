@@ -113,18 +113,12 @@
 				<div class="info-card">
 					<h3>Horaires</h3>
 					<div class="info-hours">
-						<div class="hour-row">
-							<span>{salon.hours.weekdays.label}</span>
-							<span>{salon.hours.weekdays.time}</span>
-						</div>
-						<div class="hour-row">
-							<span>{salon.hours.saturday.label}</span>
-							<span>{salon.hours.saturday.time}</span>
-						</div>
-						<div class="hour-row closed">
-							<span>{salon.hours.sunday.label}</span>
-							<span>{salon.hours.sunday.time}</span>
-						</div>
+						{#each salon.hours as { j, h }}
+							<div class="hour-row" class:closed={h === 'Fermé'}>
+								<span>{j}</span>
+								<span>{h}</span>
+							</div>
+						{/each}
 					</div>
 				</div>
 
