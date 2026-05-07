@@ -1,0 +1,49 @@
+// Mixins SCSS locaux — La Tour des Légendes.
+// Imports: `@use '../styles/mixins' as *;` puis `@include breakpoint('medium') { ... }`.
+
+$screen-xsmall: 450px;
+$screen-small: 576px;
+$screen-medium: 768px;
+$screen-large: 992px;
+$screen-xlarge: 1200px;
+$screen-xxlarge: 1400px;
+
+@mixin breakpoint($point) {
+	@if $point == xsmall { @media (min-width: $screen-xsmall) { @content; } }
+	@else if $point == small { @media (min-width: $screen-small) { @content; } }
+	@else if $point == medium { @media (min-width: $screen-medium) { @content; } }
+	@else if $point == large { @media (min-width: $screen-large) { @content; } }
+	@else if $point == xlarge { @media (min-width: $screen-xlarge) { @content; } }
+	@else if $point == xxlarge { @media (min-width: $screen-xxlarge) { @content; } }
+}
+
+@mixin clamp-lines($n) {
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-line-clamp: $n;
+	-webkit-box-orient: vertical;
+}
+
+// Hairline pointillé style menu papier — signature
+@mixin dashed-rule($color: rgba(11, 11, 12, 0.4)) {
+	background-image: radial-gradient(circle, $color 1px, transparent 1.2px);
+	background-size: 8px 1px;
+	background-repeat: repeat-x;
+	background-position: center;
+}
+
+// Conteneur fluide
+@mixin container($max: 1440px) {
+	width: 100%;
+	max-width: $max;
+	margin-inline: auto;
+	padding-inline: 1.25rem;
+	@include breakpoint('medium') { padding-inline: 2.5rem; }
+	@include breakpoint('large') { padding-inline: 4rem; }
+}
+
+@mixin focus-ring {
+	outline: 2px solid var(--accent);
+	outline-offset: 3px;
+	border-radius: 2px;
+}

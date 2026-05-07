@@ -19,7 +19,8 @@
 		{ slug: 'mjm-sono-v1', name: 'MJM Sono V1' },
 		{ slug: 'mjm-sono-v2', name: 'MJM Sono V2' },
 		{ slug: 'quai-n-4', name: 'Quai n°4' },
-		{ slug: 'quai-n-4-v2', name: 'Quai n°4 V2' }
+		{ slug: 'quai-n-4-v2', name: 'Quai n°4 V2' },
+		{slug: 'la-tour-des-legendes', name: 'La Tour des Légendes'},
 	];
 
 	const iconMap = {
